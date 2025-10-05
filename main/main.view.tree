@@ -1,0 +1,19 @@
+$club_main $mol_page
+	page_number? 1
+	item_url*0 \
+	item_title*0 \
+	head /
+		<= Title $mol_paragraph title \Вастрик Клуб
+		<= Lighter $mol_lights_toggle
+	body /
+		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
+			<= Pag1 $mol_paginator
+				value? <=> page_number?
+			<= Items $mol_list
+				rows <= list_items /
+					<= Item*0 $mol_link
+						arg *
+							post <= item_url*
+						title <= item_title* \
+			<= Pag2 $mol_paginator
+				value? <=> page_number?

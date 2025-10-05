@@ -1,0 +1,7 @@
+$club $mol_book2
+	plugins /
+		<= Theme $mol_theme_auto
+	pages /
+		<= Main $club_main
+		<= Post $club_post
+

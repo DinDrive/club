@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"sources": [
+		"club/club.view.tree"
+	],
+	"sourcesContent": [
+		"$club $mol_book2\n\tplugins /\n\t\t<= Theme $mol_theme_auto\n\tpages /\n\t\t<= Main $club_main\n\t\t<= Post $club_post\n\n"
+	],
+	"mappings": "AAAA,AAAA,yBAAM,uBAAN;AAAA,AAEK;AAAA,AAAM,2CAAN;AAAA,UAAM,GAAN;AAAA;AAEA;AAAA,AAAK,sCAAL;AAAA,UAAK,GAAL;AAAA;AACA;AAAA,AAAK,sCAAL;AAAA,UAAK,GAAL;AAAA;AAJJ;AAAA,AAAA,UAAQ,CACP,KAAG,QAAH,CADO,CAAR;AAAA;AAEA;AAAA,AAAA,UAAM,CACL,KAAG,OAAH,CADK,EAEL,KAAG,OAAH,CAFK,CAAN;AAAA;AAHD,CAAA;AAEK,YAFL,CAEK,4BAFL;AAIK,YAJL,CAIK,2BAJL;AAKK,YALL,CAKK,2BALL;"
+}

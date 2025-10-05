@@ -1,0 +1,3 @@
+namespace $ { $mol_style_attach( "club/main/main.css",
+ "body {\n\tmargin: 0;\n}\n\n[mol_view_root] {\n\twidth: 100vw;\n\theight: 100vh;\n}\n\n[club_main] {\n\twidth: 500px;\n}\n\n[club_post] {\n\twidth: 840px;\n}\n\n[club_main_body_content] {\n\theight: 100%;\n}\n\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: url(../police.png);\n\tcolor: #fff;\n\tfont-weight: bold;\n\t-webkit-text-stroke: 0.3rem #000;\n  \tpaint-order: stroke fill;\n\tmin-height: 2rem;\n\tanimation: police 2s linear infinite;\n}\n\n@keyframes police {\n\t0% {\n\t\tbackground-position: 0px;\n\t}\n\t100% {\n\t\tbackground-position: 28px;\n\t}\n}\n"
+) }

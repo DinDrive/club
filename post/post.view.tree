@@ -1,0 +1,24 @@
+$club_post $mol_page
+	post_title? \
+	authorization? false
+	post_url \
+	comments_url \
+	text \
+	date_published \
+	date_modified \
+	title <= post_title 
+	body /
+		<= Header $mol_view
+			sub /
+				<= DatePublished $mol_date
+					value <= date_published
+				<= DateModified $mol_date
+					value <= date_modified
+		<= Article $mol_text
+			text <= text
+		<= CommentTitle $mol_paragraph
+			title @\Комментарии
+		<= Items $mol_list
+			rows <= list_items /
+				<= Item*0 $mol_link
+					title <= comment_text* \

@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"sources": [
+		"club/club.view.tree"
+	],
+	"mappings": "AAAA;AAAA;AAAA,AAAA,mBAAM,mBAAN;AAEK,AAAA,YAAM;AAEN,AAAA,WAAK;AACL,AAAA,WAAK;AAJT,AAAA,cAAQ;AAER,AAAA,YAAM;AAHP;AAAA;AAAA;",
+	"file": "club.view.tree.d.ts",
+	"sourceRoot": "../.."
+}

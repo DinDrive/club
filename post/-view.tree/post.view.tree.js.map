@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"sources": [
+		"club/post/post.view.tree",
+		"localized_string"
+	],
+	"sourcesContent": [
+		"$club_post $mol_page\n\tpost_title? \\\n\tauthorization? false\n\tpost_url \\\n\tcomments_url \\\n\ttext \\\n\tdate_published \\\n\tdate_modified \\\n\ttitle <= post_title \n\tbody /\n\t\t<= Header $mol_view\n\t\t\tsub /\n\t\t\t\t<= DatePublished $mol_date\n\t\t\t\t\tvalue <= date_published\n\t\t\t\t<= DateModified $mol_date\n\t\t\t\t\tvalue <= date_modified\n\t\t<= Article $mol_text\n\t\t\ttext <= text\n\t\t<= CommentTitle $mol_paragraph\n\t\t\ttitle @\\Комментарии\n\t\t<= Items $mol_list\n\t\t\trows <= list_items /\n\t\t\t\t<= Item*0 $mol_link\n\t\t\t\t\ttitle <= comment_text* \\\n",
+		"\n\t\t()\n\t\t\tthis\n\t\t\t[] \\$\n\t\t\t[] \\$mol_locale\n\t\t\t[] \\text\n\t\t\t(,) #key\n\t"
+	],
+	"mappings": "AAAA,AAAA,mCAAW,sBAAX;AAAA,AAYO;AAAA,AAAc,qCAAd;AACF,wBAAM,KAAG,iBAAH,CAAN,CADE;AAAA,UAAc,GAAd;AAAA;AAEA;AAAA,AAAa,qCAAb;AACF,wBAAM,KAAG,gBAAH,CAAN,CADE;AAAA,UAAa,GAAb;AAAA;AAJF;AAAA,AAAO,qCAAP;AACF,sBAAI,CACH,KAAG,gBAAH,CADG,EAGH,KAAG,eAAH,CAHG,CAAJ,CADE;AAAA,UAAO,GAAP;AAAA;AAMA;AAAA,AAAQ,qCAAR;AACF,uBAAK,KAAG,OAAH,CAAL,CADE;AAAA,UAAQ,GAAR;AAAA;AAEA;AAAA,AAAa,0CAAb;AACF,wBClBD,CACC,IACA,EACA,YACA,KACA,CDaM,+BCbN,CALD,CDkBC,CADE;AAAA,UAAa,GAAb;AAAA;AAKS;AAAA,AAAA,UAAe,EAAf;AAAA;AADP;AAAA,AAAO,qCAAP;AACF,wBAAM,KAAG,iBAAH,CAAN,CADE;AAAA,UAAO,GAAP;AAAA;AADI;AAAA,AAAA,UAAW,CAClB,KAAG,UAAH,CADkB,CAAX;AAAA;AADN;AAAA,AAAM,qCAAN;AACF,uBAAK,KAAG,aAAH,CAAL,CADE;AAAA,UAAM,GAAN;AAAA;AAnBJ;AAAA,AAAA;AAAA,UAAa,EAAb;AAAA;AACA;AAAA,AAAA;AAAA,UAAe,KAAf;AAAA;AACA;AAAA,AAAA,UAAU,EAAV;AAAA;AACA;AAAA,AAAA,UAAc,EAAd;AAAA;AACA;AAAA,AAAA,UAAM,EAAN;AAAA;AACA;AAAA,AAAA,UAAgB,EAAhB;AAAA;AACA;AAAA,AAAA,UAAe,EAAf;AAAA;AACA;AAAA,AAAA,UAAM,KAAG,aAAH,CAAN;AAAA;AACA;AAAA,AAAA,UAAK;AAAA,AACJ,SAAG,SAAH,CADI;AAOJ,SAAG,UAAH,CAPI;AASJ,SAAG,eAAH,CATI;AAWJ,SAAG,QAAH;AAXI,CAAL;AAAA;AATD,CAAA;AAYO,YAZP,CAYO,yCAZP;AAcO,YAdP,CAcO,wCAdP;AAUK,YAVL,CAUK,kCAVL;AAgBK,YAhBL,CAgBK,mCAhBL;AAkBK,YAlBL,CAkBK,wCAlBL;AAsBO,gBAtBP,CAsBO,gCAtBP;AAoBK,YApBL,CAoBK,iCApBL;AACC,YADD,CACC,sCADD;AAEC,YAFD,CAEC,yCAFD;"
+}
