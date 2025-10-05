@@ -1,5 +1,7 @@
 name: Deploy Club on Github Pages
 
+permissions: write-all
+
 on:
     workflow_dispatch:
     push:
