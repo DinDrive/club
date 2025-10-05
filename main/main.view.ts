@@ -38,7 +38,7 @@ interface Author {
 namespace $.$$ {
 
 	export class $club_main extends $.$club_main {
-		@$mol_mem
+		@ $mol_mem
 		page_number( next: number = 1 ) {
 			const n = Number.parseInt( this.$.$mol_state_arg.value( 'page', next.toString() ) || '1' )
 			const a = ( n === undefined || n < 1 ) ? 1 : n
@@ -49,12 +49,12 @@ namespace $.$$ {
 			return `https://vas3k.club/all/new/feed.json?page=${ this.page_number() }`
 		}
 
-		@$mol_mem
+		@ $mol_mem
 		feed( next?: Root ): Root {
 			return next || ( $mol_fetch.json( this.url() ) as Root )
 		}
 
-		@$mol_mem
+		@ $mol_mem
 		posts() {
 			return this.feed().items
 		}
@@ -63,12 +63,12 @@ namespace $.$$ {
 			return this.feed().items.map( ( _, i ) => this.Item( i ) )
 		}
 
-		@$mol_mem_key
+		@ $mol_mem_key
 		item_title( id: number ) {
 			return `+${ this.posts()[ id ]._club.upvotes } ${ this.posts()[ id ]._club.is_public ? '' : '🔒' } ${ this.posts()[ id ].title }`
 		}
 
-		@$mol_mem_key
+		@ $mol_mem_key
 		item_url( id: number ) {
 			const url = this.posts()[ id ].url
 			return url.slice( 0, url.length - 1 )

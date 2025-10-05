@@ -72,7 +72,6 @@ namespace $.$$ {
 		}
 
 		post_url() {
-
 			return decodeURI($mol_state_arg.value( 'post' ) + '.json' || '')
 		}
 
