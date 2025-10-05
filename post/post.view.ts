@@ -70,25 +70,34 @@ namespace $.$$ {
 		authorization() {
 			return false
 		}
-
-		post_url() {
-			return decodeURI($mol_state_arg.value( 'post' ) + '.json' || '')
+		
+		@ $mol_mem
+		post_arg() {
+			return $mol_state_arg.value( 'post' )
 		}
 
+		@ $mol_mem
+		post_url() {
+			if(!this.post_arg()) return ''
+			return this.post_arg() + '.json'
+		}
+
+		@ $mol_mem
 		comments_url() {
 			if(!this.authorization()) return ''
-			return decodeURI($mol_state_arg.value( 'post' ) + '/comments.json' || '')
+			if(!this.post_arg()) return ''
+			return this.post_arg() + '/comments.json'
 		}
 
 		@ $mol_mem
 		post(next?: Post): Post | null {
-			if(!this.post_url) return null
+			if(!this.post_url()) return null
 			return next || ($mol_fetch.json( this.post_url() ) as PostRoot).post
 		}
 
 		@ $mol_mem
 		comments(next?: Comment[]): Comment[] | null {
-			if(!this.comments_url) return null
+			if(!this.comments_url()) return null
 			try {
 				return next || ($mol_fetch.json( this.comments_url() ) as CommentRoot).comments
 			} catch (e) {
@@ -97,28 +106,28 @@ namespace $.$$ {
 		}
 
 		post_title(): string {
-			return this.post()?.title || 'Нет заголовка'
+			return this.post()?.title ?? 'Нет заголовка'
 		}
 
 		text(): string {
-			return this.post()?.content_text || 'Нет поста'
+			return this.post()?.content_text ?? 'Нет поста'
 		}
 
 		date_published() {
-			return this.post()?.date_published || ''
+			return this.post()?.date_published ?? ''
 		}
 
 		date_modified() {
-			return this.post()?.date_modified || ''
+			return this.post()?.date_modified ?? ''
 		}
 
 		list_items() {
-			return this.comments()?.map((_, i) => this.Item(i)) || []
+			return this.comments()?.map((_, i) => this.Item(i)) ?? []
 		}
 
 		@ $mol_mem_key
 		comment_text( id: number ) {
-			return this.comments()?.[id].text || ''
+			return this.comments()?.[id].text ?? ''
 		}
 	}
 	
