@@ -82,6 +82,7 @@ declare namespace $ {
 		author_url( id: any): string
 		author_name( id: any): string
 		author_avatar( id: any): string
+		upvotes( ): string
 		head( ): readonly(any)[]
 		body( ): readonly(any)[]
 	}

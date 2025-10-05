@@ -2,6 +2,20 @@ body {
 	margin: 0;
 }
 
+* {
+	font-family: "Ubuntu", Helvetica, Verdana, sans-serif;
+}
+
+[club_main_head] {
+	justify-content: start;
+	align-items: center;
+}
+
+[club_main_logo] {
+	width: 25px;
+	height: 25px;
+}
+
 [mol_view_root] {
 	width: 100vw;
 	height: 100vh;
@@ -11,7 +25,8 @@ body {
 	width: 500px;
 }
 
-[club_post] {
+[club_post],
+[club_comments] {
 	width: 840px;
 }
 

@@ -9,6 +9,7 @@ $club_post $mol_page
 	author_url*0 \
 	author_name*0 \
 	author_avatar*0 \
+	upvotes \
 	head /
 		<= Upvote $mol_button_major title <= upvotes
 		<= Title $mol_paragraph title <= post_title

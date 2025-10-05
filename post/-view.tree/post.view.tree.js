@@ -86,6 +86,9 @@
 		author_avatar(id){
 			return "";
 		}
+		upvotes(){
+			return "";
+		}
 		head(){
 			return [(this.Upvote()), (this.Title())];
 		}

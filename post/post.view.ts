@@ -82,9 +82,16 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
+		body() {
+			if(!this.post) return [null]
+			return super.body()
+		}
+
+		@ $mol_mem
 		post(next?: Post): Post | null {
 			if(!this.post_url()) return null
-			return next || ($mol_fetch.json( this.post_url()+'?token='+this.token()) as PostRoot).post
+			const link = (this.token()) ? this.post_url() + '?token='+this.token() : this.post_url()
+			return next || ($mol_fetch.json( link ) as PostRoot).post
 		}
 
 		upvotes() {

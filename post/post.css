@@ -1,3 +1,7 @@
+[club_post_head] {
+	flex-flow: row nowrap;
+}
+
 [club_post_authoravatar] {
 	width: 100px;
 	height: 100px;

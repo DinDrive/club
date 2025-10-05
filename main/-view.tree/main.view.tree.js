@@ -1,12 +1,17 @@
 	($.$club_main) = class $club_main extends ($.$mol_page) {
+		Title1(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ("# Вастрик");
+			return obj;
+		}
 		Logo(){
 			const obj = new this.$.$mol_image();
 			(obj.uri) = () => ((this.logo_url()));
 			return obj;
 		}
-		Title(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ("Вастрик Клуб");
+		Title2(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ("# Клуб");
 			return obj;
 		}
 		Lighter(){
@@ -18,21 +23,28 @@
 			(obj.value) = (next) => ((this.page_number(next)));
 			return obj;
 		}
-		item_title(id){
-			return "";
+		Upvote(id){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.post_upvotes(id)));
+			return obj;
+		}
+		PostTitle(id){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.post_title(id)));
+			return obj;
 		}
 		Post(id){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"post": (this.item_url(id))});
-			(obj.title) = () => ((this.item_title(id)));
+			(obj.arg) = () => ({"post": (this.post_url(id))});
+			(obj.sub) = () => ([(this.Upvote(id)), (this.PostTitle(id))]);
 			return obj;
 		}
-		list_items(){
+		list_posts(){
 			return [(this.Post("0"))];
 		}
 		Posts(){
 			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ((this.list_items()));
+			(obj.rows) = () => ((this.list_posts()));
 			return obj;
 		}
 		Pag2(){
@@ -58,13 +70,23 @@
 			if(next !== undefined) return next;
 			return 1;
 		}
-		item_url(id){
+		post_url(id){
+			return "";
+		}
+		post_title(id){
+			return "";
+		}
+		post_upvotes(id){
+			return "";
+		}
+		logo_url(){
 			return "";
 		}
 		head(){
 			return [
+				(this.Title1()), 
 				(this.Logo()), 
-				(this.Title()), 
+				(this.Title2()), 
 				(this.Lighter())
 			];
 		}
@@ -72,10 +94,13 @@
 			return [(this.Scll())];
 		}
 	};
+	($mol_mem(($.$club_main.prototype), "Title1"));
 	($mol_mem(($.$club_main.prototype), "Logo"));
-	($mol_mem(($.$club_main.prototype), "Title"));
+	($mol_mem(($.$club_main.prototype), "Title2"));
 	($mol_mem(($.$club_main.prototype), "Lighter"));
 	($mol_mem(($.$club_main.prototype), "Pag1"));
+	($mol_mem_key(($.$club_main.prototype), "Upvote"));
+	($mol_mem_key(($.$club_main.prototype), "PostTitle"));
 	($mol_mem_key(($.$club_main.prototype), "Post"));
 	($mol_mem(($.$club_main.prototype), "Posts"));
 	($mol_mem(($.$club_main.prototype), "Pag2"));

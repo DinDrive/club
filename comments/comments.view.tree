@@ -1,8 +1,13 @@
 $club_comments $mol_page
+	comment_author*0 null
+	comment_text*0 \
+	comment_author_name*0 \
 	head /
 		<= Title $mol_paragraph title \Комментарии
 	body /
 		<= Comments $mol_list
 			rows <= list_comments /
-				<= Comment*0 $mol_link
-					title <= comment_text* \
+				<= Author* $mol_text
+					text <= comment_author_name*
+				<= Comment*0 $mol_text
+					text <= comment_text*

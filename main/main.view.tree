@@ -1,20 +1,26 @@
 $club_main $mol_page
 	page_number? 1
-	item_url*0 \
-	item_title*0 \
+	post_url*0 \
+	post_title*0 \
+	post_upvotes*0 \
+	logo_url \
 	head /
+		<= Title1 $mol_text text \# Вастрик
 		<= Logo $mol_image uri <= logo_url
-		<= Title $mol_paragraph title \Вастрик Клуб
+		<= Title2 $mol_text text \# Клуб
 		<= Lighter $mol_lights_toggle
 	body /
 		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
 			<= Pag1 $mol_paginator
 				value? <=> page_number?
 			<= Posts $mol_list
-				rows <= list_items /
+				rows <= list_posts /
 					<= Post*0 $mol_link
 						arg *
-							post <= item_url*
-						title <= item_title* \
+							post <= post_url*
+						sub /
+							<= Upvote* $mol_button_major title <= post_upvotes*
+							<= PostTitle* $mol_paragraph
+								title <= post_title*
 			<= Pag2 $mol_paginator
 				value? <=> page_number?

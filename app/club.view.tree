@@ -1,8 +1,9 @@
-$club $mol_book2
+$club $mol_book2_catalog
 	plugins /
 		<= Theme $mol_theme_auto
 	pages /
 		<= Main $club_main
+		<= Settings $club_settings
 		<= Post $club_post
 		<= Comments $club_comments
 

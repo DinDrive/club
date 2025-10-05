@@ -34,10 +34,7 @@ namespace $.$$ {
 
 	export class $club_comments extends $.$club_comments {
 
-		authorization() {
-			return !this.token()
-		}
-
+		@ $mol_mem
 		token() {
 			return $mol_state_local.value( 'token' )
 		}
@@ -49,7 +46,6 @@ namespace $.$$ {
 
 		@ $mol_mem
 		comments_url() {
-			if( !this.authorization() ) return ''
 			if( !this.post_arg() ) return ''
 			return this.post_arg() + '/comments.json'
 		}
@@ -57,11 +53,8 @@ namespace $.$$ {
 		@ $mol_mem
 		comments( next?: Comment[] ): Comment[] | null {
 			if( !this.comments_url() ) return null
-			try {
-				return next || ( $mol_fetch.json( this.comments_url()+'?token='+this.token() ) as CommentRoot ).comments
-			} catch( e ) {
-				throw 'Нужна авторизация'
-			}
+			const link = (this.token()) ? this.comments_url() + '?token='+this.token() : this.comments_url()
+			return next || ( $mol_fetch.json( link ) as CommentRoot ).comments
 		}
 
 		list_comments() {
@@ -69,8 +62,18 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem_key
+		comment_author( id: number ) {
+			return this.comments()?.[ id ].author
+		}
+
+		@ $mol_mem_key
 		comment_text( id: number ) {
 			return this.comments()?.[ id ].text ?? ''
+		}
+
+		@ $mol_mem_key
+		comment_author_name( id: number ) {
+			return this.comment_author(id)?.full_name ?? ''
 		}
 
 	}
