@@ -60,7 +60,7 @@ namespace $.$$ {
 		}
 
 		list_items() {
-			return this.feed().items.map( ( _, i ) => this.Item( i ) )
+			return this.feed().items.map( ( _, i ) => this.Post( i ) )
 		}
 
 		@ $mol_mem_key
@@ -72,6 +72,11 @@ namespace $.$$ {
 		item_url( id: number ) {
 			const url = this.posts()[ id ].url
 			return url.slice( 0, url.length - 1 )
+		}
+
+		@ $mol_mem
+		logo_url() {
+			return '/assets/favicon_light.ico'
 		}
 
 		@$mol_mem

@@ -65,11 +65,6 @@ interface CommentAuthor {
 namespace $.$$ {
 	
 	export class $club_post extends $.$club_post {
-
-		@ $mol_mem
-		authorization() {
-			return false
-		}
 		
 		@ $mol_mem
 		post_arg() {
@@ -82,29 +77,20 @@ namespace $.$$ {
 			return this.post_arg() + '.json'
 		}
 
-		@ $mol_mem
-		comments_url() {
-			if(!this.authorization()) return ''
-			if(!this.post_arg()) return ''
-			return this.post_arg() + '/comments.json'
+		token() {
+			return $mol_state_local.value( 'token' )
 		}
 
 		@ $mol_mem
 		post(next?: Post): Post | null {
 			if(!this.post_url()) return null
-			return next || ($mol_fetch.json( this.post_url() ) as PostRoot).post
+			return next || ($mol_fetch.json( this.post_url()+'?token='+this.token()) as PostRoot).post
 		}
 
-		@ $mol_mem
-		comments(next?: Comment[]): Comment[] | null {
-			if(!this.comments_url()) return null
-			try {
-				return next || ($mol_fetch.json( this.comments_url() ) as CommentRoot).comments
-			} catch (e) {
-				throw 'Нужна авторизация'
-			}
+		upvotes() {
+			return `+${this.post()?._club.upvotes}`
 		}
-
+		
 		post_title(): string {
 			return this.post()?.title ?? 'Нет заголовка'
 		}
@@ -121,13 +107,23 @@ namespace $.$$ {
 			return this.post()?.date_modified ?? ''
 		}
 
-		list_items() {
-			return this.comments()?.map((_, i) => this.Item(i)) ?? []
+		list_authors() {
+			return this.post()?.authors.map( ( _, i ) => this.Author( i ) ) ?? []
 		}
 
 		@ $mol_mem_key
-		comment_text( id: number ) {
-			return this.comments()?.[id].text ?? ''
+		author_url( id: number ) {
+			return this.post()?.authors[id].url ?? ''
+		}
+
+		@ $mol_mem_key
+		author_name( id: number ) {
+			return this.post()?.authors[id].name ?? ''
+		}
+
+		@ $mol_mem_key
+		author_avatar( id: number ) {
+			return this.post()?.authors[id].avatar ?? ''
 		}
 	}
 	

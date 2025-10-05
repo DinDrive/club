@@ -3,15 +3,16 @@ $club_main $mol_page
 	item_url*0 \
 	item_title*0 \
 	head /
+		<= Logo $mol_image uri <= logo_url
 		<= Title $mol_paragraph title \Вастрик Клуб
 		<= Lighter $mol_lights_toggle
 	body /
 		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
 			<= Pag1 $mol_paginator
 				value? <=> page_number?
-			<= Items $mol_list
+			<= Posts $mol_list
 				rows <= list_items /
-					<= Item*0 $mol_link
+					<= Post*0 $mol_link
 						arg *
 							post <= item_url*
 						title <= item_title* \

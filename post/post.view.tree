@@ -6,7 +6,12 @@ $club_post $mol_page
 	text \
 	date_published \
 	date_modified \
-	title <= post_title 
+	author_url*0 \
+	author_name*0 \
+	author_avatar*0 \
+	head /
+		<= Upvote $mol_button_major title <= upvotes
+		<= Title $mol_paragraph title <= post_title
 	body /
 		<= Header $mol_view
 			sub /
@@ -16,9 +21,13 @@ $club_post $mol_page
 					value <= date_modified
 		<= Article $mol_text
 			text <= text
-		<= CommentTitle $mol_paragraph
-			title @\Комментарии
-		<= Items $mol_list
-			rows <= list_items /
-				<= Item*0 $mol_link
-					title <= comment_text* \
+		<= Authors $mol_list
+			rows <= list_authors /
+				<= Author*0 $mol_link
+					uri <= author_url*
+					title <= author_name*
+					sub /
+						<= AuthorAvatar* $mol_image
+							uri <= author_avatar*
+						<= AuthorName* $mol_text
+							text <= author_name*

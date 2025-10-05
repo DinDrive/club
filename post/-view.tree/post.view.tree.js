@@ -1,4 +1,14 @@
 	($.$club_post) = class $club_post extends ($.$mol_page) {
+		Upvote(){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.upvotes()));
+			return obj;
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.post_title()));
+			return obj;
+		}
 		DatePublished(){
 			const obj = new this.$.$mol_date();
 			(obj.value) = () => ((this.date_published()));
@@ -19,25 +29,29 @@
 			(obj.text) = () => ((this.text()));
 			return obj;
 		}
-		CommentTitle(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.$.$mol_locale.text("$club_post_CommentTitle_title")));
+		AuthorAvatar(id){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.author_avatar(id)));
 			return obj;
 		}
-		comment_text(id){
-			return "";
+		AuthorName(id){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.author_name(id)));
+			return obj;
 		}
-		Item(id){
+		Author(id){
 			const obj = new this.$.$mol_link();
-			(obj.title) = () => ((this.comment_text(id)));
+			(obj.uri) = () => ((this.author_url(id)));
+			(obj.title) = () => ((this.author_name(id)));
+			(obj.sub) = () => ([(this.AuthorAvatar(id)), (this.AuthorName(id))]);
 			return obj;
 		}
-		list_items(){
-			return [(this.Item("0"))];
+		list_authors(){
+			return [(this.Author("0"))];
 		}
-		Items(){
+		Authors(){
 			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ((this.list_items()));
+			(obj.rows) = () => ((this.list_authors()));
 			return obj;
 		}
 		post_title(next){
@@ -63,25 +77,36 @@
 		date_modified(){
 			return "";
 		}
-		title(){
-			return (this.post_title());
+		author_url(id){
+			return "";
+		}
+		author_name(id){
+			return "";
+		}
+		author_avatar(id){
+			return "";
+		}
+		head(){
+			return [(this.Upvote()), (this.Title())];
 		}
 		body(){
 			return [
 				(this.Header()), 
 				(this.Article()), 
-				(this.CommentTitle()), 
-				(this.Items())
+				(this.Authors())
 			];
 		}
 	};
+	($mol_mem(($.$club_post.prototype), "Upvote"));
+	($mol_mem(($.$club_post.prototype), "Title"));
 	($mol_mem(($.$club_post.prototype), "DatePublished"));
 	($mol_mem(($.$club_post.prototype), "DateModified"));
 	($mol_mem(($.$club_post.prototype), "Header"));
 	($mol_mem(($.$club_post.prototype), "Article"));
-	($mol_mem(($.$club_post.prototype), "CommentTitle"));
-	($mol_mem_key(($.$club_post.prototype), "Item"));
-	($mol_mem(($.$club_post.prototype), "Items"));
+	($mol_mem_key(($.$club_post.prototype), "AuthorAvatar"));
+	($mol_mem_key(($.$club_post.prototype), "AuthorName"));
+	($mol_mem_key(($.$club_post.prototype), "Author"));
+	($mol_mem(($.$club_post.prototype), "Authors"));
 	($mol_mem(($.$club_post.prototype), "post_title"));
 	($mol_mem(($.$club_post.prototype), "authorization"));
 

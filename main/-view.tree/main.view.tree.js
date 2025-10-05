@@ -1,4 +1,9 @@
 	($.$club_main) = class $club_main extends ($.$mol_page) {
+		Logo(){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.logo_url()));
+			return obj;
+		}
 		Title(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ("Вастрик Клуб");
@@ -16,16 +21,16 @@
 		item_title(id){
 			return "";
 		}
-		Item(id){
+		Post(id){
 			const obj = new this.$.$mol_link();
 			(obj.arg) = () => ({"post": (this.item_url(id))});
 			(obj.title) = () => ((this.item_title(id)));
 			return obj;
 		}
 		list_items(){
-			return [(this.Item("0"))];
+			return [(this.Post("0"))];
 		}
-		Items(){
+		Posts(){
 			const obj = new this.$.$mol_list();
 			(obj.rows) = () => ((this.list_items()));
 			return obj;
@@ -39,7 +44,7 @@
 			const obj = new this.$.$mol_list();
 			(obj.rows) = () => ([
 				(this.Pag1()), 
-				(this.Items()), 
+				(this.Posts()), 
 				(this.Pag2())
 			]);
 			return obj;
@@ -57,17 +62,22 @@
 			return "";
 		}
 		head(){
-			return [(this.Title()), (this.Lighter())];
+			return [
+				(this.Logo()), 
+				(this.Title()), 
+				(this.Lighter())
+			];
 		}
 		body(){
 			return [(this.Scll())];
 		}
 	};
+	($mol_mem(($.$club_main.prototype), "Logo"));
 	($mol_mem(($.$club_main.prototype), "Title"));
 	($mol_mem(($.$club_main.prototype), "Lighter"));
 	($mol_mem(($.$club_main.prototype), "Pag1"));
-	($mol_mem_key(($.$club_main.prototype), "Item"));
-	($mol_mem(($.$club_main.prototype), "Items"));
+	($mol_mem_key(($.$club_main.prototype), "Post"));
+	($mol_mem(($.$club_main.prototype), "Posts"));
 	($mol_mem(($.$club_main.prototype), "Pag2"));
 	($mol_mem(($.$club_main.prototype), "Scroll"));
 	($mol_mem(($.$club_main.prototype), "Scll"));

@@ -4,4 +4,5 @@ $club $mol_book2
 	pages /
 		<= Main $club_main
 		<= Post $club_post
+		<= Comments $club_comments
 
