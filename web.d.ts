@@ -4502,6 +4502,7 @@ interface CommentAuthor {
 declare namespace $.$$ {
     class $club_post extends $.$club_post {
         authorization(): boolean;
+        post_arg(): string | null;
         post_url(): string;
         comments_url(): string;
         post(next?: Post): Post | null;

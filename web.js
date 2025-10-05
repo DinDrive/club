@@ -11157,21 +11157,28 @@ var $;
             authorization() {
                 return false;
             }
+            post_arg() {
+                return $mol_state_arg.value('post');
+            }
             post_url() {
-                return decodeURI($mol_state_arg.value('post') + '.json' || '');
+                if (!this.post_arg())
+                    return '';
+                return this.post_arg() + '.json';
             }
             comments_url() {
                 if (!this.authorization())
                     return '';
-                return decodeURI($mol_state_arg.value('post') + '/comments.json' || '');
+                if (!this.post_arg())
+                    return '';
+                return this.post_arg() + '/comments.json';
             }
             post(next) {
-                if (!this.post_url)
+                if (!this.post_url())
                     return null;
                 return next || $mol_fetch.json(this.post_url()).post;
             }
             comments(next) {
-                if (!this.comments_url)
+                if (!this.comments_url())
                     return null;
                 try {
                     return next || $mol_fetch.json(this.comments_url()).comments;
@@ -11181,27 +11188,36 @@ var $;
                 }
             }
             post_title() {
-                return this.post()?.title || 'Нет заголовка';
+                return this.post()?.title ?? 'Нет заголовка';
             }
             text() {
-                return this.post()?.content_text || 'Нет поста';
+                return this.post()?.content_text ?? 'Нет поста';
             }
             date_published() {
-                return this.post()?.date_published || '';
+                return this.post()?.date_published ?? '';
             }
             date_modified() {
-                return this.post()?.date_modified || '';
+                return this.post()?.date_modified ?? '';
             }
             list_items() {
-                return this.comments()?.map((_, i) => this.Item(i)) || [];
+                return this.comments()?.map((_, i) => this.Item(i)) ?? [];
             }
             comment_text(id) {
-                return this.comments()?.[id].text || '';
+                return this.comments()?.[id].text ?? '';
             }
         }
         __decorate([
             $mol_mem
         ], $club_post.prototype, "authorization", null);
+        __decorate([
+            $mol_mem
+        ], $club_post.prototype, "post_arg", null);
+        __decorate([
+            $mol_mem
+        ], $club_post.prototype, "post_url", null);
+        __decorate([
+            $mol_mem
+        ], $club_post.prototype, "comments_url", null);
         __decorate([
             $mol_mem
         ], $club_post.prototype, "post", null);
