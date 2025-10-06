@@ -1,9 +1,10 @@
-$club $mol_book2_catalog
+$club $mol_book2
+	settingsOpened? false
 	plugins /
 		<= Theme $mol_theme_auto
 	pages /
 		<= Main $club_main
-		<= Settings $club_settings
-		<= Post $club_post
-		<= Comments $club_comments
-
+			settings? <=> settingsOpened?
+		<= FSettings
+		<= FPost
+		<= FComments

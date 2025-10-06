@@ -14,4 +14,4 @@ $club_settings $mol_page
 				\и вставьте сюда
 		<= TokenInput $mol_string
 			value? <=> token?
-			hint \ token сюда
+			hint \XxYy1234XxYy1234XxYy1234XxYy1234

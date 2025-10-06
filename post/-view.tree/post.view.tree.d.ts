@@ -10,25 +10,25 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_date__value_club_post_3 = $mol_type_enforce<
-		ReturnType< $club_post['date_published'] >
-		,
-		ReturnType< $mol_date['value'] >
-	>
-	type $mol_date__value_club_post_4 = $mol_type_enforce<
-		ReturnType< $club_post['date_modified'] >
-		,
-		ReturnType< $mol_date['value'] >
-	>
-	type $mol_view__sub_club_post_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_club_post_6 = $mol_type_enforce<
+	type $mol_text__text_club_post_3 = $mol_type_enforce<
 		ReturnType< $club_post['text'] >
 		,
 		ReturnType< $mol_text['text'] >
+	>
+	type $mol_paragraph__title_club_post_4 = $mol_type_enforce<
+		ReturnType< $club_post['date_published'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_post_5 = $mol_type_enforce<
+		ReturnType< $club_post['date_modified'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_post_6 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_image__uri_club_post_7 = $mol_type_enforce<
 		ReturnType< $club_post['author_avatar'] >
@@ -63,10 +63,10 @@ declare namespace $ {
 	export class $club_post extends $mol_page {
 		Upvote( ): $mol_button_major
 		Title( ): $mol_paragraph
-		DatePublished( ): $mol_date
-		DateModified( ): $mol_date
-		Header( ): $mol_view
 		Article( ): $mol_text
+		DatePublished( ): $mol_paragraph
+		DateModified( ): $mol_paragraph
+		Info( ): $mol_view
 		AuthorAvatar( id: any): $mol_image
 		AuthorName( id: any): $mol_text
 		Author( id: any): $mol_link

@@ -53,7 +53,7 @@ namespace $.$$ {
 		@ $mol_mem
 		comments( next?: Comment[] ): Comment[] | null {
 			if( !this.comments_url() ) return null
-			const link = (this.token()) ? this.comments_url() + '?token='+this.token() : this.comments_url()
+			const link = (this.token()) ? this.comments_url() + '?token=' + this.token() : this.comments_url()
 			return next || ( $mol_fetch.json( link ) as CommentRoot ).comments
 		}
 
@@ -73,7 +73,17 @@ namespace $.$$ {
 
 		@ $mol_mem_key
 		comment_author_name( id: number ) {
-			return this.comment_author(id)?.full_name ?? ''
+			return this.comments()?.[ id ].author.full_name ?? ''
+		}
+
+		@ $mol_mem_key
+		comment_author_slug( id: number ) {
+			return '@' + this.comments()?.[ id ].author.slug
+		}
+
+		@ $mol_mem_key
+		comment_author_avatar( id: number ) {
+			return this.comments()?.[ id ].author.avatar ?? ''
 		}
 
 	}

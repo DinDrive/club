@@ -18,6 +18,22 @@
 			const obj = new this.$.$mol_lights_toggle();
 			return obj;
 		}
+		Settings_icon(){
+			const obj = new this.$.$mol_icon_cog_outline();
+			return obj;
+		}
+		Settings(){
+			const obj = new this.$.$mol_check_icon();
+			(obj.Icon) = () => ((this.Settings_icon()));
+			(obj.hint) = () => ("Настройки");
+			(obj.checked) = (next) => ((this.settings(next)));
+			return obj;
+		}
+		Tools(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Lighter()), (this.Settings())]);
+			return obj;
+		}
 		Pag1(){
 			const obj = new this.$.$mol_paginator();
 			(obj.value) = (next) => ((this.page_number(next)));
@@ -29,8 +45,8 @@
 			return obj;
 		}
 		PostTitle(id){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.post_title(id)));
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.post_title(id))]);
 			return obj;
 		}
 		Post(id){
@@ -82,12 +98,16 @@
 		logo_url(){
 			return "";
 		}
+		settings(next){
+			if(next !== undefined) return next;
+			return false;
+		}
 		head(){
 			return [
 				(this.Title1()), 
 				(this.Logo()), 
 				(this.Title2()), 
-				(this.Lighter())
+				(this.Tools())
 			];
 		}
 		body(){
@@ -98,6 +118,9 @@
 	($mol_mem(($.$club_main.prototype), "Logo"));
 	($mol_mem(($.$club_main.prototype), "Title2"));
 	($mol_mem(($.$club_main.prototype), "Lighter"));
+	($mol_mem(($.$club_main.prototype), "Settings_icon"));
+	($mol_mem(($.$club_main.prototype), "Settings"));
+	($mol_mem(($.$club_main.prototype), "Tools"));
 	($mol_mem(($.$club_main.prototype), "Pag1"));
 	($mol_mem_key(($.$club_main.prototype), "Upvote"));
 	($mol_mem_key(($.$club_main.prototype), "PostTitle"));
@@ -107,5 +130,6 @@
 	($mol_mem(($.$club_main.prototype), "Scroll"));
 	($mol_mem(($.$club_main.prototype), "Scll"));
 	($mol_mem(($.$club_main.prototype), "page_number"));
+	($mol_mem(($.$club_main.prototype), "settings"));
 
 //# sourceMappingURL=main.view.tree.js.map

@@ -9,24 +9,24 @@
 			(obj.title) = () => ((this.post_title()));
 			return obj;
 		}
-		DatePublished(){
-			const obj = new this.$.$mol_date();
-			(obj.value) = () => ((this.date_published()));
-			return obj;
-		}
-		DateModified(){
-			const obj = new this.$.$mol_date();
-			(obj.value) = () => ((this.date_modified()));
-			return obj;
-		}
-		Header(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.DatePublished()), (this.DateModified())]);
-			return obj;
-		}
 		Article(){
 			const obj = new this.$.$mol_text();
 			(obj.text) = () => ((this.text()));
+			return obj;
+		}
+		DatePublished(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.date_published()));
+			return obj;
+		}
+		DateModified(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.date_modified()));
+			return obj;
+		}
+		Info(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.DatePublished()), (this.DateModified())]);
 			return obj;
 		}
 		AuthorAvatar(id){
@@ -94,18 +94,18 @@
 		}
 		body(){
 			return [
-				(this.Header()), 
 				(this.Article()), 
+				(this.Info()), 
 				(this.Authors())
 			];
 		}
 	};
 	($mol_mem(($.$club_post.prototype), "Upvote"));
 	($mol_mem(($.$club_post.prototype), "Title"));
+	($mol_mem(($.$club_post.prototype), "Article"));
 	($mol_mem(($.$club_post.prototype), "DatePublished"));
 	($mol_mem(($.$club_post.prototype), "DateModified"));
-	($mol_mem(($.$club_post.prototype), "Header"));
-	($mol_mem(($.$club_post.prototype), "Article"));
+	($mol_mem(($.$club_post.prototype), "Info"));
 	($mol_mem_key(($.$club_post.prototype), "AuthorAvatar"));
 	($mol_mem_key(($.$club_post.prototype), "AuthorName"));
 	($mol_mem_key(($.$club_post.prototype), "Author"));

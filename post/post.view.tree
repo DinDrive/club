@@ -14,14 +14,14 @@ $club_post $mol_page
 		<= Upvote $mol_button_major title <= upvotes
 		<= Title $mol_paragraph title <= post_title
 	body /
-		<= Header $mol_view
-			sub /
-				<= DatePublished $mol_date
-					value <= date_published
-				<= DateModified $mol_date
-					value <= date_modified
 		<= Article $mol_text
 			text <= text
+		<= Info $mol_view
+			sub /
+				<= DatePublished $mol_paragraph
+					title <= date_published
+				<= DateModified $mol_paragraph
+					title <= date_modified
 		<= Authors $mol_list
 			rows <= list_authors /
 				<= Author*0 $mol_link

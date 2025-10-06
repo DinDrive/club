@@ -82,15 +82,15 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
-		body() {
-			if(!this.post) return [null]
-			return super.body()
+		html(): any {
+			if(!this.post()) return [null]
+			return this.html()
 		}
 
 		@ $mol_mem
 		post(next?: Post): Post | null {
 			if(!this.post_url()) return null
-			const link = (this.token()) ? this.post_url() + '?token='+this.token() : this.post_url()
+			const link = (this.token()) ? this.post_url() + '?token=' + this.token() : this.post_url()
 			return next || ($mol_fetch.json( link ) as PostRoot).post
 		}
 
@@ -107,11 +107,11 @@ namespace $.$$ {
 		}
 
 		date_published() {
-			return this.post()?.date_published ?? ''
+			return 'Создано - ' + new $mol_time_moment(this.post()?.date_published).toString( 'YYYY.MM.DD hh:mm (WeekDay)' )
 		}
 
 		date_modified() {
-			return this.post()?.date_modified ?? ''
+			return 'Отредактировано - ' + new $mol_time_moment(this.post()?.date_modified).toString( 'YYYY.MM.DD hh:mm (WeekDay)' )
 		}
 
 		list_authors() {

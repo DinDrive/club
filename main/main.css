@@ -16,6 +16,10 @@ body {
 	height: 25px;
 }
 
+[club_main_title2] {
+	margin-right: auto;
+}
+
 [mol_view_root] {
 	width: 100vw;
 	height: 100vh;
@@ -28,6 +32,10 @@ body {
 [club_post],
 [club_comments] {
 	width: 840px;
+}
+
+[club_main_posttitle] {
+	max-width: 380px;
 }
 
 [club_main_body_content] {
