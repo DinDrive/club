@@ -39,48 +39,69 @@ namespace $.$$ {
 
 	export class $club_main extends $.$club_main {
 
-		@$mol_mem
+		@ $mol_mem
 		page_number( next: number = 1 ) {
-			const n = Number.parseInt( this.$.$mol_state_arg.value( 'page', next.toString() ) || '1' )
-			const a = ( n === undefined || n < 1 ) ? 1 : n
-			return a
+			return next
 		}
 
+		@ $mol_mem_key
+		after( anchor_id: number = 0 ) {
+			const newId = ((anchor_id + 70) / 70)
+			this.page_number(Math.floor(newId))
+
+			const feed = ( $mol_fetch.json( this.url() ) as Root )
+			this.feed(feed)
+			const posts = feed.items
+			this.posts(this.posts().concat(posts))
+			
+			const newIds = []
+			const startId = anchor_id || 0
+			for (let i = startId; i < this.posts().length; i++) {
+				newIds.push(i)
+			}
+			return Array.from(
+				{ length: 70 },
+				( _, i )=> ( anchor_id ?? 0 ) + i + 1,
+			)
+		}
+
+		@ $mol_mem
 		url() {
+			console.log(this.page_number())
 			return `https://vas3k.club/all/new/feed.json?page=${ this.page_number() }`
 		}
 
-		@$mol_mem
-		feed( next?: Root ): Root {
-			return next || ( $mol_fetch.json( this.url() ) as Root )
+		@ $mol_mem
+		feed( next?: Root ) {
+			return next || null
 		}
 
-		@$mol_mem
-		posts() {
-			return this.feed().items
+		@ $mol_mem
+		posts(next?: Item[]) {
+			return next || []
 		}
 
 		list_posts() {
-			return this.feed().items.map( ( _, i ) => this.Post( i ) )
+			return this.posts().map( ( _, i ) => this.Post( i ) )
 		}
 
-		@$mol_mem_key
+		@ $mol_mem_key
 		post_upvotes( id: number ) {
-			return `+${ this.posts()[ id ]._club.upvotes }`
+			return `+${ this.posts()[ id ]?._club.upvotes }`
 		}
 
-		@$mol_mem_key
+		@ $mol_mem_key
 		post_title( id: number ) {
-			return `${ this.posts()[ id ]._club.is_public ? '' : '🔒' } ${ this.posts()[ id ].title }`
+			return `${ this.posts()[ id ]?._club.is_public ? '' : '🔒' } ${ this.posts()[ id ].title }`
 		}
 
-		@$mol_mem_key
+		@ $mol_mem_key
 		post_url( id: number ) {
 			const url = this.posts()[ id ].url
 			return url.slice( 0, url.length - 1 )
 		}
 
-		@$mol_mem
+		@ $mol_mem
 		logo_url() {
 			return 'https://vas3k.club/static/images/logo/logo-128.png'
 		}

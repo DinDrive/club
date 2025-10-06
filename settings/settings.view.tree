@@ -1,5 +1,6 @@
 $club_settings $mol_page
 	token? \
+	tokenText \
 	head /
 		<= Title $mol_paragraph title \Настройки
 	body /
@@ -7,11 +8,7 @@ $club_settings $mol_page
 			<= ThemeText $mol_text text \Тема сайта
 			<= Lighter $mol_lights_toggle
 		<= TokenText $mol_text
-			text \Чтобы читать закрытые посты 🔒,
-				\а так же смотреть профили пользователей и комментарии
-				\нужен личный токен с Vas3k.Club, чтобы получить его
-				\достаньте его из кук через девтулзы
-				\и вставьте сюда
+			text <= tokenText
 		<= TokenInput $mol_string
 			value? <=> token?
 			hint \XxYy1234XxYy1234XxYy1234XxYy1234
