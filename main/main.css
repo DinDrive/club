@@ -16,6 +16,15 @@ body {
 	height: 25px;
 }
 
+[club_main_post] {
+	justify-content: space-between;
+}
+
+[club_main_upvote] {
+	min-width: 60px!important;
+	justify-content: center;
+}
+
 [club_main_title2] {
 	margin-right: auto;
 }

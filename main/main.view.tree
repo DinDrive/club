@@ -19,14 +19,15 @@ $club_main $mol_page
 		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
 			<= Pag1 $mol_paginator
 				value? <=> page_number?
+			<= Che $club_che
 			<= Posts $mol_list
 				rows <= list_posts /
 					<= Post*0 $mol_link
 						arg *
 							post <= post_url*
 						sub /
-							<= Upvote* $mol_button_major title <= post_upvotes*
 							<= PostTitle* $mol_view
 								sub / <= post_title*
+							<= Upvote* $mol_button_major title <= post_upvotes*
 			<= Pag2 $mol_paginator
 				value? <=> page_number?
