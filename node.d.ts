@@ -4145,72 +4145,6 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	export class $mol_icon_github extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=github.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_brightness_4 extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=4.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_lights_toggle extends $mol_check_icon {
-		Lights_icon( ): $mol_icon_brightness_4
-		lights( next?: boolean ): boolean
-		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
-		hint( ): string
-		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
-	}
-	
-}
-
-//# sourceMappingURL=toggle.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_icon_cog extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=cog.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_cog_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-
 	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
 		ReturnType< $mol_check_list['option_checked'] >
 		,
@@ -4381,138 +4315,198 @@ declare namespace $ {
 }
 
 declare namespace $ {
+
+	export class $mol_icon_github extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=github.view.tree.d.ts.map
+declare namespace $ {
 }
 
 declare namespace $ {
 
-	type $mol_text__text_club_main_1 = $mol_type_enforce<
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_brightness_4 extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_icon_cog extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=cog.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_icon_cog_outline extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=outline.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_paragraph__title_club_main_1 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_image__uri_club_main_2 = $mol_type_enforce<
 		ReturnType< $club_main['logo_url'] >
 		,
 		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_text__text_club_main_3 = $mol_type_enforce<
+	type $mol_paragraph__title_club_main_3 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_link__uri_club_main_4 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__sub_club_main_5 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_check_icon__Icon_club_main_6 = $mol_type_enforce<
-		ReturnType< $club_main['Settings_icon'] >
-		,
-		ReturnType< $mol_check_icon['Icon'] >
-	>
-	type $mol_check_icon__hint_club_main_7 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_check_icon['hint'] >
-	>
-	type $mol_check_icon__checked_club_main_8 = $mol_type_enforce<
-		ReturnType< $club_main['settings'] >
-		,
-		ReturnType< $mol_check_icon['checked'] >
-	>
-	type $mol_view__sub_club_main_9 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_switch__value_club_main_10 = $mol_type_enforce<
-		ReturnType< $club_main['isOpened'] >
+	type $mol_switch__value_club_main_4 = $mol_type_enforce<
+		ReturnType< $club_main['publicity'] >
 		,
 		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_switch__options_club_main_11 = $mol_type_enforce<
+	type $mol_switch__options_club_main_5 = $mol_type_enforce<
 		ReturnType< $club_main['opened'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	type $mol_switch__value_club_main_12 = $mol_type_enforce<
+	type $mol_switch__value_club_main_6 = $mol_type_enforce<
 		ReturnType< $club_main['type'] >
 		,
 		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_switch__options_club_main_13 = $mol_type_enforce<
+	type $mol_switch__options_club_main_7 = $mol_type_enforce<
 		ReturnType< $club_main['types'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	type $mol_switch__value_club_main_14 = $mol_type_enforce<
-		ReturnType< $club_main['time'] >
+	type $mol_switch__value_club_main_8 = $mol_type_enforce<
+		ReturnType< $club_main['timing'] >
 		,
 		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_switch__options_club_main_15 = $mol_type_enforce<
+	type $mol_switch__options_club_main_9 = $mol_type_enforce<
 		ReturnType< $club_main['timings'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	type $mol_view__sub_club_main_16 = $mol_type_enforce<
+	type $mol_view__sub_club_main_10 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_major__title_club_main_17 = $mol_type_enforce<
+	type $mol_button_major__title_club_main_11 = $mol_type_enforce<
 		ReturnType< $club_main['post_upvotes'] >
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_link__arg_club_main_18 = $mol_type_enforce<
+	type $mol_link__arg_club_main_12 = $mol_type_enforce<
 		({ 
 			'post': ReturnType< $club_main['post_url'] >,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
+	type $mol_link__sub_club_main_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_list__rows_club_main_14 = $mol_type_enforce<
+		ReturnType< $club_main['list_posts'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_list__rows_club_main_15 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_scroll__sub_club_main_16 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_scroll['sub'] >
+	>
+	type $mol_paginator__value_club_main_17 = $mol_type_enforce<
+		ReturnType< $club_main['page_number'] >
+		,
+		ReturnType< $mol_paginator['value'] >
+	>
+	type $mol_link__uri_club_main_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
 	type $mol_link__sub_club_main_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_list__rows_club_main_20 = $mol_type_enforce<
-		ReturnType< $club_main['list_posts'] >
+	type $mol_check_icon__Icon_club_main_20 = $mol_type_enforce<
+		ReturnType< $club_main['Settings_icon'] >
 		,
-		ReturnType< $mol_list['rows'] >
+		ReturnType< $mol_check_icon['Icon'] >
 	>
-	type $mol_list__rows_club_main_21 = $mol_type_enforce<
+	type $mol_check_icon__hint_club_main_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_check_icon['hint'] >
+	>
+	type $mol_check_icon__checked_club_main_22 = $mol_type_enforce<
+		ReturnType< $club_main['settings'] >
+		,
+		ReturnType< $mol_check_icon['checked'] >
+	>
+	type $mol_view__sub_club_main_23 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_scroll__sub_club_main_22 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_scroll['sub'] >
-	>
-	type $mol_paginator__value_club_main_23 = $mol_type_enforce<
-		ReturnType< $club_main['page_number'] >
-		,
-		ReturnType< $mol_paginator['value'] >
+		ReturnType< $mol_view['sub'] >
 	>
 	export class $club_main extends $mol_page {
-		Title1( ): $mol_text
+		Title1( ): $mol_paragraph
 		Logo( ): $mol_image
-		Title2( ): $mol_text
-		Source_icon( ): $mol_icon_github
-		Source( ): $mol_link
-		Lighter( ): $mol_lights_toggle
-		Settings_icon( ): $mol_icon_cog_outline
-		Settings( ): $mol_check_icon
-		Tools( ): $mol_view
-		isOpened( next?: string ): string
+		Title2( ): $mol_paragraph
+		publicity( next?: string ): string
 		opened( ): ({ 
 			'public': string,
 			'private': string,
@@ -4527,7 +4521,7 @@ declare namespace $ {
 			'thread': string,
 		}) 
 		Switch2( ): $mol_switch
-		time( next?: string ): string
+		timing( next?: string ): string
 		timings( ): ({ 
 			'new': string,
 			'activity': string,
@@ -4546,6 +4540,12 @@ declare namespace $ {
 		ScrollList( ): $mol_list
 		Scroll( ): $mol_scroll
 		Pag( ): $mol_paginator
+		Source_icon( ): $mol_icon_github
+		Source( ): $mol_link
+		Lighter( ): $mol_lights_toggle
+		Settings_icon( ): $mol_icon_cog_outline
+		Settings( ): $mol_check_icon
+		Tools( ): $mol_view
 		page_number( next?: number ): number
 		post_url( id: any): string
 		post_title( id: any): string
@@ -4596,9 +4596,9 @@ interface Author {
 declare namespace $.$$ {
     class $club_main extends $.$club_main {
         page_number(next?: number): number;
-        isOpened(next?: string): string;
+        publicity(next?: string): string;
         type(next?: string): string;
-        time(next?: string): string;
+        timing(next?: string): string;
         url(): string;
         feed(next?: Root): Root;
         posts(next?: Item[]): Item[];

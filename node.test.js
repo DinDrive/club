@@ -10759,106 +10759,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_icon_github) = class $mol_icon_github extends ($.$mol_icon) {
-		path(){
-			return "M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
-		path(){
-			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
-		Lights_icon(){
-			const obj = new this.$.$mol_icon_brightness_4();
-			return obj;
-		}
-		lights(next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		Icon(){
-			return (this.Lights_icon());
-		}
-		hint(){
-			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
-		}
-		checked(next){
-			return (this.lights(next));
-		}
-	};
-	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
-	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_lights_toggle extends $.$mol_lights_toggle {
-            lights(next) {
-                return this.$.$mol_lights(next);
-            }
-        }
-        $$.$mol_lights_toggle = $mol_lights_toggle;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_icon_cog) = class $mol_icon_cog extends ($.$mol_icon) {
-		path(){
-			return "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon_cog_outline) = class $mol_icon_cog_outline extends ($.$mol_icon) {
-		path(){
-			return "M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.21,15.05 2.27,14.78 2.46,14.63L4.57,12.97L4.5,12L4.57,11L2.46,9.37C2.27,9.22 2.21,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.79,8.95 21.73,9.22 21.54,9.37L19.43,11L19.5,12L19.43,13L21.54,14.63C21.73,14.78 21.79,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.04 19.05,18.95L16.56,17.95C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.66L7.86,15.62C8.63,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.66L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
 	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
 		option_checked(id, next){
 			if(next !== undefined) return next;
@@ -11133,10 +11033,110 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_icon_github) = class $mol_icon_github extends ($.$mol_icon) {
+		path(){
+			return "M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_check_icon) = class $mol_check_icon extends ($.$mol_check) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/icon/icon.view.css", "[mol_check_icon]:where([mol_check_checked]) {\n\tcolor: var(--mol_theme_current);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_brightness_4) = class $mol_icon_brightness_4 extends ($.$mol_icon) {
+		path(){
+			return "M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_lights_toggle) = class $mol_lights_toggle extends ($.$mol_check_icon) {
+		Lights_icon(){
+			const obj = new this.$.$mol_icon_brightness_4();
+			return obj;
+		}
+		lights(next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		Icon(){
+			return (this.Lights_icon());
+		}
+		hint(){
+			return (this.$.$mol_locale.text("$mol_lights_toggle_hint"));
+		}
+		checked(next){
+			return (this.lights(next));
+		}
+	};
+	($mol_mem(($.$mol_lights_toggle.prototype), "Lights_icon"));
+	($mol_mem(($.$mol_lights_toggle.prototype), "lights"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_lights_toggle extends $.$mol_lights_toggle {
+            lights(next) {
+                return this.$.$mol_lights(next);
+            }
+        }
+        $$.$mol_lights_toggle = $mol_lights_toggle;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_icon_cog) = class $mol_icon_cog extends ($.$mol_icon) {
+		path(){
+			return "M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_cog_outline) = class $mol_icon_cog_outline extends ($.$mol_icon) {
+		path(){
+			return "M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.21,15.05 2.27,14.78 2.46,14.63L4.57,12.97L4.5,12L4.57,11L2.46,9.37C2.27,9.22 2.21,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.79,8.95 21.73,9.22 21.54,9.37L19.43,11L19.5,12L19.43,13L21.54,14.63C21.73,14.78 21.79,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.04 19.05,18.95L16.56,17.95C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.66L7.86,15.62C8.63,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.66L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$club_main) = class $club_main extends ($.$mol_page) {
 		Title1(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("# Вастрик");
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("Вастрик");
 			return obj;
 		}
 		Logo(){
@@ -11145,45 +11145,11 @@ var $;
 			return obj;
 		}
 		Title2(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("# Клуб");
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("Клуб");
 			return obj;
 		}
-		Source_icon(){
-			const obj = new this.$.$mol_icon_github();
-			return obj;
-		}
-		Source(){
-			const obj = new this.$.$mol_link();
-			(obj.uri) = () => ("https://github.com/DinDrive/club");
-			(obj.sub) = () => ([(this.Source_icon())]);
-			return obj;
-		}
-		Lighter(){
-			const obj = new this.$.$mol_lights_toggle();
-			return obj;
-		}
-		Settings_icon(){
-			const obj = new this.$.$mol_icon_cog_outline();
-			return obj;
-		}
-		Settings(){
-			const obj = new this.$.$mol_check_icon();
-			(obj.Icon) = () => ((this.Settings_icon()));
-			(obj.hint) = () => ("Настройки");
-			(obj.checked) = (next) => ((this.settings(next)));
-			return obj;
-		}
-		Tools(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Source()), 
-				(this.Lighter()), 
-				(this.Settings())
-			]);
-			return obj;
-		}
-		isOpened(next){
+		publicity(next){
 			if(next !== undefined) return next;
 			return "all";
 		}
@@ -11192,7 +11158,7 @@ var $;
 		}
 		Switch1(){
 			const obj = new this.$.$mol_switch();
-			(obj.value) = (next) => ((this.isOpened(next)));
+			(obj.value) = (next) => ((this.publicity(next)));
 			(obj.options) = () => ((this.opened()));
 			return obj;
 		}
@@ -11206,7 +11172,7 @@ var $;
 				"project": "👷 Проекты", 
 				"guide": "🌎 Путеводители", 
 				"question": "🤔 Вопросы", 
-				"thread": "📑 Треды"
+				"thread": "📃 Треды"
 			};
 		}
 		Switch2(){
@@ -11215,7 +11181,7 @@ var $;
 			(obj.options) = () => ((this.types()));
 			return obj;
 		}
-		time(next){
+		timing(next){
 			if(next !== undefined) return next;
 			return "new";
 		}
@@ -11232,7 +11198,7 @@ var $;
 		}
 		Switch3(){
 			const obj = new this.$.$mol_switch();
-			(obj.value) = (next) => ((this.time(next)));
+			(obj.value) = (next) => ((this.timing(next)));
 			(obj.options) = () => ((this.timings()));
 			return obj;
 		}
@@ -11275,6 +11241,40 @@ var $;
 			(obj.value) = (next) => ((this.page_number(next)));
 			return obj;
 		}
+		Source_icon(){
+			const obj = new this.$.$mol_icon_github();
+			return obj;
+		}
+		Source(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://github.com/DinDrive/club");
+			(obj.sub) = () => ([(this.Source_icon())]);
+			return obj;
+		}
+		Lighter(){
+			const obj = new this.$.$mol_lights_toggle();
+			return obj;
+		}
+		Settings_icon(){
+			const obj = new this.$.$mol_icon_cog_outline();
+			return obj;
+		}
+		Settings(){
+			const obj = new this.$.$mol_check_icon();
+			(obj.Icon) = () => ((this.Settings_icon()));
+			(obj.hint) = () => ("Настройки");
+			(obj.checked) = (next) => ((this.settings(next)));
+			return obj;
+		}
+		Tools(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Source()), 
+				(this.Lighter()), 
+				(this.Settings())
+			]);
+			return obj;
+		}
 		page_number(next){
 			if(next !== undefined) return next;
 			return 0;
@@ -11300,7 +11300,6 @@ var $;
 				(this.Title1()), 
 				(this.Logo()), 
 				(this.Title2()), 
-				(this.Tools()), 
 				(this.Switch1()), 
 				(this.Switch2()), 
 				(this.Switch3())
@@ -11310,23 +11309,17 @@ var $;
 			return [(this.Scroll())];
 		}
 		foot(){
-			return [(this.Pag())];
+			return [(this.Pag()), (this.Tools())];
 		}
 	};
 	($mol_mem(($.$club_main.prototype), "Title1"));
 	($mol_mem(($.$club_main.prototype), "Logo"));
 	($mol_mem(($.$club_main.prototype), "Title2"));
-	($mol_mem(($.$club_main.prototype), "Source_icon"));
-	($mol_mem(($.$club_main.prototype), "Source"));
-	($mol_mem(($.$club_main.prototype), "Lighter"));
-	($mol_mem(($.$club_main.prototype), "Settings_icon"));
-	($mol_mem(($.$club_main.prototype), "Settings"));
-	($mol_mem(($.$club_main.prototype), "Tools"));
-	($mol_mem(($.$club_main.prototype), "isOpened"));
+	($mol_mem(($.$club_main.prototype), "publicity"));
 	($mol_mem(($.$club_main.prototype), "Switch1"));
 	($mol_mem(($.$club_main.prototype), "type"));
 	($mol_mem(($.$club_main.prototype), "Switch2"));
-	($mol_mem(($.$club_main.prototype), "time"));
+	($mol_mem(($.$club_main.prototype), "timing"));
 	($mol_mem(($.$club_main.prototype), "Switch3"));
 	($mol_mem_key(($.$club_main.prototype), "PostTitle"));
 	($mol_mem_key(($.$club_main.prototype), "Upvote"));
@@ -11335,6 +11328,12 @@ var $;
 	($mol_mem(($.$club_main.prototype), "ScrollList"));
 	($mol_mem(($.$club_main.prototype), "Scroll"));
 	($mol_mem(($.$club_main.prototype), "Pag"));
+	($mol_mem(($.$club_main.prototype), "Source_icon"));
+	($mol_mem(($.$club_main.prototype), "Source"));
+	($mol_mem(($.$club_main.prototype), "Lighter"));
+	($mol_mem(($.$club_main.prototype), "Settings_icon"));
+	($mol_mem(($.$club_main.prototype), "Settings"));
+	($mol_mem(($.$club_main.prototype), "Tools"));
 	($mol_mem(($.$club_main.prototype), "page_number"));
 	($mol_mem(($.$club_main.prototype), "settings"));
 
@@ -11343,7 +11342,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/main/main.css", "body {\n\tmargin: 0;\n}\n\n* {\n\tfont-family: \"Ubuntu\", Helvetica, Verdana, sans-serif;\n}\n\n[club_main_head] {\n\tjustify-content: start;\n\talign-items: center;\n}\n\n[club_main_logo] {\n\twidth: 25px;\n\theight: 25px;\n}\n\n[club_main_post] {\n\tjustify-content: space-between;\n}\n\n[club_main_upvote] {\n\tmin-width: 60px!important;\n\tjustify-content: center;\n}\n\n[club_main_title2] {\n\tmargin-right: auto;\n}\n\n[mol_view_root] {\n\twidth: 100vw;\n\theight: 100vh;\n}\n\n[club_main] {\n\twidth: 500px;\n}\n\n[club_post],\n[club_comments] {\n\twidth: 840px;\n}\n\n[club_main_posttitle] {\n\tmax-width: 380px;\n}\n\n[club_main_body_content] {\n\theight: 100%;\n}\n\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: url(/club/assets/police.png);\n\tcolor: #fff;\n\tfont-weight: bold;\n\t-webkit-text-stroke: 0.3rem #000;\n  \tpaint-order: stroke fill;\n\tmin-height: 2rem;\n\tanimation: police 2s linear infinite;\n}\n\n@keyframes police {\n\t0% {\n\t\tbackground-position: 0px;\n\t}\n\t100% {\n\t\tbackground-position: 28px;\n\t}\n}\n");
+    $mol_style_attach("club/main/main.css", "body {\n\tmargin: 0;\n}\n\n* {\n\tfont-family: \"Ubuntu\", Helvetica, Verdana, sans-serif;\n}\n\n[club_main_head] {\n\tjustify-content: start;\n\talign-items: center;\n}\n\n[club_main_logo] {\n\twidth: 25px;\n\theight: 25px;\n}\n\n[club_main_post] {\n\tjustify-content: space-between;\n}\n\n[club_main_upvote] {\n\tmin-width: 60px!important;\n\tjustify-content: center;\n}\n\n[club_main_title2] {\n\tmargin-right: auto;\n}\n\n[mol_view_root] {\n\twidth: 100vw;\n\theight: 100vh;\n}\n\n[club_main] {\n\twidth: 500px;\n}\n\n[club_post],\n[club_comments] {\n\twidth: 840px;\n}\n\n[club_main_posttitle] {\n\tmax-width: 380px;\n}\n\n[club_main_body_content] {\n\theight: 100%;\n}\n\n[club_main_title1],\n[club_main_title2] {\n\tfont-size: 1.8rem;\n\tline-height: 2.5rem;\n\tpadding: 0.2rem 0.6rem;\n\tfont-weight: bolder;\n}\n\n[club_main_switch1],\n[club_main_switch2],\n[club_main_switch3] {\n\tborder-top: 1px solid var(--mol_theme_line);\n}\n\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: url(/club/assets/police.png);\n\tcolor: #fff;\n\tfont-weight: bold;\n\t-webkit-text-stroke: 0.3rem #000;\n  \tpaint-order: stroke fill;\n\tmin-height: 2rem;\n\tanimation: police 2s linear infinite;\n}\n\n@keyframes police {\n\t0% {\n\t\tbackground-position: 0px;\n\t}\n\t100% {\n\t\tbackground-position: 28px;\n\t}\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -11363,30 +11362,38 @@ var $;
                     next = Number.parseInt(this.$.$mol_state_arg.value('page') || '1');
                 return next;
             }
-            isOpened(next) {
+            publicity(next) {
+                next = next ? next : '';
+                this.$.$mol_state_arg.value('publicity', next.toString());
                 return next || 'all';
             }
             type(next) {
+                next = next ? next : '';
+                this.$.$mol_state_arg.value('type', next.toString());
                 return next || 'all';
             }
-            time(next) {
-                return next || 'new';
+            timing(next) {
+                if (next)
+                    this.$.$mol_state_arg.value('timing', next.toString());
+                else
+                    next = this.$.$mol_state_arg.value('timing') || 'new';
+                return next;
             }
             url() {
-                return `https://vas3k.club/${this.type()}/${this.time()}/feed.json?page=${this.page_number()}`;
+                return `https://vas3k.club/${this.type()}/${this.timing()}/feed.json?page=${this.page_number()}`;
             }
             feed(next) {
                 return next || $mol_fetch.json(this.url());
             }
             posts(next) {
                 return next || this.feed().items.filter((v) => {
-                    if (this.isOpened() === 'all') {
+                    if (this.publicity() === 'all') {
                         return true;
                     }
-                    else if (this.isOpened() === 'public' && v._club.is_public) {
+                    else if (this.publicity() === 'public' && v._club.is_public) {
                         return true;
                     }
-                    else if (this.isOpened() === 'private' && !v._club.is_public) {
+                    else if (this.publicity() === 'private' && !v._club.is_public) {
                         return true;
                     }
                     return false;
@@ -11414,13 +11421,13 @@ var $;
         ], $club_main.prototype, "page_number", null);
         __decorate([
             $mol_mem
-        ], $club_main.prototype, "isOpened", null);
+        ], $club_main.prototype, "publicity", null);
         __decorate([
             $mol_mem
         ], $club_main.prototype, "type", null);
         __decorate([
             $mol_mem
-        ], $club_main.prototype, "time", null);
+        ], $club_main.prototype, "timing", null);
         __decorate([
             $mol_mem
         ], $club_main.prototype, "url", null);
@@ -11830,7 +11837,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/settings/settings.css", "\n\n");
+    $mol_style_attach("club/settings/settings.css", "[club_settings] {\n\twidth: 400px;\n}\n\n");
 })($ || ($ = {}));
 
 ;
