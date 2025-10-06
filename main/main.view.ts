@@ -40,45 +40,51 @@ namespace $.$$ {
 	export class $club_main extends $.$club_main {
 
 		@ $mol_mem
-		page_number( next: number = 1 ) {
+		page_number( next?: number ) {
+			if(next)
+				this.$.$mol_state_arg.value( 'page', next.toString() )
+			else
+				next = Number.parseInt( this.$.$mol_state_arg.value( 'page') || '1' )
 			return next
 		}
 
-		@ $mol_mem_key
-		after( anchor_id: number = 0 ) {
-			const newId = ((anchor_id + 70) / 70)
-			this.page_number(Math.floor(newId))
+		@ $mol_mem
+		isOpened(next?: string) {
+			return next || 'all'
+		}
 
-			const feed = ( $mol_fetch.json( this.url() ) as Root )
-			this.feed(feed)
-			const posts = feed.items
-			this.posts(this.posts().concat(posts))
-			
-			const newIds = []
-			const startId = anchor_id || 0
-			for (let i = startId; i < this.posts().length; i++) {
-				newIds.push(i)
-			}
-			return Array.from(
-				{ length: 70 },
-				( _, i )=> ( anchor_id ?? 0 ) + i + 1,
-			)
+		@ $mol_mem
+		type(next?: string) {
+			return next || 'all'
+		}
+
+		@ $mol_mem
+		time(next?: string) {
+			return next || 'new'
 		}
 
 		@ $mol_mem
 		url() {
-			console.log(this.page_number())
-			return `https://vas3k.club/all/new/feed.json?page=${ this.page_number() }`
+			return `https://vas3k.club/${ this.type() }/${ this.time() }/feed.json?page=${ this.page_number() }`
 		}
 
 		@ $mol_mem
 		feed( next?: Root ) {
-			return next || null
+			return next || ( $mol_fetch.json( this.url() ) as Root )
 		}
 
 		@ $mol_mem
 		posts(next?: Item[]) {
-			return next || []
+			return next || this.feed().items.filter((v) => {
+				if(this.isOpened() === 'all') {
+					return true
+				} else if(this.isOpened() === 'public' && v._club.is_public) {
+					return true
+				} else if(this.isOpened() === 'private' && !v._club.is_public) {
+					return true
+				}
+				return false
+			})
 		}
 
 		list_posts() {

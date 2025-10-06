@@ -19,10 +19,31 @@ $club_main $mol_page
 				Icon <= Settings_icon $mol_icon_cog_outline
 				hint \Настройки
 				checked? <=> settings?
+		<= Switch1 $mol_switch
+			value? <=> isOpened? \all
+			options <= opened *
+				public \🔓 Публичные
+				private \🔒 Приватные
+		<= Switch2 $mol_switch
+			value? <=> type? \all
+			options <= types *
+				post \📝 Посты
+				project \👷 Проекты
+				guide \🌎 Путеводители
+				question \🤔 Вопросы
+				thread \📑 Треды
+		<= Switch3 $mol_switch
+			value? <=> time? \new
+			options <= timings *
+				new \Новое
+				activity \Обсуждаемое
+				hot \Горячее
+				top \Лучшее
+				top_week \Лучшее за неделю
+				top_month \Лучшее за месяц
+				top_year \Лучшее за год
 	body /
-		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
-			<= Pag1 $mol_paginator
-				value? <=> page_number?
+		<= Scroll $mol_scroll sub / <= ScrollList $mol_list rows /
 			<= Posts $mol_list
 				rows <= list_posts /
 					<= Post*0 $mol_link
@@ -32,5 +53,6 @@ $club_main $mol_page
 							<= PostTitle* $mol_view
 								sub / <= post_title*
 							<= Upvote* $mol_button_major title <= post_upvotes*
-			<= Pag2 $mol_paginator
-				value? <=> page_number?
+	foot /
+		<= Pag $mol_paginator
+			value? <=> page_number?
