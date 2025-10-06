@@ -10859,185 +10859,107 @@ var $;
 "use strict";
 
 ;
-	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
-		option_checked(id, next){
-			if(next !== undefined) return next;
-			return false;
-		}
-		option_title(id){
-			return "";
-		}
-		option_label(id){
-			return [(this.option_title(id))];
-		}
-		enabled(){
-			return true;
-		}
-		option_enabled(id){
-			return (this.enabled());
-		}
-		option_hint(id){
-			return "";
-		}
-		items(){
-			return [];
-		}
-		dictionary(){
-			return {};
-		}
-		Option(id){
-			const obj = new this.$.$mol_check();
-			(obj.checked) = (next) => ((this.option_checked(id, next)));
-			(obj.label) = () => ((this.option_label(id)));
-			(obj.enabled) = () => ((this.option_enabled(id)));
-			(obj.hint) = () => ((this.option_hint(id)));
-			(obj.minimal_height) = () => (24);
-			return obj;
-		}
-		options(){
-			return {};
-		}
-		keys(){
-			return [];
-		}
-		sub(){
-			return (this.items());
+	($.$mol_bar) = class $mol_bar extends ($.$mol_view) {};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/bar/bar.view.css", "[mol_bar] {\n\tdisplay: flex;\n\t/* box-shadow: inset 0 0 0 1px var(--mol_theme_line); */\n\tborder-radius: var(--mol_gap_round);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_chevron_left) = class $mol_icon_chevron_left extends ($.$mol_icon) {
+		path(){
+			return "M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z";
 		}
 	};
-	($mol_mem_key(($.$mol_check_list.prototype), "option_checked"));
-	($mol_mem_key(($.$mol_check_list.prototype), "Option"));
 
 
 ;
 "use strict";
 
 ;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_check_list extends $.$mol_check_list {
-            options() {
-                return {};
-            }
-            dictionary(next) {
-                return next ?? {};
-            }
-            option_checked(id, next) {
-                const prev = this.dictionary();
-                if (next === undefined)
-                    return prev[id] ?? null;
-                const next_rec = { ...prev, [id]: next };
-                if (next === null)
-                    delete next_rec[id];
-                return this.dictionary(next_rec)[id] ?? null;
-            }
-            keys() {
-                return Object.keys(this.options());
-            }
-            items() {
-                return this.keys().map(key => this.Option(key));
-            }
-            option_title(key) {
-                return this.options()[key] || key;
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_check_list.prototype, "keys", null);
-        __decorate([
-            $mol_mem
-        ], $mol_check_list.prototype, "items", null);
-        $$.$mol_check_list = $mol_check_list;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
+	($.$mol_icon_chevron_right) = class $mol_icon_chevron_right extends ($.$mol_icon) {
+		path(){
+			return "M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z";
+		}
+	};
+
 
 ;
 "use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/check/list/list.view.css", "[mol_check_list] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tgap: 1px;\n}\n\n[mol_check_list_option] {\n\tflex: 0 1 auto;\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"]) {\n\ttext-shadow: 0 0;\n\tcolor: var(--mol_theme_current);\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"][disabled]) {\n\tcolor: var(--mol_theme_text);\n}\n");
-})($ || ($ = {}));
 
 ;
-	($.$mol_switch) = class $mol_switch extends ($.$mol_check_list) {
+	($.$mol_paginator) = class $mol_paginator extends ($.$mol_bar) {
+		backward_hint(){
+			return (this.$.$mol_locale.text("$mol_paginator_backward_hint"));
+		}
+		backward(next){
+			if(next !== undefined) return next;
+			return null;
+		}
+		Backward_icon(){
+			const obj = new this.$.$mol_icon_chevron_left();
+			return obj;
+		}
+		Backward(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.backward_hint()));
+			(obj.click) = (next) => ((this.backward(next)));
+			(obj.sub) = () => ([(this.Backward_icon())]);
+			return obj;
+		}
 		value(next){
 			if(next !== undefined) return next;
-			return "";
+			return 0;
 		}
-	};
-	($mol_mem(($.$mol_switch.prototype), "value"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_switch extends $.$mol_switch {
-            value(next) {
-                return $mol_state_session.value(`${this}.value()`, next) ?? '';
-            }
-            option_checked(key, next) {
-                if (next === undefined)
-                    return this.value() == key;
-                this.value(next ? key : '');
-                return next;
-            }
-        }
-        $$.$mol_switch = $mol_switch;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_infinite) = class $mol_infinite extends ($.$mol_list) {
-		before_load(id){
-			return null;
+		Value(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.value())]);
+			return obj;
 		}
-		after_load(id){
-			return null;
+		forward_hint(){
+			return (this.$.$mol_locale.text("$mol_paginator_forward_hint"));
 		}
-		before(id){
-			return [];
-		}
-		after(id){
-			return [];
-		}
-		row_ids(next){
+		forward(next){
 			if(next !== undefined) return next;
-			return [];
+			return null;
 		}
-		render_over(){
+		Forward_icon(){
+			const obj = new this.$.$mol_icon_chevron_right();
+			return obj;
+		}
+		Forward(){
+			const obj = new this.$.$mol_button_minor();
+			(obj.hint) = () => ((this.forward_hint()));
+			(obj.click) = (next) => ((this.forward(next)));
+			(obj.sub) = () => ([(this.Forward_icon())]);
+			return obj;
+		}
+		step(){
 			return 1;
 		}
-		Row(id){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Before(id){
-			const obj = new this.$.$mol_view();
-			(obj.minimal_width) = () => (0);
-			(obj.minimal_height) = () => (0);
-			(obj.sub) = () => ([(this.before_load(id))]);
-			return obj;
-		}
-		After(id){
-			const obj = new this.$.$mol_view();
-			(obj.minimal_width) = () => (0);
-			(obj.minimal_height) = () => (0);
-			(obj.sub) = () => ([(this.after_load(id))]);
-			return obj;
+		sub(){
+			return [
+				(this.Backward()), 
+				(this.Value()), 
+				(this.Forward())
+			];
 		}
 	};
-	($mol_mem(($.$mol_infinite.prototype), "row_ids"));
-	($mol_mem_key(($.$mol_infinite.prototype), "Row"));
-	($mol_mem_key(($.$mol_infinite.prototype), "Before"));
-	($mol_mem_key(($.$mol_infinite.prototype), "After"));
+	($mol_mem(($.$mol_paginator.prototype), "backward"));
+	($mol_mem(($.$mol_paginator.prototype), "Backward_icon"));
+	($mol_mem(($.$mol_paginator.prototype), "Backward"));
+	($mol_mem(($.$mol_paginator.prototype), "value"));
+	($mol_mem(($.$mol_paginator.prototype), "Value"));
+	($mol_mem(($.$mol_paginator.prototype), "forward"));
+	($mol_mem(($.$mol_paginator.prototype), "Forward_icon"));
+	($mol_mem(($.$mol_paginator.prototype), "Forward"));
 
 
 ;
@@ -11049,52 +10971,21 @@ var $;
 (function ($) {
     var $$;
     (function ($$) {
-        class $mol_infinite extends $.$mol_infinite {
-            before_load(anchor) {
-                const more = this.before(anchor);
-                new $mol_after_tick(() => {
-                    let ids = this.row_ids();
-                    const index = Math.max(0, ids.indexOf(anchor));
-                    const unique = new Set([
-                        ...ids.slice(0, index),
-                        ...more,
-                        ...ids.slice(index),
-                    ]);
-                    this.row_ids([...unique]);
-                });
+        class $mol_paginator extends $.$mol_paginator {
+            backward(event) {
+                if (event.defaultPrevented)
+                    return;
+                event.preventDefault();
+                this.value(this.value() - this.step());
             }
-            after_load(anchor) {
-                const more = this.after(anchor);
-                new $mol_after_tick(() => {
-                    let ids = this.row_ids();
-                    const index = (ids.indexOf(anchor) + 1) || ids.length;
-                    const unique = new Set([
-                        ...ids.slice(0, index),
-                        ...more,
-                        ...ids.slice(index),
-                    ]);
-                    this.row_ids([...unique]);
-                });
-            }
-            rows() {
-                const ids = this.row_ids();
-                return [
-                    this.Before(ids.at(0) ?? null),
-                    ...ids.map(id => this.Row(id)),
-                    this.After(ids.at(-1) ?? null),
-                ];
+            forward(event) {
+                if (event.defaultPrevented)
+                    return;
+                event.preventDefault();
+                this.value(this.value() + this.step());
             }
         }
-        __decorate([
-            $mol_mem_key
-        ], $mol_infinite.prototype, "before_load", null);
-        __decorate([
-            $mol_mem_key
-        ], $mol_infinite.prototype, "after_load", null);
-        __decorate([
-            $mol_mem
-        ], $mol_infinite.prototype, "rows", null);
-        $$.$mol_infinite = $mol_infinite;
+        $$.$mol_paginator = $mol_paginator;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
@@ -11102,7 +10993,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("mol/infinite/infinite.view.css", "[mol_infinite_before],\n[mol_infinite_after] {\n\toverflow-anchor: none;\n\tborder-radius: var(--mol_gap_round);\n}\n\n[mol_infinite_after]:where([mol_view_error=\"Promise\"]) {\n\theight: 100vh;\n}\n");
+    $mol_style_attach("mol/paginator/paginator.view.css", "[mol_paginator] {\n\talign-items: flex-start;\n}\n\n[mol_paginator_value] {\n\tpadding: .5rem 0;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -11156,70 +11047,9 @@ var $;
 			]);
 			return obj;
 		}
-		isOpened(next){
-			if(next !== undefined) return next;
-			return "Все";
-		}
-		opened(){
-			return {
-				"all": "Все", 
-				"public": "🔓 Публичные", 
-				"private": "🔒 Приватные"
-			};
-		}
-		Switch1(){
-			const obj = new this.$.$mol_switch();
-			(obj.value) = (next) => ((this.isOpened(next)));
-			(obj.options) = () => ((this.opened()));
-			return obj;
-		}
-		type(next){
-			if(next !== undefined) return next;
-			return "Топ";
-		}
-		types(){
-			return {
-				"all": "Все", 
-				"post": "Посты", 
-				"project": "Проекты", 
-				"guide": "Путеводители", 
-				"question": "Вопросы", 
-				"thread": "Треды"
-			};
-		}
-		Switch2(){
-			const obj = new this.$.$mol_switch();
-			(obj.value) = (next) => ((this.type(next)));
-			(obj.options) = () => ((this.types()));
-			return obj;
-		}
-		time(next){
-			if(next !== undefined) return next;
-			return "new";
-		}
-		timings(){
-			return {
-				"new": "new", 
-				"activity": "activity", 
-				"hot": "hot", 
-				"top": "top", 
-				"top_week": "top_week", 
-				"top_month": "top_month", 
-				"top_year": "top_year"
-			};
-		}
-		Switch3(){
-			const obj = new this.$.$mol_switch();
-			(obj.value) = (next) => ((this.time(next)));
-			(obj.options) = () => ((this.timings()));
-			return obj;
-		}
-		after(id){
-			return [];
-		}
-		Upvote(id){
-			const obj = new this.$.$mol_button_major();
-			(obj.title) = () => ((this.post_upvotes(id)));
+		Pag1(){
+			const obj = new this.$.$mol_paginator();
+			(obj.value) = (next) => ((this.page_number(next)));
 			return obj;
 		}
 		PostTitle(id){
@@ -11227,25 +11057,36 @@ var $;
 			(obj.sub) = () => ([(this.post_title(id))]);
 			return obj;
 		}
+		Upvote(id){
+			const obj = new this.$.$mol_button_major();
+			(obj.title) = () => ((this.post_upvotes(id)));
+			return obj;
+		}
 		Post(id){
 			const obj = new this.$.$mol_link();
 			(obj.arg) = () => ({"post": (this.post_url(id))});
-			(obj.sub) = () => ([(this.Upvote(id)), (this.PostTitle(id))]);
+			(obj.sub) = () => ([(this.PostTitle(id)), (this.Upvote(id))]);
 			return obj;
 		}
+		list_posts(){
+			return [(this.Post("0"))];
+		}
 		Posts(){
-			const obj = new this.$.$mol_infinite();
-			(obj.after) = (id) => ((this.after(id)));
-			(obj.Row) = (id) => ((this.Post(id)));
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.list_posts()));
+			return obj;
+		}
+		Pag2(){
+			const obj = new this.$.$mol_paginator();
+			(obj.value) = (next) => ((this.page_number(next)));
 			return obj;
 		}
 		Scroll(){
 			const obj = new this.$.$mol_list();
 			(obj.rows) = () => ([
-				(this.Switch1()), 
-				(this.Switch2()), 
-				(this.Switch3()), 
-				(this.Posts())
+				(this.Pag1()), 
+				(this.Posts()), 
+				(this.Pag2())
 			]);
 			return obj;
 		}
@@ -11295,16 +11136,12 @@ var $;
 	($mol_mem(($.$club_main.prototype), "Settings_icon"));
 	($mol_mem(($.$club_main.prototype), "Settings"));
 	($mol_mem(($.$club_main.prototype), "Tools"));
-	($mol_mem(($.$club_main.prototype), "isOpened"));
-	($mol_mem(($.$club_main.prototype), "Switch1"));
-	($mol_mem(($.$club_main.prototype), "type"));
-	($mol_mem(($.$club_main.prototype), "Switch2"));
-	($mol_mem(($.$club_main.prototype), "time"));
-	($mol_mem(($.$club_main.prototype), "Switch3"));
-	($mol_mem_key(($.$club_main.prototype), "Upvote"));
+	($mol_mem(($.$club_main.prototype), "Pag1"));
 	($mol_mem_key(($.$club_main.prototype), "PostTitle"));
+	($mol_mem_key(($.$club_main.prototype), "Upvote"));
 	($mol_mem_key(($.$club_main.prototype), "Post"));
 	($mol_mem(($.$club_main.prototype), "Posts"));
+	($mol_mem(($.$club_main.prototype), "Pag2"));
 	($mol_mem(($.$club_main.prototype), "Scroll"));
 	($mol_mem(($.$club_main.prototype), "Scll"));
 	($mol_mem(($.$club_main.prototype), "page_number"));
@@ -11315,7 +11152,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/main/main.css", "body {\n\tmargin: 0;\n}\n\n* {\n\tfont-family: \"Ubuntu\", Helvetica, Verdana, sans-serif;\n}\n\n[club_main_head] {\n\tjustify-content: start;\n\talign-items: center;\n}\n\n[club_main_logo] {\n\twidth: 25px;\n\theight: 25px;\n}\n\n[club_main_title2] {\n\tmargin-right: auto;\n}\n\n[mol_view_root] {\n\twidth: 100vw;\n\theight: 100vh;\n}\n\n[club_main] {\n\twidth: 500px;\n}\n\n[club_post],\n[club_comments] {\n\twidth: 840px;\n}\n\n[club_main_posttitle] {\n\tmax-width: 380px;\n}\n\n[club_main_body_content] {\n\theight: 100%;\n}\n\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: url(/club/assets/police.png);\n\tcolor: #fff;\n\tfont-weight: bold;\n\t-webkit-text-stroke: 0.3rem #000;\n  \tpaint-order: stroke fill;\n\tmin-height: 2rem;\n\tanimation: police 2s linear infinite;\n}\n\n@keyframes police {\n\t0% {\n\t\tbackground-position: 0px;\n\t}\n\t100% {\n\t\tbackground-position: 28px;\n\t}\n}\n");
+    $mol_style_attach("club/main/main.css", "body {\n\tmargin: 0;\n}\n\n* {\n\tfont-family: \"Ubuntu\", Helvetica, Verdana, sans-serif;\n}\n\n[club_main_head] {\n\tjustify-content: start;\n\talign-items: center;\n}\n\n[club_main_logo] {\n\twidth: 25px;\n\theight: 25px;\n}\n\n[club_main_post] {\n\tjustify-content: space-between;\n}\n\n[club_main_upvote] {\n\tmin-width: 60px!important;\n\tjustify-content: center;\n}\n\n[club_main_title2] {\n\tmargin-right: auto;\n}\n\n[mol_view_root] {\n\twidth: 100vw;\n\theight: 100vh;\n}\n\n[club_main] {\n\twidth: 500px;\n}\n\n[club_post],\n[club_comments] {\n\twidth: 840px;\n}\n\n[club_main_posttitle] {\n\tmax-width: 380px;\n}\n\n[club_main_body_content] {\n\theight: 100%;\n}\n\n[mol_view][mol_view_error]:not([mol_view_error=\"Promise\"], [mol_view_error=\"$mol_promise_blocker\"]) {\n\tbackground-image: url(/club/assets/police.png);\n\tcolor: #fff;\n\tfont-weight: bold;\n\t-webkit-text-stroke: 0.3rem #000;\n  \tpaint-order: stroke fill;\n\tmin-height: 2rem;\n\tanimation: police 2s linear infinite;\n}\n\n@keyframes police {\n\t0% {\n\t\tbackground-position: 0px;\n\t}\n\t100% {\n\t\tbackground-position: 28px;\n\t}\n}\n");
 })($ || ($ = {}));
 
 ;
