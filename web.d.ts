@@ -4365,6 +4365,9 @@ declare namespace $ {
 			'guide': string,
 			'question': string,
 			'thread': string,
+			'idea': string,
+			'event': string,
+			'battle': string,
 		}) 
 		Switch2( ): $mol_switch
 		timing( next?: string ): string

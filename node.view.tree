@@ -679,6 +679,9 @@ $club_main $mol_page
 				guide \🌎 Путеводители
 				question \🤔 Вопросы
 				thread \📃 Треды
+				idea \🤩 Идеи
+				event \🥳 Ивенты
+				battle \👊 Батлы
 		<= Switch3 $mol_switch
 			value? <=> timing? \new
 			options <= timings *
