@@ -1,5 +1,5 @@
 $club_main $mol_page
-	page_number? 1
+	page_number? 0
 	post_url*0 \
 	post_title*0 \
 	post_upvotes*0 \
@@ -21,16 +21,37 @@ $club_main $mol_page
 				checked? <=> settings?
 	body /
 		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
-			<= Pag1 $mol_paginator
-				value? <=> page_number?
-			<= Posts $mol_list
-				rows <= list_posts /
-					<= Post*0 $mol_link
-						arg *
-							post <= post_url*
-						sub /
-							<= Upvote* $mol_button_major title <= post_upvotes*
-							<= PostTitle* $mol_view
-								sub / <= post_title*
-			<= Pag2 $mol_paginator
-				value? <=> page_number?
+			<= Switch1 $mol_switch
+				value? <=> isOpened? \Все
+				options <= opened *
+					all \Все
+					public \🔓 Публичные
+					private \🔒 Приватные
+			<= Switch2 $mol_switch
+				value? <=> type? \Топ
+				options <= types *
+					all \Все
+					post \Посты
+					project \Проекты
+					guide \Путеводители
+					question \Вопросы
+					thread \Треды
+			<= Switch3 $mol_switch
+				value? <=> time? \new
+				options <= timings *
+					new \new
+					activity \activity
+					hot \hot
+					top \top
+					top_week \top_week
+					top_month \top_month
+					top_year \top_year
+			<= Posts $mol_infinite
+				after* <= after* /
+				Row* <= Post* $mol_link
+					arg *
+						post <= post_url*
+					sub /
+						<= Upvote* $mol_button_major title <= post_upvotes*
+						<= PostTitle* $mol_view
+							sub / <= post_title*
