@@ -49,23 +49,31 @@ namespace $.$$ {
 		}
 
 		@ $mol_mem
-		isOpened(next?: string) {
+		publicity(next?: string) {
+			next = next ? next : ''
+			this.$.$mol_state_arg.value( 'publicity', next.toString() )
 			return next || 'all'
 		}
 
 		@ $mol_mem
 		type(next?: string) {
-			return next || 'all'
+			next = next ? next : ''
+			this.$.$mol_state_arg.value( 'type', next.toString() )
+			return  next || 'all'
 		}
 
 		@ $mol_mem
-		time(next?: string) {
-			return next || 'new'
+		timing(next?: string) {
+			if(next)
+				this.$.$mol_state_arg.value( 'timing', next.toString() )
+			else
+				next = this.$.$mol_state_arg.value( 'timing') || 'new'
+			return next
 		}
 
 		@ $mol_mem
 		url() {
-			return `https://vas3k.club/${ this.type() }/${ this.time() }/feed.json?page=${ this.page_number() }`
+			return `https://vas3k.club/${ this.type() }/${ this.timing() }/feed.json?page=${ this.page_number() }`
 		}
 
 		@ $mol_mem
@@ -76,11 +84,11 @@ namespace $.$$ {
 		@ $mol_mem
 		posts(next?: Item[]) {
 			return next || this.feed().items.filter((v) => {
-				if(this.isOpened() === 'all') {
+				if(this.publicity() === 'all') {
 					return true
-				} else if(this.isOpened() === 'public' && v._club.is_public) {
+				} else if(this.publicity() === 'public' && v._club.is_public) {
 					return true
-				} else if(this.isOpened() === 'private' && !v._club.is_public) {
+				} else if(this.publicity() === 'private' && !v._club.is_public) {
 					return true
 				}
 				return false

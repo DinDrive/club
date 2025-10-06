@@ -6,21 +6,11 @@ $club_main $mol_page
 	logo_url \
 	settings? false
 	head /
-		<= Title1 $mol_text text \# Вастрик
+		<= Title1 $mol_paragraph title \Вастрик
 		<= Logo $mol_image uri <= logo_url
-		<= Title2 $mol_text text \# Клуб
-		<= Tools $mol_view sub /
-			<= Source $mol_link
-				uri \https://github.com/DinDrive/club
-				sub /
-					<= Source_icon $mol_icon_github
-			<= Lighter $mol_lights_toggle
-			<= Settings $mol_check_icon
-				Icon <= Settings_icon $mol_icon_cog_outline
-				hint \Настройки
-				checked? <=> settings?
+		<= Title2 $mol_paragraph title \Клуб
 		<= Switch1 $mol_switch
-			value? <=> isOpened? \all
+			value? <=> publicity? \all
 			options <= opened *
 				public \🔓 Публичные
 				private \🔒 Приватные
@@ -31,9 +21,9 @@ $club_main $mol_page
 				project \👷 Проекты
 				guide \🌎 Путеводители
 				question \🤔 Вопросы
-				thread \📑 Треды
+				thread \📃 Треды
 		<= Switch3 $mol_switch
-			value? <=> time? \new
+			value? <=> timing? \new
 			options <= timings *
 				new \Новое
 				activity \Обсуждаемое
@@ -56,3 +46,13 @@ $club_main $mol_page
 	foot /
 		<= Pag $mol_paginator
 			value? <=> page_number?
+		<= Tools $mol_view sub /
+			<= Source $mol_link
+				uri \https://github.com/DinDrive/club
+				sub /
+					<= Source_icon $mol_icon_github
+			<= Lighter $mol_lights_toggle
+			<= Settings $mol_check_icon
+				Icon <= Settings_icon $mol_icon_cog_outline
+				hint \Настройки
+				checked? <=> settings?

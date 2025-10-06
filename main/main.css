@@ -51,6 +51,20 @@ body {
 	height: 100%;
 }
 
+[club_main_title1],
+[club_main_title2] {
+	font-size: 1.8rem;
+	line-height: 2.5rem;
+	padding: 0.2rem 0.6rem;
+	font-weight: bolder;
+}
+
+[club_main_switch1],
+[club_main_switch2],
+[club_main_switch3] {
+	border-top: 1px solid var(--mol_theme_line);
+}
+
 [mol_view][mol_view_error]:not([mol_view_error="Promise"], [mol_view_error="$mol_promise_blocker"]) {
 	background-image: url(/club/assets/police.png);
 	color: #fff;
