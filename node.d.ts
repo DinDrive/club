@@ -428,7 +428,7 @@ declare namespace $ {
         static getter<Host, Args extends readonly unknown[], Result>(task: (this: Host, ...args: Args) => Result): (host: Host, args: Args) => $mol_wire_task<Host, Args, Result>;
         get temp(): boolean;
         complete(): void;
-        put(next: Result | Error | Promise<Result | Error>): Error | Result | Promise<Error | Result>;
+        put(next: Result | Error | Promise<Result | Error>): Result | Error | Promise<Result | Error>;
         destructor(): void;
     }
 }
@@ -3700,7 +3700,7 @@ declare namespace $ {
     class $mol_fetch_response extends $mol_object2 {
         readonly native: Response;
         constructor(native: Response);
-        status(): "unknown" | "success" | "inform" | "redirect" | "wrong" | "failed";
+        status(): "success" | "unknown" | "inform" | "redirect" | "wrong" | "failed";
         code(): number;
         message(): string;
         headers(): Headers;
@@ -4210,6 +4210,83 @@ declare namespace $ {
 
 //# sourceMappingURL=outline.view.tree.d.ts.map
 declare namespace $ {
+
+	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_checked'] >
+		,
+		ReturnType< $mol_check['checked'] >
+	>
+	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_label'] >
+		,
+		ReturnType< $mol_check['label'] >
+	>
+	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_enabled'] >
+		,
+		ReturnType< $mol_check['enabled'] >
+	>
+	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
+		ReturnType< $mol_check_list['option_hint'] >
+		,
+		ReturnType< $mol_check['hint'] >
+	>
+	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_check['minimal_height'] >
+	>
+	export class $mol_check_list extends $mol_view {
+		option_checked( id: any, next?: boolean ): boolean
+		option_title( id: any): string
+		option_label( id: any): readonly(any)[]
+		enabled( ): boolean
+		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
+		option_hint( id: any): string
+		items( ): readonly($mol_check)[]
+		dictionary( ): Record<string, any>
+		Option( id: any): $mol_check
+		options( ): Record<string, any>
+		keys( ): readonly(string)[]
+		sub( ): ReturnType< $mol_check_list['items'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
+        option_checked(id: string, next?: boolean | null): boolean;
+        keys(): readonly string[];
+        items(): $.$mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_switch extends $mol_check_list {
+		value( next?: string ): string
+	}
+	
+}
+
+//# sourceMappingURL=switch.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: string): string;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -4353,52 +4430,77 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paginator__value_club_main_10 = $mol_type_enforce<
-		ReturnType< $club_main['page_number'] >
+	type $mol_switch__value_club_main_10 = $mol_type_enforce<
+		ReturnType< $club_main['isOpened'] >
 		,
-		ReturnType< $mol_paginator['value'] >
+		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_view__sub_club_main_11 = $mol_type_enforce<
+	type $mol_switch__options_club_main_11 = $mol_type_enforce<
+		ReturnType< $club_main['opened'] >
+		,
+		ReturnType< $mol_switch['options'] >
+	>
+	type $mol_switch__value_club_main_12 = $mol_type_enforce<
+		ReturnType< $club_main['type'] >
+		,
+		ReturnType< $mol_switch['value'] >
+	>
+	type $mol_switch__options_club_main_13 = $mol_type_enforce<
+		ReturnType< $club_main['types'] >
+		,
+		ReturnType< $mol_switch['options'] >
+	>
+	type $mol_switch__value_club_main_14 = $mol_type_enforce<
+		ReturnType< $club_main['time'] >
+		,
+		ReturnType< $mol_switch['value'] >
+	>
+	type $mol_switch__options_club_main_15 = $mol_type_enforce<
+		ReturnType< $club_main['timings'] >
+		,
+		ReturnType< $mol_switch['options'] >
+	>
+	type $mol_view__sub_club_main_16 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_major__title_club_main_12 = $mol_type_enforce<
+	type $mol_button_major__title_club_main_17 = $mol_type_enforce<
 		ReturnType< $club_main['post_upvotes'] >
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_link__arg_club_main_13 = $mol_type_enforce<
+	type $mol_link__arg_club_main_18 = $mol_type_enforce<
 		({ 
 			'post': ReturnType< $club_main['post_url'] >,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_club_main_14 = $mol_type_enforce<
+	type $mol_link__sub_club_main_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_list__rows_club_main_15 = $mol_type_enforce<
+	type $mol_list__rows_club_main_20 = $mol_type_enforce<
 		ReturnType< $club_main['list_posts'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_paginator__value_club_main_16 = $mol_type_enforce<
-		ReturnType< $club_main['page_number'] >
-		,
-		ReturnType< $mol_paginator['value'] >
-	>
-	type $mol_list__rows_club_main_17 = $mol_type_enforce<
+	type $mol_list__rows_club_main_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_scroll__sub_club_main_18 = $mol_type_enforce<
+	type $mol_scroll__sub_club_main_22 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_scroll['sub'] >
+	>
+	type $mol_paginator__value_club_main_23 = $mol_type_enforce<
+		ReturnType< $club_main['page_number'] >
+		,
+		ReturnType< $mol_paginator['value'] >
 	>
 	export class $club_main extends $mol_page {
 		Title1( ): $mol_text
@@ -4410,15 +4512,40 @@ declare namespace $ {
 		Settings_icon( ): $mol_icon_cog_outline
 		Settings( ): $mol_check_icon
 		Tools( ): $mol_view
-		Pag1( ): $mol_paginator
+		isOpened( next?: string ): string
+		opened( ): ({ 
+			'public': string,
+			'private': string,
+		}) 
+		Switch1( ): $mol_switch
+		type( next?: string ): string
+		types( ): ({ 
+			'post': string,
+			'project': string,
+			'guide': string,
+			'question': string,
+			'thread': string,
+		}) 
+		Switch2( ): $mol_switch
+		time( next?: string ): string
+		timings( ): ({ 
+			'new': string,
+			'activity': string,
+			'hot': string,
+			'top': string,
+			'top_week': string,
+			'top_month': string,
+			'top_year': string,
+		}) 
+		Switch3( ): $mol_switch
 		PostTitle( id: any): $mol_view
 		Upvote( id: any): $mol_button_major
 		Post( id: any): $mol_link
 		list_posts( ): readonly(any)[]
 		Posts( ): $mol_list
-		Pag2( ): $mol_paginator
-		Scroll( ): $mol_list
-		Scll( ): $mol_scroll
+		ScrollList( ): $mol_list
+		Scroll( ): $mol_scroll
+		Pag( ): $mol_paginator
 		page_number( next?: number ): number
 		post_url( id: any): string
 		post_title( id: any): string
@@ -4427,6 +4554,7 @@ declare namespace $ {
 		settings( next?: boolean ): boolean
 		head( ): readonly(any)[]
 		body( ): readonly(any)[]
+		foot( ): readonly(any)[]
 	}
 	
 }
@@ -4468,9 +4596,11 @@ interface Author {
 declare namespace $.$$ {
     class $club_main extends $.$club_main {
         page_number(next?: number): number;
-        after(anchor_id?: number): number[];
+        isOpened(next?: string): string;
+        type(next?: string): string;
+        time(next?: string): string;
         url(): string;
-        feed(next?: Root): Root | null;
+        feed(next?: Root): Root;
         posts(next?: Item[]): Item[];
         list_posts(): $.$mol_link[];
         post_upvotes(id: number): string;

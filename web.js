@@ -10231,6 +10231,142 @@ var $;
 "use strict";
 
 ;
+	($.$mol_check_list) = class $mol_check_list extends ($.$mol_view) {
+		option_checked(id, next){
+			if(next !== undefined) return next;
+			return false;
+		}
+		option_title(id){
+			return "";
+		}
+		option_label(id){
+			return [(this.option_title(id))];
+		}
+		enabled(){
+			return true;
+		}
+		option_enabled(id){
+			return (this.enabled());
+		}
+		option_hint(id){
+			return "";
+		}
+		items(){
+			return [];
+		}
+		dictionary(){
+			return {};
+		}
+		Option(id){
+			const obj = new this.$.$mol_check();
+			(obj.checked) = (next) => ((this.option_checked(id, next)));
+			(obj.label) = () => ((this.option_label(id)));
+			(obj.enabled) = () => ((this.option_enabled(id)));
+			(obj.hint) = () => ((this.option_hint(id)));
+			(obj.minimal_height) = () => (24);
+			return obj;
+		}
+		options(){
+			return {};
+		}
+		keys(){
+			return [];
+		}
+		sub(){
+			return (this.items());
+		}
+	};
+	($mol_mem_key(($.$mol_check_list.prototype), "option_checked"));
+	($mol_mem_key(($.$mol_check_list.prototype), "Option"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_check_list extends $.$mol_check_list {
+            options() {
+                return {};
+            }
+            dictionary(next) {
+                return next ?? {};
+            }
+            option_checked(id, next) {
+                const prev = this.dictionary();
+                if (next === undefined)
+                    return prev[id] ?? null;
+                const next_rec = { ...prev, [id]: next };
+                if (next === null)
+                    delete next_rec[id];
+                return this.dictionary(next_rec)[id] ?? null;
+            }
+            keys() {
+                return Object.keys(this.options());
+            }
+            items() {
+                return this.keys().map(key => this.Option(key));
+            }
+            option_title(key) {
+                return this.options()[key] || key;
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "keys", null);
+        __decorate([
+            $mol_mem
+        ], $mol_check_list.prototype, "items", null);
+        $$.$mol_check_list = $mol_check_list;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/check/list/list.view.css", "[mol_check_list] {\n\tdisplay: flex;\n\tflex-wrap: wrap;\n\tflex: 1 1 auto;\n\tborder-radius: var(--mol_gap_round);\n\tgap: 1px;\n}\n\n[mol_check_list_option] {\n\tflex: 0 1 auto;\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"]) {\n\ttext-shadow: 0 0;\n\tcolor: var(--mol_theme_current);\n}\n\n[mol_check_list_option]:where([mol_check_checked=\"true\"][disabled]) {\n\tcolor: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$mol_switch) = class $mol_switch extends ($.$mol_check_list) {
+		value(next){
+			if(next !== undefined) return next;
+			return "";
+		}
+	};
+	($mol_mem(($.$mol_switch.prototype), "value"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_switch extends $.$mol_switch {
+            value(next) {
+                return $mol_state_session.value(`${this}.value()`, next) ?? '';
+            }
+            option_checked(key, next) {
+                if (next === undefined)
+                    return this.value() == key;
+                this.value(next ? key : '');
+                return next;
+            }
+        }
+        $$.$mol_switch = $mol_switch;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_bar) = class $mol_bar extends ($.$mol_view) {};
 
 
@@ -10419,9 +10555,57 @@ var $;
 			]);
 			return obj;
 		}
-		Pag1(){
-			const obj = new this.$.$mol_paginator();
-			(obj.value) = (next) => ((this.page_number(next)));
+		isOpened(next){
+			if(next !== undefined) return next;
+			return "all";
+		}
+		opened(){
+			return {"public": "🔓 Публичные", "private": "🔒 Приватные"};
+		}
+		Switch1(){
+			const obj = new this.$.$mol_switch();
+			(obj.value) = (next) => ((this.isOpened(next)));
+			(obj.options) = () => ((this.opened()));
+			return obj;
+		}
+		type(next){
+			if(next !== undefined) return next;
+			return "all";
+		}
+		types(){
+			return {
+				"post": "📝 Посты", 
+				"project": "👷 Проекты", 
+				"guide": "🌎 Путеводители", 
+				"question": "🤔 Вопросы", 
+				"thread": "📑 Треды"
+			};
+		}
+		Switch2(){
+			const obj = new this.$.$mol_switch();
+			(obj.value) = (next) => ((this.type(next)));
+			(obj.options) = () => ((this.types()));
+			return obj;
+		}
+		time(next){
+			if(next !== undefined) return next;
+			return "new";
+		}
+		timings(){
+			return {
+				"new": "Новое", 
+				"activity": "Обсуждаемое", 
+				"hot": "Горячее", 
+				"top": "Лучшее", 
+				"top_week": "Лучшее за неделю", 
+				"top_month": "Лучшее за месяц", 
+				"top_year": "Лучшее за год"
+			};
+		}
+		Switch3(){
+			const obj = new this.$.$mol_switch();
+			(obj.value) = (next) => ((this.time(next)));
+			(obj.options) = () => ((this.timings()));
 			return obj;
 		}
 		PostTitle(id){
@@ -10448,23 +10632,19 @@ var $;
 			(obj.rows) = () => ((this.list_posts()));
 			return obj;
 		}
-		Pag2(){
-			const obj = new this.$.$mol_paginator();
-			(obj.value) = (next) => ((this.page_number(next)));
+		ScrollList(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ([(this.Posts())]);
 			return obj;
 		}
 		Scroll(){
-			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ([
-				(this.Pag1()), 
-				(this.Posts()), 
-				(this.Pag2())
-			]);
+			const obj = new this.$.$mol_scroll();
+			(obj.sub) = () => ([(this.ScrollList())]);
 			return obj;
 		}
-		Scll(){
-			const obj = new this.$.$mol_scroll();
-			(obj.sub) = () => ([(this.Scroll())]);
+		Pag(){
+			const obj = new this.$.$mol_paginator();
+			(obj.value) = (next) => ((this.page_number(next)));
 			return obj;
 		}
 		page_number(next){
@@ -10492,11 +10672,17 @@ var $;
 				(this.Title1()), 
 				(this.Logo()), 
 				(this.Title2()), 
-				(this.Tools())
+				(this.Tools()), 
+				(this.Switch1()), 
+				(this.Switch2()), 
+				(this.Switch3())
 			];
 		}
 		body(){
-			return [(this.Scll())];
+			return [(this.Scroll())];
+		}
+		foot(){
+			return [(this.Pag())];
 		}
 	};
 	($mol_mem(($.$club_main.prototype), "Title1"));
@@ -10508,14 +10694,19 @@ var $;
 	($mol_mem(($.$club_main.prototype), "Settings_icon"));
 	($mol_mem(($.$club_main.prototype), "Settings"));
 	($mol_mem(($.$club_main.prototype), "Tools"));
-	($mol_mem(($.$club_main.prototype), "Pag1"));
+	($mol_mem(($.$club_main.prototype), "isOpened"));
+	($mol_mem(($.$club_main.prototype), "Switch1"));
+	($mol_mem(($.$club_main.prototype), "type"));
+	($mol_mem(($.$club_main.prototype), "Switch2"));
+	($mol_mem(($.$club_main.prototype), "time"));
+	($mol_mem(($.$club_main.prototype), "Switch3"));
 	($mol_mem_key(($.$club_main.prototype), "PostTitle"));
 	($mol_mem_key(($.$club_main.prototype), "Upvote"));
 	($mol_mem_key(($.$club_main.prototype), "Post"));
 	($mol_mem(($.$club_main.prototype), "Posts"));
-	($mol_mem(($.$club_main.prototype), "Pag2"));
+	($mol_mem(($.$club_main.prototype), "ScrollList"));
 	($mol_mem(($.$club_main.prototype), "Scroll"));
-	($mol_mem(($.$club_main.prototype), "Scll"));
+	($mol_mem(($.$club_main.prototype), "Pag"));
 	($mol_mem(($.$club_main.prototype), "page_number"));
 	($mol_mem(($.$club_main.prototype), "settings"));
 
@@ -10537,32 +10728,41 @@ var $;
     var $$;
     (function ($$) {
         class $club_main extends $.$club_main {
-            page_number(next = 1) {
+            page_number(next) {
+                if (next)
+                    this.$.$mol_state_arg.value('page', next.toString());
+                else
+                    next = Number.parseInt(this.$.$mol_state_arg.value('page') || '1');
                 return next;
             }
-            after(anchor_id = 0) {
-                const newId = ((anchor_id + 70) / 70);
-                this.page_number(Math.floor(newId));
-                const feed = $mol_fetch.json(this.url());
-                this.feed(feed);
-                const posts = feed.items;
-                this.posts(this.posts().concat(posts));
-                const newIds = [];
-                const startId = anchor_id || 0;
-                for (let i = startId; i < this.posts().length; i++) {
-                    newIds.push(i);
-                }
-                return Array.from({ length: 70 }, (_, i) => (anchor_id ?? 0) + i + 1);
+            isOpened(next) {
+                return next || 'all';
+            }
+            type(next) {
+                return next || 'all';
+            }
+            time(next) {
+                return next || 'new';
             }
             url() {
-                console.log(this.page_number());
-                return `https://vas3k.club/all/new/feed.json?page=${this.page_number()}`;
+                return `https://vas3k.club/${this.type()}/${this.time()}/feed.json?page=${this.page_number()}`;
             }
             feed(next) {
-                return next || null;
+                return next || $mol_fetch.json(this.url());
             }
             posts(next) {
-                return next || [];
+                return next || this.feed().items.filter((v) => {
+                    if (this.isOpened() === 'all') {
+                        return true;
+                    }
+                    else if (this.isOpened() === 'public' && v._club.is_public) {
+                        return true;
+                    }
+                    else if (this.isOpened() === 'private' && !v._club.is_public) {
+                        return true;
+                    }
+                    return false;
+                });
             }
             list_posts() {
                 return this.posts().map((_, i) => this.Post(i));
@@ -10585,8 +10785,14 @@ var $;
             $mol_mem
         ], $club_main.prototype, "page_number", null);
         __decorate([
-            $mol_mem_key
-        ], $club_main.prototype, "after", null);
+            $mol_mem
+        ], $club_main.prototype, "isOpened", null);
+        __decorate([
+            $mol_mem
+        ], $club_main.prototype, "type", null);
+        __decorate([
+            $mol_mem
+        ], $club_main.prototype, "time", null);
         __decorate([
             $mol_mem
         ], $club_main.prototype, "url", null);
