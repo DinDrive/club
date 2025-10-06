@@ -47,30 +47,6 @@ $mol_page $mol_view
 			dom_name \footer
 			sub <= foot /$mol_view
 
-$mol_pop $mol_view
-	showed? false
-	align_vert \
-	align_hor \
-	prefer \vert
-	sub /
-		<= Anchor null
-	sub_visible /
-		<= Anchor
-		<= Bubble $mol_pop_bubble
-			align <= align \bottom_center
-			content <= bubble_content /$mol_view_content
-			height_max <= height_max 9999
-
-$mol_pop_bubble $mol_view
-	sub <= content /$mol_view_content
-	style *
-		^
-		maxHeight <= height_max 9999
-	attr *
-		^
-		mol_pop_align <= align \
-		tabindex 0
-
 $mol_speck $mol_view
 	minimal_width 12
 	attr *
@@ -108,123 +84,15 @@ $mol_button_typed $mol_button
 
 $mol_button_minor $mol_button_typed
 
-$mol_check $mol_button_minor
-	attr *
-		^
-		mol_check_checked <= checked? false
-		aria-checked <= aria_checked \false
-		role <= aria_role \checkbox
-	sub /$mol_view_content
-		<= Icon null
-		<= label /
-			<= Title $mol_view
-				sub /
-					<= title \
+$mol_button_major $mol_button_minor
+	theme \$mol_theme_base
 
-$mol_pick $mol_pop
-	event *
-		^
-		keydown?event <=> keydown?event null
-	Anchor <= Trigger $mol_check
-		minimal_width 40
-		minimal_height 40
-		enabled <= trigger_enabled true
-		checked? <=> showed?
-		clicks? <=> clicks? null
-		sub <= trigger_content /$mol_view_content
-			<= title
-		hint <= hint \
-
-$mol_svg $mol_view
-	dom_name \svg
-	dom_name_space \http://www.w3.org/2000/svg
-	font_size 16
-	font_family \
-	style_size *
-
-$mol_svg_root $mol_svg
-	dom_name \svg
-	attr *
-		^
-		viewBox <= view_box \0 0 100 100
-		preserveAspectRatio <= aspect \xMidYMid
-
-$mol_svg_path $mol_svg
-	dom_name \path
-	attr *
-		^
-		d <= geometry \
-
-
-$mol_icon $mol_svg_root
-	view_box \0 0 24 24
-	minimal_width 16
-	minimal_height 16
-	sub /
-		<= Path $mol_svg_path
-			geometry <= path \
-
-$mol_icon_calendar $mol_icon path \M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z
-
-$mol_icon_calendar_today $mol_icon path \M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z
-
-$mol_hotkey $mol_plugin
-	event *
-		^
-		keydown?event <=> keydown?event null
-	key *
-	mod_ctrl false
-	mod_alt false
-	mod_shift false
-
-$mol_string $mol_view
-	dom_name \input
-	enabled true
-	minimal_height 40
-	autocomplete false
-	selection? /number
-		0
-		0
-	auto /
-		<= selection_watcher null
-		<= error_report null
-	field *
-		^
-		disabled <= disabled false
-		value <= value_changed? <=> value? \
-		placeholder <= hint_visible <= hint \
-		spellcheck <= spellcheck true
-		autocomplete <= autocomplete_native \
-		selectionEnd <= selection_end 0
-		selectionStart <= selection_start 0
-		inputMode <= keyboard \text
-		enterkeyhint <= enter \go
-	attr *
-		^
-		maxlength <= length_max +Infinity
-		type <= type? \text
-	event *
-		^
-		input?event <=> event_change?event null
-	plugins /
-		<= Submit $mol_hotkey
-			mod_ctrl <= submit_with_ctrl false
-			key * enter?event <=> submit?event null
-
-$mol_format $mol_string
-	allow \0123456789
-	hint <= mask*0 \
-	keyboard \numeric
-
-$mol_icon_trash_can $mol_icon path \M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z
-
-$mol_icon_trash_can_outline $mol_icon path \M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z
-
-$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
-
-$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
-
-$mol_icon_chevron_right $mol_icon path \M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit +Infinity
+	row_width 0
+	sub / <= title
 
 $mol_list $mol_view
 	render_visible_only true
@@ -238,112 +106,6 @@ $mol_list $mol_view
 	view_window /
 		0
 		0
-
-$mol_hor $mol_view
-
-$mol_calendar $mol_list
-	sub /
-		<= Head $mol_view
-			sub <= head /
-				<= Title $mol_view
-					minimal_height 24
-					sub /
-						<= title \
-		<= Weekdays $mol_hor
-			sub <= weekdays /$mol_view
-	weeks /$mol_view
-	weeks_count 6
-	-
-	Weekday* $mol_calendar_day
-		holiday <= weekend* false
-		sub /
-			<= weekday* \
-	-
-	Week* $mol_hor
-		sub <= week_days* /$mol_view
-	-
-	Day* $mol_calendar_day
-		ghost <= day_ghost* false
-		holiday <= day_holiday* false
-		selected <= day_selected* false
-		today <= day_today* false
-		theme <= day_theme* null
-		sub <= day_content* /
-			<= day_text* \
-	-
-	month_string \
-	month_moment $mol_time_moment
-
-$mol_calendar_day $mol_view
-	minimal_height 24
-	minimal_width 36
-	attr *
-		mol_calendar_holiday <= holiday false
-		mol_calendar_ghost <= ghost false
-		mol_calendar_selected <= selected false
-		mol_calendar_today <= today false
-		mol_theme <= theme null
-
-$mol_date $mol_pick
-	Icon $mol_icon_calendar
-	-
-	bubble_content /
-		<= Input_row $mol_view sub <= input_content /
-			<= Today $mol_button_minor
-				hint @ \Today
-				enabled <= enabled true
-				click?event <=> today_click?event null
-				sub /
-					<= Today_icon $mol_icon_calendar_today
-			<= Input $mol_format
-				value? <=> value? \
-				value_changed? => value_changed?
-				mask* <= input_mask* \
-				enabled <= enabled true
-			<= Clear $mol_button_minor
-				hint @ \Clear
-				enabled <= enabled true
-				click?event <=> clear?event null
-				sub /
-					<= Clear_icon $mol_icon_trash_can_outline
-		<= Calendar $mol_date_calendar
-			enabled <= enabled true
-			month_moment <= month_moment <= value_moment
-			day_selected* <= day_selected* false
-			day_click*?event <=> day_click*?event null
-			Title => Calendar_title
-			head /
-				<= Calendar_tools $mol_view
-					sub /
-						<= Prev $mol_button_minor
-							hint <= prev_hint @ \Previous month
-							click?event <=> prev?event null
-							sub /
-								<= Prev_icon $mol_icon_chevron_left
-						<= Calendar_title
-						<= Next $mol_button_minor
-							hint <= next_hint @ \Next month
-							click?event <=> next?event null
-							sub /
-								<= Next_icon $mol_icon_chevron_right
-	-
-	value_number? +NaN
-	value_moment? $mol_time_moment
-
-$mol_date_calendar $mol_calendar
-	day_content* /
-		<= Day_button* $mol_button_minor
-			title <= day_text*
-			event_click?event <=> day_click*?event null
-			minimal_height 24
-			enabled <= enabled true
-
-$mol_paragraph $mol_view
-	line_height 24
-	letter_width 7
-	width_limit +Infinity
-	row_width 0
-	sub / <= title
 
 $mol_stack $mol_view
 
@@ -389,6 +151,35 @@ $mol_text_code_line $mol_paragraph
 		needle <= highlight \
 		uri <= token_uri* \
 	find_pos* null
+
+$mol_svg $mol_view
+	dom_name \svg
+	dom_name_space \http://www.w3.org/2000/svg
+	font_size 16
+	font_family \
+	style_size *
+
+$mol_svg_root $mol_svg
+	dom_name \svg
+	attr *
+		^
+		viewBox <= view_box \0 0 100 100
+		preserveAspectRatio <= aspect \xMidYMid
+
+$mol_svg_path $mol_svg
+	dom_name \path
+	attr *
+		^
+		d <= geometry \
+
+
+$mol_icon $mol_svg_root
+	view_box \0 0 24 24
+	minimal_width 16
+	minimal_height 16
+	sub /
+		<= Path $mol_svg_path
+			geometry <= path \
 
 $mol_icon_clipboard $mol_icon path \M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3
 
@@ -437,6 +228,21 @@ $mol_float $mol_view
 	style *
 		^
 		minHeight \auto
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
+
+$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
 
 $mol_check_expand $mol_check
 	Icon $mol_icon_chevron
@@ -748,22 +554,56 @@ $club_post $mol_page
 	text \
 	date_published \
 	date_modified \
-	title <= post_title 
+	author_url*0 \
+	author_name*0 \
+	author_avatar*0 \
+	upvotes \
+	head /
+		<= Upvote $mol_button_major title <= upvotes
+		<= Title $mol_paragraph title <= post_title
 	body /
-		<= Header $mol_view
-			sub /
-				<= DatePublished $mol_date
-					value <= date_published
-				<= DateModified $mol_date
-					value <= date_modified
 		<= Article $mol_text
 			text <= text
-		<= CommentTitle $mol_paragraph
-			title @\Комментарии
-		<= Items $mol_list
-			rows <= list_items /
-				<= Item*0 $mol_link
-					title <= comment_text* \
+		<= Info $mol_view
+			sub /
+				<= DatePublished $mol_paragraph
+					title <= date_published
+				<= DateModified $mol_paragraph
+					title <= date_modified
+		<= Authors $mol_list
+			rows <= list_authors /
+				<= Author*0 $mol_link
+					uri <= author_url*
+					title <= author_name*
+					sub /
+						<= AuthorAvatar* $mol_image
+							uri <= author_avatar*
+						<= AuthorName* $mol_text
+							text <= author_name*
+
+$club_comments $mol_page
+	comment_author*0 null
+	comment_text*0 \
+	comment_author_name*0 \
+	comment_author_slug*0 \
+	comment_author_avatar*0 \
+	head /
+		<= Title $mol_paragraph title \Комментарии
+	body /
+		<= Comments $mol_list
+			rows <= list_comments /
+				<= Comment* $mol_view
+					sub /
+						<= Author* $mol_view
+							sub /
+								<= AuthorAvatar* $mol_image
+									uri <= comment_author_avatar*
+								<= AuthorName* $mol_paragraph
+									title <= comment_author_name*
+								<= AuthorSlug* $mol_paragraph
+									title <= comment_author_slug*
+						<= CommentText* $mol_text
+							text <= comment_text*
 
 $mol_check_icon $mol_check
 
@@ -774,7 +614,15 @@ $mol_lights_toggle $mol_check_icon
 	hint @ \Toggle lights
 	checked? <=> lights? false
 
+$mol_icon_cog $mol_icon path \M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z
+
+$mol_icon_cog_outline $mol_icon path \M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.21,15.05 2.27,14.78 2.46,14.63L4.57,12.97L4.5,12L4.57,11L2.46,9.37C2.27,9.22 2.21,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.79,8.95 21.73,9.22 21.54,9.37L19.43,11L19.5,12L19.43,13L21.54,14.63C21.73,14.78 21.79,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.04 19.05,18.95L16.56,17.95C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.66L7.86,15.62C8.63,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.66L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z
+
 $mol_bar $mol_view
+
+$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
+
+$mol_icon_chevron_right $mol_icon path \M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z
 
 $mol_paginator $mol_bar
 	step 1
@@ -791,28 +639,105 @@ $mol_paginator $mol_bar
 
 $club_main $mol_page
 	page_number? 1
-	item_url*0 \
-	item_title*0 \
+	post_url*0 \
+	post_title*0 \
+	post_upvotes*0 \
+	logo_url \
+	settings? false
 	head /
-		<= Title $mol_paragraph title \Вастрик Клуб
-		<= Lighter $mol_lights_toggle
+		<= Title1 $mol_text text \# Вастрик
+		<= Logo $mol_image uri <= logo_url
+		<= Title2 $mol_text text \# Клуб
+		<= Tools $mol_view sub /
+			<= Lighter $mol_lights_toggle
+			<= Settings $mol_check_icon
+				Icon <= Settings_icon $mol_icon_cog_outline
+				hint \Настройки
+				checked? <=> settings?
 	body /
 		<= Scll $mol_scroll sub / <= Scroll $mol_list rows /
 			<= Pag1 $mol_paginator
 				value? <=> page_number?
-			<= Items $mol_list
-				rows <= list_items /
-					<= Item*0 $mol_link
+			<= Posts $mol_list
+				rows <= list_posts /
+					<= Post*0 $mol_link
 						arg *
-							post <= item_url*
-						title <= item_title* \
+							post <= post_url*
+						sub /
+							<= Upvote* $mol_button_major title <= post_upvotes*
+							<= PostTitle* $mol_view
+								sub / <= post_title*
 			<= Pag2 $mol_paginator
 				value? <=> page_number?
 
 $club $mol_book2
+	settingsOpened? false
 	plugins /
 		<= Theme $mol_theme_auto
 	pages /
 		<= Main $club_main
-		<= Post $club_post
+			settings? <=> settingsOpened?
+		<= FSettings
+		<= FPost
+		<= FComments
 
+$mol_hotkey $mol_plugin
+	event *
+		^
+		keydown?event <=> keydown?event null
+	key *
+	mod_ctrl false
+	mod_alt false
+	mod_shift false
+
+$mol_string $mol_view
+	dom_name \input
+	enabled true
+	minimal_height 40
+	autocomplete false
+	selection? /number
+		0
+		0
+	auto /
+		<= selection_watcher null
+		<= error_report null
+	field *
+		^
+		disabled <= disabled false
+		value <= value_changed? <=> value? \
+		placeholder <= hint_visible <= hint \
+		spellcheck <= spellcheck true
+		autocomplete <= autocomplete_native \
+		selectionEnd <= selection_end 0
+		selectionStart <= selection_start 0
+		inputMode <= keyboard \text
+		enterkeyhint <= enter \go
+	attr *
+		^
+		maxlength <= length_max +Infinity
+		type <= type? \text
+	event *
+		^
+		input?event <=> event_change?event null
+	plugins /
+		<= Submit $mol_hotkey
+			mod_ctrl <= submit_with_ctrl false
+			key * enter?event <=> submit?event null
+
+$club_settings $mol_page
+	token? \
+	head /
+		<= Title $mol_paragraph title \Настройки
+	body /
+		<= L $mol_view sub /
+			<= ThemeText $mol_text text \Тема сайта
+			<= Lighter $mol_lights_toggle
+		<= TokenText $mol_text
+			text \Чтобы читать закрытые посты 🔒,
+				\а так же смотреть профили пользователей и комментарии
+				\нужен личный токен с Vas3k.Club, чтобы получить его
+				\достаньте его из кук через девтулзы
+				\и вставьте сюда
+		<= TokenInput $mol_string
+			value? <=> token?
+			hint \XxYy1234XxYy1234XxYy1234XxYy1234

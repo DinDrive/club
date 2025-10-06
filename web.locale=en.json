@@ -1,9 +1,4 @@
 {
-	"$club_post_CommentTitle_title": "Комментарии",
-	"$mol_date_Clear_hint": "Clear",
-	"$mol_date_Today_hint": "Today",
-	"$mol_date_next_hint": "Next month",
-	"$mol_date_prev_hint": "Previous month",
 	"$mol_lights_toggle_hint": "Toggle lights",
 	"$mol_paginator_backward_hint": "Backward",
 	"$mol_paginator_forward_hint": "Forward",
