@@ -14,6 +14,16 @@
 			(obj.text) = () => ("# Клуб");
 			return obj;
 		}
+		Source_icon(){
+			const obj = new this.$.$mol_icon_github();
+			return obj;
+		}
+		Source(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://github.com/DinDrive/club");
+			(obj.sub) = () => ([(this.Source_icon())]);
+			return obj;
+		}
 		Lighter(){
 			const obj = new this.$.$mol_lights_toggle();
 			return obj;
@@ -31,7 +41,11 @@
 		}
 		Tools(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Lighter()), (this.Settings())]);
+			(obj.sub) = () => ([
+				(this.Source()), 
+				(this.Lighter()), 
+				(this.Settings())
+			]);
 			return obj;
 		}
 		Pag1(){
@@ -117,6 +131,8 @@
 	($mol_mem(($.$club_main.prototype), "Title1"));
 	($mol_mem(($.$club_main.prototype), "Logo"));
 	($mol_mem(($.$club_main.prototype), "Title2"));
+	($mol_mem(($.$club_main.prototype), "Source_icon"));
+	($mol_mem(($.$club_main.prototype), "Source"));
 	($mol_mem(($.$club_main.prototype), "Lighter"));
 	($mol_mem(($.$club_main.prototype), "Settings_icon"));
 	($mol_mem(($.$club_main.prototype), "Settings"));

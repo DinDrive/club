@@ -10,6 +10,10 @@ $club_main $mol_page
 		<= Logo $mol_image uri <= logo_url
 		<= Title2 $mol_text text \# Клуб
 		<= Tools $mol_view sub /
+			<= Source $mol_link
+				uri \https://github.com/DinDrive/club
+				sub /
+					<= Source_icon $mol_icon_github
 			<= Lighter $mol_lights_toggle
 			<= Settings $mol_check_icon
 				Icon <= Settings_icon $mol_icon_cog_outline

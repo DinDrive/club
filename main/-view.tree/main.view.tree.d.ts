@@ -15,69 +15,79 @@ declare namespace $ {
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_check_icon__Icon_club_main_4 = $mol_type_enforce<
+	type $mol_link__uri_club_main_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__sub_club_main_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_check_icon__Icon_club_main_6 = $mol_type_enforce<
 		ReturnType< $club_main['Settings_icon'] >
 		,
 		ReturnType< $mol_check_icon['Icon'] >
 	>
-	type $mol_check_icon__hint_club_main_5 = $mol_type_enforce<
+	type $mol_check_icon__hint_club_main_7 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_check_icon['hint'] >
 	>
-	type $mol_check_icon__checked_club_main_6 = $mol_type_enforce<
+	type $mol_check_icon__checked_club_main_8 = $mol_type_enforce<
 		ReturnType< $club_main['settings'] >
 		,
 		ReturnType< $mol_check_icon['checked'] >
 	>
-	type $mol_view__sub_club_main_7 = $mol_type_enforce<
+	type $mol_view__sub_club_main_9 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paginator__value_club_main_8 = $mol_type_enforce<
+	type $mol_paginator__value_club_main_10 = $mol_type_enforce<
 		ReturnType< $club_main['page_number'] >
 		,
 		ReturnType< $mol_paginator['value'] >
 	>
-	type $mol_button_major__title_club_main_9 = $mol_type_enforce<
+	type $mol_button_major__title_club_main_11 = $mol_type_enforce<
 		ReturnType< $club_main['post_upvotes'] >
 		,
 		ReturnType< $mol_button_major['title'] >
 	>
-	type $mol_view__sub_club_main_10 = $mol_type_enforce<
+	type $mol_view__sub_club_main_12 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link__arg_club_main_11 = $mol_type_enforce<
+	type $mol_link__arg_club_main_13 = $mol_type_enforce<
 		({ 
 			'post': ReturnType< $club_main['post_url'] >,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_club_main_12 = $mol_type_enforce<
+	type $mol_link__sub_club_main_14 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_list__rows_club_main_13 = $mol_type_enforce<
+	type $mol_list__rows_club_main_15 = $mol_type_enforce<
 		ReturnType< $club_main['list_posts'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_paginator__value_club_main_14 = $mol_type_enforce<
+	type $mol_paginator__value_club_main_16 = $mol_type_enforce<
 		ReturnType< $club_main['page_number'] >
 		,
 		ReturnType< $mol_paginator['value'] >
 	>
-	type $mol_list__rows_club_main_15 = $mol_type_enforce<
+	type $mol_list__rows_club_main_17 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_scroll__sub_club_main_16 = $mol_type_enforce<
+	type $mol_scroll__sub_club_main_18 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_scroll['sub'] >
@@ -86,6 +96,8 @@ declare namespace $ {
 		Title1( ): $mol_text
 		Logo( ): $mol_image
 		Title2( ): $mol_text
+		Source_icon( ): $mol_icon_github
+		Source( ): $mol_link
 		Lighter( ): $mol_lights_toggle
 		Settings_icon( ): $mol_icon_cog_outline
 		Settings( ): $mol_check_icon
