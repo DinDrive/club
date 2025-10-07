@@ -10,12 +10,16 @@ $club_post $mol_page
 	author_name*0 \
 	author_avatar*0 \
 	upvotes \
+	embed \
+	title <= post_title
 	head /
 		<= Upvote $mol_button_major title <= upvotes
 		<= Title $mol_paragraph title <= post_title
 	body /
 		<= Article $mol_text
 			text <= text
+		<= ArticleEmbed $mol_embed_native
+			uri <= embed
 		<= Info $mol_view
 			sub /
 				<= DatePublished $mol_paragraph

@@ -81,17 +81,23 @@ namespace $.$$ {
 			return $mol_state_local.value( 'token' )
 		}
 
-		@ $mol_mem
-		html(): any {
-			if(!this.post()) return [null]
-			return this.html()
-		}
 
 		@ $mol_mem
 		post(next?: Post): Post | null {
 			if(!this.post_url()) return null
 			const link = (this.token()) ? this.post_url() + '?token=' + this.token() : this.post_url()
-			return next || ($mol_fetch.json( link ) as PostRoot).post
+			if(this.post_url().includes('weekly_digest')) {
+				this.embed(this.post_arg() + '?token=' + this.token())
+				return null
+			} else {
+				this.embed('this.post_url()')
+				return next || ($mol_fetch.json( link ) as PostRoot).post
+			}
+		}
+
+		@ $mol_mem
+		embed(next?: string) {
+			return next || ''
 		}
 
 		upvotes() {
@@ -99,11 +105,11 @@ namespace $.$$ {
 		}
 		
 		post_title(): string {
-			return this.post()?.title ?? 'Нет заголовка'
+			return this.post()?.title ?? 'Нет поста'
 		}
 
 		text(): string {
-			return this.post()?.content_text ?? 'Нет поста'
+			return this.post()?.content_text ?? ''
 		}
 
 		date_published() {

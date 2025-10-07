@@ -1,0 +1,26 @@
+body {
+	margin: 0;
+}
+
+* {
+	font-family: "Ubuntu", Helvetica, Verdana, sans-serif;
+}
+
+[mol_view][mol_view_error]:not([mol_view_error="Promise"], [mol_view_error="$mol_promise_blocker"]) {
+	background-image: url(/club/assets/police.png);
+	color: #fff;
+	font-weight: bold;
+	-webkit-text-stroke: 0.3rem #000;
+  	paint-order: stroke fill;
+	min-height: 2rem;
+	animation: police 2s linear infinite;
+}
+
+@keyframes police {
+	0% {
+		background-position: 0px;
+	}
+	100% {
+		background-position: 28px;
+	}
+}
