@@ -11355,17 +11355,17 @@ var $;
             }
             publicity(next) {
                 next = next ? next : '';
-                this.$.$mol_state_arg.value('publicity', next.toString());
+                this.$.$mol_state_arg.value('publicity', next);
                 return next || 'all';
             }
             type(next) {
                 next = next ? next : '';
-                this.$.$mol_state_arg.value('type', next.toString());
+                this.$.$mol_state_arg.value('type', next);
                 return next || 'all';
             }
             timing(next) {
                 if (next)
-                    this.$.$mol_state_arg.value('timing', next.toString());
+                    this.$.$mol_state_arg.value('timing', next);
                 else
                     next = this.$.$mol_state_arg.value('timing') || 'new';
                 return next;
