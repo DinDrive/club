@@ -5,10 +5,10 @@
 		{
 			"src": "/club/assets/favicon-dark.svg",
 			"type": "image/svg+xml",
-			"sizes": "512x512"
+			"sizes": "256x256"
 		}
 	],
-	"start_url": ".",
+	"start_url": "../",
 	"background_color": "#000000",
 	"theme_color": "#000000",
 	"display": "standalone"
