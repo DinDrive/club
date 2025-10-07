@@ -18,8 +18,6 @@ $club_post $mol_page
 	body /
 		<= Article $mol_text
 			text <= text
-		<= ArticleEmbed $mol_embed_native
-			uri <= embed
 		<= Info $mol_view
 			sub /
 				<= DatePublished $mol_paragraph

@@ -88,11 +88,10 @@ namespace $.$$ {
 			const link = (this.token()) ? this.post_url() + '?token=' + this.token() : this.post_url()
 			if(this.post_url().includes('weekly_digest')) {
 				this.embed(this.post_arg() + '?token=' + this.token())
-				return null
 			} else {
-				this.embed('this.post_url()')
-				return next || ($mol_fetch.json( link ) as PostRoot).post
+				this.embed('')
 			}
+			return next || ($mol_fetch.json( link ) as PostRoot).post
 		}
 
 		@ $mol_mem
@@ -105,7 +104,7 @@ namespace $.$$ {
 		}
 		
 		post_title(): string {
-			return this.post()?.title ?? 'Нет поста'
+			return this.post()?.title ?? 'Вастрик Клуб'
 		}
 
 		text(): string {

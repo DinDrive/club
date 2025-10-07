@@ -1,12 +1,11 @@
 $club $mol_book2
 	settingsOpened? false
-	title <= title2
 	plugins /
 		<= Theme $mol_theme_auto
 	pages /
 		<= Main $club_main
 			settings? <=> settingsOpened?
 		<= FSettings
-		<= FPost
-			title => title2
+		<= FPost $mol_view
+			title => title
 		<= FComments
