@@ -21,4 +21,4 @@
 	include \/mol/view/tree/test
 \/club/app
 	include \/mol/offline/install
-	deploy \/club/app/manifest.json
+	deploy \/club/assets/*
