@@ -1107,13 +1107,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    class $mol_plugin extends $mol_view {
-        dom_node_external(next?: Element): Element;
-        render(): void;
-    }
-}
-
-declare namespace $ {
     class $mol_dom_listener extends $mol_object {
         _node: any;
         _event: string;
@@ -1264,6 +1257,13 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_plugin extends $mol_view {
+        dom_node_external(next?: Element): Element;
+        render(): void;
+    }
 }
 
 declare namespace $ {
@@ -3795,6 +3795,8 @@ declare namespace $ {
 		author_name( id: any): string
 		author_avatar( id: any): string
 		upvotes( ): string
+		embed( ): string
+		title( ): ReturnType< $club_post['post_title'] >
 		head( ): readonly(any)[]
 		body( ): readonly(any)[]
 	}
@@ -3864,8 +3866,8 @@ declare namespace $.$$ {
         post_arg(): string | null;
         post_url(): string;
         token(): unknown;
-        html(): any;
         post(next?: Post): Post | null;
+        embed(next?: string): string;
         upvotes(): string;
         post_title(): string;
         text(): string;
@@ -4252,7 +4254,7 @@ declare namespace $ {
 		ReturnType< $mol_switch['value'] >
 	>
 	type $mol_switch__options_club_main_5 = $mol_type_enforce<
-		ReturnType< $club_main['opened'] >
+		ReturnType< $club_main['filter_publicity'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
@@ -4262,7 +4264,7 @@ declare namespace $ {
 		ReturnType< $mol_switch['value'] >
 	>
 	type $mol_switch__options_club_main_7 = $mol_type_enforce<
-		ReturnType< $club_main['types'] >
+		ReturnType< $club_main['filter_types'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
@@ -4272,7 +4274,7 @@ declare namespace $ {
 		ReturnType< $mol_switch['value'] >
 	>
 	type $mol_switch__options_club_main_9 = $mol_type_enforce<
-		ReturnType< $club_main['timings'] >
+		ReturnType< $club_main['filter_timings'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
@@ -4303,91 +4305,60 @@ declare namespace $ {
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_list__rows_club_main_15 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_scroll__sub_club_main_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_scroll['sub'] >
-	>
-	type $mol_paginator__value_club_main_17 = $mol_type_enforce<
+	type $mol_paginator__value_club_main_15 = $mol_type_enforce<
 		ReturnType< $club_main['page_number'] >
 		,
 		ReturnType< $mol_paginator['value'] >
 	>
-	type $mol_link__uri_club_main_18 = $mol_type_enforce<
+	type $mol_link__uri_club_main_16 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link['uri'] >
 	>
-	type $mol_link__sub_club_main_19 = $mol_type_enforce<
+	type $mol_link__sub_club_main_17 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_check_icon__Icon_club_main_20 = $mol_type_enforce<
+	type $mol_check_icon__Icon_club_main_18 = $mol_type_enforce<
 		ReturnType< $club_main['Settings_icon'] >
 		,
 		ReturnType< $mol_check_icon['Icon'] >
 	>
-	type $mol_check_icon__hint_club_main_21 = $mol_type_enforce<
+	type $mol_check_icon__hint_club_main_19 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_check_icon['hint'] >
 	>
-	type $mol_check_icon__checked_club_main_22 = $mol_type_enforce<
+	type $mol_check_icon__checked_club_main_20 = $mol_type_enforce<
 		ReturnType< $club_main['settings'] >
 		,
 		ReturnType< $mol_check_icon['checked'] >
 	>
-	type $mol_view__sub_club_main_23 = $mol_type_enforce<
+	type $mol_view__sub_club_main_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $club_main extends $mol_page {
+		filter_types( ): ReturnType< ReturnType< $club_main['Filter'] >['types'] >
+		filter_publicity( ): ReturnType< ReturnType< $club_main['Filter'] >['publicity'] >
+		filter_timings( ): ReturnType< ReturnType< $club_main['Filter'] >['timings'] >
+		Filter( ): $club_filters
 		Title1( ): $mol_paragraph
 		Logo( ): $mol_image
 		Title2( ): $mol_paragraph
 		publicity( next?: string ): string
-		opened( ): ({ 
-			'public': string,
-			'private': string,
-		}) 
 		Switch1( ): $mol_switch
 		type( next?: string ): string
-		types( ): ({ 
-			'post': string,
-			'project': string,
-			'guide': string,
-			'question': string,
-			'thread': string,
-			'idea': string,
-			'event': string,
-			'battle': string,
-		}) 
 		Switch2( ): $mol_switch
 		timing( next?: string ): string
-		timings( ): ({ 
-			'new': string,
-			'activity': string,
-			'hot': string,
-			'top': string,
-			'top_week': string,
-			'top_month': string,
-			'top_year': string,
-		}) 
 		Switch3( ): $mol_switch
 		PostTitle( id: any): $mol_view
 		Upvote( id: any): $mol_button_major
 		Post( id: any): $mol_link
 		list_posts( ): readonly(any)[]
 		Posts( ): $mol_list
-		ScrollList( ): $mol_list
-		Scroll( ): $mol_scroll
 		Pag( ): $mol_paginator
 		Source_icon( ): $mol_icon_github
 		Source( ): $mol_link
@@ -4622,6 +4593,20 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+    function $mol_offline_web(): void;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
 
 	type $club_main__settings_club_1 = $mol_type_enforce<
 		ReturnType< $club['settingsOpened'] >
@@ -4631,6 +4616,8 @@ declare namespace $ {
 	export class $club extends $mol_book2 {
 		Theme( ): $mol_theme_auto
 		Main( ): $club_main
+		title( ): ReturnType< ReturnType< $club['FPost'] >['title'] >
+		FPost( ): $mol_view
 		settingsOpened( next?: boolean ): boolean
 		plugins( ): readonly(any)[]
 		pages( ): readonly(any)[]
@@ -4647,6 +4634,34 @@ declare namespace $.$$ {
         FSettings(): $mol_view | $club_settings;
         FPost(): $mol_view | $club_post;
         FComments(): $mol_view | $club_comments;
+    }
+}
+declare namespace $ {
+    class $club_filters extends $mol_view {
+        publicity(): {
+            public: string;
+            private: string;
+        };
+        types(): {
+            post: string;
+            project: string;
+            guide: string;
+            question: string;
+            thread: string;
+            idea: string;
+            event: string;
+            battle: string;
+            docs: string;
+        };
+        timings(): {
+            new: string;
+            activity: string;
+            hot: string;
+            top: string;
+            top_week: string;
+            top_month: string;
+            top_year: string;
+        };
     }
 }
 

@@ -17,13 +17,9 @@
   "keywords": [
     "$club_app",
     "$club",
-    "$mol_book2",
-    "$mol",
-    "$mol_scroll",
-    "$mol_view_view",
-    "$mol_view",
     "$mol_style_attach",
     "$mol_style",
+    "$mol",
     "$mol_dom_context",
     "$mol_dom",
     "$node",
@@ -77,6 +73,8 @@
     "$mol_try",
     "$mol_promise_blocker",
     "$mol_promise_promise",
+    "$mol_view_view",
+    "$mol_view",
     "$mol_theme",
     "$mol_style_prop",
     "$mol_style_func",
@@ -138,6 +136,8 @@
     "$mol_type_pick",
     "$mol_type_keys_extract",
     "$mol_type_keys",
+    "$mol_book2",
+    "$mol_scroll",
     "$mol_print",
     "$mol_dom_listener",
     "$mol_style_define",
@@ -231,7 +231,9 @@
     "$mol_icon_cog",
     "$club_settings",
     "$mol_string",
-    "$mol_hotkey"
+    "$mol_hotkey",
+    "$mol_offline_install",
+    "$mol_offline"
   ],
   "dependencies": {
     "jsdom": "*"

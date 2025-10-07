@@ -558,6 +558,8 @@ $club_post $mol_page
 	author_name*0 \
 	author_avatar*0 \
 	upvotes \
+	embed \
+	title <= post_title
 	head /
 		<= Upvote $mol_button_major title <= upvotes
 		<= Title $mol_paragraph title <= post_title
@@ -663,46 +665,32 @@ $club_main $mol_page
 	logo_url \
 	settings? false
 	head /
+		<= Filter $club_filters
+			types => filter_types
+			publicity => filter_publicity
+			timings => filter_timings
 		<= Title1 $mol_paragraph title \Вастрик
 		<= Logo $mol_image uri <= logo_url
 		<= Title2 $mol_paragraph title \Клуб
 		<= Switch1 $mol_switch
 			value? <=> publicity? \all
-			options <= opened *
-				public \🔓 Публичные
-				private \🔒 Приватные
+			options <= filter_publicity
 		<= Switch2 $mol_switch
 			value? <=> type? \all
-			options <= types *
-				post \📝 Посты
-				project \👷 Проекты
-				guide \🌎 Путеводители
-				question \🤔 Вопросы
-				thread \📃 Треды
-				idea \🤩 Идеи
-				event \🥳 Ивенты
-				battle \👊 Батлы
+			options <= filter_types
 		<= Switch3 $mol_switch
 			value? <=> timing? \new
-			options <= timings *
-				new \Новое
-				activity \Обсуждаемое
-				hot \Горячее
-				top \Лучшее
-				top_week \Лучшее за неделю
-				top_month \Лучшее за месяц
-				top_year \Лучшее за год
+			options <= filter_timings
 	body /
-		<= Scroll $mol_scroll sub / <= ScrollList $mol_list rows /
-			<= Posts $mol_list
-				rows <= list_posts /
-					<= Post*0 $mol_link
-						arg *
-							post <= post_url*
-						sub /
-							<= PostTitle* $mol_view
-								sub / <= post_title*
-							<= Upvote* $mol_button_major title <= post_upvotes*
+		<= Posts $mol_list
+			rows <= list_posts /
+				<= Post*0 $mol_link
+					arg *
+						post <= post_url*
+					sub /
+						<= PostTitle* $mol_view
+							sub / <= post_title*
+						<= Upvote* $mol_button_major title <= post_upvotes*
 	foot /
 		<= Pag $mol_paginator
 			value? <=> page_number?
@@ -725,7 +713,8 @@ $club $mol_book2
 		<= Main $club_main
 			settings? <=> settingsOpened?
 		<= FSettings
-		<= FPost
+		<= FPost $mol_view
+			title => title
 		<= FComments
 
 $mol_hotkey $mol_plugin
