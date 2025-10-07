@@ -51,21 +51,21 @@ namespace $.$$ {
 		@ $mol_mem
 		publicity(next?: string) {
 			next = next ? next : ''
-			this.$.$mol_state_arg.value( 'publicity', next.toString() )
+			this.$.$mol_state_arg.value( 'publicity', next )
 			return next || 'all'
 		}
 
 		@ $mol_mem
 		type(next?: string) {
 			next = next ? next : ''
-			this.$.$mol_state_arg.value( 'type', next.toString() )
+			this.$.$mol_state_arg.value( 'type', next )
 			return  next || 'all'
 		}
 
 		@ $mol_mem
 		timing(next?: string) {
 			if(next)
-				this.$.$mol_state_arg.value( 'timing', next.toString() )
+				this.$.$mol_state_arg.value( 'timing', next )
 			else
 				next = this.$.$mol_state_arg.value( 'timing') || 'new'
 			return next
