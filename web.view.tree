@@ -48,13 +48,7 @@ $mol_page $mol_view
 			sub <= foot /$mol_view
 
 $mol_speck $mol_view
-	minimal_width 12
-	attr *
-		^
-		mol_theme <= theme \$mol_theme_accent
-	style *
-		^
-		minHeight \1em
+	theme \$mol_theme_accent
 	sub /
 		<= value null
 
@@ -96,13 +90,14 @@ $mol_paragraph $mol_view
 
 $mol_list $mol_view
 	render_visible_only true
-	render_over 0
+	render_over 0.1
 	sub <= rows /$mol_view
-	Empty $mol_view
-	Gap_before $mol_view style * paddingTop <= gap_before 0
-	Gap_after $mol_view style * paddingTop <= gap_after 0
+		<= Gap_before $mol_view style * paddingTop <= gap_before 0
+		<= Empty $mol_view
+		<= Gap_after $mol_view style * paddingTop <= gap_after 0
 	item_height_min* 1
 	item_width_min* 1
+	view_window_shift? 0
 	view_window /
 		0
 		0
@@ -333,7 +328,7 @@ $mol_image $mol_view
 		^
 		src <= uri \
 		title <= hint
-		alt <= title
+		alt <= title \
 		loading <= loading \lazy
 		decoding <= decoding \async
 		crossOrigin <= cors null
