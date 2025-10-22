@@ -4424,12 +4424,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    function $milis_log(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-    function $milis_log_in(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-    function $milis_log_out(target: any, key: string, descriptor: PropertyDescriptor): PropertyDescriptor;
-}
-
-declare namespace $ {
 
 	export class $mol_hotkey extends $mol_plugin {
 		keydown( next?: any ): any

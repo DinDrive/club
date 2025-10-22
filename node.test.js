@@ -11494,42 +11494,6 @@ var $;
 
 
 ;
-"use strict";
-var $;
-(function ($) {
-    function $milis_log(target, key, descriptor) {
-        const originalMethod = descriptor.value;
-        descriptor.value = function (...args) {
-            const result = originalMethod.apply(this, args);
-            console.debug(`%c\t${key}\n>>>`, 'color: lightyellow', args, '\t', JSON.stringify(args), '\n<<<', result, '\t', JSON.stringify(result));
-            return result;
-        };
-        return descriptor;
-    }
-    $.$milis_log = $milis_log;
-    function $milis_log_in(target, key, descriptor) {
-        const originalMethod = descriptor.value;
-        descriptor.value = function (...args) {
-            const result = originalMethod.apply(this, args);
-            console.debug(`%c\t${key}\n>>>`, 'color: lightyellow', args, '\t', JSON.stringify(args));
-            return result;
-        };
-        return descriptor;
-    }
-    $.$milis_log_in = $milis_log_in;
-    function $milis_log_out(target, key, descriptor) {
-        const originalMethod = descriptor.value;
-        descriptor.value = function (...args) {
-            const result = originalMethod.apply(this, args);
-            console.debug(`%c\t${key}\n<<<`, 'color: lightyellow', result, '\t', JSON.stringify(result));
-            return result;
-        };
-        return descriptor;
-    }
-    $.$milis_log_out = $milis_log_out;
-})($ || ($ = {}));
-
-;
 	($.$mol_hotkey) = class $mol_hotkey extends ($.$mol_plugin) {
 		keydown(next){
 			if(next !== undefined) return next;
@@ -11977,7 +11941,6 @@ var $;
             $mol_mem
         ], $club.prototype, "post_arg", null);
         __decorate([
-            $milis_log,
             $mol_mem
         ], $club.prototype, "token", null);
         __decorate([
