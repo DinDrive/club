@@ -10,7 +10,6 @@ namespace $.$$ {
 			return $mol_state_arg.value('post')
 		}
 
-		@$milis_log
 		@$mol_mem
 		token() {
 			return $mol_state_local.value('token')
