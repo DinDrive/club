@@ -4943,5 +4943,8 @@ declare namespace $ {
     }
 }
 
+declare namespace $.$$ {
+}
+
 export = $;
 //# sourceMappingURL=node.d.ts.map
