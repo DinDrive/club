@@ -1,0 +1,15 @@
+{
+	"short_name": "Club",
+	"name": "Vas3k Club",
+	"icons": [
+		{
+			"src": "/club/assets/favicon-dark.svg",
+			"type": "image/svg+xml",
+			"sizes": "256x256"
+		}
+	],
+	"start_url": "../",
+	"background_color": "#000000",
+	"theme_color": "#000000",
+	"display": "standalone"
+}
