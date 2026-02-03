@@ -1,4 +1,6 @@
 {
+	"$bog_theme_picker_Search_hint": "Начните вводить для поиска",
+	"$bog_theme_toggle_Anchor_hint": "Переключить тему",
 	"$mol_lights_toggle_hint": "Переключить освещение",
 	"$mol_paginator_backward_hint": "Назад",
 	"$mol_paginator_forward_hint": "Вперёд",
