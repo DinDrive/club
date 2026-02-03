@@ -1,10 +1,13 @@
 $club $mol_book2
 	settingsOpened? false
 	plugins /
-		<= Theme $mol_theme_auto
+		<= Favicon $bog_favicon
+			Icon <= icon $mol_icon_home
+		<= Theme $bog_theme_auto
 	pages /
 		<= Main $club_main
 			settings? <=> settingsOpened?
+			theme_auto <= Theme
 		<= FSettings
 		<= FPost $mol_view
 			title => title

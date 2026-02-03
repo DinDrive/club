@@ -5,6 +5,7 @@ $club_main $mol_page
 	post_upvotes*0 \
 	logo_url \
 	settings? false
+	theme_auto $bog_theme_auto
 	head /
 		<= Filter $club_filters
 			types => filter_types
@@ -40,7 +41,8 @@ $club_main $mol_page
 				uri \https://github.com/DinDrive/club
 				sub /
 					<= Source_icon $mol_icon_github
-			<= Lighter $mol_lights_toggle
+			<= Lighter $bog_theme_toggle
+				theme_auto <= theme_auto
 			<= Settings $mol_check_icon
 				Icon <= Settings_icon $mol_icon_cog_outline
 				hint \Настройки
