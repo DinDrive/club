@@ -6,12 +6,17 @@ body {
 	font-family: "Ubuntu", Helvetica, Verdana, sans-serif;
 }
 
+[mol_view_root] {
+	width: 100vw;
+	height: 100vh;
+}
+
 [mol_view][mol_view_error]:not([mol_view_error="Promise"], [mol_view_error="$mol_promise_blocker"]) {
 	background-image: url(/club/assets/police.png);
 	color: #fff;
 	font-weight: bold;
 	-webkit-text-stroke: 0.3rem #000;
-  	paint-order: stroke fill;
+	paint-order: stroke fill;
 	min-height: 2rem;
 	animation: police 2s linear infinite;
 }
