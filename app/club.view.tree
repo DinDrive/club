@@ -10,11 +10,39 @@ $club $mol_page
 				bookmarks null
 				rooms null
 				settings null
+				type null
 			sub /
 				<= Logo_img $mol_image
 					uri \https://vas3k.club/static/images/logo/logo-128.png
 				<= Logo_text $mol_paragraph
 					title \Вастрик.Клуб
+		<= Menu_compose $mol_link
+			uri \https://vas3k.club/create/
+			sub /
+				<= Compose_icon $mol_icon_pencil
+				<= Compose_text $mol_paragraph
+					title \Пиши
+		<= Menu_bookmarks $mol_link
+			arg *
+				bookmarks \1
+				post null
+				user null
+				rooms null
+				settings null
+				type null
+			sub /
+				<= Bookmarks_icon $mol_icon_bookmark_outline
+		<= Menu_avatar $mol_link
+			arg *
+				user <= current_user_slug \
+				post null
+				bookmarks null
+				rooms null
+				settings null
+				type null
+			sub /
+				<= User_avatar $mol_image
+					uri <= current_user_avatar \
 	body /
 		<= Main $mol_view
 			sub /

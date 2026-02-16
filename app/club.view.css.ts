@@ -7,6 +7,17 @@ namespace $.$$ {
 		lineHeight: '1.42',
 
 		Head: {
+			display: 'flex',
+			flex: {
+				direction: 'row',
+				wrap: 'nowrap',
+			},
+			align: {
+				items: 'center',
+			},
+			justify: {
+				content: 'flex-start',
+			},
 			background: {
 				color: 'transparent',
 			},
@@ -16,6 +27,7 @@ namespace $.$$ {
 			},
 			position: 'relative',
 			zIndex: 0,
+			minHeight: '0px',
 			maxWidth: '1000px',
 			margin: {
 				left: 'auto',
@@ -27,36 +39,101 @@ namespace $.$$ {
 				left: '20px',
 				right: '20px',
 			},
+			font: {
+				size: '120%',
+			},
+			gap: '10px',
 		},
 
 		Logo: {
 			display: 'flex',
 			flex: {
 				direction: 'row',
+				grow: 1,
 			},
 			align: {
 				items: 'center',
 			},
-			gap: '0.5rem',
+			gap: '10px',
 			textDecoration: 'none',
+			minWidth: '210px',
 		},
 
 		Logo_img: {
-			width: '2rem',
-			height: '2rem',
+			width: '1em',
+			height: '1em',
+			verticalAlign: 'middle',
 		},
 
 		Logo_text: {
 			font: {
-				size: '1.3rem',
-				weight: 'bold',
+				size: '26px',
+				weight: 700,
 			},
+			whiteSpace: 'nowrap',
+		},
+
+		Menu_compose: {
+			display: 'flex',
+			flex: {
+				direction: 'row',
+				wrap: 'nowrap',
+			},
+			gap: '8px',
+			align: {
+				items: 'center',
+			},
+			padding: {
+				top: '13px',
+				right: '20px',
+				bottom: '13px',
+				left: '20px',
+			},
+			margin: {
+				right: '10px',
+			},
+			cursor: 'pointer',
+			font: {
+				size: '80%',
+			},
+			textDecoration: 'none',
+		},
+
+		Menu_bookmarks: {
+			font: {
+				size: '110%',
+			},
+			opacity: 0.5,
+			textDecoration: 'none',
+			verticalAlign: 'middle',
+		},
+
+		Menu_avatar: {
+			textDecoration: 'none',
+		},
+
+		User_avatar: {
+			width: '40px',
+			minWidth: '40px',
+			height: '40px',
+			border: {
+				radius: '50%',
+			},
+			objectFit: 'cover',
+			margin: {
+				left: '10px',
+			},
+		},
+
+		Body_content: {
+			maxWidth: '100%',
 		},
 
 		Main: {
 			display: 'grid',
-			gridTemplateColumns: '250px auto',
+			gridTemplateColumns: '250px 1fr',
 			maxWidth: '1000px',
+			minHeight: '100vh',
 			margin: {
 				left: 'auto',
 				right: 'auto',

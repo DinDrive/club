@@ -10,5 +10,19 @@
 
 [club_feed_ordering] [mol_link][mol_link_current] {
 	font-weight: 700;
-	opacity: 1.0;
+	opacity: 1;
+}
+
+[club_feed_ordering_extra] [mol_link] {
+	padding: 7px 10px;
+	text-decoration: none;
+}
+
+[club_feed_ordering_extra] [mol_link][mol_link_current] {
+	color: var(--mol_theme_back);
+	background-color: var(--mol_theme_text);
+}
+
+[club_feed_ordering_extra] [mol_link][mol_link_current]:hover {
+	color: var(--mol_theme_back);
 }

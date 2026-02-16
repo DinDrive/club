@@ -1,20 +1,31 @@
 $club_feed $mol_view
-	sub /
-		<= Ordering $mol_view
-			sub /
-				<= Ord_activity $mol_link
-					arg * ordering \activity
-					title \Фид
-				<= Ord_new $mol_link
-					arg * ordering \new
-					title \Новое
-				<= Ord_hot $mol_link
-					arg * ordering \hot
-					title \Обсуждаемое
-				<= Ord_top $mol_link
-					arg * ordering \top_month
-					title \Лучшее
-		<= Posts $mol_list
-			rows <= post_cards /
-		<= Pager $mol_paginator
-			value? <=> page? 1
+	sub <= feed_body /
+	Ordering $mol_view
+		sub /
+			<= Ord_activity $mol_link
+				arg * ordering \activity
+				title \Фид
+			<= Ord_new $mol_link
+				arg * ordering \new
+				title \Новое
+			<= Ord_hot $mol_link
+				arg * ordering \hot
+				title \Обсуждаемое
+			<= Ord_top $mol_link
+				arg * ordering \top_month
+				title \Лучшее
+	Ordering_extra $mol_view
+		sub /
+			<= Ord_top_week $mol_link
+				arg * ordering \top_week
+				title \За неделю
+			<= Ord_top_month $mol_link
+				arg * ordering \top_month
+				title \За месяц
+			<= Ord_top_year $mol_link
+				arg * ordering \top_year
+				title \За год
+	Posts $mol_list
+		rows <= post_cards /
+	Pager $mol_paginator
+		value? <=> page? 1

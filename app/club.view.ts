@@ -6,6 +6,26 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
+		current_user_data() {
+			const token = $club_api.token()
+			if (!token) return null
+			try {
+				return $club_api.whoami()
+			} catch (e) {
+				if (e instanceof Promise) throw e
+				return null
+			}
+		}
+
+		current_user_slug() {
+			return this.current_user_data()?.user?.slug ?? ''
+		}
+
+		current_user_avatar() {
+			return this.current_user_data()?.user?.avatar ?? ''
+		}
+
+		@$mol_mem
 		spread() {
 			if (!this.authorized()) {
 				return this.Settings()

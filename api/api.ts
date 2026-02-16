@@ -34,7 +34,12 @@ namespace $ {
 				return this.fetch_from<T>(this.prod, url, true)
 			} catch (error: any) {
 				if (error instanceof Promise) throw error
-				return this.fetch_from<T>(this.dev, url, true)
+				try {
+					return this.fetch_from<T>(this.dev, url, true)
+				} catch (error2: any) {
+					if (error2 instanceof Promise) throw error2
+					return null as T
+				}
 			}
 		}
 
@@ -64,28 +69,41 @@ namespace $ {
 			return this.fetch_json<$club_api_feed>(`/${type}/${ordering}/feed.json?page=${page}`)
 		}
 
-		static post(type: string, slug: string) {
+		@$mol_mem_key
+		static post(key: string) {
+			const [type, slug] = key.split('/')
 			return this.fetch_json<$club_api_post_response>(`/${type}/${slug}.json`)
 		}
 
-		static post_comments(type: string, slug: string) {
+		@$mol_mem_key
+		static post_comments(key: string) {
+			const [type, slug] = key.split('/')
 			return this.fetch_json_auth<$club_api_comments_response>(`/${type}/${slug}/comments.json`)
 		}
 
+		@$mol_mem_key
 		static profile(slug: string) {
 			return this.fetch_json_auth<$club_api_profile_response>(`/user/${slug}.json`)
 		}
 
+		@$mol_mem_key
 		static profile_tags(slug: string) {
 			return this.fetch_json_auth<$club_api_tags_response>(`/user/${slug}/tags.json`)
 		}
 
+		@$mol_mem_key
 		static profile_badges(slug: string) {
 			return this.fetch_json_auth<$club_api_badges_response>(`/user/${slug}/badges.json`)
 		}
 
+		@$mol_mem_key
 		static profile_achievements(slug: string) {
 			return this.fetch_json_auth<$club_api_achievements_response>(`/user/${slug}/achievements.json`)
+		}
+
+		@$mol_mem
+		static whoami() {
+			return this.fetch_json_auth<$club_api_profile_response>(`/user/me.json`)
 		}
 
 		@$mol_mem

@@ -5,7 +5,7 @@ namespace $.$$ {
 			const type = this.post_type()
 			const slug = this.post_slug()
 			if (!type || !slug) return null
-			return $club_api.post(type, slug)
+			return $club_api.post(`${type}/${slug}`)
 		}
 
 		@$mol_mem
@@ -13,7 +13,7 @@ namespace $.$$ {
 			const type = this.post_type()
 			const slug = this.post_slug()
 			if (!type || !slug) return null
-			return $club_api.post_comments(type, slug)
+			return $club_api.post_comments(`${type}/${slug}`)
 		}
 
 		post_title() {
