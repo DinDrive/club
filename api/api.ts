@@ -29,6 +29,15 @@ namespace $ {
 			}
 		}
 
+		static fetch_json_auth<T>(url: string): T {
+			try {
+				return this.fetch_from<T>(this.prod, url, true)
+			} catch (error: any) {
+				if (error instanceof Promise) throw error
+				return this.fetch_from<T>(this.dev, url, true)
+			}
+		}
+
 		@$mol_mem
 		static feed_ordering(next?: string) {
 			return $mol_state_arg.value('ordering', next) ?? 'activity'
@@ -60,38 +69,38 @@ namespace $ {
 		}
 
 		static post_comments(type: string, slug: string) {
-			return this.fetch_json<$club_api_comments_response>(`/${type}/${slug}/comments.json`)
+			return this.fetch_json_auth<$club_api_comments_response>(`/${type}/${slug}/comments.json`)
 		}
 
 		static profile(slug: string) {
-			return this.fetch_json<$club_api_profile_response>(`/user/${slug}.json`)
+			return this.fetch_json_auth<$club_api_profile_response>(`/user/${slug}.json`)
 		}
 
 		static profile_tags(slug: string) {
-			return this.fetch_json<$club_api_tags_response>(`/user/${slug}/tags.json`)
+			return this.fetch_json_auth<$club_api_tags_response>(`/user/${slug}/tags.json`)
 		}
 
 		static profile_badges(slug: string) {
-			return this.fetch_json<$club_api_badges_response>(`/user/${slug}/badges.json`)
+			return this.fetch_json_auth<$club_api_badges_response>(`/user/${slug}/badges.json`)
 		}
 
 		static profile_achievements(slug: string) {
-			return this.fetch_json<$club_api_achievements_response>(`/user/${slug}/achievements.json`)
+			return this.fetch_json_auth<$club_api_achievements_response>(`/user/${slug}/achievements.json`)
 		}
 
 		@$mol_mem
 		static bookmarks() {
-			return this.fetch_json<$club_api_bookmarks_response>(`/bookmarks.json`)
+			return this.fetch_json_auth<$club_api_bookmarks_response>(`/bookmarks.json`)
 		}
 
 		@$mol_mem
 		static rooms() {
-			return this.fetch_json<$club_api_rooms_response>(`/rooms.json`)
+			return this.fetch_json_auth<$club_api_rooms_response>(`/rooms.json`)
 		}
 
 		@$mol_mem
 		static friends() {
-			return this.fetch_json<$club_api_friends_response>(`/friends.json`)
+			return this.fetch_json_auth<$club_api_friends_response>(`/friends.json`)
 		}
 	}
 

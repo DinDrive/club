@@ -31,9 +31,8 @@ namespace $.$$ {
 		},
 
 		Article: {
-			display: 'grid',
-			gridTemplateColumns: 'minmax(auto, 1fr) min-content',
-			gridTemplateRows: 'auto auto auto',
+			display: 'block',
+			position: 'relative',
 			maxWidth: '700px',
 			margin: {
 				top: '70px',
@@ -43,30 +42,21 @@ namespace $.$$ {
 		},
 
 		Article_header: {
-			gridColumn: '1 / 2',
-			gridRow: '1 / 2',
+			textAlign: 'center',
 		},
 
 		Post_title_block: {
-			display: 'flex',
-			flex: {
-				direction: 'row',
-				wrap: 'wrap',
-			},
-			align: {
-				items: 'center',
-			},
-			gap: '0.5rem',
+			display: 'block',
+			textAlign: 'center',
 		},
 
 		Post_title_text: {
 			display: 'inline',
 			font: {
-				size: '200%',
-				weight: 500,
+				size: '300%',
+				weight: 700,
 			},
-			lineHeight: '1.2em',
-			margin: {},
+			lineHeight: '1.3em',
 		},
 
 		Post_publicity: {
@@ -80,15 +70,12 @@ namespace $.$$ {
 
 		Post_info: {
 			padding: {
-				top: '7px',
+				top: '20px',
+				bottom: '20px',
 			},
-			display: 'flex',
+			display: 'inline-flex',
 			flex: {
-				direction: 'row',
 				wrap: 'wrap',
-			},
-			align: {
-				items: 'flex-start',
 			},
 			gap: '10px',
 		},
@@ -103,13 +90,17 @@ namespace $.$$ {
 		},
 
 		Upvote: {
-			gridColumn: '2 / 3',
-			gridRow: '1 / 2',
-			justifySelf: 'end',
-			padding: {
-				left: '10px',
+			position: 'sticky',
+			top: '30px',
+			float: 'left',
+			margin: {
+				left: '-125px',
 				top: '30px',
-				right: '17px',
+			},
+			padding: {
+				left: '20px',
+				top: '30px',
+				right: '20px',
 				bottom: '7px',
 			},
 			font: {
@@ -129,24 +120,22 @@ namespace $.$$ {
 			},
 			cursor: 'pointer',
 			whiteSpace: 'nowrap',
+			textAlign: 'center',
 		},
 
 		Text_body: {
-			gridColumn: '1 / 3',
-			gridRow: '2 / 3',
 			padding: {
 				top: '30px',
 			},
 			font: {
 				size: '19px',
-				family: `Georgia, "Times New Roman", serif`,
+				family: `"Merriweather", Georgia, "Times New Roman", serif`,
 			},
 			lineHeight: '1.67',
+			letterSpacing: '0.01rem',
 		},
 
 		Post_footer: {
-			gridColumn: '1 / 3',
-			gridRow: '3 / 4',
 			display: 'grid',
 			gridTemplateColumns: '55px auto',
 			gridTemplateRows: 'auto auto',
@@ -159,7 +148,37 @@ namespace $.$$ {
 			gap: '0px',
 		},
 
-		Author_avatar: {
+		Post_author: {
+			font: {
+				size: '110%',
+			},
+			padding: {
+				bottom: '40px',
+			},
+		},
+
+		Author_avatar_small: {
+			display: 'inline-block',
+			width: '30px',
+			height: '30px',
+			border: {
+				radius: '50%',
+			},
+			objectFit: 'cover',
+			verticalAlign: 'middle',
+			margin: {
+				right: '5px',
+			},
+		},
+
+		Author_name: {
+			font: {
+				weight: 500,
+			},
+			display: 'inline',
+		},
+
+		Footer_avatar: {
 			gridColumn: '1 / 2',
 			gridRow: '1 / 3',
 			width: '42px',
@@ -170,19 +189,19 @@ namespace $.$$ {
 			objectFit: 'cover',
 		},
 
-		Author_info: {
+		Footer_info: {
 			gridColumn: '2 / 3',
 			gridRow: '1 / 2',
 		},
 
-		Author_name: {
+		Footer_name: {
 			font: {
 				weight: 500,
 			},
 			display: 'inline',
 		},
 
-		Author_position: {
+		Footer_position: {
 			display: 'inline',
 			opacity: 0.7,
 		},

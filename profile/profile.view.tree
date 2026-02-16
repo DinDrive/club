@@ -3,7 +3,7 @@ $club_profile $mol_page
 	title <= user_name \
 	head /
 		<= Back $mol_link
-			arg * user \
+			arg * user null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph
@@ -53,7 +53,3 @@ $club_profile $mol_page
 					text <= intro_text \
 		<= Tags_section $mol_view
 			sub <= tag_rows /
-		<= Posts_title $mol_paragraph
-			title <= posts_title \
-		<= Posts $mol_list
-			rows <= post_rows /

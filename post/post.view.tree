@@ -4,7 +4,7 @@ $club_post $mol_page
 	title <= post_title \
 	head /
 		<= Back $mol_link
-			arg * post \
+			arg * post null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph
@@ -18,34 +18,43 @@ $club_post $mol_page
 							sub /
 								<= Post_title_text $mol_paragraph
 									title <= post_title
-								<= Post_publicity $mol_paragraph
-									title <= publicity_label \
+						<= Post_publicity $mol_paragraph
+							title <= publicity_label \
 						<= Post_info $mol_view
 							sub /
-								<= Room_badge $mol_view
-									sub / <= room_label \
 								<= Post_actions $mol_view
 									sub /
 										<= Post_date $mol_paragraph
 											title <= published_date \
 										<= Post_views $mol_paragraph
 											title <= views_label \
+						<= Post_author $mol_view
+							sub /
+								<= Author_link $mol_link
+									arg * user <= author_slug \
+									sub /
+										<= Author_avatar_small $mol_image
+											uri <= author_avatar \
+										<= Author_name $mol_paragraph
+											title <= author_name \
+						<= Room_badge $mol_view
+							sub / <= room_label \
 				<= Upvote $mol_view
 					sub / <= upvotes_label \
 				<= Text_body $mol_text
 					text <= content_text \
 				<= Post_footer $mol_view
 					sub /
-						<= Author_avatar $mol_image
+						<= Footer_avatar $mol_image
 							uri <= author_avatar \
-						<= Author_info $mol_view
+						<= Footer_info $mol_view
 							sub /
-								<= Author_link $mol_link
+								<= Footer_link $mol_link
 									arg * user <= author_slug \
 									sub /
-										<= Author_name $mol_paragraph
+										<= Footer_name $mol_paragraph
 											title <= author_name \
-										<= Author_position $mol_paragraph
+										<= Footer_position $mol_paragraph
 											title <= author_position \
 								<= Footer_date $mol_paragraph
 									title <= published_date

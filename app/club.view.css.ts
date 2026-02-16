@@ -5,11 +5,6 @@ namespace $.$$ {
 			size: '15px',
 		},
 		lineHeight: '1.42',
-		maxWidth: '1000px',
-		margin: {
-			left: 'auto',
-			right: 'auto',
-		},
 
 		Head: {
 			padding: {
@@ -44,8 +39,14 @@ namespace $.$$ {
 
 		Main: {
 			display: 'grid',
-			gridTemplateColumns: '250px 1fr',
+			gridTemplateColumns: '250px auto',
+			maxWidth: '1000px',
+			margin: {
+				left: 'auto',
+				right: 'auto',
+			},
 			padding: {
+				top: '10px',
 				left: '20px',
 				right: '20px',
 				bottom: '50px',

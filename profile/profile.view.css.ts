@@ -250,17 +250,5 @@ namespace $.$$ {
 				radius: '15px',
 			},
 		},
-
-		Posts_title: {
-			font: {
-				size: '150%',
-				weight: 700,
-			},
-			textAlign: 'center',
-			padding: {
-				top: '40px',
-				bottom: '20px',
-			},
-		},
 	})
 }

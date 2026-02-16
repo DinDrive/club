@@ -2,7 +2,7 @@ $club_bookmarks $mol_page
 	title \Закладки
 	head /
 		<= Back $mol_link
-			arg * bookmarks \
+			arg * bookmarks null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph

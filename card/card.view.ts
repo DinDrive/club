@@ -18,7 +18,7 @@ namespace $.$$ {
 
 		upvotes() {
 			const p = this.post_data()
-			return p ? `\u25B2 ${p._club.upvotes}` : ''
+			return p ? `${p._club.upvotes}` : ''
 		}
 
 		author_avatar() {
@@ -31,11 +31,24 @@ namespace $.$$ {
 
 		comments_label() {
 			const c = this.post_data()?._club?.comment_count ?? 0
-			return `\uD83D\uDCAC ${c}`
+			if (!c) return ''
+			const word = c === 1 ? 'комментарий' : c < 5 ? 'комментария' : 'комментариев'
+			return `${c} ${word}`
 		}
 
 		type_label() {
-			return this.post_data()?._club?.type ?? ''
+			const type = this.post_data()?._club?.type
+			const map: Record<string, string> = {
+				post: 'Пост',
+				question: 'Вопрос',
+				project: 'Проект',
+				event: 'Событие',
+				thread: 'Тред',
+				link: 'Ссылка',
+				guide: 'Путеводитель',
+				intro: 'Интро',
+			}
+			return type ? (map[type] ?? type) : ''
 		}
 	}
 }

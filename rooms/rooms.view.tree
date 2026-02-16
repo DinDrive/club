@@ -5,7 +5,7 @@ $club_rooms $mol_page
 	room_members*0 \
 	head /
 		<= Back $mol_link
-			arg * rooms \
+			arg * rooms null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph

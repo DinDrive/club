@@ -66,6 +66,17 @@ namespace $.$$ {
 			return (this.data()?.user as any)?.intro ?? ''
 		}
 
+		body() {
+			const parts: $mol_view[] = [this.Card(), this.Statuses()]
+			if (this.intro_text()) {
+				parts.push(this.Intro_section())
+			}
+			if (this.tag_rows().length) {
+				parts.push(this.Tags_section())
+			}
+			return parts
+		}
+
 		@$mol_mem
 		tag_rows() {
 			const tags_by_group = this.tags_data()?.tags
@@ -80,15 +91,6 @@ namespace $.$$ {
 				v.tag = () => tag
 				return v
 			})
-		}
-
-		posts_title() {
-			return 'Посты'
-		}
-
-		@$mol_mem
-		post_rows() {
-			return [] as $mol_view[]
 		}
 	}
 }

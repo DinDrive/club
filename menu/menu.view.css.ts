@@ -18,6 +18,7 @@ namespace $.$$ {
 			flex: {
 				direction: 'column',
 			},
+			gap: '15px',
 			font: {
 				size: '110%',
 				weight: 500,
@@ -29,8 +30,31 @@ namespace $.$$ {
 			flex: {
 				direction: 'column',
 			},
+			gap: '1px',
 			font: {
 				size: '90%',
+			},
+		},
+
+		Nav_bottom: {
+			display: 'flex',
+			flex: {
+				direction: 'column',
+			},
+			gap: '1px',
+			font: {
+				size: '90%',
+			},
+		},
+
+		Rooms_title: {
+			font: {
+				size: '110%',
+				weight: 600,
+			},
+			padding: {
+				top: '0px',
+				bottom: '5px',
 			},
 		},
 	})

@@ -17,12 +17,14 @@ namespace $.$$ {
 
 		@$mol_mem
 		posts() {
-			return this.feed()?.posts?.items ?? []
+			const items = this.feed()?.items ?? []
+			return items.filter((p: any) => p._club?.type !== 'weekly_digest')
 		}
 
 		@$mol_mem
 		pinned() {
-			return this.feed()?.pinned_posts ?? []
+			const items = this.feed()?.items ?? []
+			return items.filter((p: any) => p._club?.type === 'weekly_digest')
 		}
 
 		@$mol_mem

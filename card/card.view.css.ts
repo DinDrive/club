@@ -27,7 +27,7 @@ namespace $.$$ {
 		},
 		textDecoration: 'none',
 		color: $mol_theme.text,
-		transition: '0.2s ease-out',
+		transition: '0.1s ease-out',
 
 		':hover': {
 			boxShadow: `0 0 40px ${rgba(94, 104, 125, 0.3)}`,
@@ -53,6 +53,7 @@ namespace $.$$ {
 				color: $mol_theme.card,
 			},
 			objectFit: 'cover',
+			zIndex: 2,
 		},
 
 		Header: {

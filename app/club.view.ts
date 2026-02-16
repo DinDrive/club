@@ -1,31 +1,6 @@
 namespace $.$$ {
 	export class $club extends $.$club {
 		@$mol_mem
-		post_arg(next?: string) {
-			return this.$.$mol_state_arg.value('post', next) ?? ''
-		}
-
-		@$mol_mem
-		user_arg(next?: string) {
-			return this.$.$mol_state_arg.value('user', next) ?? ''
-		}
-
-		@$mol_mem
-		bookmarks_arg(next?: string) {
-			return this.$.$mol_state_arg.value('bookmarks', next) ?? ''
-		}
-
-		@$mol_mem
-		rooms_arg(next?: string) {
-			return this.$.$mol_state_arg.value('rooms', next) ?? ''
-		}
-
-		@$mol_mem
-		settings_arg(next?: string) {
-			return this.$.$mol_state_arg.value('settings', next) ?? ''
-		}
-
-		@$mol_mem
 		authorized() {
 			return Boolean($club_api.token())
 		}
@@ -36,7 +11,7 @@ namespace $.$$ {
 				return this.Settings()
 			}
 
-			const post = this.post_arg()
+			const post = this.$.$mol_state_arg.value('post')
 			if (post) {
 				const parts = post.split('/')
 				if (parts.length >= 2) {
@@ -47,22 +22,22 @@ namespace $.$$ {
 				}
 			}
 
-			const user = this.user_arg()
+			const user = this.$.$mol_state_arg.value('user')
 			if (user) {
 				const page = new this.$.$club_profile()
 				page.user_slug = () => user
 				return page
 			}
 
-			if (this.bookmarks_arg()) {
+			if (this.$.$mol_state_arg.value('bookmarks')) {
 				return new this.$.$club_bookmarks()
 			}
 
-			if (this.rooms_arg()) {
+			if (this.$.$mol_state_arg.value('rooms')) {
 				return new this.$.$club_rooms()
 			}
 
-			if (this.settings_arg()) {
+			if (this.$.$mol_state_arg.value('settings')) {
 				return this.Settings()
 			}
 

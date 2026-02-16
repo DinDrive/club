@@ -12,7 +12,7 @@ namespace $.$$ {
 
 		@$mol_mem
 		posts() {
-			return this.feed()?.items ?? []
+			return (this.feed()?.items ?? []).filter((p: any) => p._club?.type !== 'weekly_digest')
 		}
 
 		@$mol_mem

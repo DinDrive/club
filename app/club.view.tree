@@ -4,7 +4,12 @@ $club $mol_page
 	title \Вастрик.Клуб
 	head /
 		<= Logo $mol_link
-			arg * post \ user \ bookmarks \ rooms \
+			arg *
+				post null
+				user null
+				bookmarks null
+				rooms null
+				settings null
 			sub /
 				<= Logo_img $mol_image
 					uri \https://vas3k.club/static/images/logo/logo-128.png
@@ -14,11 +19,6 @@ $club $mol_page
 		<= Main $mol_view
 			sub /
 				<= Sidebar $club_menu
-					post? <=> post_arg? \
-					user? <=> user_arg? \
-					bookmarks? <=> bookmarks_arg? \
-					rooms? <=> rooms_arg? \
-					settings? <=> settings_arg? \
 				<= Content $mol_view
 					sub / <= spread $mol_view
 	Feed $club_feed
