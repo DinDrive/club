@@ -5919,6 +5919,207 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
+		dom_name(){
+			return "svg";
+		}
+		dom_name_space(){
+			return "http://www.w3.org/2000/svg";
+		}
+		font_size(){
+			return 16;
+		}
+		font_family(){
+			return "";
+		}
+		style_size(){
+			return {};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_state_time extends $mol_object {
+        static task(precision, reset) {
+            if (precision) {
+                return new $mol_after_timeout(precision, () => this.task(precision, null));
+            }
+            else {
+                return new $mol_after_frame(() => this.task(precision, null));
+            }
+        }
+        static now(precision) {
+            this.task(precision);
+            return Date.now();
+        }
+    }
+    __decorate([
+        $mol_mem_key
+    ], $mol_state_time, "task", null);
+    __decorate([
+        $mol_mem_key
+    ], $mol_state_time, "now", null);
+    $.$mol_state_time = $mol_state_time;
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_svg extends $.$mol_svg {
+            computed_style() {
+                const win = this.$.$mol_dom_context;
+                const style = win.getComputedStyle(this.dom_node());
+                if (!style['font-size'])
+                    $mol_state_time.now(0);
+                return style;
+            }
+            font_size() {
+                return parseInt(this.computed_style()['font-size']) || 16;
+            }
+            font_family() {
+                return this.computed_style()['font-family'];
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "computed_style", null);
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "font_size", null);
+        __decorate([
+            $mol_mem
+        ], $mol_svg.prototype, "font_family", null);
+        $$.$mol_svg = $mol_svg;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$mol_svg_root) = class $mol_svg_root extends ($.$mol_svg) {
+		view_box(){
+			return "0 0 100 100";
+		}
+		aspect(){
+			return "xMidYMid";
+		}
+		dom_name(){
+			return "svg";
+		}
+		attr(){
+			return {
+				...(super.attr()), 
+				"viewBox": (this.view_box()), 
+				"preserveAspectRatio": (this.aspect())
+			};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/svg/root/root.view.css", "[mol_svg_root] {\n\toverflow: hidden;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_svg_path) = class $mol_svg_path extends ($.$mol_svg) {
+		geometry(){
+			return "";
+		}
+		dom_name(){
+			return "path";
+		}
+		attr(){
+			return {...(super.attr()), "d": (this.geometry())};
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon) = class $mol_icon extends ($.$mol_svg_root) {
+		path(){
+			return "";
+		}
+		Path(){
+			const obj = new this.$.$mol_svg_path();
+			(obj.geometry) = () => ((this.path()));
+			return obj;
+		}
+		view_box(){
+			return "0 0 24 24";
+		}
+		minimal_width(){
+			return 16;
+		}
+		minimal_height(){
+			return 16;
+		}
+		sub(){
+			return [(this.Path())];
+		}
+	};
+	($mol_mem(($.$mol_icon.prototype), "Path"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/icon/icon.view.css", "[mol_icon] {\n\tfill: currentColor;\n\tstroke: none;\n\twidth: 1em;\n\theight: 1.5em;\n\tflex: 0 0 auto;\n\tvertical-align: top;\n\tdisplay: inline-block;\n\tfilter: drop-shadow(0px 1px 1px var(--mol_theme_back));\n\ttransform-origin: center;\n}\n\n[mol_icon_path] {\n\ttransform-origin: center;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$mol_icon_pencil) = class $mol_icon_pencil extends ($.$mol_icon) {
+		path(){
+			return "M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_bookmark) = class $mol_icon_bookmark extends ($.$mol_icon) {
+		path(){
+			return "M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
+	($.$mol_icon_bookmark_outline) = class $mol_icon_bookmark_outline extends ($.$mol_icon) {
+		path(){
+			return "M17,18L12,15.82L7,18V5H17M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z";
+		}
+	};
+
+
+;
+"use strict";
+
+;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
 		gap_before(){
 			return 0;
@@ -6773,174 +6974,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_svg) = class $mol_svg extends ($.$mol_view) {
-		dom_name(){
-			return "svg";
-		}
-		dom_name_space(){
-			return "http://www.w3.org/2000/svg";
-		}
-		font_size(){
-			return 16;
-		}
-		font_family(){
-			return "";
-		}
-		style_size(){
-			return {};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    class $mol_state_time extends $mol_object {
-        static task(precision, reset) {
-            if (precision) {
-                return new $mol_after_timeout(precision, () => this.task(precision, null));
-            }
-            else {
-                return new $mol_after_frame(() => this.task(precision, null));
-            }
-        }
-        static now(precision) {
-            this.task(precision);
-            return Date.now();
-        }
-    }
-    __decorate([
-        $mol_mem_key
-    ], $mol_state_time, "task", null);
-    __decorate([
-        $mol_mem_key
-    ], $mol_state_time, "now", null);
-    $.$mol_state_time = $mol_state_time;
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $mol_svg extends $.$mol_svg {
-            computed_style() {
-                const win = this.$.$mol_dom_context;
-                const style = win.getComputedStyle(this.dom_node());
-                if (!style['font-size'])
-                    $mol_state_time.now(0);
-                return style;
-            }
-            font_size() {
-                return parseInt(this.computed_style()['font-size']) || 16;
-            }
-            font_family() {
-                return this.computed_style()['font-family'];
-            }
-        }
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "computed_style", null);
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "font_size", null);
-        __decorate([
-            $mol_mem
-        ], $mol_svg.prototype, "font_family", null);
-        $$.$mol_svg = $mol_svg;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-	($.$mol_svg_root) = class $mol_svg_root extends ($.$mol_svg) {
-		view_box(){
-			return "0 0 100 100";
-		}
-		aspect(){
-			return "xMidYMid";
-		}
-		dom_name(){
-			return "svg";
-		}
-		attr(){
-			return {
-				...(super.attr()), 
-				"viewBox": (this.view_box()), 
-				"preserveAspectRatio": (this.aspect())
-			};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/svg/root/root.view.css", "[mol_svg_root] {\n\toverflow: hidden;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-	($.$mol_svg_path) = class $mol_svg_path extends ($.$mol_svg) {
-		geometry(){
-			return "";
-		}
-		dom_name(){
-			return "path";
-		}
-		attr(){
-			return {...(super.attr()), "d": (this.geometry())};
-		}
-	};
-
-
-;
-"use strict";
-
-;
-	($.$mol_icon) = class $mol_icon extends ($.$mol_svg_root) {
-		path(){
-			return "";
-		}
-		Path(){
-			const obj = new this.$.$mol_svg_path();
-			(obj.geometry) = () => ((this.path()));
-			return obj;
-		}
-		view_box(){
-			return "0 0 24 24";
-		}
-		minimal_width(){
-			return 16;
-		}
-		minimal_height(){
-			return 16;
-		}
-		sub(){
-			return [(this.Path())];
-		}
-	};
-	($mol_mem(($.$mol_icon.prototype), "Path"));
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/icon/icon.view.css", "[mol_icon] {\n\tfill: currentColor;\n\tstroke: none;\n\twidth: 1em;\n\theight: 1.5em;\n\tflex: 0 0 auto;\n\tvertical-align: top;\n\tdisplay: inline-block;\n\tfilter: drop-shadow(0px 1px 1px var(--mol_theme_back));\n\ttransform-origin: center;\n}\n\n[mol_icon_path] {\n\ttransform-origin: center;\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
 	($.$mol_icon_chevron) = class $mol_icon_chevron extends ($.$mol_icon) {
 		path(){
 			return "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
@@ -7422,6 +7455,9 @@ var $;
 
 ;
 	($.$club_feed) = class $club_feed extends ($.$mol_view) {
+		feed_body(){
+			return [];
+		}
 		Ord_activity(){
 			const obj = new this.$.$mol_link();
 			(obj.arg) = () => ({"ordering": "activity"});
@@ -7446,6 +7482,34 @@ var $;
 			(obj.title) = () => ("Лучшее");
 			return obj;
 		}
+		Ord_top_week(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({"ordering": "top_week"});
+			(obj.title) = () => ("За неделю");
+			return obj;
+		}
+		Ord_top_month(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({"ordering": "top_month"});
+			(obj.title) = () => ("За месяц");
+			return obj;
+		}
+		Ord_top_year(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({"ordering": "top_year"});
+			(obj.title) = () => ("За год");
+			return obj;
+		}
+		post_cards(){
+			return [];
+		}
+		page(next){
+			if(next !== undefined) return next;
+			return 1;
+		}
+		sub(){
+			return (this.feed_body());
+		}
 		Ordering(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ([
@@ -7456,38 +7520,37 @@ var $;
 			]);
 			return obj;
 		}
-		post_cards(){
-			return [];
+		Ordering_extra(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Ord_top_week()), 
+				(this.Ord_top_month()), 
+				(this.Ord_top_year())
+			]);
+			return obj;
 		}
 		Posts(){
 			const obj = new this.$.$mol_list();
 			(obj.rows) = () => ((this.post_cards()));
 			return obj;
 		}
-		page(next){
-			if(next !== undefined) return next;
-			return 1;
-		}
 		Pager(){
 			const obj = new this.$.$mol_paginator();
 			(obj.value) = (next) => ((this.page(next)));
 			return obj;
-		}
-		sub(){
-			return [
-				(this.Ordering()), 
-				(this.Posts()), 
-				(this.Pager())
-			];
 		}
 	};
 	($mol_mem(($.$club_feed.prototype), "Ord_activity"));
 	($mol_mem(($.$club_feed.prototype), "Ord_new"));
 	($mol_mem(($.$club_feed.prototype), "Ord_hot"));
 	($mol_mem(($.$club_feed.prototype), "Ord_top"));
-	($mol_mem(($.$club_feed.prototype), "Ordering"));
-	($mol_mem(($.$club_feed.prototype), "Posts"));
+	($mol_mem(($.$club_feed.prototype), "Ord_top_week"));
+	($mol_mem(($.$club_feed.prototype), "Ord_top_month"));
+	($mol_mem(($.$club_feed.prototype), "Ord_top_year"));
 	($mol_mem(($.$club_feed.prototype), "page"));
+	($mol_mem(($.$club_feed.prototype), "Ordering"));
+	($mol_mem(($.$club_feed.prototype), "Ordering_extra"));
+	($mol_mem(($.$club_feed.prototype), "Posts"));
 	($mol_mem(($.$club_feed.prototype), "Pager"));
 
 
@@ -7760,7 +7823,14 @@ var $;
             catch (error) {
                 if (error instanceof Promise)
                     throw error;
-                return this.fetch_from(this.dev, url, true);
+                try {
+                    return this.fetch_from(this.dev, url, true);
+                }
+                catch (error2) {
+                    if (error2 instanceof Promise)
+                        throw error2;
+                    return null;
+                }
             }
         }
         static feed_ordering(next) {
@@ -7781,10 +7851,12 @@ var $;
             const page = this.feed_page();
             return this.fetch_json(`/${type}/${ordering}/feed.json?page=${page}`);
         }
-        static post(type, slug) {
+        static post(key) {
+            const [type, slug] = key.split('/');
             return this.fetch_json(`/${type}/${slug}.json`);
         }
-        static post_comments(type, slug) {
+        static post_comments(key) {
+            const [type, slug] = key.split('/');
             return this.fetch_json_auth(`/${type}/${slug}/comments.json`);
         }
         static profile(slug) {
@@ -7798,6 +7870,9 @@ var $;
         }
         static profile_achievements(slug) {
             return this.fetch_json_auth(`/user/${slug}/achievements.json`);
+        }
+        static whoami() {
+            return this.fetch_json_auth(`/user/me.json`);
         }
         static bookmarks() {
             return this.fetch_json_auth(`/bookmarks.json`);
@@ -7824,6 +7899,27 @@ var $;
     __decorate([
         $mol_mem
     ], $club_api, "feed", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "post", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "post_comments", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "profile", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "profile_tags", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "profile_badges", null);
+    __decorate([
+        $mol_mem_key
+    ], $club_api, "profile_achievements", null);
+    __decorate([
+        $mol_mem
+    ], $club_api, "whoami", null);
     __decorate([
         $mol_mem
     ], $club_api, "bookmarks", null);
@@ -8138,6 +8234,27 @@ var $;
             feed() {
                 return $club_api.feed();
             }
+            is_top() {
+                const ord = $club_api.feed_ordering();
+                return ord === 'top_week' || ord === 'top_month' || ord === 'top_year';
+            }
+            Ord_top() {
+                const link = super.Ord_top();
+                if (this.is_top()) {
+                    const current = $club_api.feed_ordering();
+                    link.arg = () => ({ ordering: current });
+                }
+                return link;
+            }
+            feed_body() {
+                const parts = [this.Ordering()];
+                if (this.is_top()) {
+                    parts.push(this.Ordering_extra());
+                }
+                parts.push(this.Posts());
+                parts.push(this.Pager());
+                return parts;
+            }
             posts() {
                 return (this.feed()?.items ?? []).filter((p) => p._club?.type !== 'weekly_digest');
             }
@@ -8157,6 +8274,15 @@ var $;
         ], $club_feed.prototype, "feed", null);
         __decorate([
             $mol_mem
+        ], $club_feed.prototype, "is_top", null);
+        __decorate([
+            $mol_mem
+        ], $club_feed.prototype, "Ord_top", null);
+        __decorate([
+            $mol_mem
+        ], $club_feed.prototype, "feed_body", null);
+        __decorate([
+            $mol_mem
         ], $club_feed.prototype, "posts", null);
         __decorate([
             $mol_mem
@@ -8169,7 +8295,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/feed/feed.view.css", "[club_feed_ordering] [mol_link] {\n\tpadding: 10px;\n\ttext-decoration: none;\n\topacity: 0.5;\n}\n\n[club_feed_ordering] [mol_link]:hover {\n\topacity: 0.8;\n}\n\n[club_feed_ordering] [mol_link][mol_link_current] {\n\tfont-weight: 700;\n\topacity: 1.0;\n}\n");
+    $mol_style_attach("club/feed/feed.view.css", "[club_feed_ordering] [mol_link] {\n\tpadding: 10px;\n\ttext-decoration: none;\n\topacity: 0.5;\n}\n\n[club_feed_ordering] [mol_link]:hover {\n\topacity: 0.8;\n}\n\n[club_feed_ordering] [mol_link][mol_link_current] {\n\tfont-weight: 700;\n\topacity: 1;\n}\n\n[club_feed_ordering_extra] [mol_link] {\n\tpadding: 7px 10px;\n\ttext-decoration: none;\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current] {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current]:hover {\n\tcolor: var(--mol_theme_back);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -8182,15 +8308,31 @@ var $;
             display: 'block',
             Ordering: {
                 display: 'flex',
+                align: {
+                    content: 'flex-start',
+                },
                 justify: {
                     content: 'flex-end',
                 },
                 font: {
                     size: '110%',
                 },
-                padding: {
-                    top: '10px',
-                    bottom: '10px',
+                padding: '10px',
+                width: '100%',
+                boxSizing: 'border-box',
+            },
+            Ordering_extra: {
+                display: 'flex',
+                flex: {
+                    wrap: 'wrap',
+                },
+                gap: '10px',
+                font: {
+                    size: '120%',
+                },
+                padding: '10px',
+                justify: {
+                    content: 'flex-end',
                 },
             },
         });
@@ -11761,9 +11903,66 @@ var $;
 				"user": null, 
 				"bookmarks": null, 
 				"rooms": null, 
-				"settings": null
+				"settings": null, 
+				"type": null
 			});
 			(obj.sub) = () => ([(this.Logo_img()), (this.Logo_text())]);
+			return obj;
+		}
+		Compose_icon(){
+			const obj = new this.$.$mol_icon_pencil();
+			return obj;
+		}
+		Compose_text(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("Пиши");
+			return obj;
+		}
+		Menu_compose(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/create/");
+			(obj.sub) = () => ([(this.Compose_icon()), (this.Compose_text())]);
+			return obj;
+		}
+		Bookmarks_icon(){
+			const obj = new this.$.$mol_icon_bookmark_outline();
+			return obj;
+		}
+		Menu_bookmarks(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"bookmarks": "1", 
+				"post": null, 
+				"user": null, 
+				"rooms": null, 
+				"settings": null, 
+				"type": null
+			});
+			(obj.sub) = () => ([(this.Bookmarks_icon())]);
+			return obj;
+		}
+		current_user_slug(){
+			return "";
+		}
+		current_user_avatar(){
+			return "";
+		}
+		User_avatar(){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.current_user_avatar()));
+			return obj;
+		}
+		Menu_avatar(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"user": (this.current_user_slug()), 
+				"post": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null, 
+				"type": null
+			});
+			(obj.sub) = () => ([(this.User_avatar())]);
 			return obj;
 		}
 		Sidebar(){
@@ -11791,7 +11990,12 @@ var $;
 			return "Вастрик.Клуб";
 		}
 		head(){
-			return [(this.Logo())];
+			return [
+				(this.Logo()), 
+				(this.Menu_compose()), 
+				(this.Menu_bookmarks()), 
+				(this.Menu_avatar())
+			];
 		}
 		body(){
 			return [(this.Main())];
@@ -11809,6 +12013,13 @@ var $;
 	($mol_mem(($.$club.prototype), "Logo_img"));
 	($mol_mem(($.$club.prototype), "Logo_text"));
 	($mol_mem(($.$club.prototype), "Logo"));
+	($mol_mem(($.$club.prototype), "Compose_icon"));
+	($mol_mem(($.$club.prototype), "Compose_text"));
+	($mol_mem(($.$club.prototype), "Menu_compose"));
+	($mol_mem(($.$club.prototype), "Bookmarks_icon"));
+	($mol_mem(($.$club.prototype), "Menu_bookmarks"));
+	($mol_mem(($.$club.prototype), "User_avatar"));
+	($mol_mem(($.$club.prototype), "Menu_avatar"));
 	($mol_mem(($.$club.prototype), "Sidebar"));
 	($mol_mem(($.$club.prototype), "spread"));
 	($mol_mem(($.$club.prototype), "Content"));
@@ -12974,14 +13185,14 @@ var $;
                 const slug = this.post_slug();
                 if (!type || !slug)
                     return null;
-                return $club_api.post(type, slug);
+                return $club_api.post(`${type}/${slug}`);
             }
             comments_data() {
                 const type = this.post_type();
                 const slug = this.post_slug();
                 if (!type || !slug)
                     return null;
-                return $club_api.post_comments(type, slug);
+                return $club_api.post_comments(`${type}/${slug}`);
             }
             post_title() {
                 return this.data()?.post?.title ?? '';
@@ -14315,6 +14526,25 @@ var $;
             authorized() {
                 return Boolean($club_api.token());
             }
+            current_user_data() {
+                const token = $club_api.token();
+                if (!token)
+                    return null;
+                try {
+                    return $club_api.whoami();
+                }
+                catch (e) {
+                    if (e instanceof Promise)
+                        throw e;
+                    return null;
+                }
+            }
+            current_user_slug() {
+                return this.current_user_data()?.user?.slug ?? '';
+            }
+            current_user_avatar() {
+                return this.current_user_data()?.user?.avatar ?? '';
+            }
             spread() {
                 if (!this.authorized()) {
                     return this.Settings();
@@ -14362,6 +14592,9 @@ var $;
         ], $club.prototype, "authorized", null);
         __decorate([
             $mol_mem
+        ], $club.prototype, "current_user_data", null);
+        __decorate([
+            $mol_mem
         ], $club.prototype, "spread", null);
         $$.$club = $club;
     })($$ = $.$$ || ($.$$ = {}));
@@ -14387,6 +14620,17 @@ var $;
             },
             lineHeight: '1.42',
             Head: {
+                display: 'flex',
+                flex: {
+                    direction: 'row',
+                    wrap: 'nowrap',
+                },
+                align: {
+                    items: 'center',
+                },
+                justify: {
+                    content: 'flex-start',
+                },
                 background: {
                     color: 'transparent',
                 },
@@ -14396,6 +14640,7 @@ var $;
                 },
                 position: 'relative',
                 zIndex: 0,
+                minHeight: '0px',
                 maxWidth: '1000px',
                 margin: {
                     left: 'auto',
@@ -14407,32 +14652,92 @@ var $;
                     left: '20px',
                     right: '20px',
                 },
+                font: {
+                    size: '120%',
+                },
+                gap: '10px',
             },
             Logo: {
                 display: 'flex',
                 flex: {
                     direction: 'row',
+                    grow: 1,
                 },
                 align: {
                     items: 'center',
                 },
-                gap: '0.5rem',
+                gap: '10px',
                 textDecoration: 'none',
+                minWidth: '210px',
             },
             Logo_img: {
-                width: '2rem',
-                height: '2rem',
+                width: '1em',
+                height: '1em',
+                verticalAlign: 'middle',
             },
             Logo_text: {
                 font: {
-                    size: '1.3rem',
-                    weight: 'bold',
+                    size: '26px',
+                    weight: 700,
                 },
+                whiteSpace: 'nowrap',
+            },
+            Menu_compose: {
+                display: 'flex',
+                flex: {
+                    direction: 'row',
+                    wrap: 'nowrap',
+                },
+                gap: '8px',
+                align: {
+                    items: 'center',
+                },
+                padding: {
+                    top: '13px',
+                    right: '20px',
+                    bottom: '13px',
+                    left: '20px',
+                },
+                margin: {
+                    right: '10px',
+                },
+                cursor: 'pointer',
+                font: {
+                    size: '80%',
+                },
+                textDecoration: 'none',
+            },
+            Menu_bookmarks: {
+                font: {
+                    size: '110%',
+                },
+                opacity: 0.5,
+                textDecoration: 'none',
+                verticalAlign: 'middle',
+            },
+            Menu_avatar: {
+                textDecoration: 'none',
+            },
+            User_avatar: {
+                width: '40px',
+                minWidth: '40px',
+                height: '40px',
+                border: {
+                    radius: '50%',
+                },
+                objectFit: 'cover',
+                margin: {
+                    left: '10px',
+                },
+            },
+            Body_content: {
+                maxWidth: '100%',
             },
             Main: {
                 display: 'grid',
-                gridTemplateColumns: '250px auto',
+                gridTemplateColumns: '250px 1fr',
                 maxWidth: '1000px',
+                minHeight: '100vh',
                 margin: {
                     left: 'auto',
                     right: 'auto',
