@@ -1,142 +1,88 @@
-interface PostRoot {
-	post: Post;
-}
-
-interface Post {
-	id: string;
-	url: string;
-	title: string;
-	content_text: string;
-	date_published: string;
-	date_modified: string;
-	authors: Author[];
-	_club: Club;
-}
-
-interface Club {
-	type: string;
-	slug: string;
-	coauthors: any[];
-	comment_count: number;
-	view_count: number;
-	upvotes: number;
-	is_public: boolean;
-	is_commentable: boolean;
-}
-
-interface Author {
-	name: string;
-	url: string;
-	avatar: string;
-}
-
-interface CommentRoot {
-	comments: Comment[];
-}
-
-interface Comment {
-	id: string;
-	text: string;
-	author: CommentAuthor;
-	reply_to_id?: string;
-	upvotes: number;
-	created_at: string;
-}
-
-interface CommentAuthor {
-	id: string;
-	slug: string;
-	full_name: string;
-	avatar?: string;
-	bio: string;
-	upvotes: number;
-	created_at: string;
-	membership_started_at: string;
-	membership_expires_at: string;
-	moderation_status: string;
-	payment_status: string;
-	company: string;
-	position: string;
-	city: string;
-	country: string;
-	is_active_member: boolean;
-}
-
 namespace $.$$ {
-	
 	export class $club_post extends $.$club_post {
-		
-		@ $mol_mem
-		post_arg() {
-			return $mol_state_arg.value( 'post' )
+		@$mol_mem
+		data() {
+			const type = this.post_type()
+			const slug = this.post_slug()
+			if (!type || !slug) return null
+			return $club_api.post(type, slug)
 		}
 
-		@ $mol_mem
-		post_url() {
-			if(!this.post_arg()) return ''
-			return this.post_arg() + '.json'
+		@$mol_mem
+		comments_data() {
+			const type = this.post_type()
+			const slug = this.post_slug()
+			if (!type || !slug) return null
+			return $club_api.post_comments(type, slug)
 		}
 
-		token() {
-			return $mol_state_local.value( 'token' )
+		post_title() {
+			return this.data()?.post?.title ?? ''
 		}
 
-
-		@ $mol_mem
-		post(next?: Post): Post | null {
-			if(!this.post_url()) return null
-			const link = (this.token()) ? this.post_url() + '?token=' + this.token() : this.post_url()
-			if(this.post_url().includes('weekly_digest')) {
-				this.embed(this.post_arg() + '?token=' + this.token())
-			} else {
-				this.embed('')
-			}
-			return next || ($mol_fetch.json( link ) as PostRoot).post
+		publicity_label() {
+			const p = this.data()?.post?._club?.is_public
+			if (p === false) return '🔒 Только для членов клуба'
+			return '🌍 Публичный пост'
 		}
 
-		@ $mol_mem
-		embed(next?: string) {
-			return next || ''
+		room_label() {
+			return this.data()?.post?._club?.room?.title ?? ''
 		}
 
-		upvotes() {
-			return `+${this.post()?._club.upvotes}`
-		}
-		
-		post_title(): string {
-			return this.post()?.title ?? 'Вастрик Клуб'
+		upvotes_label() {
+			const u = this.data()?.post?._club?.upvotes
+			return u != null ? `▲ ${u}` : ''
 		}
 
-		text(): string {
-			return this.post()?.content_text ?? ''
+		author_avatar() {
+			return this.data()?.post?.authors?.[0]?.avatar ?? ''
 		}
 
-		date_published() {
-			return 'Создано - ' + new $mol_time_moment(this.post()?.date_published).toString( 'YYYY.MM.DD hh:mm (WeekDay)' )
+		author_name() {
+			return this.data()?.post?.authors?.[0]?.name ?? ''
 		}
 
-		date_modified() {
-			return 'Отредактировано - ' + new $mol_time_moment(this.post()?.date_modified).toString( 'YYYY.MM.DD hh:mm (WeekDay)' )
+		author_position() {
+			const author = this.data()?.post?.authors?.[0]
+			if (!author) return ''
+			return (author as any).position ?? ''
 		}
 
-		list_authors() {
-			return this.post()?.authors.map( ( _, i ) => this.Author( i ) ) ?? []
+		author_slug() {
+			const url = this.data()?.post?.authors?.[0]?.url ?? ''
+			const match = url.match(/\/user\/([^/]+)/)
+			return match ? match[1] : ''
 		}
 
-		@ $mol_mem_key
-		author_url( id: number ) {
-			return this.post()?.authors[id].url ?? ''
+		published_date() {
+			const d = this.data()?.post?.date_published
+			if (!d) return ''
+			return new $mol_time_moment(d).toString('DD.MM.YYYY hh:mm')
 		}
 
-		@ $mol_mem_key
-		author_name( id: number ) {
-			return this.post()?.authors[id].name ?? ''
+		views_label() {
+			const v = (this.data()?.post as any)?._club?.view_count
+			return v ? `👁 ${v}` : ''
 		}
 
-		@ $mol_mem_key
-		author_avatar( id: number ) {
-			return this.post()?.authors[id].avatar ?? ''
+		content_text() {
+			return this.data()?.post?.content_text ?? ''
+		}
+
+		comments_count_label() {
+			const count = this.data()?.post?._club?.comment_count ?? 0
+			return count ? `${count} комментариев 👇` : 'Комментарии'
+		}
+
+		@$mol_mem
+		comment_rows() {
+			const comments = this.comments_data()?.comments ?? []
+			return comments.map(comment => {
+				const row = new this.$.$club_comment()
+				row.comment = () => comment
+				return row
+			})
 		}
 	}
-	
 }

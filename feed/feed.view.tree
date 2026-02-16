@@ -1,0 +1,20 @@
+$club_feed $mol_view
+	sub /
+		<= Ordering $mol_view
+			sub /
+				<= Ord_activity $mol_link
+					arg * ordering \activity
+					title \Фид
+				<= Ord_new $mol_link
+					arg * ordering \new
+					title \Новое
+				<= Ord_hot $mol_link
+					arg * ordering \hot
+					title \Обсуждаемое
+				<= Ord_top $mol_link
+					arg * ordering \top_month
+					title \Лучшее
+		<= Posts $mol_list
+			rows <= post_cards /
+		<= Pager $mol_paginator
+			value? <=> page? 1

@@ -1,36 +1,59 @@
 $club_post $mol_page
-	post_title? \
-	authorization? false
-	post_url \
-	comments_url \
-	text \
-	date_published \
-	date_modified \
-	author_url*0 \
-	author_name*0 \
-	author_avatar*0 \
-	upvotes \
-	embed \
-	title <= post_title
+	post_type \
+	post_slug \
+	title <= post_title \
 	head /
-		<= Upvote $mol_button_major title <= upvotes
-		<= Title $mol_paragraph title <= post_title
-	body /
-		<= Article $mol_text
-			text <= text
-		<= Info $mol_view
+		<= Back $mol_link
+			arg * post \
 			sub /
-				<= DatePublished $mol_paragraph
-					title <= date_published
-				<= DateModified $mol_paragraph
-					title <= date_modified
-		<= Authors $mol_list
-			rows <= list_authors /
-				<= Author*0 $mol_link
-					uri <= author_url*
-					title <= author_name*
+				<= Back_icon $mol_icon_arrow_left
+		<= Title $mol_paragraph
+			title <= post_title
+	body /
+		<= Article $mol_view
+			sub /
+				<= Article_header $mol_view
 					sub /
-						<= AuthorAvatar* $mol_image
-							uri <= author_avatar*
-						<= AuthorName* $mol_text
-							text <= author_name*
+						<= Post_title_block $mol_view
+							sub /
+								<= Post_title_text $mol_paragraph
+									title <= post_title
+								<= Post_publicity $mol_paragraph
+									title <= publicity_label \
+						<= Post_info $mol_view
+							sub /
+								<= Room_badge $mol_view
+									sub / <= room_label \
+								<= Post_actions $mol_view
+									sub /
+										<= Post_date $mol_paragraph
+											title <= published_date \
+										<= Post_views $mol_paragraph
+											title <= views_label \
+				<= Upvote $mol_view
+					sub / <= upvotes_label \
+				<= Text_body $mol_text
+					text <= content_text \
+				<= Post_footer $mol_view
+					sub /
+						<= Author_avatar $mol_image
+							uri <= author_avatar \
+						<= Author_info $mol_view
+							sub /
+								<= Author_link $mol_link
+									arg * user <= author_slug \
+									sub /
+										<= Author_name $mol_paragraph
+											title <= author_name \
+										<= Author_position $mol_paragraph
+											title <= author_position \
+								<= Footer_date $mol_paragraph
+									title <= published_date
+		<= Comments_section $mol_view
+			sub /
+				<= Comments_title $mol_view
+					sub /
+						<= Comments_count $mol_paragraph
+							title <= comments_count_label \
+				<= Comments_list $mol_list
+					rows <= comment_rows /

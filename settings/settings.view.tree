@@ -1,14 +1,15 @@
 $club_settings $mol_page
-	token? \
-	tokenText \
+	title \Настройки
 	head /
 		<= Title $mol_paragraph title \Настройки
 	body /
-		<= L $mol_view sub /
-			<= ThemeText $mol_text text \Тема сайта
-			<= Lighter $mol_lights_toggle
-		<= TokenText $mol_text
-			text <= tokenText
-		<= TokenInput $mol_string
-			value? <=> token?
-			hint \XxYy1234XxYy1234XxYy1234XxYy1234
+		<= Theme_row $mol_labeler
+			title \Тема
+			content / <= Lighter $mol_lights_toggle
+		<= Token_label $mol_labeler
+			title \Токен авторизации
+			content / <= Token_input $mol_string
+				value? <=> token? \
+				hint \Вставьте токен из кук vas3k.club
+		<= Token_help $mol_text
+			text \Откройте vas3k.club, в DevTools найдите куку **token** и вставьте сюда. Это позволит читать приватные посты и комментарии.

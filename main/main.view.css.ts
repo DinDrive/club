@@ -1,74 +1,54 @@
 namespace $.$$ {
-	const Title_style = {
-		font: {
-			size: '1.8rem',
-			weight: 'bolder',
-		},
-		lineHeight: '2.5rem',
-		padding: {
-			top: '.2rem',
-			right: '.6rem',
-			bottom: '.2rem',
-			left: '.6rem',
-		},
-	} as const
-
 	$mol_style_define($club_main, {
-		width: '500px',
+		maxWidth: '640px',
 
 		Head: {
-			justify: {
-				content: 'start',
+			flex: {
+				wrap: 'wrap',
 			},
+			gap: '0.5rem',
 			align: {
 				items: 'center',
-			},
-			'>': {
-				$mol_switch: {
-					borderTop: `1px solid ${$mol_theme.line}`,
-					background: {
-						color: $mol_theme.card,
-					},
-					border: {
-						radius: '4px',
-					},
-				},
 			},
 		},
 
 		Logo: {
-			width: '25px',
-			height: '25px',
+			display: 'flex',
+			flex: {
+				direction: 'row',
+			},
+			align: {
+				items: 'center',
+			},
+			gap: '0.5rem',
 		},
 
-		Post: {
-			justify: {
-				content: 'space-between',
+		Logo_img: {
+			width: '2rem',
+			height: '2rem',
+		},
+
+		Logo_text: {
+			font: {
+				size: '1.4rem',
+				weight: 'bold',
+			},
+			margin: {
+				right: 'auto',
 			},
 		},
 
-		Upvote: {
-			minWidth: '60px',
-			justify: {
-				content: 'center',
+		Ordering: {
+			border: {
+				radius: '6px',
 			},
-		},
-
-		Title1: {
-			...Title_style,
-		},
-
-		Title2: {
-			...Title_style,
-			marginRight: 'auto',
-		},
-
-		PostTitle: {
-			maxWidth: '380px',
+			background: {
+				color: $mol_theme.back,
+			},
 		},
 
 		Body_content: {
-			height: '100%',
+			gap: '0.5rem',
 		},
 	})
 }

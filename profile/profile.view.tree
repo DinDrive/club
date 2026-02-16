@@ -1,0 +1,59 @@
+$club_profile $mol_page
+	user_slug \
+	title <= user_name \
+	head /
+		<= Back $mol_link
+			arg * user \
+			sub /
+				<= Back_icon $mol_icon_arrow_left
+		<= Title $mol_paragraph
+			title <= user_name
+	body /
+		<= Card $mol_view
+			sub /
+				<= Card_photo $mol_view
+					sub /
+						<= Card_avatar $mol_image
+							uri <= avatar_url \
+				<= Card_info $mol_view
+					sub /
+						<= Card_name_row $mol_view
+							sub /
+								<= Card_fullname $mol_paragraph
+									title <= user_name
+								<= Card_nickname $mol_paragraph
+									title <= nickname_label \
+						<= Card_job $mol_view
+							sub /
+								<= Card_position $mol_paragraph
+									title <= position_label \
+						<= Card_location $mol_paragraph
+							title <= location_label \
+						<= Card_bio $mol_text
+							text <= bio_text \
+		<= Statuses $mol_view
+			sub /
+				<= Status_respect $mol_view
+					sub /
+						<= Respect_number $mol_paragraph
+							title <= upvotes_label \
+						<= Respect_text $mol_paragraph
+							title \плюсиков
+				<= Status_membership $mol_view
+					sub /
+						<= Membership_number $mol_paragraph
+							title <= membership_label \
+						<= Membership_text $mol_paragraph
+							title \в Клубе
+		<= Intro_section $mol_view
+			sub /
+				<= Intro_header $mol_paragraph
+					title \Интро
+				<= Intro_text $mol_text
+					text <= intro_text \
+		<= Tags_section $mol_view
+			sub <= tag_rows /
+		<= Posts_title $mol_paragraph
+			title <= posts_title \
+		<= Posts $mol_list
+			rows <= post_rows /

@@ -1,0 +1,10 @@
+[club_menu] [mol_link] {
+	display: block;
+	text-decoration: none;
+	padding: 5px 10px;
+}
+
+[club_menu] [mol_link]:hover {
+	color: var(--mol_theme_back);
+	background-color: var(--mol_theme_text);
+}

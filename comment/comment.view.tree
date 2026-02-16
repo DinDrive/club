@@ -1,0 +1,24 @@
+$club_comment $mol_view
+	comment null
+	sub /
+		<= Side $mol_view
+			sub /
+				<= Avatar $mol_image
+					uri <= author_avatar \
+		<= Header $mol_view
+			sub /
+				<= Author_block $mol_view
+					sub /
+						<= Author_link $mol_link
+							arg * user <= author_slug \
+							sub /
+								<= Author_name $mol_paragraph
+									title <= author_name \
+						<= Author_position $mol_paragraph
+							title <= author_position \
+				<= Date $mol_paragraph
+					title <= created_date \
+		<= Rating $mol_view
+			sub / <= upvotes_label \
+		<= Body $mol_text
+			text <= comment_text \

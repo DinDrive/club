@@ -1,14 +1,25 @@
-$club $mol_book2
-	settingsOpened? false
+$club $mol_page
 	plugins /
-		<= Favicon $bog_favicon
-			Icon <= icon $mol_icon_home
 		<= Theme $bog_theme_auto
-	pages /
-		<= Main $club_main
-			settings? <=> settingsOpened?
-			theme_auto <= Theme
-		<= FSettings
-		<= FPost $mol_view
-			title => title
-		<= FComments
+	title \Вастрик.Клуб
+	head /
+		<= Logo $mol_link
+			arg * post \ user \ bookmarks \ rooms \
+			sub /
+				<= Logo_img $mol_image
+					uri \https://vas3k.club/static/images/logo/logo-128.png
+				<= Logo_text $mol_paragraph
+					title \Вастрик.Клуб
+	body /
+		<= Main $mol_view
+			sub /
+				<= Sidebar $club_menu
+					post? <=> post_arg? \
+					user? <=> user_arg? \
+					bookmarks? <=> bookmarks_arg? \
+					rooms? <=> rooms_arg? \
+					settings? <=> settings_arg? \
+				<= Content $mol_view
+					sub / <= spread $mol_view
+	Feed $club_feed
+	Settings $club_settings

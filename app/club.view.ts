@@ -1,77 +1,79 @@
 namespace $.$$ {
 	export class $club extends $.$club {
 		@$mol_mem
-		settingsOpened(next: boolean = false) {
-			return next
+		post_arg(next?: string) {
+			return this.$.$mol_state_arg.value('post', next) ?? ''
 		}
 
 		@$mol_mem
-		post_arg() {
-			return $mol_state_arg.value('post')
+		user_arg(next?: string) {
+			return this.$.$mol_state_arg.value('user', next) ?? ''
 		}
 
 		@$mol_mem
-		token() {
-			return $mol_state_local.value('token')
+		bookmarks_arg(next?: string) {
+			return this.$.$mol_state_arg.value('bookmarks', next) ?? ''
 		}
 
 		@$mol_mem
-		FSettings() {
-			if (!this.settingsOpened()) return new $mol_view()
-			return new this.$.$club_settings()
+		rooms_arg(next?: string) {
+			return this.$.$mol_state_arg.value('rooms', next) ?? ''
 		}
 
 		@$mol_mem
-		FPost() {
-			if (!this.post_arg()) return new $mol_view()
-			return new this.$.$club_post()
+		settings_arg(next?: string) {
+			return this.$.$mol_state_arg.value('settings', next) ?? ''
 		}
 
 		@$mol_mem
-		FComments() {
-			if (!this.token() || !this.post_arg()) return new $mol_view()
-			return new this.$.$club_comments()
+		authorized() {
+			return Boolean($club_api.token())
 		}
-	}
-}
 
-namespace $ {
-	export class $club_filters extends $mol_view {
 		@$mol_mem
-		publicity() {
-			return {
-				public: '🔓 Публичные',
-				private: '🔒 Приватные',
+		spread() {
+			if (!this.authorized()) {
+				return this.Settings()
 			}
+
+			const post = this.post_arg()
+			if (post) {
+				const parts = post.split('/')
+				if (parts.length >= 2) {
+					const page = new this.$.$club_post()
+					page.post_type = () => parts[0]
+					page.post_slug = () => parts[1]
+					return page
+				}
+			}
+
+			const user = this.user_arg()
+			if (user) {
+				const page = new this.$.$club_profile()
+				page.user_slug = () => user
+				return page
+			}
+
+			if (this.bookmarks_arg()) {
+				return new this.$.$club_bookmarks()
+			}
+
+			if (this.rooms_arg()) {
+				return new this.$.$club_rooms()
+			}
+
+			if (this.settings_arg()) {
+				return this.Settings()
+			}
+
+			return this.Feed()
 		}
 
-		@$mol_mem
-		types() {
-			return {
-				post: '📝 Посты',
-				project: '👷 Проекты',
-				guide: '🌎 Путеводители',
-				question: '🤔 Вопросы',
-				thread: '📃 Треды',
-				idea: '🤩 Идеи',
-				event: '🥳 Ивенты',
-				battle: '👊 Батлы',
-				// "weekly_digest": "📰 Журнал Клуба",
-				docs: '🔍 Доки',
+		body() {
+			if (!this.authorized()) {
+				return [this.Settings()]
 			}
-		}
-
-		@$mol_mem
-		timings() {
-			return {
-				new: 'Новое',
-				activity: 'Обсуждаемое',
-				hot: 'Горячее',
-				top: 'Лучшее',
-				top_week: 'Лучшее за неделю',
-				top_month: 'Лучшее за месяц',
-				top_year: 'Лучшее за год',
-			}
+			return [this.Main()]
 		}
 	}
 }

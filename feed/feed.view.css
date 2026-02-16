@@ -1,0 +1,14 @@
+[club_feed_ordering] [mol_link] {
+	padding: 10px;
+	text-decoration: none;
+	opacity: 0.5;
+}
+
+[club_feed_ordering] [mol_link]:hover {
+	opacity: 0.8;
+}
+
+[club_feed_ordering] [mol_link][mol_link_current] {
+	font-weight: 700;
+	opacity: 1.0;
+}

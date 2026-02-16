@@ -1,0 +1,38 @@
+$club_menu $mol_view
+	post? \
+	user? \
+	bookmarks? \
+	rooms? \
+	settings? \
+	sub /
+		<= Nav_main $mol_view
+			sub /
+				<= Nav_home $mol_link
+					arg * post \ user \ bookmarks \ rooms \ settings \
+					title \🏠 Главная
+				<= Nav_bookmarks $mol_link
+					arg * bookmarks \1
+					title \📑 Закладки
+				<= Nav_rooms $mol_link
+					arg * rooms \1
+					title \💬 Комнаты
+				<= Nav_settings $mol_link
+					arg * settings \1
+					title \⚙️ Настройки
+		<= Nav_types $mol_view
+			sub /
+				<= Nav_posts $mol_link
+					arg * type \post
+					title \✏️ Посты
+				<= Nav_questions $mol_link
+					arg * type \question
+					title \❓ Вопросы
+				<= Nav_projects $mol_link
+					arg * type \project
+					title \📐 Проекты
+				<= Nav_events $mol_link
+					arg * type \event
+					title \📅 События
+				<= Nav_threads $mol_link
+					arg * type \thread
+					title \💬 Треды
