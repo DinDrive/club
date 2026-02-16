@@ -4691,189 +4691,6 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$club_menu) = class $club_menu extends ($.$mol_view) {
-		Nav_home(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"post": " user \\ bookmarks \\ rooms \\ settings \\"});
-			(obj.title) = () => ("🏠 Главная");
-			return obj;
-		}
-		Nav_bookmarks(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"bookmarks": "1"});
-			(obj.title) = () => ("📑 Закладки");
-			return obj;
-		}
-		Nav_rooms(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"rooms": "1"});
-			(obj.title) = () => ("💬 Комнаты");
-			return obj;
-		}
-		Nav_settings(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"settings": "1"});
-			(obj.title) = () => ("⚙️ Настройки");
-			return obj;
-		}
-		Nav_main(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Nav_home()), 
-				(this.Nav_bookmarks()), 
-				(this.Nav_rooms()), 
-				(this.Nav_settings())
-			]);
-			return obj;
-		}
-		Nav_posts(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"type": "post"});
-			(obj.title) = () => ("✏️ Посты");
-			return obj;
-		}
-		Nav_questions(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"type": "question"});
-			(obj.title) = () => ("❓ Вопросы");
-			return obj;
-		}
-		Nav_projects(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"type": "project"});
-			(obj.title) = () => ("📐 Проекты");
-			return obj;
-		}
-		Nav_events(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"type": "event"});
-			(obj.title) = () => ("📅 События");
-			return obj;
-		}
-		Nav_threads(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"type": "thread"});
-			(obj.title) = () => ("💬 Треды");
-			return obj;
-		}
-		Nav_types(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Nav_posts()), 
-				(this.Nav_questions()), 
-				(this.Nav_projects()), 
-				(this.Nav_events()), 
-				(this.Nav_threads())
-			]);
-			return obj;
-		}
-		post(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		user(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		bookmarks(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		rooms(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		settings(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		sub(){
-			return [(this.Nav_main()), (this.Nav_types())];
-		}
-	};
-	($mol_mem(($.$club_menu.prototype), "Nav_home"));
-	($mol_mem(($.$club_menu.prototype), "Nav_bookmarks"));
-	($mol_mem(($.$club_menu.prototype), "Nav_rooms"));
-	($mol_mem(($.$club_menu.prototype), "Nav_settings"));
-	($mol_mem(($.$club_menu.prototype), "Nav_main"));
-	($mol_mem(($.$club_menu.prototype), "Nav_posts"));
-	($mol_mem(($.$club_menu.prototype), "Nav_questions"));
-	($mol_mem(($.$club_menu.prototype), "Nav_projects"));
-	($mol_mem(($.$club_menu.prototype), "Nav_events"));
-	($mol_mem(($.$club_menu.prototype), "Nav_threads"));
-	($mol_mem(($.$club_menu.prototype), "Nav_types"));
-	($mol_mem(($.$club_menu.prototype), "post"));
-	($mol_mem(($.$club_menu.prototype), "user"));
-	($mol_mem(($.$club_menu.prototype), "bookmarks"));
-	($mol_mem(($.$club_menu.prototype), "rooms"));
-	($mol_mem(($.$club_menu.prototype), "settings"));
-
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $club_menu extends $.$club_menu {
-        }
-        $$.$club_menu = $club_menu;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("club/menu/menu.view.css", "[club_menu] [mol_link] {\n\tdisplay: block;\n\ttext-decoration: none;\n\tpadding: 5px 10px;\n}\n\n[club_menu] [mol_link]:hover {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        $mol_style_define($club_menu, {
-            padding: {
-                top: '30px',
-                right: '30px',
-            },
-            font: {
-                size: '110%',
-            },
-            display: 'flex',
-            flex: {
-                direction: 'column',
-            },
-            gap: '20px',
-            Nav_main: {
-                display: 'flex',
-                flex: {
-                    direction: 'column',
-                },
-                font: {
-                    size: '110%',
-                    weight: 500,
-                },
-            },
-            Nav_types: {
-                display: 'flex',
-                flex: {
-                    direction: 'column',
-                },
-                font: {
-                    size: '90%',
-                },
-            },
-        });
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
-
-;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
 		gap_before(){
 			return 0;
@@ -5125,6 +4942,519 @@ var $;
 var $;
 (function ($) {
     $mol_style_attach("mol/list/list.view.css", "[mol_list] {\n\twill-change: contents;\n\tdisplay: flex;\n\tflex-direction: column;\n\tflex-shrink: 0;\n\tmax-width: 100%;\n\t/* display: flex;\n\talign-items: stretch;\n\talign-content: stretch; */\n\ttransition: none;\n\tmin-height: 1.5rem;\n\t/* will-change: contents; */\n}\n\n[mol_list_gap_before] ,\n[mol_list_gap_after] {\n\tdisplay: block !important;\n\tflex: none;\n\ttransition: none;\n\toverflow-anchor: none;\n}\n");
+})($ || ($ = {}));
+
+;
+	($.$club_room_card) = class $club_room_card extends ($.$mol_link) {
+		Icon(){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.room_icon()));
+			return obj;
+		}
+		Title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.room_title()));
+			return obj;
+		}
+		room_slug(){
+			return "";
+		}
+		room_title(){
+			return "";
+		}
+		room_color(){
+			return "";
+		}
+		room_icon(){
+			return "";
+		}
+		uri(){
+			return "https://vas3k.club/room/{slug}/";
+		}
+		sub(){
+			return [(this.Icon()), (this.Title())];
+		}
+	};
+	($mol_mem(($.$club_room_card.prototype), "Icon"));
+	($mol_mem(($.$club_room_card.prototype), "Title"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $club_room_card extends $.$club_room_card {
+            uri() {
+                return `https://vas3k.club/room/${this.room_slug()}/`;
+            }
+            attr() {
+                return {
+                    ...super.attr(),
+                    style: `background-color: ${this.room_color()}`,
+                };
+            }
+        }
+        $$.$club_room_card = $club_room_card;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($club_room_card, {
+            display: 'flex',
+            flex: {
+                direction: 'row',
+            },
+            align: {
+                items: 'center',
+            },
+            gap: '5px',
+            padding: {
+                top: '10px',
+                right: '20px',
+                bottom: '10px',
+                left: '10px',
+            },
+            margin: {
+                top: '10px',
+            },
+            border: {
+                radius: '30px',
+            },
+            color: '#FFF',
+            textDecoration: 'none',
+            font: {
+                weight: 500,
+                size: '100%',
+            },
+            overflow: 'hidden',
+            transition: '0.2s',
+            Icon: {
+                width: '35px',
+                height: '35px',
+                border: {
+                    radius: '50%',
+                },
+                objectFit: 'cover',
+                flex: {
+                    shrink: 0,
+                },
+            },
+            Title: {
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+                color: '#FFF',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+	($.$club_menu) = class $club_menu extends ($.$mol_view) {
+		Nav_home(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null, 
+				"type": null
+			});
+			(obj.title) = () => ("🏠 Главная");
+			return obj;
+		}
+		Nav_people(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/people/");
+			(obj.title) = () => ("🌍 Люди");
+			return obj;
+		}
+		Nav_chats(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/network/");
+			(obj.title) = () => ("💬 Чаты");
+			return obj;
+		}
+		Nav_tops(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/stats/");
+			(obj.title) = () => ("🏆 Топы");
+			return obj;
+		}
+		Nav_main(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Nav_home()), 
+				(this.Nav_people()), 
+				(this.Nav_chats()), 
+				(this.Nav_tops())
+			]);
+			return obj;
+		}
+		Nav_posts(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "post", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("✏️ Посты");
+			return obj;
+		}
+		Nav_events(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "event", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("📅 События");
+			return obj;
+		}
+		Nav_projects(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "project", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("📐 Проекты");
+			return obj;
+		}
+		Nav_guides(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "guide", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("🌍 Путеводители");
+			return obj;
+		}
+		Nav_questions(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "question", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("❓ Вопросы");
+			return obj;
+		}
+		Nav_threads(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"type": "thread", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
+			(obj.title) = () => ("💬 Треды");
+			return obj;
+		}
+		Nav_approved(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/label/approved/");
+			(obj.title) = () => ("👍 Офигенно");
+			return obj;
+		}
+		Nav_inside(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/label/inside/");
+			(obj.title) = () => ("💎 Инсайды");
+			return obj;
+		}
+		Nav_best(){
+			const obj = new this.$.$mol_link();
+			(obj.uri) = () => ("https://vas3k.club/label/post_of_month/");
+			(obj.title) = () => ("🏆 Посты месяца");
+			return obj;
+		}
+		Nav_types(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Nav_posts()), 
+				(this.Nav_events()), 
+				(this.Nav_projects()), 
+				(this.Nav_guides()), 
+				(this.Nav_questions()), 
+				(this.Nav_threads()), 
+				(this.Nav_approved()), 
+				(this.Nav_inside()), 
+				(this.Nav_best())
+			]);
+			return obj;
+		}
+		Nav_bookmarks(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"bookmarks": "1", 
+				"post": null, 
+				"user": null, 
+				"rooms": null, 
+				"settings": null, 
+				"type": null
+			});
+			(obj.title) = () => ("📑 Закладки");
+			return obj;
+		}
+		Nav_rooms_link(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"rooms": "1", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"settings": null, 
+				"type": null
+			});
+			(obj.title) = () => ("🚪 Комнаты");
+			return obj;
+		}
+		Nav_settings(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({
+				"settings": "1", 
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"type": null
+			});
+			(obj.title) = () => ("⚙️ Настройки");
+			return obj;
+		}
+		Nav_bottom(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([
+				(this.Nav_bookmarks()), 
+				(this.Nav_rooms_link()), 
+				(this.Nav_settings())
+			]);
+			return obj;
+		}
+		Rooms_title(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("Комнаты");
+			return obj;
+		}
+		room_cards(){
+			return [];
+		}
+		Rooms_list(){
+			const obj = new this.$.$mol_list();
+			(obj.rows) = () => ((this.room_cards()));
+			return obj;
+		}
+		Room_card(id){
+			const obj = new this.$.$club_room_card();
+			return obj;
+		}
+		sub(){
+			return [
+				(this.Nav_main()), 
+				(this.Nav_types()), 
+				(this.Nav_bottom()), 
+				(this.Rooms_title()), 
+				(this.Rooms_list())
+			];
+		}
+	};
+	($mol_mem(($.$club_menu.prototype), "Nav_home"));
+	($mol_mem(($.$club_menu.prototype), "Nav_people"));
+	($mol_mem(($.$club_menu.prototype), "Nav_chats"));
+	($mol_mem(($.$club_menu.prototype), "Nav_tops"));
+	($mol_mem(($.$club_menu.prototype), "Nav_main"));
+	($mol_mem(($.$club_menu.prototype), "Nav_posts"));
+	($mol_mem(($.$club_menu.prototype), "Nav_events"));
+	($mol_mem(($.$club_menu.prototype), "Nav_projects"));
+	($mol_mem(($.$club_menu.prototype), "Nav_guides"));
+	($mol_mem(($.$club_menu.prototype), "Nav_questions"));
+	($mol_mem(($.$club_menu.prototype), "Nav_threads"));
+	($mol_mem(($.$club_menu.prototype), "Nav_approved"));
+	($mol_mem(($.$club_menu.prototype), "Nav_inside"));
+	($mol_mem(($.$club_menu.prototype), "Nav_best"));
+	($mol_mem(($.$club_menu.prototype), "Nav_types"));
+	($mol_mem(($.$club_menu.prototype), "Nav_bookmarks"));
+	($mol_mem(($.$club_menu.prototype), "Nav_rooms_link"));
+	($mol_mem(($.$club_menu.prototype), "Nav_settings"));
+	($mol_mem(($.$club_menu.prototype), "Nav_bottom"));
+	($mol_mem(($.$club_menu.prototype), "Rooms_title"));
+	($mol_mem(($.$club_menu.prototype), "Rooms_list"));
+	($mol_mem_key(($.$club_menu.prototype), "Room_card"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const SIDEBAR_ROOMS = [
+            {
+                slug: 'ai',
+                title: 'ИИ',
+                color: '#7cb46b',
+                icon: 'https://i.vas3k.club/ff4fd9958ce2dd1a88f1a05a8b1b21096393961bb15cf7b82cae5ccdf0534e3a.jpg',
+            },
+            { slug: 'stonks', title: 'STONKS', color: '#45ADA8', icon: 'https://i.vas3k.ru/lr6.jpg' },
+            {
+                slug: 'indie',
+                title: 'Индихакеры',
+                color: '#f37735',
+                icon: 'https://i.vas3k.club/f19aa843188c1fbf72d7f943517f55451c43e0538d55da16a9bd11cb8d16f6a5.jpg',
+            },
+            {
+                slug: 'gamedev',
+                title: 'Геймдев',
+                color: '#f37735',
+                icon: 'https://i.vas3k.club/9e6ec0f61bd602394da6f9fead5dc8c7cc0cc60f14124b0d649f686f258b198d.jpg',
+            },
+            {
+                slug: 'manager',
+                title: 'Менеджеры',
+                color: '#0052CC',
+                icon: 'https://i.vas3k.club/f0a3a152019cd6312cafc28829230edb414534b000475bfbbada15f1541b7557.jpg',
+            },
+            {
+                slug: 'pl',
+                title: 'Польша',
+                color: '#DC143C',
+                icon: 'https://i.vas3k.club/c606b737a7405d970b11f595a2d8451c6b63c1f7e3c155e3919546a4e919fb2e.jpg',
+            },
+            {
+                slug: 'whiteboard',
+                title: 'Вайтборд',
+                color: '#1cb981',
+                icon: 'https://i.vas3k.club/f9b9db8b56df48ab04a7bd9d65b78a78a7aa42007640d39c81b80d491069b9be.jpg',
+            },
+            {
+                slug: 'tech',
+                title: 'Тех',
+                color: '#2776EA',
+                icon: 'https://i.vas3k.club/83bf7edf657eb6424aec7f20ace82df690125e064f985fc2be73886234b1011b.jpg',
+            },
+            { slug: 'kitchen', title: 'Кухня', color: '#E86850', icon: '' },
+        ];
+        class $club_menu extends $.$club_menu {
+            room_cards() {
+                return SIDEBAR_ROOMS.map((room, i) => {
+                    const card = this.Room_card(i);
+                    card.room_slug = () => room.slug;
+                    card.room_title = () => room.title;
+                    card.room_color = () => room.color;
+                    card.room_icon = () => room.icon;
+                    return card;
+                });
+            }
+        }
+        __decorate([
+            $mol_mem
+        ], $club_menu.prototype, "room_cards", null);
+        $$.$club_menu = $club_menu;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("club/menu/menu.view.css", "[club_menu] [mol_link] {\n\tdisplay: block;\n\ttext-decoration: none;\n\tpadding: 5px 10px;\n}\n\n[club_menu] [mol_link]:hover {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($club_menu, {
+            padding: {
+                top: '30px',
+                right: '30px',
+            },
+            font: {
+                size: '110%',
+            },
+            display: 'flex',
+            flex: {
+                direction: 'column',
+            },
+            gap: '20px',
+            Nav_main: {
+                display: 'flex',
+                flex: {
+                    direction: 'column',
+                },
+                gap: '15px',
+                font: {
+                    size: '110%',
+                    weight: 500,
+                },
+            },
+            Nav_types: {
+                display: 'flex',
+                flex: {
+                    direction: 'column',
+                },
+                gap: '1px',
+                font: {
+                    size: '90%',
+                },
+            },
+            Nav_bottom: {
+                display: 'flex',
+                flex: {
+                    direction: 'column',
+                },
+                gap: '1px',
+                font: {
+                    size: '90%',
+                },
+            },
+            Rooms_title: {
+                font: {
+                    size: '110%',
+                    weight: 600,
+                },
+                padding: {
+                    top: '0px',
+                    bottom: '5px',
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
 
 ;
@@ -6744,6 +7074,16 @@ var $;
                 return this.fetch_from(this.dev, url, true);
             }
         }
+        static fetch_json_auth(url) {
+            try {
+                return this.fetch_from(this.prod, url, true);
+            }
+            catch (error) {
+                if (error instanceof Promise)
+                    throw error;
+                return this.fetch_from(this.dev, url, true);
+            }
+        }
         static feed_ordering(next) {
             return $mol_state_arg.value('ordering', next) ?? 'activity';
         }
@@ -6766,28 +7106,28 @@ var $;
             return this.fetch_json(`/${type}/${slug}.json`);
         }
         static post_comments(type, slug) {
-            return this.fetch_json(`/${type}/${slug}/comments.json`);
+            return this.fetch_json_auth(`/${type}/${slug}/comments.json`);
         }
         static profile(slug) {
-            return this.fetch_json(`/user/${slug}.json`);
+            return this.fetch_json_auth(`/user/${slug}.json`);
         }
         static profile_tags(slug) {
-            return this.fetch_json(`/user/${slug}/tags.json`);
+            return this.fetch_json_auth(`/user/${slug}/tags.json`);
         }
         static profile_badges(slug) {
-            return this.fetch_json(`/user/${slug}/badges.json`);
+            return this.fetch_json_auth(`/user/${slug}/badges.json`);
         }
         static profile_achievements(slug) {
-            return this.fetch_json(`/user/${slug}/achievements.json`);
+            return this.fetch_json_auth(`/user/${slug}/achievements.json`);
         }
         static bookmarks() {
-            return this.fetch_json(`/bookmarks.json`);
+            return this.fetch_json_auth(`/bookmarks.json`);
         }
         static rooms() {
-            return this.fetch_json(`/rooms.json`);
+            return this.fetch_json_auth(`/rooms.json`);
         }
         static friends() {
-            return this.fetch_json(`/friends.json`);
+            return this.fetch_json_auth(`/friends.json`);
         }
     }
     __decorate([
@@ -6942,7 +7282,7 @@ var $;
             }
             upvotes() {
                 const p = this.post_data();
-                return p ? `\u25B2 ${p._club.upvotes}` : '';
+                return p ? `${p._club.upvotes}` : '';
             }
             author_avatar() {
                 return this.post_data()?.authors?.[0]?.avatar ?? '';
@@ -6952,10 +7292,24 @@ var $;
             }
             comments_label() {
                 const c = this.post_data()?._club?.comment_count ?? 0;
-                return `\uD83D\uDCAC ${c}`;
+                if (!c)
+                    return '';
+                const word = c === 1 ? 'комментарий' : c < 5 ? 'комментария' : 'комментариев';
+                return `${c} ${word}`;
             }
             type_label() {
-                return this.post_data()?._club?.type ?? '';
+                const type = this.post_data()?._club?.type;
+                const map = {
+                    post: 'Пост',
+                    question: 'Вопрос',
+                    project: 'Проект',
+                    event: 'Событие',
+                    thread: 'Тред',
+                    link: 'Ссылка',
+                    guide: 'Путеводитель',
+                    intro: 'Интро',
+                };
+                return type ? (map[type] ?? type) : '';
             }
         }
         $$.$club_card = $club_card;
@@ -6966,7 +7320,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 20px 14px 7px;\n\tfont-size: 130%;\n\tfont-weight: 600;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n");
+    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 30px 17px 7px;\n\tfont-size: 140%;\n\tfont-weight: 600;\n\tfont-family: 'Ubuntu', Helvetica, Verdana, sans-serif;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n\n[club_card_votes]::before {\n\tcontent: '\\25B2';\n\tposition: absolute;\n\tfont-size: 18px;\n\ttop: 5px;\n\tleft: 50%;\n\ttransform: translateX(-50%);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -7002,7 +7356,7 @@ var $;
             },
             textDecoration: 'none',
             color: $mol_theme.text,
-            transition: '0.2s ease-out',
+            transition: '0.1s ease-out',
             ':hover': {
                 boxShadow: `0 0 40px ${rgba(94, 104, 125, 0.3)}`,
             },
@@ -7025,6 +7379,7 @@ var $;
                     color: $mol_theme.card,
                 },
                 objectFit: 'cover',
+                zIndex: 2,
             },
             Header: {
                 gridColumn: '2',
@@ -7100,7 +7455,7 @@ var $;
                 return $club_api.feed();
             }
             posts() {
-                return this.feed()?.items ?? [];
+                return (this.feed()?.items ?? []).filter((p) => p._club?.type !== 'weekly_digest');
             }
             post_cards() {
                 return this.posts().map(post => {
@@ -10723,37 +11078,18 @@ var $;
 		}
 		Logo(){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"post": " user \\ bookmarks \\ rooms \\"});
+			(obj.arg) = () => ({
+				"post": null, 
+				"user": null, 
+				"bookmarks": null, 
+				"rooms": null, 
+				"settings": null
+			});
 			(obj.sub) = () => ([(this.Logo_img()), (this.Logo_text())]);
 			return obj;
 		}
-		post_arg(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		user_arg(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		bookmarks_arg(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		rooms_arg(next){
-			if(next !== undefined) return next;
-			return "";
-		}
-		settings_arg(next){
-			if(next !== undefined) return next;
-			return "";
-		}
 		Sidebar(){
 			const obj = new this.$.$club_menu();
-			(obj.post) = (next) => ((this.post_arg(next)));
-			(obj.user) = (next) => ((this.user_arg(next)));
-			(obj.bookmarks) = (next) => ((this.bookmarks_arg(next)));
-			(obj.rooms) = (next) => ((this.rooms_arg(next)));
-			(obj.settings) = (next) => ((this.settings_arg(next)));
 			return obj;
 		}
 		spread(){
@@ -10795,11 +11131,6 @@ var $;
 	($mol_mem(($.$club.prototype), "Logo_img"));
 	($mol_mem(($.$club.prototype), "Logo_text"));
 	($mol_mem(($.$club.prototype), "Logo"));
-	($mol_mem(($.$club.prototype), "post_arg"));
-	($mol_mem(($.$club.prototype), "user_arg"));
-	($mol_mem(($.$club.prototype), "bookmarks_arg"));
-	($mol_mem(($.$club.prototype), "rooms_arg"));
-	($mol_mem(($.$club.prototype), "settings_arg"));
 	($mol_mem(($.$club.prototype), "Sidebar"));
 	($mol_mem(($.$club.prototype), "spread"));
 	($mol_mem(($.$club.prototype), "Content"));
@@ -10830,7 +11161,7 @@ var $;
 		}
 		Back(){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"post": ""});
+			(obj.arg) = () => ({"post": null});
 			(obj.sub) = () => ([(this.Back_icon())]);
 			return obj;
 		}
@@ -10844,25 +11175,17 @@ var $;
 			(obj.title) = () => ((this.post_title()));
 			return obj;
 		}
+		Post_title_block(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Post_title_text())]);
+			return obj;
+		}
 		publicity_label(){
 			return "";
 		}
 		Post_publicity(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.publicity_label()));
-			return obj;
-		}
-		Post_title_block(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Post_title_text()), (this.Post_publicity())]);
-			return obj;
-		}
-		room_label(){
-			return "";
-		}
-		Room_badge(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.room_label())]);
 			return obj;
 		}
 		published_date(){
@@ -10888,12 +11211,56 @@ var $;
 		}
 		Post_info(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Room_badge()), (this.Post_actions())]);
+			(obj.sub) = () => ([(this.Post_actions())]);
+			return obj;
+		}
+		author_slug(){
+			return "";
+		}
+		author_avatar(){
+			return "";
+		}
+		Author_avatar_small(){
+			const obj = new this.$.$mol_image();
+			(obj.uri) = () => ((this.author_avatar()));
+			return obj;
+		}
+		author_name(){
+			return "";
+		}
+		Author_name(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.author_name()));
+			return obj;
+		}
+		Author_link(){
+			const obj = new this.$.$mol_link();
+			(obj.arg) = () => ({"user": (this.author_slug())});
+			(obj.sub) = () => ([(this.Author_avatar_small()), (this.Author_name())]);
+			return obj;
+		}
+		Post_author(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Author_link())]);
+			return obj;
+		}
+		room_label(){
+			return "";
+		}
+		Room_badge(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.room_label())]);
 			return obj;
 		}
 		Article_header(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Post_title_block()), (this.Post_info())]);
+			(obj.sub) = () => ([
+				(this.Post_title_block()), 
+				(this.Post_publicity()), 
+				(this.Post_info()), 
+				(this.Post_author()), 
+				(this.Room_badge())
+			]);
 			return obj;
 		}
 		upvotes_label(){
@@ -10912,21 +11279,12 @@ var $;
 			(obj.text) = () => ((this.content_text()));
 			return obj;
 		}
-		author_avatar(){
-			return "";
-		}
-		Author_avatar(){
+		Footer_avatar(){
 			const obj = new this.$.$mol_image();
 			(obj.uri) = () => ((this.author_avatar()));
 			return obj;
 		}
-		author_slug(){
-			return "";
-		}
-		author_name(){
-			return "";
-		}
-		Author_name(){
+		Footer_name(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.author_name()));
 			return obj;
@@ -10934,15 +11292,15 @@ var $;
 		author_position(){
 			return "";
 		}
-		Author_position(){
+		Footer_position(){
 			const obj = new this.$.$mol_paragraph();
 			(obj.title) = () => ((this.author_position()));
 			return obj;
 		}
-		Author_link(){
+		Footer_link(){
 			const obj = new this.$.$mol_link();
 			(obj.arg) = () => ({"user": (this.author_slug())});
-			(obj.sub) = () => ([(this.Author_name()), (this.Author_position())]);
+			(obj.sub) = () => ([(this.Footer_name()), (this.Footer_position())]);
 			return obj;
 		}
 		Footer_date(){
@@ -10950,14 +11308,14 @@ var $;
 			(obj.title) = () => ((this.published_date()));
 			return obj;
 		}
-		Author_info(){
+		Footer_info(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Author_link()), (this.Footer_date())]);
+			(obj.sub) = () => ([(this.Footer_link()), (this.Footer_date())]);
 			return obj;
 		}
 		Post_footer(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Author_avatar()), (this.Author_info())]);
+			(obj.sub) = () => ([(this.Footer_avatar()), (this.Footer_info())]);
 			return obj;
 		}
 		Article(){
@@ -11016,22 +11374,26 @@ var $;
 	($mol_mem(($.$club_post.prototype), "Back"));
 	($mol_mem(($.$club_post.prototype), "Title"));
 	($mol_mem(($.$club_post.prototype), "Post_title_text"));
-	($mol_mem(($.$club_post.prototype), "Post_publicity"));
 	($mol_mem(($.$club_post.prototype), "Post_title_block"));
-	($mol_mem(($.$club_post.prototype), "Room_badge"));
+	($mol_mem(($.$club_post.prototype), "Post_publicity"));
 	($mol_mem(($.$club_post.prototype), "Post_date"));
 	($mol_mem(($.$club_post.prototype), "Post_views"));
 	($mol_mem(($.$club_post.prototype), "Post_actions"));
 	($mol_mem(($.$club_post.prototype), "Post_info"));
+	($mol_mem(($.$club_post.prototype), "Author_avatar_small"));
+	($mol_mem(($.$club_post.prototype), "Author_name"));
+	($mol_mem(($.$club_post.prototype), "Author_link"));
+	($mol_mem(($.$club_post.prototype), "Post_author"));
+	($mol_mem(($.$club_post.prototype), "Room_badge"));
 	($mol_mem(($.$club_post.prototype), "Article_header"));
 	($mol_mem(($.$club_post.prototype), "Upvote"));
 	($mol_mem(($.$club_post.prototype), "Text_body"));
-	($mol_mem(($.$club_post.prototype), "Author_avatar"));
-	($mol_mem(($.$club_post.prototype), "Author_name"));
-	($mol_mem(($.$club_post.prototype), "Author_position"));
-	($mol_mem(($.$club_post.prototype), "Author_link"));
+	($mol_mem(($.$club_post.prototype), "Footer_avatar"));
+	($mol_mem(($.$club_post.prototype), "Footer_name"));
+	($mol_mem(($.$club_post.prototype), "Footer_position"));
+	($mol_mem(($.$club_post.prototype), "Footer_link"));
 	($mol_mem(($.$club_post.prototype), "Footer_date"));
-	($mol_mem(($.$club_post.prototype), "Author_info"));
+	($mol_mem(($.$club_post.prototype), "Footer_info"));
 	($mol_mem(($.$club_post.prototype), "Post_footer"));
 	($mol_mem(($.$club_post.prototype), "Article"));
 	($mol_mem(($.$club_post.prototype), "Comments_count"));
@@ -12078,9 +12440,8 @@ var $;
                 },
             },
             Article: {
-                display: 'grid',
-                gridTemplateColumns: 'minmax(auto, 1fr) min-content',
-                gridTemplateRows: 'auto auto auto',
+                display: 'block',
+                position: 'relative',
                 maxWidth: '700px',
                 margin: {
                     top: '70px',
@@ -12089,28 +12450,19 @@ var $;
                 },
             },
             Article_header: {
-                gridColumn: '1 / 2',
-                gridRow: '1 / 2',
+                textAlign: 'center',
             },
             Post_title_block: {
-                display: 'flex',
-                flex: {
-                    direction: 'row',
-                    wrap: 'wrap',
-                },
-                align: {
-                    items: 'center',
-                },
-                gap: '0.5rem',
+                display: 'block',
+                textAlign: 'center',
             },
             Post_title_text: {
                 display: 'inline',
                 font: {
-                    size: '200%',
-                    weight: 500,
+                    size: '300%',
+                    weight: 700,
                 },
-                lineHeight: '1.2em',
-                margin: {},
+                lineHeight: '1.3em',
             },
             Post_publicity: {
                 display: 'inline-block',
@@ -12122,15 +12474,12 @@ var $;
             },
             Post_info: {
                 padding: {
-                    top: '7px',
+                    top: '20px',
+                    bottom: '20px',
                 },
-                display: 'flex',
+                display: 'inline-flex',
                 flex: {
-                    direction: 'row',
                     wrap: 'wrap',
-                },
-                align: {
-                    items: 'flex-start',
                 },
                 gap: '10px',
             },
@@ -12143,13 +12492,17 @@ var $;
                 opacity: 0.6,
             },
             Upvote: {
-                gridColumn: '2 / 3',
-                gridRow: '1 / 2',
-                justifySelf: 'end',
-                padding: {
-                    left: '10px',
+                position: 'sticky',
+                top: '30px',
+                float: 'left',
+                margin: {
+                    left: '-125px',
                     top: '30px',
-                    right: '17px',
+                },
+                padding: {
+                    left: '20px',
+                    top: '30px',
+                    right: '20px',
                     bottom: '7px',
                 },
                 font: {
@@ -12169,22 +12522,20 @@ var $;
                 },
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
+                textAlign: 'center',
             },
             Text_body: {
-                gridColumn: '1 / 3',
-                gridRow: '2 / 3',
                 padding: {
                     top: '30px',
                 },
                 font: {
                     size: '19px',
-                    family: `Georgia, "Times New Roman", serif`,
+                    family: `"Merriweather", Georgia, "Times New Roman", serif`,
                 },
                 lineHeight: '1.67',
+                letterSpacing: '0.01rem',
             },
             Post_footer: {
-                gridColumn: '1 / 3',
-                gridRow: '3 / 4',
                 display: 'grid',
                 gridTemplateColumns: '55px auto',
                 gridTemplateRows: 'auto auto',
@@ -12196,7 +12547,34 @@ var $;
                 },
                 gap: '0px',
             },
-            Author_avatar: {
+            Post_author: {
+                font: {
+                    size: '110%',
+                },
+                padding: {
+                    bottom: '40px',
+                },
+            },
+            Author_avatar_small: {
+                display: 'inline-block',
+                width: '30px',
+                height: '30px',
+                border: {
+                    radius: '50%',
+                },
+                objectFit: 'cover',
+                verticalAlign: 'middle',
+                margin: {
+                    right: '5px',
+                },
+            },
+            Author_name: {
+                font: {
+                    weight: 500,
+                },
+                display: 'inline',
+            },
+            Footer_avatar: {
                 gridColumn: '1 / 2',
                 gridRow: '1 / 3',
                 width: '42px',
@@ -12206,17 +12584,17 @@ var $;
                 },
                 objectFit: 'cover',
             },
-            Author_info: {
+            Footer_info: {
                 gridColumn: '2 / 3',
                 gridRow: '1 / 2',
             },
-            Author_name: {
+            Footer_name: {
                 font: {
                     weight: 500,
                 },
                 display: 'inline',
             },
-            Author_position: {
+            Footer_position: {
                 display: 'inline',
                 opacity: 0.7,
             },
@@ -12266,7 +12644,7 @@ var $;
 		}
 		Back(){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"user": ""});
+			(obj.arg) = () => ({"user": null});
 			(obj.sub) = () => ([(this.Back_icon())]);
 			return obj;
 		}
@@ -12417,22 +12795,6 @@ var $;
 			(obj.sub) = () => ((this.tag_rows()));
 			return obj;
 		}
-		posts_title(){
-			return "";
-		}
-		Posts_title(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.posts_title()));
-			return obj;
-		}
-		post_rows(){
-			return [];
-		}
-		Posts(){
-			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ((this.post_rows()));
-			return obj;
-		}
 		user_slug(){
 			return "";
 		}
@@ -12447,9 +12809,7 @@ var $;
 				(this.Card()), 
 				(this.Statuses()), 
 				(this.Intro_section()), 
-				(this.Tags_section()), 
-				(this.Posts_title()), 
-				(this.Posts())
+				(this.Tags_section())
 			];
 		}
 	};
@@ -12478,8 +12838,6 @@ var $;
 	($mol_mem(($.$club_profile.prototype), "Intro_text"));
 	($mol_mem(($.$club_profile.prototype), "Intro_section"));
 	($mol_mem(($.$club_profile.prototype), "Tags_section"));
-	($mol_mem(($.$club_profile.prototype), "Posts_title"));
-	($mol_mem(($.$club_profile.prototype), "Posts"));
 
 
 ;
@@ -12611,6 +12969,16 @@ var $;
             intro_text() {
                 return this.data()?.user?.intro ?? '';
             }
+            body() {
+                const parts = [this.Card(), this.Statuses()];
+                if (this.intro_text()) {
+                    parts.push(this.Intro_section());
+                }
+                if (this.tag_rows().length) {
+                    parts.push(this.Tags_section());
+                }
+                return parts;
+            }
             tag_rows() {
                 const tags_by_group = this.tags_data()?.tags;
                 if (!tags_by_group)
@@ -12627,12 +12995,6 @@ var $;
                     return v;
                 });
             }
-            posts_title() {
-                return 'Посты';
-            }
-            post_rows() {
-                return [];
-            }
         }
         __decorate([
             $mol_mem
@@ -12643,9 +13005,6 @@ var $;
         __decorate([
             $mol_mem
         ], $club_profile.prototype, "tag_rows", null);
-        __decorate([
-            $mol_mem
-        ], $club_profile.prototype, "post_rows", null);
         $$.$club_profile = $club_profile;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12894,17 +13253,6 @@ var $;
                     radius: '15px',
                 },
             },
-            Posts_title: {
-                font: {
-                    size: '150%',
-                    weight: 700,
-                },
-                textAlign: 'center',
-                padding: {
-                    top: '40px',
-                    bottom: '20px',
-                },
-            },
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -12917,7 +13265,7 @@ var $;
 		}
 		Back(){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"bookmarks": ""});
+			(obj.arg) = () => ({"bookmarks": null});
 			(obj.sub) = () => ([(this.Back_icon())]);
 			return obj;
 		}
@@ -13033,7 +13381,7 @@ var $;
 		}
 		Back(){
 			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"rooms": ""});
+			(obj.arg) = () => ({"rooms": null});
 			(obj.sub) = () => ([(this.Back_icon())]);
 			return obj;
 		}
@@ -13349,21 +13697,6 @@ var $;
     var $$;
     (function ($$) {
         class $club extends $.$club {
-            post_arg(next) {
-                return this.$.$mol_state_arg.value('post', next) ?? '';
-            }
-            user_arg(next) {
-                return this.$.$mol_state_arg.value('user', next) ?? '';
-            }
-            bookmarks_arg(next) {
-                return this.$.$mol_state_arg.value('bookmarks', next) ?? '';
-            }
-            rooms_arg(next) {
-                return this.$.$mol_state_arg.value('rooms', next) ?? '';
-            }
-            settings_arg(next) {
-                return this.$.$mol_state_arg.value('settings', next) ?? '';
-            }
             authorized() {
                 return Boolean($club_api.token());
             }
@@ -13371,7 +13704,7 @@ var $;
                 if (!this.authorized()) {
                     return this.Settings();
                 }
-                const post = this.post_arg();
+                const post = this.$.$mol_state_arg.value('post');
                 if (post) {
                     const parts = post.split('/');
                     if (parts.length >= 2) {
@@ -13381,19 +13714,19 @@ var $;
                         return page;
                     }
                 }
-                const user = this.user_arg();
+                const user = this.$.$mol_state_arg.value('user');
                 if (user) {
                     const page = new this.$.$club_profile();
                     page.user_slug = () => user;
                     return page;
                 }
-                if (this.bookmarks_arg()) {
+                if (this.$.$mol_state_arg.value('bookmarks')) {
                     return new this.$.$club_bookmarks();
                 }
-                if (this.rooms_arg()) {
+                if (this.$.$mol_state_arg.value('rooms')) {
                     return new this.$.$club_rooms();
                 }
-                if (this.settings_arg()) {
+                if (this.$.$mol_state_arg.value('settings')) {
                     return this.Settings();
                 }
                 return this.Feed();
@@ -13405,21 +13738,6 @@ var $;
                 return [this.Main()];
             }
         }
-        __decorate([
-            $mol_mem
-        ], $club.prototype, "post_arg", null);
-        __decorate([
-            $mol_mem
-        ], $club.prototype, "user_arg", null);
-        __decorate([
-            $mol_mem
-        ], $club.prototype, "bookmarks_arg", null);
-        __decorate([
-            $mol_mem
-        ], $club.prototype, "rooms_arg", null);
-        __decorate([
-            $mol_mem
-        ], $club.prototype, "settings_arg", null);
         __decorate([
             $mol_mem
         ], $club.prototype, "authorized", null);
@@ -13449,11 +13767,6 @@ var $;
                 size: '15px',
             },
             lineHeight: '1.42',
-            maxWidth: '1000px',
-            margin: {
-                left: 'auto',
-                right: 'auto',
-            },
             Head: {
                 padding: {
                     left: '20px',
@@ -13483,8 +13796,14 @@ var $;
             },
             Main: {
                 display: 'grid',
-                gridTemplateColumns: '250px 1fr',
+                gridTemplateColumns: '250px auto',
+                maxWidth: '1000px',
+                margin: {
+                    left: 'auto',
+                    right: 'auto',
+                },
                 padding: {
+                    top: '10px',
                     left: '20px',
                     right: '20px',
                     bottom: '50px',
