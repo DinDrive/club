@@ -1,0 +1,10 @@
+{
+	"name": "club_app",
+	"short_name": "club_app",
+	"description": "",
+	"id": "club_app",
+	"start_url": ".",
+	"display": "standalone",
+	"background_color": "#000000",
+	"theme_color": "#000000"
+}

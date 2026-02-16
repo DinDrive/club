@@ -335,6 +335,11 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    const $mol_key_handle: unique symbol;
+    const $mol_key_store: WeakMap<object, string>;
+}
+
+declare namespace $ {
     class $mol_object2 {
         static $: $;
         [Symbol.toStringTag]: string;
@@ -345,6 +350,7 @@ declare namespace $ {
         static [Symbol.toPrimitive](): any;
         static toString(): any;
         static toJSON(): any;
+        static [$mol_key_handle](): any;
         destructor(): void;
         static destructor(): void;
         [Symbol.dispose](): void;
@@ -516,7 +522,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    const $mol_key_store: WeakMap<object, string>;
     function $mol_key<Value>(value: Value): string;
 }
 
@@ -772,7 +777,7 @@ declare namespace $ {
 }
 
 declare namespace $ {
-    let $mol_gap: Record<"text" | "space" | "block" | "blur" | "page" | "round", $mol_style_func<"var", unknown>>;
+    let $mol_gap: Record<"text" | "page" | "space" | "block" | "blur" | "round", $mol_style_func<"var", unknown>>;
 }
 
 declare namespace $ {
@@ -1217,216 +1222,9 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    let $mol_layer: Record<"float" | "focus" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
     type $mol_type_enforce<Actual extends Expected, Expected> = Actual;
 }
 
-declare namespace $ {
-
-	type $mol_book2_sub__1 = $mol_type_enforce<
-		ReturnType< $mol_book2['pages'] >[number]
-		,
-		$mol_view
-	>
-	type $mol_book2_sub__2 = $mol_type_enforce<
-		ReturnType< $mol_book2['placeholders'] >[number]
-		,
-		$mol_view
-	>
-	type $mol_view__title_mol_book2_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_view['title'] >
-	>
-	export class $mol_book2 extends $mol_scroll {
-		pages_deep( ): readonly($mol_view)[]
-		pages( ): ReturnType< $mol_book2['pages_deep'] >
-		Placeholder( ): $mol_view
-		placeholders( ): readonly($mol_view)[]
-		menu_title( ): string
-		sub( ): readonly($mol_view)[]
-		minimal_width( ): number
-		Gap( id: any): $mol_view
-	}
-	
-}
-
-//# sourceMappingURL=book2.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_book2 extends $.$mol_book2 {
-        pages_deep(): $mol_view[];
-        title(): string;
-        menu_title(): string;
-        sub(): $mol_view[];
-        bring(): void;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_state_time extends $mol_object {
-        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
-        static now(precision: number): number;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_svg extends $mol_view {
-		dom_name( ): string
-		dom_name_space( ): string
-		font_size( ): number
-		font_family( ): string
-		style_size( ): Record<string, any>
-	}
-	
-}
-
-//# sourceMappingURL=svg.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_svg extends $.$mol_svg {
-        computed_style(): Record<string, any>;
-        font_size(): number;
-        font_family(): any;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_svg_root extends $mol_svg {
-		view_box( ): string
-		aspect( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
-			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=root.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_svg_path extends $mol_svg {
-		geometry( ): string
-		dom_name( ): string
-		attr( ): ({ 
-			'd': ReturnType< $mol_svg_path['geometry'] >,
-		})  & ReturnType< $mol_svg['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=path.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
-		ReturnType< $mol_icon['path'] >
-		,
-		ReturnType< $mol_svg_path['geometry'] >
-	>
-	export class $mol_icon extends $mol_svg_root {
-		path( ): string
-		Path( ): $mol_svg_path
-		view_box( ): string
-		minimal_width( ): number
-		minimal_height( ): number
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_home extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=home.view.tree.d.ts.map
-declare namespace $ {
-    class $mol_plugin extends $mol_view {
-        dom_node_external(next?: Element): Element;
-        render(): void;
-    }
-}
-
-declare namespace $ {
-
-	export class $bog_favicon extends $mol_plugin {
-		Icon( ): $mol_view
-	}
-	
-}
-
-//# sourceMappingURL=favicon.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $bog_favicon extends $.$bog_favicon {
-        Icon(next?: $mol_view): $mol_view;
-        favicon_data(): string;
-        apply_favicon(): void;
-        auto(): any;
-        sub(): readonly [];
-    }
-}
-
-declare namespace $ {
-    const $bog_theme: Record<"image" | "line" | "text" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "field" | "spirit", $mol_style_func<"var", unknown>>;
-    const $bog_theme_names: readonly ["$mol_theme_light", "$mol_theme_dark", "$mol_theme_monefro_light", "$mol_theme_monefro_dark", "$mol_theme_homerent_light", "$mol_theme_homerent_dark", "$mol_theme_upwork", "$mol_theme_ainews_light", "$mol_theme_ainews_dark"];
-    type $bog_theme_name = (typeof $bog_theme_names)[number];
-}
-
-declare namespace $ {
-}
-
-declare namespace $.$$ {
-    class $bog_theme_auto extends $.$bog_theme_auto {
-        themes_default(): readonly $.$bog_theme_name[];
-        theme_index(next?: number): number;
-        system_theme_index(): number;
-        theme(): any;
-        theme_next(): void;
-        theme_prev(): void;
-        theme_set(index: number): void;
-    }
-}
-
-declare namespace $ {
-
-	export class $bog_theme_auto extends $mol_plugin {
-		themes_default( ): readonly(any)[]
-		theme( ): string
-		themes( ): ReturnType< $bog_theme_auto['themes_default'] >
-		theme_light( ): string
-		theme_dark( ): string
-		theme_next( next?: any ): any
-		theme_prev( next?: any ): any
-		theme_set( next?: any ): any
-		attr( ): ({ 
-			'mol_theme': ReturnType< $bog_theme_auto['theme'] >,
-		}) 
-	}
-	
-}
-
-//# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $ {
 
 	type $mol_view__dom_name_mol_page_1 = $mol_type_enforce<
@@ -1514,31 +1312,52 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-
-	export class $mol_paragraph extends $mol_view {
-		line_height( ): number
-		letter_width( ): number
-		width_limit( ): number
-		row_width( ): number
-		sub( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=paragraph.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_paragraph extends $.$mol_paragraph {
-        maximal_width(): number;
-        width_limit(): number;
-        minimal_width(): number;
-        row_width(): number;
-        minimal_height(): number;
-    }
+    const $bog_theme: Record<"image" | "line" | "text" | "background" | "focus" | "back" | "hover" | "card" | "current" | "special" | "control" | "shade" | "field" | "spirit", $mol_style_func<"var", unknown>>;
+    const $bog_theme_names: readonly ["$mol_theme_light", "$mol_theme_dark", "$mol_theme_monefro_light", "$mol_theme_monefro_dark", "$mol_theme_homerent_light", "$mol_theme_homerent_dark", "$mol_theme_upwork", "$mol_theme_ainews_light", "$mol_theme_ainews_dark"];
+    type $bog_theme_name = (typeof $bog_theme_names)[number];
 }
 
 declare namespace $ {
 }
 
+declare namespace $ {
+    class $mol_plugin extends $mol_view {
+        dom_node_external(next?: Element): Element;
+        render(): void;
+    }
+}
+
+declare namespace $.$$ {
+    class $bog_theme_auto extends $.$bog_theme_auto {
+        themes_default(): readonly $.$bog_theme_name[];
+        theme_index(next?: number): number;
+        system_theme_index(): number;
+        theme(): any;
+        theme_next(): void;
+        theme_prev(): void;
+        theme_set(index: number): void;
+    }
+}
+
+declare namespace $ {
+
+	export class $bog_theme_auto extends $mol_plugin {
+		themes_default( ): readonly(any)[]
+		theme( ): string
+		themes( ): ReturnType< $bog_theme_auto['themes_default'] >
+		theme_light( ): string
+		theme_dark( ): string
+		theme_next( next?: any ): any
+		theme_prev( next?: any ): any
+		theme_set( next?: any ): any
+		attr( ): ({ 
+			'mol_theme': ReturnType< $bog_theme_auto['theme'] >,
+		}) 
+	}
+	
+}
+
+//# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_image extends $mol_view {
@@ -1572,248 +1391,31 @@ declare namespace $ {
 }
 
 declare namespace $ {
-}
 
-declare namespace $ {
-
-	export class $mol_speck extends $mol_view {
-		value( ): any
-		theme( ): string
+	export class $mol_paragraph extends $mol_view {
+		line_height( ): number
+		letter_width( ): number
+		width_limit( ): number
+		row_width( ): number
 		sub( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=speck.view.tree.d.ts.map
-declare namespace $ {
-
-	type $mol_speck__value_mol_button_1 = $mol_type_enforce<
-		ReturnType< $mol_button['error'] >
-		,
-		ReturnType< $mol_speck['value'] >
-	>
-	export class $mol_button extends $mol_view {
-		event_activate( next?: any ): any
-		activate( next?: ReturnType< $mol_button['event_activate'] > ): ReturnType< $mol_button['event_activate'] >
-		clicks( next?: any ): any
-		event_key_press( next?: any ): any
-		key_press( next?: ReturnType< $mol_button['event_key_press'] > ): ReturnType< $mol_button['event_key_press'] >
-		disabled( ): boolean
-		tab_index( ): number
-		hint( ): string
-		hint_safe( ): ReturnType< $mol_button['hint'] >
-		error( ): string
-		enabled( ): boolean
-		click( next?: any ): any
-		event_click( next?: any ): any
-		status( next?: readonly(any)[] ): readonly(any)[]
-		event( ): ({ 
-			click( next?: ReturnType< $mol_button['activate'] > ): ReturnType< $mol_button['activate'] >,
-			dblclick( next?: ReturnType< $mol_button['clicks'] > ): ReturnType< $mol_button['clicks'] >,
-			keydown( next?: ReturnType< $mol_button['key_press'] > ): ReturnType< $mol_button['key_press'] >,
-		})  & ReturnType< $mol_view['event'] >
-		attr( ): ({ 
-			'disabled': ReturnType< $mol_button['disabled'] >,
-			'role': string,
-			'tabindex': ReturnType< $mol_button['tab_index'] >,
-			'title': ReturnType< $mol_button['hint_safe'] >,
-		})  & ReturnType< $mol_view['attr'] >
-		sub( ): readonly($mol_view_content)[]
-		Speck( ): $mol_speck
-	}
-	
-}
-
-//# sourceMappingURL=button.view.tree.d.ts.map
+//# sourceMappingURL=paragraph.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $mol_button extends $.$mol_button {
-        disabled(): boolean;
-        event_activate(next: Event): void;
-        event_key_press(event: KeyboardEvent): any;
-        tab_index(): number;
-        error(): string;
-        hint_safe(): string;
-        sub_visible(): ($mol_view_content | $mol_speck)[];
+    class $mol_paragraph extends $.$mol_paragraph {
+        maximal_width(): number;
+        width_limit(): number;
+        minimal_width(): number;
+        row_width(): number;
+        minimal_height(): number;
     }
 }
 
 declare namespace $ {
 }
 
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_button_typed extends $mol_button {
-		minimal_height( ): number
-		minimal_width( ): number
-	}
-	
-}
-
-//# sourceMappingURL=typed.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_button_minor extends $mol_button_typed {
-	}
-	
-}
-
-//# sourceMappingURL=minor.view.tree.d.ts.map
-declare namespace $ {
-    class $mol_dom_event<EventType extends Event> extends $mol_object {
-        readonly native: EventType;
-        constructor(native: EventType);
-        prevented(next?: boolean): boolean;
-        static wrap<EventType extends Event>(event: EventType): $mol_dom_event<EventType>;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $mol_check extends $mol_button_minor {
-		checked( next?: boolean ): boolean
-		aria_checked( ): string
-		aria_role( ): string
-		Icon( ): any
-		title( ): string
-		Title( ): $mol_view
-		label( ): readonly(any)[]
-		attr( ): ({ 
-			'mol_check_checked': ReturnType< $mol_check['checked'] >,
-			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
-			'role': ReturnType< $mol_check['aria_role'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		sub( ): readonly($mol_view_content)[]
-	}
-	
-}
-
-//# sourceMappingURL=check.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check extends $.$mol_check {
-        click(next?: Event): void;
-        sub(): readonly $mol_view_content[];
-        label(): readonly any[];
-        aria_checked(): string;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_check__checked_mol_check_list_1 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_checked'] >
-		,
-		ReturnType< $mol_check['checked'] >
-	>
-	type $mol_check__label_mol_check_list_2 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_label'] >
-		,
-		ReturnType< $mol_check['label'] >
-	>
-	type $mol_check__enabled_mol_check_list_3 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_enabled'] >
-		,
-		ReturnType< $mol_check['enabled'] >
-	>
-	type $mol_check__hint_mol_check_list_4 = $mol_type_enforce<
-		ReturnType< $mol_check_list['option_hint'] >
-		,
-		ReturnType< $mol_check['hint'] >
-	>
-	type $mol_check__minimal_height_mol_check_list_5 = $mol_type_enforce<
-		number
-		,
-		ReturnType< $mol_check['minimal_height'] >
-	>
-	export class $mol_check_list extends $mol_view {
-		option_checked( id: any, next?: boolean ): boolean
-		option_title( id: any): string
-		option_label( id: any): readonly(any)[]
-		enabled( ): boolean
-		option_enabled( id: any): ReturnType< $mol_check_list['enabled'] >
-		option_hint( id: any): string
-		items( ): readonly($mol_check)[]
-		dictionary( ): Record<string, any>
-		Option( id: any): $mol_check
-		options( ): Record<string, any>
-		keys( ): readonly(string)[]
-		sub( ): ReturnType< $mol_check_list['items'] >
-	}
-	
-}
-
-//# sourceMappingURL=list.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_check_list extends $.$mol_check_list {
-        options(): {
-            [key: string]: string;
-        };
-        dictionary(next?: Record<string, boolean>): Record<string, boolean>;
-        option_checked(id: string, next?: boolean | null): boolean;
-        keys(): readonly string[];
-        items(): $.$mol_check[];
-        option_title(key: string): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-    class $mol_state_session<Value> extends $mol_object {
-        static 'native()': Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
-        static native(): Storage | {
-            getItem(key: string): any;
-            setItem(key: string, value: string): void;
-            removeItem(key: string): void;
-        };
-        static value<Value>(key: string, next?: Value): Value;
-        prefix(): string;
-        value(key: string, next?: Value): Value;
-    }
-}
-
-declare namespace $ {
-
-	export class $mol_switch extends $mol_check_list {
-		value( next?: string ): string
-	}
-	
-}
-
-//# sourceMappingURL=switch.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_switch extends $.$mol_switch {
-        value(next?: string): string;
-        option_checked(key: string, next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_button_major extends $mol_button_minor {
-		theme( ): string
-	}
-	
-}
-
-//# sourceMappingURL=major.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_link extends $mol_view {
@@ -1865,6 +1467,160 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_link__arg_club_menu_1 = $mol_type_enforce<
+		({ 
+			'post': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_3 = $mol_type_enforce<
+		({ 
+			'bookmarks': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_5 = $mol_type_enforce<
+		({ 
+			'rooms': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_7 = $mol_type_enforce<
+		({ 
+			'settings': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_view__sub_club_menu_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link__arg_club_menu_10 = $mol_type_enforce<
+		({ 
+			'type': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_11 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_12 = $mol_type_enforce<
+		({ 
+			'type': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_13 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_14 = $mol_type_enforce<
+		({ 
+			'type': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_16 = $mol_type_enforce<
+		({ 
+			'type': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_menu_18 = $mol_type_enforce<
+		({ 
+			'type': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_menu_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_view__sub_club_menu_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $club_menu extends $mol_view {
+		Nav_home( ): $mol_link
+		Nav_bookmarks( ): $mol_link
+		Nav_rooms( ): $mol_link
+		Nav_settings( ): $mol_link
+		Nav_main( ): $mol_view
+		Nav_posts( ): $mol_link
+		Nav_questions( ): $mol_link
+		Nav_projects( ): $mol_link
+		Nav_events( ): $mol_link
+		Nav_threads( ): $mol_link
+		Nav_types( ): $mol_view
+		post( next?: string ): string
+		user( next?: string ): string
+		bookmarks( next?: string ): string
+		rooms( next?: string ): string
+		settings( next?: string ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=menu.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_menu extends $.$club_menu {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
 }
 
 declare namespace $ {
@@ -2217,6 +1973,87 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_state_time extends $mol_object {
+        static task(precision: number, reset?: null): $mol_after_timeout | $mol_after_frame;
+        static now(precision: number): number;
+    }
+}
+
+declare namespace $ {
+
+	export class $mol_svg extends $mol_view {
+		dom_name( ): string
+		dom_name_space( ): string
+		font_size( ): number
+		font_family( ): string
+		style_size( ): Record<string, any>
+	}
+	
+}
+
+//# sourceMappingURL=svg.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_svg extends $.$mol_svg {
+        computed_style(): Record<string, any>;
+        font_size(): number;
+        font_family(): any;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_svg_root extends $mol_svg {
+		view_box( ): string
+		aspect( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'viewBox': ReturnType< $mol_svg_root['view_box'] >,
+			'preserveAspectRatio': ReturnType< $mol_svg_root['aspect'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=root.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_svg_path extends $mol_svg {
+		geometry( ): string
+		dom_name( ): string
+		attr( ): ({ 
+			'd': ReturnType< $mol_svg_path['geometry'] >,
+		})  & ReturnType< $mol_svg['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=path.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_svg_path__geometry_mol_icon_1 = $mol_type_enforce<
+		ReturnType< $mol_icon['path'] >
+		,
+		ReturnType< $mol_svg_path['geometry'] >
+	>
+	export class $mol_icon extends $mol_svg_root {
+		path( ): string
+		Path( ): $mol_svg_path
+		view_box( ): string
+		minimal_width( ): number
+		minimal_height( ): number
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
+declare namespace $ {
 
 	export class $mol_icon_chevron extends $mol_icon {
 		path( ): string
@@ -2234,6 +2071,106 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=left.view.tree.d.ts.map
+declare namespace $ {
+    let $mol_layer: Record<"float" | "focus" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_speck extends $mol_view {
+		value( ): any
+		theme( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=speck.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_speck__value_mol_button_1 = $mol_type_enforce<
+		ReturnType< $mol_button['error'] >
+		,
+		ReturnType< $mol_speck['value'] >
+	>
+	export class $mol_button extends $mol_view {
+		event_activate( next?: any ): any
+		activate( next?: ReturnType< $mol_button['event_activate'] > ): ReturnType< $mol_button['event_activate'] >
+		clicks( next?: any ): any
+		event_key_press( next?: any ): any
+		key_press( next?: ReturnType< $mol_button['event_key_press'] > ): ReturnType< $mol_button['event_key_press'] >
+		disabled( ): boolean
+		tab_index( ): number
+		hint( ): string
+		hint_safe( ): ReturnType< $mol_button['hint'] >
+		error( ): string
+		enabled( ): boolean
+		click( next?: any ): any
+		event_click( next?: any ): any
+		status( next?: readonly(any)[] ): readonly(any)[]
+		event( ): ({ 
+			click( next?: ReturnType< $mol_button['activate'] > ): ReturnType< $mol_button['activate'] >,
+			dblclick( next?: ReturnType< $mol_button['clicks'] > ): ReturnType< $mol_button['clicks'] >,
+			keydown( next?: ReturnType< $mol_button['key_press'] > ): ReturnType< $mol_button['key_press'] >,
+		})  & ReturnType< $mol_view['event'] >
+		attr( ): ({ 
+			'disabled': ReturnType< $mol_button['disabled'] >,
+			'role': string,
+			'tabindex': ReturnType< $mol_button['tab_index'] >,
+			'title': ReturnType< $mol_button['hint_safe'] >,
+		})  & ReturnType< $mol_view['attr'] >
+		sub( ): readonly($mol_view_content)[]
+		Speck( ): $mol_speck
+	}
+	
+}
+
+//# sourceMappingURL=button.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_button extends $.$mol_button {
+        disabled(): boolean;
+        event_activate(next: Event): void;
+        event_key_press(event: KeyboardEvent): any;
+        tab_index(): number;
+        error(): string;
+        hint_safe(): string;
+        sub_visible(): ($mol_view_content | $mol_speck)[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_button_typed extends $mol_button {
+		minimal_height( ): number
+		minimal_width( ): number
+	}
+	
+}
+
+//# sourceMappingURL=typed.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_button_minor extends $mol_button_typed {
+	}
+	
+}
+
+//# sourceMappingURL=minor.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_chevron_right extends $mol_icon {
@@ -2309,146 +2246,415 @@ declare namespace $ {
 }
 
 declare namespace $ {
-
-	export class $mol_icon_github extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=github.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_ghost extends $mol_view {
-		Sub( ): $mol_view
-	}
-	
-}
-
-//# sourceMappingURL=ghost.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_ghost extends $.$mol_ghost {
-        dom_node_external(next?: Element): Element;
-        dom_node_actual(): Element;
-        dom_tree(): Element;
-        title(): string;
-        minimal_width(): number;
-        minimal_height(): number;
+    class $club_api extends $mol_object {
+        static prod: string;
+        static dev: string;
+        static token(next?: string): string;
+        static fetch_from<T>(base: string, url: string, with_token: boolean): T;
+        static fetch_json<T>(url: string): T;
+        static feed_ordering(next?: string): string;
+        static feed_type(next?: string): string;
+        static feed_page(next?: number): number;
+        static feed(): $club_api_feed;
+        static post(type: string, slug: string): $club_api_post_response;
+        static post_comments(type: string, slug: string): $club_api_comments_response;
+        static profile(slug: string): $club_api_profile_response;
+        static profile_tags(slug: string): $club_api_tags_response;
+        static profile_badges(slug: string): $club_api_badges_response;
+        static profile_achievements(slug: string): $club_api_achievements_response;
+        static bookmarks(): $club_api_bookmarks_response;
+        static rooms(): $club_api_rooms_response;
+        static friends(): $club_api_friends_response;
+    }
+    interface $club_api_feed {
+        title: string;
+        items: $club_api_post[];
+        next_url: string;
+    }
+    interface $club_api_post {
+        id: string;
+        url: string;
+        title: string;
+        content_text: string;
+        date_published: string;
+        date_modified: string;
+        authors: $club_api_author[];
+        _club: {
+            type: string;
+            slug: string;
+            coauthors: string[];
+            comment_count: number;
+            view_count: number;
+            upvotes: number;
+            is_public: boolean;
+            is_commentable: boolean;
+            room?: {
+                slug: string;
+                title: string;
+            };
+        };
+    }
+    interface $club_api_author {
+        name: string;
+        url: string;
+        avatar: string;
+    }
+    interface $club_api_user {
+        id: string;
+        slug: string;
+        full_name: string;
+        avatar: string | null;
+        bio: string | null;
+        upvotes: number;
+        created_at: string;
+        membership_started_at: string;
+        membership_expires_at: string;
+        moderation_status: string;
+        payment_status: string;
+        company: string | null;
+        position: string | null;
+        city: string | null;
+        country: string | null;
+        is_active_member: boolean;
+    }
+    interface $club_api_comment {
+        id: string;
+        url: string;
+        text: string;
+        author: $club_api_user;
+        reply_to_id: string | null;
+        upvotes: number;
+        created_at: string;
+    }
+    interface $club_api_room {
+        slug: string;
+        title: string;
+        subtitle: string | null;
+        description: string | null;
+        chat_name: string | null;
+        chat_url: string | null;
+        chat_member_count: number;
+    }
+    interface $club_api_tag {
+        code: string;
+        name: string;
+    }
+    interface $club_api_badge {
+        code: string;
+        title: string;
+        description: string | null;
+        created_at: string;
+    }
+    interface $club_api_user_badge {
+        badge: $club_api_badge;
+        from_user: $club_api_user;
+        created_at: string;
+        note: string | null;
+    }
+    interface $club_api_achievement {
+        code: string;
+        name: string;
+        image: string;
+        description: string;
+        style: string;
+    }
+    interface $club_api_user_achievement {
+        achievement: $club_api_achievement;
+        created_at: string;
+    }
+    interface $club_api_post_response {
+        post: $club_api_post;
+    }
+    interface $club_api_comments_response {
+        comments: $club_api_comment[];
+    }
+    interface $club_api_profile_response {
+        user: $club_api_user;
+    }
+    interface $club_api_tags_response {
+        tags: Record<string, {
+            code: string;
+            name: string;
+        }[]>;
+    }
+    interface $club_api_badges_response {
+        user_badges: $club_api_user_badge[];
+    }
+    interface $club_api_achievements_response {
+        user_achievements: $club_api_user_achievement[];
+    }
+    interface $club_api_bookmarks_response {
+        posts: $club_api_post[];
+        page: number;
+        total_pages: number;
+        has_next: boolean;
+    }
+    interface $club_api_rooms_response {
+        rooms: $club_api_room[];
+    }
+    interface $club_api_friends_response {
+        friends: ($club_api_friend & {
+            user: $club_api_user;
+        })[];
+        page: number;
+        total_pages: number;
+        has_next: boolean;
+    }
+    interface $club_api_friend {
+        id: string;
+        created_at: string;
+        is_subscribed_to_posts: boolean;
+        is_subscribed_to_comments: boolean;
     }
 }
 
 declare namespace $ {
 
-	export class $mol_follower extends $mol_ghost {
-		transform( ): string
-		Anchor( ): $mol_view
-		align( ): readonly(number)[]
-		offset( ): readonly(number)[]
-		style( ): ({ 
-			'transform': ReturnType< $mol_follower['transform'] >,
-		})  & ReturnType< $mol_ghost['style'] >
-	}
-	
-}
-
-//# sourceMappingURL=follower.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_follower extends $.$mol_follower {
-        pos(): {
-            left: number;
-            top: number;
-        } | null;
-        transform(): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_pop_bubble__content_mol_pop_1 = $mol_type_enforce<
-		ReturnType< $mol_pop['bubble_content'] >
+	type $mol_image__uri_club_card_1 = $mol_type_enforce<
+		ReturnType< $club_card['author_avatar'] >
 		,
-		ReturnType< $mol_pop_bubble['content'] >
+		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_pop_bubble__height_max_mol_pop_2 = $mol_type_enforce<
-		ReturnType< $mol_pop['height_max'] >
+	type $mol_view__sub_club_card_2 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_pop_bubble['height_max'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_follower__offset_mol_pop_3 = $mol_type_enforce<
-		ReturnType< $mol_pop['bubble_offset'] >
+	type $mol_paragraph__title_club_card_3 = $mol_type_enforce<
+		ReturnType< $club_card['post_title'] >
 		,
-		ReturnType< $mol_follower['offset'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_follower__align_mol_pop_4 = $mol_type_enforce<
-		ReturnType< $mol_pop['bubble_align'] >
+	type $mol_view__sub_club_card_4 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_follower['align'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_follower__Anchor_mol_pop_5 = $mol_type_enforce<
-		ReturnType< $mol_pop['Anchor'] >
+	type $mol_paragraph__title_club_card_5 = $mol_type_enforce<
+		ReturnType< $club_card['author_name'] >
 		,
-		ReturnType< $mol_follower['Anchor'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_follower__Sub_mol_pop_6 = $mol_type_enforce<
-		ReturnType< $mol_pop['Bubble'] >
+	type $mol_view__sub_club_card_6 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_follower['Sub'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	export class $mol_pop extends $mol_view {
-		bubble( ): any
-		Anchor( ): any
-		bubble_offset( ): readonly(number)[]
-		bubble_align( ): readonly(number)[]
-		bubble_content( ): readonly($mol_view_content)[]
-		height_max( ): number
-		Bubble( ): $mol_pop_bubble
-		Follower( ): $mol_follower
-		showed( next?: boolean ): boolean
-		align_vert( ): string
-		align_hor( ): string
-		align( ): string
-		prefer( ): string
-		auto( ): readonly(any)[]
+	type $mol_paragraph__title_club_card_7 = $mol_type_enforce<
+		ReturnType< $club_card['comments_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_card_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_card_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $club_card extends $mol_link {
+		post_uri( ): string
+		author_avatar( ): string
+		Avatar( ): $mol_image
+		Author_col( ): $mol_view
+		post_title( ): string
+		Post_title( ): $mol_paragraph
+		Header( ): $mol_view
+		author_name( ): string
+		Author_name( ): $mol_paragraph
+		type_label( ): string
+		Type_label( ): $mol_view
+		comments_label( ): string
+		Comments_count( ): $mol_paragraph
+		Footer( ): $mol_view
+		upvotes( ): string
+		Votes( ): $mol_view
+		post( ): any
+		arg( ): ({ 
+			'post': ReturnType< $club_card['post_uri'] >,
+		}) 
 		sub( ): readonly(any)[]
-		sub_visible( ): readonly(any)[]
-	}
-	
-	export class $mol_pop_bubble extends $mol_view {
-		content( ): readonly($mol_view_content)[]
-		height_max( ): number
-		sub( ): ReturnType< $mol_pop_bubble['content'] >
-		style( ): ({ 
-			'maxHeight': ReturnType< $mol_pop_bubble['height_max'] >,
-		})  & ReturnType< $mol_view['style'] >
-		attr( ): ({ 
-			'tabindex': number,
-			'popover': string,
-		})  & ReturnType< $mol_view['attr'] >
 	}
 	
 }
 
-//# sourceMappingURL=pop.view.tree.d.ts.map
+//# sourceMappingURL=card.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $mol_pop extends $.$mol_pop {
-        showed(next?: boolean): boolean;
-        sub_visible(): any[];
-        height_max(): number;
-        align(): string;
-        align_vert(): "suspense" | "top" | "bottom";
-        align_hor(): "suspense" | "left" | "right";
-        bubble_offset(): number[];
-        bubble_align(): number[];
-        bubble(): void;
+    class $club_card extends $.$club_card {
+        post_data(): $club_api_post | null;
+        post_uri(): string;
+        post_title(): string;
+        upvotes(): string;
+        author_avatar(): string;
+        author_name(): string;
+        comments_label(): string;
+        type_label(): string;
     }
 }
 
 declare namespace $ {
 }
 
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_link__arg_club_feed_1 = $mol_type_enforce<
+		({ 
+			'ordering': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_feed_2 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_feed_3 = $mol_type_enforce<
+		({ 
+			'ordering': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_feed_4 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_feed_5 = $mol_type_enforce<
+		({ 
+			'ordering': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_feed_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__arg_club_feed_7 = $mol_type_enforce<
+		({ 
+			'ordering': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__title_club_feed_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_view__sub_club_feed_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__rows_club_feed_10 = $mol_type_enforce<
+		ReturnType< $club_feed['post_cards'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_paginator__value_club_feed_11 = $mol_type_enforce<
+		ReturnType< $club_feed['page'] >
+		,
+		ReturnType< $mol_paginator['value'] >
+	>
+	export class $club_feed extends $mol_view {
+		Ord_activity( ): $mol_link
+		Ord_new( ): $mol_link
+		Ord_hot( ): $mol_link
+		Ord_top( ): $mol_link
+		Ordering( ): $mol_view
+		post_cards( ): readonly(any)[]
+		Posts( ): $mol_list
+		page( next?: number ): number
+		Pager( ): $mol_paginator
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=feed.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_feed extends $.$club_feed {
+        page(next?: number): number;
+        feed(): $club_api_feed;
+        posts(): $club_api_post[];
+        post_cards(): $club_card[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+    class $mol_dom_event<EventType extends Event> extends $mol_object {
+        readonly native: EventType;
+        constructor(native: EventType);
+        prevented(next?: boolean): boolean;
+        static wrap<EventType extends Event>(event: EventType): $mol_dom_event<EventType>;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__sub_mol_check_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_check extends $mol_button_minor {
+		checked( next?: boolean ): boolean
+		aria_checked( ): string
+		aria_role( ): string
+		Icon( ): any
+		title( ): string
+		Title( ): $mol_view
+		label( ): readonly(any)[]
+		attr( ): ({ 
+			'mol_check_checked': ReturnType< $mol_check['checked'] >,
+			'aria-checked': ReturnType< $mol_check['aria_checked'] >,
+			'role': ReturnType< $mol_check['aria_role'] >,
+		})  & ReturnType< $mol_button_minor['attr'] >
+		sub( ): readonly($mol_view_content)[]
+	}
+	
+}
+
+//# sourceMappingURL=check.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_check extends $.$mol_check {
+        click(next?: Event): void;
+        sub(): readonly $mol_view_content[];
+        label(): readonly any[];
+        aria_checked(): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	export class $mol_check_icon extends $mol_check {
+	}
+	
+}
+
+//# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_icon_brightness_4 extends $mol_icon {
@@ -2458,6 +2664,61 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=4.view.tree.d.ts.map
+declare namespace $ {
+
+	export class $mol_lights_toggle extends $mol_check_icon {
+		Lights_icon( ): $mol_icon_brightness_4
+		lights( next?: boolean ): boolean
+		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
+		hint( ): string
+		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
+	}
+	
+}
+
+//# sourceMappingURL=toggle.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $mol_lights_toggle extends $.$mol_lights_toggle {
+        lights(next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__minimal_height_mol_labeler_1 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_2 = $mol_type_enforce<
+		ReturnType< $mol_labeler['label'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__minimal_height_mol_labeler_3 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_4 = $mol_type_enforce<
+		ReturnType< $mol_labeler['content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_labeler extends $mol_list {
+		label( ): readonly($mol_view_content)[]
+		Label( ): $mol_view
+		content( ): readonly(any)[]
+		Content( ): $mol_view
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labeler.view.tree.d.ts.map
 declare namespace $ {
 
 	export class $mol_hotkey extends $mol_plugin {
@@ -2562,444 +2823,6 @@ declare namespace $.$$ {
 declare namespace $ {
 }
 
-declare namespace $.$$ {
-    class $bog_theme_picker_row extends $.$bog_theme_picker_row {
-        focused_str(): "" | "true";
-    }
-}
-
-declare namespace $ {
-
-	export class $bog_theme_picker_row extends $mol_button_minor {
-		focused_str( ): string
-		hover( next?: any ): any
-		theme_name( ): string
-		title( ): ReturnType< $bog_theme_picker_row['theme_name'] >
-		attr( ): ({ 
-			'bog_theme_picker_row_focused': ReturnType< $bog_theme_picker_row['focused_str'] >,
-		})  & ReturnType< $mol_button_minor['attr'] >
-		event( ): ({ 
-			pointerenter( next?: ReturnType< $bog_theme_picker_row['hover'] > ): ReturnType< $bog_theme_picker_row['hover'] >,
-		})  & ReturnType< $mol_button_minor['event'] >
-	}
-	
-}
-
-//# sourceMappingURL=row.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $.$$ {
-    class $bog_theme_picker extends $.$bog_theme_picker {
-        theme_rows(): $.$bog_theme_picker_row[];
-        filtered_themes(): ("$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_monefro_light" | "$mol_theme_monefro_dark" | "$mol_theme_homerent_light" | "$mol_theme_homerent_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark")[];
-        theme_name(index: number): "$mol_theme_light" | "$mol_theme_dark" | "$mol_theme_monefro_light" | "$mol_theme_monefro_dark" | "$mol_theme_homerent_light" | "$mol_theme_homerent_dark" | "$mol_theme_upwork" | "$mol_theme_ainews_light" | "$mol_theme_ainews_dark";
-        theme_focused(index: number): boolean;
-        theme_select(index: number, event?: MouseEvent): null;
-        theme_hover(index: number, event?: PointerEvent): null;
-        key_down(event?: KeyboardEvent): null;
-        private select_theme;
-        private preview_theme;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_string__value_bog_theme_picker_1 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['query'] >
-		,
-		ReturnType< $mol_string['value'] >
-	>
-	type $mol_string__hint_bog_theme_picker_2 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_string['hint'] >
-	>
-	type $mol_list__rows_bog_theme_picker_3 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['theme_rows'] >
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_list__rows_bog_theme_picker_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $bog_theme_picker_row__theme_name_bog_theme_picker_5 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['theme_name'] >
-		,
-		ReturnType< $bog_theme_picker_row['theme_name'] >
-	>
-	type $bog_theme_picker_row__focused_bog_theme_picker_6 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['theme_focused'] >
-		,
-		ReturnType< $bog_theme_picker_row['focused'] >
-	>
-	type $bog_theme_picker_row__click_bog_theme_picker_7 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['theme_select'] >
-		,
-		ReturnType< $bog_theme_picker_row['click'] >
-	>
-	type $bog_theme_picker_row__hover_bog_theme_picker_8 = $mol_type_enforce<
-		ReturnType< $bog_theme_picker['theme_hover'] >
-		,
-		ReturnType< $bog_theme_picker_row['hover'] >
-	>
-	export class $bog_theme_picker extends $mol_scroll {
-		theme_name( id: any): string
-		theme_focused( id: any): boolean
-		theme_select( id: any, next?: any ): any
-		theme_hover( id: any, next?: any ): any
-		Search( ): $mol_string
-		theme_rows( ): readonly(any)[]
-		Theme_list( ): $mol_list
-		Content( ): $mol_list
-		key_down( next?: any ): any
-		theme_auto( ): $bog_theme_auto
-		close( next?: any ): any
-		query( next?: string ): string
-		focused_index( next?: number ): number
-		Theme_row( id: any): $bog_theme_picker_row
-		sub( ): readonly(any)[]
-		event( ): ({ 
-			keydown( next?: ReturnType< $bog_theme_picker['key_down'] > ): ReturnType< $bog_theme_picker['key_down'] >,
-		})  & ReturnType< $mol_scroll['event'] >
-	}
-	
-}
-
-//# sourceMappingURL=picker.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $.$$ {
-    class $bog_theme_toggle extends $.$bog_theme_toggle {
-        long_press_delay: number;
-        move_threshold: number;
-        private press_timer;
-        private press_start_x;
-        private press_start_y;
-        private is_long_press;
-        clicked(event?: MouseEvent): null;
-        press_start(event?: PointerEvent): null;
-        press_move(event?: PointerEvent): null;
-        press_end(event?: PointerEvent): null;
-        press_cancel(event?: PointerEvent): null;
-        press_lost(event?: Event): null;
-        private clear_press_timer;
-        private on_long_press;
-        picker_close(): void;
-        backdrop_click(event?: MouseEvent): null;
-    }
-}
-
-declare namespace $ {
-
-	type $mol_view__event_bog_theme_toggle_1 = $mol_type_enforce<
-		({ 
-			click( next?: ReturnType< $bog_theme_toggle['backdrop_click'] > ): ReturnType< $bog_theme_toggle['backdrop_click'] >,
-		}) 
-		,
-		ReturnType< $mol_view['event'] >
-	>
-	type $bog_theme_picker__theme_auto_bog_theme_toggle_2 = $mol_type_enforce<
-		ReturnType< $bog_theme_toggle['theme_auto'] >
-		,
-		ReturnType< $bog_theme_picker['theme_auto'] >
-	>
-	type $bog_theme_picker__close_bog_theme_toggle_3 = $mol_type_enforce<
-		ReturnType< $bog_theme_toggle['picker_close'] >
-		,
-		ReturnType< $bog_theme_picker['close'] >
-	>
-	type $mol_button_minor__sub_bog_theme_toggle_4 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_button_minor['sub'] >
-	>
-	type $mol_button_minor__hint_bog_theme_toggle_5 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_button_minor['hint'] >
-	>
-	type $mol_button_minor__click_bog_theme_toggle_6 = $mol_type_enforce<
-		ReturnType< $bog_theme_toggle['clicked'] >
-		,
-		ReturnType< $mol_button_minor['click'] >
-	>
-	type $mol_button_minor__event_bog_theme_toggle_7 = $mol_type_enforce<
-		({ 
-			pointerdown( next?: ReturnType< $bog_theme_toggle['press_start'] > ): ReturnType< $bog_theme_toggle['press_start'] >,
-			pointermove( next?: ReturnType< $bog_theme_toggle['press_move'] > ): ReturnType< $bog_theme_toggle['press_move'] >,
-			pointerup( next?: ReturnType< $bog_theme_toggle['press_end'] > ): ReturnType< $bog_theme_toggle['press_end'] >,
-			pointercancel( next?: ReturnType< $bog_theme_toggle['press_cancel'] > ): ReturnType< $bog_theme_toggle['press_cancel'] >,
-			lostpointercapture( next?: ReturnType< $bog_theme_toggle['press_lost'] > ): ReturnType< $bog_theme_toggle['press_lost'] >,
-		})  & ReturnType< $mol_pop['Anchor'] >
-		,
-		ReturnType< $mol_button_minor['event'] >
-	>
-	export class $bog_theme_toggle extends $mol_pop {
-		Icon( ): $mol_icon_brightness_4
-		clicked( next?: any ): any
-		press_start( next?: any ): any
-		press_move( next?: any ): any
-		press_end( next?: any ): any
-		press_cancel( next?: any ): any
-		press_lost( next?: any ): any
-		backdrop_click( next?: any ): any
-		Backdrop( ): $mol_view
-		picker_close( next?: any ): any
-		Picker( ): $bog_theme_picker
-		theme_auto( ): $bog_theme_auto
-		showed( next?: boolean ): boolean
-		align( ): string
-		Anchor( ): $mol_button_minor
-		bubble_content( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=toggle.view.tree.d.ts.map
-declare namespace $.$$ {
-}
-
-declare namespace $ {
-
-	export class $mol_icon_cog extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=cog.view.tree.d.ts.map
-declare namespace $ {
-
-	export class $mol_icon_cog_outline extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=outline.view.tree.d.ts.map
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	export class $mol_check_icon extends $mol_check {
-	}
-	
-}
-
-//# sourceMappingURL=icon.view.tree.d.ts.map
-declare namespace $ {
-
-	type $mol_paragraph__title_club_main_1 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_image__uri_club_main_2 = $mol_type_enforce<
-		ReturnType< $club_main['logo_url'] >
-		,
-		ReturnType< $mol_image['uri'] >
-	>
-	type $mol_paragraph__title_club_main_3 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_switch__value_club_main_4 = $mol_type_enforce<
-		ReturnType< $club_main['publicity'] >
-		,
-		ReturnType< $mol_switch['value'] >
-	>
-	type $mol_switch__options_club_main_5 = $mol_type_enforce<
-		ReturnType< $club_main['filter_publicity'] >
-		,
-		ReturnType< $mol_switch['options'] >
-	>
-	type $mol_switch__value_club_main_6 = $mol_type_enforce<
-		ReturnType< $club_main['type'] >
-		,
-		ReturnType< $mol_switch['value'] >
-	>
-	type $mol_switch__options_club_main_7 = $mol_type_enforce<
-		ReturnType< $club_main['filter_types'] >
-		,
-		ReturnType< $mol_switch['options'] >
-	>
-	type $mol_switch__value_club_main_8 = $mol_type_enforce<
-		ReturnType< $club_main['timing'] >
-		,
-		ReturnType< $mol_switch['value'] >
-	>
-	type $mol_switch__options_club_main_9 = $mol_type_enforce<
-		ReturnType< $club_main['filter_timings'] >
-		,
-		ReturnType< $mol_switch['options'] >
-	>
-	type $mol_view__sub_club_main_10 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_button_major__title_club_main_11 = $mol_type_enforce<
-		ReturnType< $club_main['post_upvotes'] >
-		,
-		ReturnType< $mol_button_major['title'] >
-	>
-	type $mol_link__arg_club_main_12 = $mol_type_enforce<
-		({ 
-			'post': ReturnType< $club_main['post_url'] >,
-		}) 
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__sub_club_main_13 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_list__rows_club_main_14 = $mol_type_enforce<
-		ReturnType< $club_main['list_posts'] >
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_paginator__value_club_main_15 = $mol_type_enforce<
-		ReturnType< $club_main['page_number'] >
-		,
-		ReturnType< $mol_paginator['value'] >
-	>
-	type $mol_link__uri_club_main_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__sub_club_main_17 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $bog_theme_toggle__theme_auto_club_main_18 = $mol_type_enforce<
-		ReturnType< $club_main['theme_auto'] >
-		,
-		ReturnType< $bog_theme_toggle['theme_auto'] >
-	>
-	type $mol_check_icon__Icon_club_main_19 = $mol_type_enforce<
-		ReturnType< $club_main['Settings_icon'] >
-		,
-		ReturnType< $mol_check_icon['Icon'] >
-	>
-	type $mol_check_icon__hint_club_main_20 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_check_icon['hint'] >
-	>
-	type $mol_check_icon__checked_club_main_21 = $mol_type_enforce<
-		ReturnType< $club_main['settings'] >
-		,
-		ReturnType< $mol_check_icon['checked'] >
-	>
-	type $mol_view__sub_club_main_22 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	export class $club_main extends $mol_page {
-		filter_types( ): ReturnType< ReturnType< $club_main['Filter'] >['types'] >
-		filter_publicity( ): ReturnType< ReturnType< $club_main['Filter'] >['publicity'] >
-		filter_timings( ): ReturnType< ReturnType< $club_main['Filter'] >['timings'] >
-		Filter( ): $club_filters
-		Title1( ): $mol_paragraph
-		Logo( ): $mol_image
-		Title2( ): $mol_paragraph
-		publicity( next?: string ): string
-		Switch1( ): $mol_switch
-		type( next?: string ): string
-		Switch2( ): $mol_switch
-		timing( next?: string ): string
-		Switch3( ): $mol_switch
-		PostTitle( id: any): $mol_view
-		Upvote( id: any): $mol_button_major
-		Post( id: any): $mol_link
-		list_posts( ): readonly(any)[]
-		Posts( ): $mol_list
-		Pag( ): $mol_paginator
-		Source_icon( ): $mol_icon_github
-		Source( ): $mol_link
-		Lighter( ): $bog_theme_toggle
-		Settings_icon( ): $mol_icon_cog_outline
-		Settings( ): $mol_check_icon
-		Tools( ): $mol_view
-		page_number( next?: number ): number
-		post_url( id: any): string
-		post_title( id: any): string
-		post_upvotes( id: any): string
-		logo_url( ): string
-		settings( next?: boolean ): boolean
-		theme_auto( ): $bog_theme_auto
-		head( ): readonly(any)[]
-		body( ): readonly(any)[]
-		foot( ): readonly(any)[]
-	}
-	
-}
-
-//# sourceMappingURL=main.view.tree.d.ts.map
-interface Root {
-    version: string;
-    title: string;
-    home_page_url: string;
-    feed_url: string;
-    next_url: string;
-    items: Item[];
-}
-interface Item {
-    id: string;
-    url: string;
-    title: string;
-    content_text: string;
-    date_published: string;
-    date_modified: string;
-    authors: Author[];
-    _club: Club;
-}
-interface Club {
-    type: string;
-    slug: string;
-    coauthors: any[];
-    comment_count: number;
-    view_count: number;
-    upvotes: number;
-    is_public: boolean;
-    is_commentable: boolean;
-}
-interface Author {
-    name: string;
-    url: string;
-    avatar: string;
-}
-declare namespace $.$$ {
-    class $club_main extends $.$club_main {
-        page_number(next?: number): number;
-        publicity(next?: string): string;
-        type(next?: string): string;
-        timing(next?: string): string;
-        url(): string;
-        feed(next?: Root): Root;
-        posts(next?: Item[]): Item[];
-        list_posts(): $.$mol_link[];
-        post_upvotes(id: number): string;
-        post_title(id: number): string;
-        post_url(id: number): string;
-        logo_url(): string;
-    }
-}
-
-declare namespace $.$$ {
-}
-
 declare namespace $ {
 }
 
@@ -3077,9 +2900,16 @@ declare namespace $ {
         }> | null;
         generate(params: Groups_to_params<Groups>): string | null;
         get native(): RegExp;
+        static separated<Chunk extends $mol_regexp_source, Sep extends $mol_regexp_source>(chunk: Chunk, sep: Sep): $mol_regexp<[$mol_regexp<[[Chunk], Sep] extends infer T ? T extends [[Chunk], Sep] ? T extends $mol_regexp_source[] ? $mol_type_merge<$mol_type_intersect<{ [key in Extract<keyof T, number>]: $mol_regexp_groups<T[key]>; }[Extract<keyof T, number>]>> : T extends RegExp ? Record<string, string> extends NonNullable<NonNullable<ReturnType<T["exec"]>>["groups"]> ? {} : NonNullable<NonNullable<ReturnType<T["exec"]>>["groups"]> : T extends {
+            readonly [x: string]: $mol_regexp_source;
+        } ? $mol_type_merge<$mol_type_intersect<{ [key_1 in keyof T]: $mol_type_merge<Omit<{ readonly [k in Extract<keyof T, string>]: string; }, key_1> & { readonly [k_1 in key_1]: T[key_1] extends string ? T[key_1] : string; } & $mol_regexp_groups<T[key_1]>>; }[keyof T]>> : never : never : never>, Chunk] extends infer T_1 ? T_1 extends [$mol_regexp<[[Chunk], Sep] extends infer T_2 ? T_2 extends [[Chunk], Sep] ? T_2 extends $mol_regexp_source[] ? $mol_type_merge<$mol_type_intersect<{ [key_4 in Extract<keyof T_2, number>]: $mol_regexp_groups<T_2[key_4]>; }[Extract<keyof T_2, number>]>> : T_2 extends RegExp ? Record<string, string> extends NonNullable<NonNullable<ReturnType<T_2["exec"]>>["groups"]> ? {} : NonNullable<NonNullable<ReturnType<T_2["exec"]>>["groups"]> : T_2 extends {
+            readonly [x: string]: $mol_regexp_source;
+        } ? $mol_type_merge<$mol_type_intersect<{ [key_5 in keyof T_2]: $mol_type_merge<Omit<{ readonly [k in Extract<keyof T_2, string>]: string; }, key_5> & { readonly [k_1 in key_5]: T_2[key_5] extends string ? T_2[key_5] : string; } & $mol_regexp_groups<T_2[key_5]>>; }[keyof T_2]>> : never : never : never>, Chunk] ? T_1 extends $mol_regexp_source[] ? $mol_type_merge<$mol_type_intersect<{ [key_2 in Extract<keyof T_1, number>]: $mol_regexp_groups<T_1[key_2]>; }[Extract<keyof T_1, number>]>> : T_1 extends RegExp ? Record<string, string> extends NonNullable<NonNullable<ReturnType<T_1["exec"]>>["groups"]> ? {} : NonNullable<NonNullable<ReturnType<T_1["exec"]>>["groups"]> : T_1 extends {
+            readonly [x: string]: $mol_regexp_source;
+        } ? $mol_type_merge<$mol_type_intersect<{ [key_3 in keyof T_1]: $mol_type_merge<Omit<{ readonly [k in Extract<keyof T_1, string>]: string; }, key_3> & { readonly [k_1 in key_3]: T_1[key_3] extends string ? T_1[key_3] : string; } & $mol_regexp_groups<T_1[key_3]>>; }[keyof T_1]>> : never : never : never>;
         static repeat<Source extends $mol_regexp_source>(source: Source, min?: number, max?: number): $mol_regexp<$mol_regexp_groups<Source>>;
         static repeat_greedy<Source extends $mol_regexp_source>(source: Source, min?: number, max?: number): $mol_regexp<$mol_regexp_groups<Source>>;
-        static vary<Sources extends readonly $mol_regexp_source[]>(sources: Sources): $mol_regexp<$mol_regexp_groups<Sources[number]>>;
+        static vary<Sources extends readonly $mol_regexp_source[]>(sources: Sources, flags?: string): $mol_regexp<$mol_regexp_groups<Sources[number]>>;
         static optional<Source extends $mol_regexp_source>(source: Source): $mol_regexp<$mol_regexp_groups<Source>>;
         static force_after(source: $mol_regexp_source): $mol_regexp<Record<string, string>>;
         static forbid_after(source: $mol_regexp_source): $mol_regexp<Record<string, string>>;
@@ -3579,6 +3409,20 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_state_session<Value> extends $mol_object {
+        static 'native()': Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
+        static native(): Storage | {
+            getItem(key: string): any;
+            setItem(key: string, value: string): void;
+            removeItem(key: string): void;
+        };
+        static value<Value>(key: string, next?: Value): Value;
+        prefix(): string;
+        value(key: string, next?: Value): Value;
+    }
 }
 
 declare namespace $ {
@@ -4563,25 +4407,6 @@ declare namespace $ {
 }
 
 declare namespace $ {
-
-	export class $mol_lights_toggle extends $mol_check_icon {
-		Lights_icon( ): $mol_icon_brightness_4
-		lights( next?: boolean ): boolean
-		Icon( ): ReturnType< $mol_lights_toggle['Lights_icon'] >
-		hint( ): string
-		checked( next?: ReturnType< $mol_lights_toggle['lights'] > ): ReturnType< $mol_lights_toggle['lights'] >
-	}
-	
-}
-
-//# sourceMappingURL=toggle.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $mol_lights_toggle extends $.$mol_lights_toggle {
-        lights(next?: boolean): boolean;
-    }
-}
-
-declare namespace $ {
 }
 
 declare namespace $ {
@@ -4622,40 +4447,50 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_text__text_club_settings_2 = $mol_type_enforce<
+	type $mol_labeler__title_club_settings_2 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $mol_labeler['title'] >
 	>
-	type $mol_view__sub_club_settings_3 = $mol_type_enforce<
+	type $mol_labeler__content_club_settings_3 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_view['sub'] >
+		ReturnType< $mol_labeler['content'] >
 	>
-	type $mol_text__text_club_settings_4 = $mol_type_enforce<
-		ReturnType< $club_settings['tokenText'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_string__value_club_settings_5 = $mol_type_enforce<
+	type $mol_string__value_club_settings_4 = $mol_type_enforce<
 		ReturnType< $club_settings['token'] >
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_string__hint_club_settings_6 = $mol_type_enforce<
+	type $mol_string__hint_club_settings_5 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_string['hint'] >
 	>
+	type $mol_labeler__title_club_settings_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_club_settings_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	type $mol_text__text_club_settings_8 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
 	export class $club_settings extends $mol_page {
 		Title( ): $mol_paragraph
-		ThemeText( ): $mol_text
 		Lighter( ): $mol_lights_toggle
-		L( ): $mol_view
-		TokenText( ): $mol_text
-		TokenInput( ): $mol_string
+		Theme_row( ): $mol_labeler
 		token( next?: string ): string
-		tokenText( ): string
+		Token_input( ): $mol_string
+		Token_label( ): $mol_labeler
+		Token_help( ): $mol_text
+		title( ): string
 		head( ): readonly(any)[]
 		body( ): readonly(any)[]
 	}
@@ -4666,13 +4501,21 @@ declare namespace $ {
 declare namespace $.$$ {
     class $club_settings extends $.$club_settings {
         token(next?: string): string;
-        tokenText(): string;
     }
 }
 
 declare namespace $.$$ {
 }
 
+declare namespace $ {
+
+	export class $mol_icon_arrow_left extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=left.view.tree.d.ts.map
 declare namespace $ {
     class $mol_time_base {
         static patterns: Record<string, (arg: any) => string>;
@@ -4807,171 +4650,98 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_button_major__title_club_post_1 = $mol_type_enforce<
-		ReturnType< $club_post['upvotes'] >
+	type $mol_image__uri_club_comment_1 = $mol_type_enforce<
+		ReturnType< $club_comment['author_avatar'] >
 		,
-		ReturnType< $mol_button_major['title'] >
+		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_paragraph__title_club_post_2 = $mol_type_enforce<
-		ReturnType< $club_post['post_title'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_text__text_club_post_3 = $mol_type_enforce<
-		ReturnType< $club_post['text'] >
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_paragraph__title_club_post_4 = $mol_type_enforce<
-		ReturnType< $club_post['date_published'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_paragraph__title_club_post_5 = $mol_type_enforce<
-		ReturnType< $club_post['date_modified'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_view__sub_club_post_6 = $mol_type_enforce<
+	type $mol_view__sub_club_comment_2 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_image__uri_club_post_7 = $mol_type_enforce<
-		ReturnType< $club_post['author_avatar'] >
+	type $mol_paragraph__title_club_comment_3 = $mol_type_enforce<
+		ReturnType< $club_comment['author_name'] >
 		,
-		ReturnType< $mol_image['uri'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_text__text_club_post_8 = $mol_type_enforce<
-		ReturnType< $club_post['author_name'] >
+	type $mol_link__arg_club_comment_4 = $mol_type_enforce<
+		({ 
+			'user': ReturnType< $club_comment['author_slug'] >,
+		}) 
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__uri_club_post_9 = $mol_type_enforce<
-		ReturnType< $club_post['author_url'] >
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_post_10 = $mol_type_enforce<
-		ReturnType< $club_post['author_name'] >
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__sub_club_post_11 = $mol_type_enforce<
+	type $mol_link__sub_club_comment_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_list__rows_club_post_12 = $mol_type_enforce<
-		ReturnType< $club_post['list_authors'] >
+	type $mol_paragraph__title_club_comment_6 = $mol_type_enforce<
+		ReturnType< $club_comment['author_position'] >
 		,
-		ReturnType< $mol_list['rows'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	export class $club_post extends $mol_page {
-		Upvote( ): $mol_button_major
-		Title( ): $mol_paragraph
-		Article( ): $mol_text
-		DatePublished( ): $mol_paragraph
-		DateModified( ): $mol_paragraph
-		Info( ): $mol_view
-		AuthorAvatar( id: any): $mol_image
-		AuthorName( id: any): $mol_text
-		Author( id: any): $mol_link
-		list_authors( ): readonly(any)[]
-		Authors( ): $mol_list
-		post_title( next?: string ): string
-		authorization( next?: boolean ): boolean
-		post_url( ): string
-		comments_url( ): string
-		text( ): string
-		date_published( ): string
-		date_modified( ): string
-		author_url( id: any): string
-		author_name( id: any): string
-		author_avatar( id: any): string
-		upvotes( ): string
-		embed( ): string
-		title( ): ReturnType< $club_post['post_title'] >
-		head( ): readonly(any)[]
-		body( ): readonly(any)[]
+	type $mol_view__sub_club_comment_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_comment_8 = $mol_type_enforce<
+		ReturnType< $club_comment['created_date'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_comment_9 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_comment_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_text__text_club_comment_11 = $mol_type_enforce<
+		ReturnType< $club_comment['comment_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	export class $club_comment extends $mol_view {
+		author_avatar( ): string
+		Avatar( ): $mol_image
+		Side( ): $mol_view
+		author_slug( ): string
+		author_name( ): string
+		Author_name( ): $mol_paragraph
+		Author_link( ): $mol_link
+		author_position( ): string
+		Author_position( ): $mol_paragraph
+		Author_block( ): $mol_view
+		created_date( ): string
+		Date( ): $mol_paragraph
+		Header( ): $mol_view
+		upvotes_label( ): string
+		Rating( ): $mol_view
+		comment_text( ): string
+		Body( ): $mol_text
+		comment( ): any
+		sub( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=post.view.tree.d.ts.map
-interface PostRoot {
-    post: Post;
-}
-interface Post {
-    id: string;
-    url: string;
-    title: string;
-    content_text: string;
-    date_published: string;
-    date_modified: string;
-    authors: Author[];
-    _club: Club;
-}
-interface Club {
-    type: string;
-    slug: string;
-    coauthors: any[];
-    comment_count: number;
-    view_count: number;
-    upvotes: number;
-    is_public: boolean;
-    is_commentable: boolean;
-}
-interface Author {
-    name: string;
-    url: string;
-    avatar: string;
-}
-interface CommentRoot {
-    comments: Comment[];
-}
-interface Comment {
-    id: string;
-    text: string;
-    author: CommentAuthor;
-    reply_to_id?: string;
-    upvotes: number;
-    created_at: string;
-}
-interface CommentAuthor {
-    id: string;
-    slug: string;
-    full_name: string;
-    avatar?: string;
-    bio: string;
-    upvotes: number;
-    created_at: string;
-    membership_started_at: string;
-    membership_expires_at: string;
-    moderation_status: string;
-    payment_status: string;
-    company: string;
-    position: string;
-    city: string;
-    country: string;
-    is_active_member: boolean;
-}
+//# sourceMappingURL=comment.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $club_post extends $.$club_post {
-        post_arg(): string | null;
-        post_url(): string;
-        token(): unknown;
-        post(next?: Post): Post | null;
-        embed(next?: string): string;
-        upvotes(): string;
-        post_title(): string;
-        text(): string;
-        date_published(): string;
-        date_modified(): string;
-        list_authors(): $.$mol_link[];
-        author_url(id: number): string;
-        author_name(id: number): string;
-        author_avatar(id: number): string;
+    class $club_comment extends $.$club_comment {
+        comment_data(): $club_api_comment | null;
+        author_avatar(): string;
+        author_name(): string;
+        author_slug(): string;
+        author_position(): any;
+        created_date(): string;
+        upvotes_label(): string;
+        comment_text(): string;
     }
 }
 
@@ -4980,109 +4750,582 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_paragraph__title_club_comments_1 = $mol_type_enforce<
-		string
+	type $mol_link__arg_club_post_1 = $mol_type_enforce<
+		({ 
+			'post': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_club_post_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_paragraph__title_club_post_3 = $mol_type_enforce<
+		ReturnType< $club_post['post_title'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_image__uri_club_comments_2 = $mol_type_enforce<
-		ReturnType< $club_comments['comment_author_avatar'] >
-		,
-		ReturnType< $mol_image['uri'] >
-	>
-	type $mol_paragraph__title_club_comments_3 = $mol_type_enforce<
-		ReturnType< $club_comments['comment_author_name'] >
+	type $mol_paragraph__title_club_post_4 = $mol_type_enforce<
+		ReturnType< $club_post['post_title'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_comments_4 = $mol_type_enforce<
-		ReturnType< $club_comments['comment_author_slug'] >
+	type $mol_paragraph__title_club_post_5 = $mol_type_enforce<
+		ReturnType< $club_post['publicity_label'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_club_comments_5 = $mol_type_enforce<
+	type $mol_view__sub_club_post_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_club_comments_6 = $mol_type_enforce<
-		ReturnType< $club_comments['comment_text'] >
+	type $mol_view__sub_club_post_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_post_8 = $mol_type_enforce<
+		ReturnType< $club_post['published_date'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_post_9 = $mol_type_enforce<
+		ReturnType< $club_post['views_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_post_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_12 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_text__text_club_post_14 = $mol_type_enforce<
+		ReturnType< $club_post['content_text'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_view__sub_club_comments_7 = $mol_type_enforce<
+	type $mol_image__uri_club_post_15 = $mol_type_enforce<
+		ReturnType< $club_post['author_avatar'] >
+		,
+		ReturnType< $mol_image['uri'] >
+	>
+	type $mol_paragraph__title_club_post_16 = $mol_type_enforce<
+		ReturnType< $club_post['author_name'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_post_17 = $mol_type_enforce<
+		ReturnType< $club_post['author_position'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_link__arg_club_post_18 = $mol_type_enforce<
+		({ 
+			'user': ReturnType< $club_post['author_slug'] >,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_club_post_19 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_paragraph__title_club_post_20 = $mol_type_enforce<
+		ReturnType< $club_post['published_date'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_post_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_list__rows_club_comments_8 = $mol_type_enforce<
-		ReturnType< $club_comments['list_comments'] >
+	type $mol_view__sub_club_post_22 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_23 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_post_24 = $mol_type_enforce<
+		ReturnType< $club_post['comments_count_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_post_25 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__rows_club_post_26 = $mol_type_enforce<
+		ReturnType< $club_post['comment_rows'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	export class $club_comments extends $mol_page {
+	type $mol_view__sub_club_post_27 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $club_post extends $mol_page {
+		post_title( ): string
+		Back_icon( ): $mol_icon_arrow_left
+		Back( ): $mol_link
 		Title( ): $mol_paragraph
-		AuthorAvatar( id: any): $mol_image
-		AuthorName( id: any): $mol_paragraph
-		AuthorSlug( id: any): $mol_paragraph
-		Author( id: any): $mol_view
-		CommentText( id: any): $mol_text
-		Comment( id: any): $mol_view
-		list_comments( ): readonly(any)[]
-		Comments( ): $mol_list
-		comment_author( id: any): any
-		comment_text( id: any): string
-		comment_author_name( id: any): string
-		comment_author_slug( id: any): string
-		comment_author_avatar( id: any): string
+		Post_title_text( ): $mol_paragraph
+		publicity_label( ): string
+		Post_publicity( ): $mol_paragraph
+		Post_title_block( ): $mol_view
+		room_label( ): string
+		Room_badge( ): $mol_view
+		published_date( ): string
+		Post_date( ): $mol_paragraph
+		views_label( ): string
+		Post_views( ): $mol_paragraph
+		Post_actions( ): $mol_view
+		Post_info( ): $mol_view
+		Article_header( ): $mol_view
+		upvotes_label( ): string
+		Upvote( ): $mol_view
+		content_text( ): string
+		Text_body( ): $mol_text
+		author_avatar( ): string
+		Author_avatar( ): $mol_image
+		author_slug( ): string
+		author_name( ): string
+		Author_name( ): $mol_paragraph
+		author_position( ): string
+		Author_position( ): $mol_paragraph
+		Author_link( ): $mol_link
+		Footer_date( ): $mol_paragraph
+		Author_info( ): $mol_view
+		Post_footer( ): $mol_view
+		Article( ): $mol_view
+		comments_count_label( ): string
+		Comments_count( ): $mol_paragraph
+		Comments_title( ): $mol_view
+		comment_rows( ): readonly(any)[]
+		Comments_list( ): $mol_list
+		Comments_section( ): $mol_view
+		post_type( ): string
+		post_slug( ): string
+		title( ): ReturnType< $club_post['post_title'] >
 		head( ): readonly(any)[]
 		body( ): readonly(any)[]
 	}
 	
 }
 
-//# sourceMappingURL=comments.view.tree.d.ts.map
-interface CommentRoot {
-    comments: Comment[];
-}
-interface Comment {
-    id: string;
-    text: string;
-    author: CommentAuthor;
-    reply_to_id?: string;
-    upvotes: number;
-    created_at: string;
-}
-interface CommentAuthor {
-    id: string;
-    slug: string;
-    full_name: string;
-    avatar?: string;
-    bio: string;
-    upvotes: number;
-    created_at: string;
-    membership_started_at: string;
-    membership_expires_at: string;
-    moderation_status: string;
-    payment_status: string;
-    company: string;
-    position: string;
-    city: string;
-    country: string;
-    is_active_member: boolean;
-}
+//# sourceMappingURL=post.view.tree.d.ts.map
 declare namespace $.$$ {
-    class $club_comments extends $.$club_comments {
-        token(): unknown;
-        post_arg(): string | null;
-        comments_url(): string;
-        comments(next?: Comment[]): Comment[] | null;
-        list_comments(): $mol_view[];
-        comment_author(id: number): CommentAuthor | undefined;
-        comment_text(id: number): string;
-        comment_author_name(id: number): string;
-        comment_author_slug(id: number): string;
-        comment_author_avatar(id: number): string;
+    class $club_post extends $.$club_post {
+        data(): $club_api_post_response | null;
+        comments_data(): $club_api_comments_response | null;
+        post_title(): string;
+        publicity_label(): "🔒 Только для членов клуба" | "🌍 Публичный пост";
+        room_label(): string;
+        upvotes_label(): string;
+        author_avatar(): string;
+        author_name(): string;
+        author_position(): any;
+        author_slug(): string;
+        published_date(): string;
+        views_label(): string;
+        content_text(): string;
+        comments_count_label(): string;
+        comment_rows(): $club_comment[];
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	export class $club_tag extends $mol_view {
+		tag_name( ): string
+		tag( ): any
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=tag.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_tag extends $.$club_tag {
+        tag_data(): $club_api_tag | null;
+        tag_name(): string;
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_link__arg_club_profile_1 = $mol_type_enforce<
+		({ 
+			'user': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_club_profile_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_3 = $mol_type_enforce<
+		ReturnType< $club_profile['user_name'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_image__uri_club_profile_4 = $mol_type_enforce<
+		ReturnType< $club_profile['avatar_url'] >
+		,
+		ReturnType< $mol_image['uri'] >
+	>
+	type $mol_view__sub_club_profile_5 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_6 = $mol_type_enforce<
+		ReturnType< $club_profile['user_name'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_profile_7 = $mol_type_enforce<
+		ReturnType< $club_profile['nickname_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_profile_8 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_9 = $mol_type_enforce<
+		ReturnType< $club_profile['position_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_profile_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_11 = $mol_type_enforce<
+		ReturnType< $club_profile['location_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_text__text_club_profile_12 = $mol_type_enforce<
+		ReturnType< $club_profile['bio_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_view__sub_club_profile_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_profile_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_15 = $mol_type_enforce<
+		ReturnType< $club_profile['upvotes_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_profile_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_profile_17 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_18 = $mol_type_enforce<
+		ReturnType< $club_profile['membership_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_profile_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_profile_20 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_profile_21 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_22 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_text__text_club_profile_23 = $mol_type_enforce<
+		ReturnType< $club_profile['intro_text'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_view__sub_club_profile_24 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_profile_25 = $mol_type_enforce<
+		ReturnType< $club_profile['tag_rows'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_profile_26 = $mol_type_enforce<
+		ReturnType< $club_profile['posts_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_list__rows_club_profile_27 = $mol_type_enforce<
+		ReturnType< $club_profile['post_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $club_profile extends $mol_page {
+		user_name( ): string
+		Back_icon( ): $mol_icon_arrow_left
+		Back( ): $mol_link
+		Title( ): $mol_paragraph
+		avatar_url( ): string
+		Card_avatar( ): $mol_image
+		Card_photo( ): $mol_view
+		Card_fullname( ): $mol_paragraph
+		nickname_label( ): string
+		Card_nickname( ): $mol_paragraph
+		Card_name_row( ): $mol_view
+		position_label( ): string
+		Card_position( ): $mol_paragraph
+		Card_job( ): $mol_view
+		location_label( ): string
+		Card_location( ): $mol_paragraph
+		bio_text( ): string
+		Card_bio( ): $mol_text
+		Card_info( ): $mol_view
+		Card( ): $mol_view
+		upvotes_label( ): string
+		Respect_number( ): $mol_paragraph
+		Respect_text( ): $mol_paragraph
+		Status_respect( ): $mol_view
+		membership_label( ): string
+		Membership_number( ): $mol_paragraph
+		Membership_text( ): $mol_paragraph
+		Status_membership( ): $mol_view
+		Statuses( ): $mol_view
+		Intro_header( ): $mol_paragraph
+		intro_text( ): string
+		Intro_text( ): $mol_text
+		Intro_section( ): $mol_view
+		tag_rows( ): readonly(any)[]
+		Tags_section( ): $mol_view
+		posts_title( ): string
+		Posts_title( ): $mol_paragraph
+		post_rows( ): readonly(any)[]
+		Posts( ): $mol_list
+		user_slug( ): string
+		title( ): ReturnType< $club_profile['user_name'] >
+		head( ): readonly(any)[]
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=profile.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_profile extends $.$club_profile {
+        data(): $club_api_profile_response | null;
+        tags_data(): $club_api_tags_response | null;
+        user_name(): string;
+        nickname_label(): string;
+        avatar_url(): string;
+        position_label(): string;
+        location_label(): string;
+        upvotes_label(): string;
+        membership_label(): string;
+        bio_text(): string;
+        intro_text(): any;
+        tag_rows(): $club_tag[];
+        posts_title(): string;
+        post_rows(): $mol_view[];
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_link__arg_club_bookmarks_1 = $mol_type_enforce<
+		({ 
+			'bookmarks': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_club_bookmarks_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_paragraph__title_club_bookmarks_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_list__rows_club_bookmarks_4 = $mol_type_enforce<
+		ReturnType< $club_bookmarks['post_cards'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_paginator__value_club_bookmarks_5 = $mol_type_enforce<
+		ReturnType< $club_bookmarks['page'] >
+		,
+		ReturnType< $mol_paginator['value'] >
+	>
+	export class $club_bookmarks extends $mol_page {
+		Back_icon( ): $mol_icon_arrow_left
+		Back( ): $mol_link
+		Title( ): $mol_paragraph
+		post_cards( ): readonly(any)[]
+		Posts( ): $mol_list
+		page( next?: number ): number
+		Pager( ): $mol_paginator
+		title( ): string
+		head( ): readonly(any)[]
+		body( ): readonly(any)[]
+		foot( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=bookmarks.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_bookmarks extends $.$club_bookmarks {
+        data(): $club_api_bookmarks_response;
+        posts(): $club_api_post[];
+        post_cards(): $club_card[];
+    }
+}
+
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
+	type $mol_link__arg_club_rooms_1 = $mol_type_enforce<
+		({ 
+			'rooms': string,
+		}) 
+		,
+		ReturnType< $mol_link['arg'] >
+	>
+	type $mol_link__sub_club_rooms_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_paragraph__title_club_rooms_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_rooms_4 = $mol_type_enforce<
+		ReturnType< $club_rooms['room_title'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_rooms_5 = $mol_type_enforce<
+		ReturnType< $club_rooms['room_subtitle'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_club_rooms_6 = $mol_type_enforce<
+		ReturnType< $club_rooms['room_members'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_rooms_7 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_list__rows_club_rooms_8 = $mol_type_enforce<
+		ReturnType< $club_rooms['room_rows'] >
+		,
+		ReturnType< $mol_list['rows'] >
+	>
+	export class $club_rooms extends $mol_page {
+		Back_icon( ): $mol_icon_arrow_left
+		Back( ): $mol_link
+		Title( ): $mol_paragraph
+		Room_title( id: any): $mol_paragraph
+		Room_subtitle( id: any): $mol_paragraph
+		Room_members( id: any): $mol_paragraph
+		Room( id: any): $mol_view
+		room_rows( ): readonly(any)[]
+		Rooms( ): $mol_list
+		title( ): string
+		room_title( id: any): string
+		room_subtitle( id: any): string
+		room_members( id: any): string
+		head( ): readonly(any)[]
+		body( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=rooms.view.tree.d.ts.map
+declare namespace $.$$ {
+    class $club_rooms extends $.$club_rooms {
+        data(): $club_api_rooms_response;
+        rooms_list(): $club_api_room[];
+        room_rows(): $mol_view[];
+        room_title(id: number): string;
+        room_subtitle(id: number): string;
+        room_members(id: number): string;
     }
 }
 
@@ -5105,31 +5348,83 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $bog_favicon__Icon_club_1 = $mol_type_enforce<
-		ReturnType< $club['icon'] >
+	type $mol_image__uri_club_1 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $bog_favicon['Icon'] >
+		ReturnType< $mol_image['uri'] >
 	>
-	type $club_main__settings_club_2 = $mol_type_enforce<
-		ReturnType< $club['settingsOpened'] >
+	type $mol_paragraph__title_club_2 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $club_main['settings'] >
+		ReturnType< $mol_paragraph['title'] >
 	>
-	type $club_main__theme_auto_club_3 = $mol_type_enforce<
-		ReturnType< $club['Theme'] >
+	type $mol_link__arg_club_3 = $mol_type_enforce<
+		({ 
+			'post': string,
+		}) 
 		,
-		ReturnType< $club_main['theme_auto'] >
+		ReturnType< $mol_link['arg'] >
 	>
-	export class $club extends $mol_book2 {
-		icon( ): $mol_icon_home
-		Favicon( ): $bog_favicon
+	type $mol_link__sub_club_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_link['sub'] >
+	>
+	type $club_menu__post_club_5 = $mol_type_enforce<
+		ReturnType< $club['post_arg'] >
+		,
+		ReturnType< $club_menu['post'] >
+	>
+	type $club_menu__user_club_6 = $mol_type_enforce<
+		ReturnType< $club['user_arg'] >
+		,
+		ReturnType< $club_menu['user'] >
+	>
+	type $club_menu__bookmarks_club_7 = $mol_type_enforce<
+		ReturnType< $club['bookmarks_arg'] >
+		,
+		ReturnType< $club_menu['bookmarks'] >
+	>
+	type $club_menu__rooms_club_8 = $mol_type_enforce<
+		ReturnType< $club['rooms_arg'] >
+		,
+		ReturnType< $club_menu['rooms'] >
+	>
+	type $club_menu__settings_club_9 = $mol_type_enforce<
+		ReturnType< $club['settings_arg'] >
+		,
+		ReturnType< $club_menu['settings'] >
+	>
+	type $mol_view__sub_club_10 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_11 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $club extends $mol_page {
 		Theme( ): $bog_theme_auto
-		Main( ): $club_main
-		title( ): ReturnType< ReturnType< $club['FPost'] >['title'] >
-		FPost( ): $mol_view
-		settingsOpened( next?: boolean ): boolean
+		Logo_img( ): $mol_image
+		Logo_text( ): $mol_paragraph
+		Logo( ): $mol_link
+		post_arg( next?: string ): string
+		user_arg( next?: string ): string
+		bookmarks_arg( next?: string ): string
+		rooms_arg( next?: string ): string
+		settings_arg( next?: string ): string
+		Sidebar( ): $club_menu
+		spread( ): $mol_view
+		Content( ): $mol_view
+		Main( ): $mol_view
 		plugins( ): readonly(any)[]
-		pages( ): readonly(any)[]
+		title( ): string
+		head( ): readonly(any)[]
+		body( ): readonly(any)[]
+		Feed( ): $club_feed
+		Settings( ): $club_settings
 	}
 	
 }
@@ -5137,41 +5432,18 @@ declare namespace $ {
 //# sourceMappingURL=club.view.tree.d.ts.map
 declare namespace $.$$ {
     class $club extends $.$club {
-        settingsOpened(next?: boolean): boolean;
-        post_arg(): string | null;
-        token(): unknown;
-        FSettings(): $mol_view | $club_settings;
-        FPost(): $mol_view | $club_post;
-        FComments(): $mol_view | $club_comments;
+        post_arg(next?: string): string;
+        user_arg(next?: string): string;
+        bookmarks_arg(next?: string): string;
+        rooms_arg(next?: string): string;
+        settings_arg(next?: string): string;
+        authorized(): boolean;
+        spread(): $.$club_feed | $.$club_settings | $club_post | $club_profile | $club_bookmarks | $club_rooms;
+        body(): $mol_view[] | $.$club_settings[];
     }
 }
+
 declare namespace $ {
-    class $club_filters extends $mol_view {
-        publicity(): {
-            public: string;
-            private: string;
-        };
-        types(): {
-            post: string;
-            project: string;
-            guide: string;
-            question: string;
-            thread: string;
-            idea: string;
-            event: string;
-            battle: string;
-            docs: string;
-        };
-        timings(): {
-            new: string;
-            activity: string;
-            hot: string;
-            top: string;
-            top_week: string;
-            top_month: string;
-            top_year: string;
-        };
-    }
 }
 
 declare namespace $.$$ {
