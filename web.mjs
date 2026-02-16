@@ -5007,6 +5007,13 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    $mol_style_attach("club/room/card/card.view.css", "[club_room_card]:hover {\n\ttransform: translateY(-2px);\n\ttransition: .2s;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     var $$;
     (function ($$) {
         $mol_style_define($club_room_card, {
@@ -7406,6 +7413,7 @@ var $;
                 gridRow: '2',
                 justifySelf: 'start',
                 alignSelf: 'start',
+                zIndex: 1,
                 display: 'flex',
                 flex: {
                     direction: 'row',
@@ -7423,11 +7431,15 @@ var $;
             Comments_count: {
                 color: '#999',
                 whiteSpace: 'nowrap',
+                display: 'inline-block',
+                padding: '1em',
+                margin: '-1em',
             },
             Votes: {
                 gridColumn: '3',
                 gridRow: '1 / 3',
                 justifySelf: 'end',
+                zIndex: 2,
                 display: 'flex',
                 alignItems: 'center',
                 padding: {
@@ -7495,6 +7507,7 @@ var $;
     var $$;
     (function ($$) {
         $mol_style_define($club_feed, {
+            display: 'block',
             Ordering: {
                 display: 'flex',
                 justify: {
@@ -11140,35 +11153,9 @@ var $;
 
 
 ;
-	($.$mol_icon_arrow_left) = class $mol_icon_arrow_left extends ($.$mol_icon) {
-		path(){
-			return "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z";
-		}
-	};
-
-
-;
-"use strict";
-
-;
 	($.$club_post) = class $club_post extends ($.$mol_page) {
 		post_title(){
 			return "";
-		}
-		Back_icon(){
-			const obj = new this.$.$mol_icon_arrow_left();
-			return obj;
-		}
-		Back(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"post": null});
-			(obj.sub) = () => ([(this.Back_icon())]);
-			return obj;
-		}
-		Title(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.post_title()));
-			return obj;
 		}
 		Post_title_text(){
 			const obj = new this.$.$mol_paragraph();
@@ -11363,16 +11350,13 @@ var $;
 		title(){
 			return (this.post_title());
 		}
-		head(){
-			return [(this.Back()), (this.Title())];
+		Head(){
+			return null;
 		}
 		body(){
 			return [(this.Article()), (this.Comments_section())];
 		}
 	};
-	($mol_mem(($.$club_post.prototype), "Back_icon"));
-	($mol_mem(($.$club_post.prototype), "Back"));
-	($mol_mem(($.$club_post.prototype), "Title"));
 	($mol_mem(($.$club_post.prototype), "Post_title_text"));
 	($mol_mem(($.$club_post.prototype), "Post_title_block"));
 	($mol_mem(($.$club_post.prototype), "Post_publicity"));
@@ -12424,21 +12408,6 @@ var $;
             background: {
                 color: 'transparent',
             },
-            Head: {
-                gap: '0.5rem',
-                align: {
-                    items: 'center',
-                },
-            },
-            Title: {
-                font: {
-                    size: '1.2rem',
-                    weight: 700,
-                },
-                flex: {
-                    grow: 1,
-                },
-            },
             Article: {
                 display: 'block',
                 position: 'relative',
@@ -12450,6 +12419,7 @@ var $;
                 },
             },
             Article_header: {
+                display: 'block',
                 textAlign: 'center',
             },
             Post_title_block: {
@@ -12463,6 +12433,9 @@ var $;
                     weight: 700,
                 },
                 lineHeight: '1.3em',
+                maxWidth: '100%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
             },
             Post_publicity: {
                 display: 'inline-block',
@@ -12474,7 +12447,6 @@ var $;
             },
             Post_info: {
                 padding: {
-                    top: '20px',
                     bottom: '20px',
                 },
                 display: 'inline-flex',
@@ -12490,6 +12462,13 @@ var $;
                 },
                 gap: '15px',
                 opacity: 0.6,
+                padding: {
+                    top: '20px',
+                    bottom: '20px',
+                },
+                maxWidth: '100%',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
             },
             Upvote: {
                 position: 'sticky',
@@ -12607,6 +12586,7 @@ var $;
                 color: $mol_theme.shade,
             },
             Comments_section: {
+                display: 'block',
                 maxWidth: '700px',
                 margin: {
                     left: 'auto',
@@ -12616,10 +12596,22 @@ var $;
                     top: '80px',
                 },
             },
+            Comments_title: {
+                font: {
+                    size: '110%',
+                    weight: 500,
+                },
+                display: 'flex',
+                flex: {
+                    direction: 'row',
+                },
+                justify: {
+                    content: 'space-between',
+                },
+            },
             Comments_count: {
                 font: {
                     size: '160%',
-                    weight: 500,
                 },
                 textDecoration: 'none',
             },
@@ -12632,6 +12624,17 @@ var $;
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
+
+;
+	($.$mol_icon_arrow_left) = class $mol_icon_arrow_left extends ($.$mol_icon) {
+		path(){
+			return "M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z";
+		}
+	};
+
+
+;
+"use strict";
 
 ;
 	($.$club_profile) = class $club_profile extends ($.$mol_page) {
@@ -12787,12 +12790,22 @@ var $;
 			(obj.sub) = () => ([(this.Intro_header()), (this.Intro_text())]);
 			return obj;
 		}
+		Tags_header(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ("Теги");
+			return obj;
+		}
 		tag_rows(){
 			return [];
 		}
-		Tags_section(){
+		Tags_list(){
 			const obj = new this.$.$mol_view();
 			(obj.sub) = () => ((this.tag_rows()));
+			return obj;
+		}
+		Tags_section(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Tags_header()), (this.Tags_list())]);
 			return obj;
 		}
 		user_slug(){
@@ -12837,6 +12850,8 @@ var $;
 	($mol_mem(($.$club_profile.prototype), "Intro_header"));
 	($mol_mem(($.$club_profile.prototype), "Intro_text"));
 	($mol_mem(($.$club_profile.prototype), "Intro_section"));
+	($mol_mem(($.$club_profile.prototype), "Tags_header"));
+	($mol_mem(($.$club_profile.prototype), "Tags_list"));
 	($mol_mem(($.$club_profile.prototype), "Tags_section"));
 
 
@@ -12879,23 +12894,38 @@ var $;
 "use strict";
 var $;
 (function ($) {
+    $mol_style_attach("club/tag/tag.view.css", "[club_tag] {\n\tborder: 1px solid var(--mol_theme_line);\n}\n\n[club_tag]:hover {\n\topacity: 1;\n\tbackground-color: var(--mol_theme_hover);\n\tborder: solid 2px var(--mol_theme_line);\n\tpadding: 6px 19px;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
     var $$;
     (function ($$) {
         $mol_style_define($club_tag, {
+            display: 'inline-block',
+            cursor: 'pointer',
+            font: {
+                size: '110%',
+                weight: 300,
+            },
             padding: {
-                top: '0.2rem',
-                right: '0.6rem',
-                bottom: '0.2rem',
-                left: '0.6rem',
+                top: '7px',
+                right: '20px',
+                bottom: '7px',
+                left: '20px',
+            },
+            margin: {
+                right: '20px',
+                bottom: '20px',
             },
             border: {
-                radius: '4px',
+                radius: '20px',
             },
-            font: {
-                size: '0.8rem',
-                weight: 600,
-            },
-            color: 'white',
+            textAlign: 'center',
+            opacity: 0.7,
+            transition: '0.2s ease-out',
         });
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -13013,7 +13043,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/profile/profile.view.css", "[club_profile_card] {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n\n[club_profile_card] [mol_link] {\n\tcolor: var(--mol_theme_back);\n\ttext-decoration: none;\n}\n\n[club_profile_card_bio] a {\n\tcolor: var(--mol_theme_back);\n}\n\n[club_profile_card_avatar] img {\n\tposition: relative;\n\twidth: 100%;\n\theight: auto;\n\tobject-fit: cover;\n}\n");
+    $mol_style_attach("club/profile/profile.view.css", "[club_profile_card] {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n\n[club_profile_card] [mol_link] {\n\tcolor: var(--mol_theme_back);\n\ttext-decoration: none;\n}\n\n[club_profile_card_bio] a {\n\tcolor: var(--mol_theme_back);\n}\n\n[club_profile_card_avatar] img {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\tright: 0;\n\twidth: 100%;\n\theight: 100%;\n\tobject-fit: cover;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -13067,6 +13097,10 @@ var $;
             Card_avatar: {
                 display: 'block',
                 width: '100%',
+                padding: {
+                    top: '100%',
+                },
+                position: 'relative',
                 border: {
                     radius: '0px',
                 },
@@ -13136,6 +13170,7 @@ var $;
                 },
                 align: {
                     items: 'stretch',
+                    content: 'stretch',
                 },
                 textAlign: 'center',
                 font: {
@@ -13197,6 +13232,7 @@ var $;
                 },
             },
             Intro_section: {
+                display: 'block',
                 padding: {
                     top: '50px',
                     right: '30px',
@@ -13218,6 +13254,7 @@ var $;
                 },
                 textAlign: 'center',
                 padding: {
+                    top: '0px',
                     bottom: '20px',
                 },
             },
@@ -13227,8 +13264,39 @@ var $;
                 },
                 lineHeight: '1.5em',
                 overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                padding: {
+                    top: '10px',
+                },
             },
             Tags_section: {
+                display: 'block',
+                padding: {
+                    top: '30px',
+                    bottom: '30px',
+                    left: '30px',
+                    right: '30px',
+                },
+                background: {
+                    color: $mol_theme.card,
+                },
+                boxShadow: `10px 15px 40px ${rgba(83, 91, 110, 0.11)}`,
+                border: {
+                    radius: '15px',
+                },
+            },
+            Tags_header: {
+                font: {
+                    size: '150%',
+                    weight: 700,
+                },
+                textAlign: 'center',
+                padding: {
+                    top: '0px',
+                    bottom: '20px',
+                },
+            },
+            Tags_list: {
                 display: 'flex',
                 flex: {
                     direction: 'row',
@@ -13239,18 +13307,6 @@ var $;
                 },
                 align: {
                     items: 'flex-start',
-                },
-                gap: '0.5rem',
-                padding: {
-                    top: '30px',
-                    bottom: '30px',
-                },
-                background: {
-                    color: $mol_theme.card,
-                },
-                boxShadow: `10px 15px 40px ${rgba(83, 91, 110, 0.11)}`,
-                border: {
-                    radius: '15px',
                 },
             },
         });
@@ -13735,6 +13791,10 @@ var $;
                 if (!this.authorized()) {
                     return [this.Settings()];
                 }
+                const post = this.$.$mol_state_arg.value('post');
+                if (post) {
+                    return [this.Content()];
+                }
                 return [this.Main()];
             }
         }
@@ -13768,7 +13828,23 @@ var $;
             },
             lineHeight: '1.42',
             Head: {
+                background: {
+                    color: 'transparent',
+                },
+                boxShadow: 'none',
+                border: {
+                    radius: '0px',
+                },
+                position: 'relative',
+                zIndex: 0,
+                maxWidth: '1000px',
+                margin: {
+                    left: 'auto',
+                    right: 'auto',
+                },
                 padding: {
+                    top: '25px',
+                    bottom: '15px',
                     left: '20px',
                     right: '20px',
                 },
@@ -13816,6 +13892,7 @@ var $;
                 },
             },
             Content: {
+                display: 'block',
                 minWidth: '0px',
             },
         });

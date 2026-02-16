@@ -1568,6 +1568,9 @@ declare namespace $.$$ {
     }
 }
 
+declare namespace $ {
+}
+
 declare namespace $.$$ {
 }
 
@@ -4698,15 +4701,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-
-	export class $mol_icon_arrow_left extends $mol_icon {
-		path( ): string
-	}
-	
-}
-
-//# sourceMappingURL=left.view.tree.d.ts.map
-declare namespace $ {
     class $mol_time_base {
         static patterns: Record<string, (arg: any) => string>;
         static formatter(pattern: string): (arg: any) => string;
@@ -4940,177 +4934,157 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_link__arg_club_post_1 = $mol_type_enforce<
-		({ 
-			'post': any,
-		}) 
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__sub_club_post_2 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_paragraph__title_club_post_3 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_1 = $mol_type_enforce<
 		ReturnType< $club_post['post_title'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_post_4 = $mol_type_enforce<
-		ReturnType< $club_post['post_title'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_view__sub_club_post_5 = $mol_type_enforce<
+	type $mol_view__sub_club_post_2 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_club_post_6 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_3 = $mol_type_enforce<
 		ReturnType< $club_post['publicity_label'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_post_7 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_4 = $mol_type_enforce<
 		ReturnType< $club_post['published_date'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_post_8 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_5 = $mol_type_enforce<
 		ReturnType< $club_post['views_label'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_club_post_9 = $mol_type_enforce<
+	type $mol_view__sub_club_post_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_club_post_10 = $mol_type_enforce<
+	type $mol_view__sub_club_post_7 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_image__uri_club_post_11 = $mol_type_enforce<
+	type $mol_image__uri_club_post_8 = $mol_type_enforce<
 		ReturnType< $club_post['author_avatar'] >
 		,
 		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_paragraph__title_club_post_12 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_9 = $mol_type_enforce<
 		ReturnType< $club_post['author_name'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_link__arg_club_post_13 = $mol_type_enforce<
+	type $mol_link__arg_club_post_10 = $mol_type_enforce<
 		({ 
 			'user': ReturnType< $club_post['author_slug'] >,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_club_post_14 = $mol_type_enforce<
+	type $mol_link__sub_club_post_11 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
+	>
+	type $mol_view__sub_club_post_12 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_14 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_club_post_15 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_club_post_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_view__sub_club_post_17 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_view__sub_club_post_18 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_club_post_19 = $mol_type_enforce<
+	type $mol_text__text_club_post_16 = $mol_type_enforce<
 		ReturnType< $club_post['content_text'] >
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_image__uri_club_post_20 = $mol_type_enforce<
+	type $mol_image__uri_club_post_17 = $mol_type_enforce<
 		ReturnType< $club_post['author_avatar'] >
 		,
 		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_paragraph__title_club_post_21 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_18 = $mol_type_enforce<
 		ReturnType< $club_post['author_name'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_post_22 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_19 = $mol_type_enforce<
 		ReturnType< $club_post['author_position'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_link__arg_club_post_23 = $mol_type_enforce<
+	type $mol_link__arg_club_post_20 = $mol_type_enforce<
 		({ 
 			'user': ReturnType< $club_post['author_slug'] >,
 		}) 
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_club_post_24 = $mol_type_enforce<
+	type $mol_link__sub_club_post_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_paragraph__title_club_post_25 = $mol_type_enforce<
+	type $mol_paragraph__title_club_post_22 = $mol_type_enforce<
 		ReturnType< $club_post['published_date'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_club_post_26 = $mol_type_enforce<
+	type $mol_view__sub_club_post_23 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_24 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_post_25 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_paragraph__title_club_post_26 = $mol_type_enforce<
+		ReturnType< $club_post['comments_count_label'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_view__sub_club_post_27 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_club_post_28 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_paragraph__title_club_post_29 = $mol_type_enforce<
-		ReturnType< $club_post['comments_count_label'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_view__sub_club_post_30 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_list__rows_club_post_31 = $mol_type_enforce<
+	type $mol_list__rows_club_post_28 = $mol_type_enforce<
 		ReturnType< $club_post['comment_rows'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_view__sub_club_post_32 = $mol_type_enforce<
+	type $mol_view__sub_club_post_29 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $club_post extends $mol_page {
 		post_title( ): string
-		Back_icon( ): $mol_icon_arrow_left
-		Back( ): $mol_link
-		Title( ): $mol_paragraph
 		Post_title_text( ): $mol_paragraph
 		Post_title_block( ): $mol_view
 		publicity_label( ): string
@@ -5153,7 +5127,7 @@ declare namespace $ {
 		post_type( ): string
 		post_slug( ): string
 		title( ): ReturnType< $club_post['post_title'] >
-		head( ): readonly(any)[]
+		Head( ): any
 		body( ): readonly(any)[]
 	}
 	
@@ -5185,6 +5159,15 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	export class $mol_icon_arrow_left extends $mol_icon {
+		path( ): string
+	}
+	
+}
+
+//# sourceMappingURL=left.view.tree.d.ts.map
+declare namespace $ {
+
 	export class $club_tag extends $mol_view {
 		tag_name( ): string
 		tag( ): any
@@ -5199,6 +5182,9 @@ declare namespace $.$$ {
         tag_data(): $club_api_tag | null;
         tag_name(): string;
     }
+}
+
+declare namespace $ {
 }
 
 declare namespace $.$$ {
@@ -5328,8 +5314,18 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_club_profile_25 = $mol_type_enforce<
+	type $mol_paragraph__title_club_profile_25 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_view__sub_club_profile_26 = $mol_type_enforce<
 		ReturnType< $club_profile['tag_rows'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_profile_27 = $mol_type_enforce<
+		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
@@ -5367,7 +5363,9 @@ declare namespace $ {
 		intro_text( ): string
 		Intro_text( ): $mol_text
 		Intro_section( ): $mol_view
+		Tags_header( ): $mol_paragraph
 		tag_rows( ): readonly(any)[]
+		Tags_list( ): $mol_view
 		Tags_section( ): $mol_view
 		user_slug( ): string
 		title( ): ReturnType< $club_profile['user_name'] >

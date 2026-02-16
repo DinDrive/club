@@ -841,19 +841,11 @@ $club $mol_page
 	Feed $club_feed
 	Settings $club_settings
 
-$mol_icon_arrow_left $mol_icon path \M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z
-
 $club_post $mol_page
 	post_type \
 	post_slug \
 	title <= post_title \
-	head /
-		<= Back $mol_link
-			arg * post null
-			sub /
-				<= Back_icon $mol_icon_arrow_left
-		<= Title $mol_paragraph
-			title <= post_title
+	Head null
 	body /
 		<= Article $mol_view
 			sub /
@@ -937,6 +929,8 @@ $club_comment $mol_view
 		<= Body $mol_text
 			text <= comment_text \
 
+$mol_icon_arrow_left $mol_icon path \M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z
+
 $club_profile $mol_page
 	user_slug \
 	title <= user_name \
@@ -991,7 +985,11 @@ $club_profile $mol_page
 				<= Intro_text $mol_text
 					text <= intro_text \
 		<= Tags_section $mol_view
-			sub <= tag_rows /
+			sub /
+				<= Tags_header $mol_paragraph
+					title \Теги
+				<= Tags_list $mol_view
+					sub <= tag_rows /
 
 $club_tag $mol_view
 	tag null
