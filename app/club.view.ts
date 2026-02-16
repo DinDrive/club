@@ -48,6 +48,12 @@ namespace $.$$ {
 			if (!this.authorized()) {
 				return [this.Settings()]
 			}
+
+			const post = this.$.$mol_state_arg.value('post')
+			if (post) {
+				return [this.Content()]
+			}
+
 			return [this.Main()]
 		}
 	}

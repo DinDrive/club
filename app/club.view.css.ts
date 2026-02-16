@@ -7,7 +7,23 @@ namespace $.$$ {
 		lineHeight: '1.42',
 
 		Head: {
+			background: {
+				color: 'transparent',
+			},
+			boxShadow: 'none',
+			border: {
+				radius: '0px',
+			},
+			position: 'relative',
+			zIndex: 0,
+			maxWidth: '1000px',
+			margin: {
+				left: 'auto',
+				right: 'auto',
+			},
 			padding: {
+				top: '25px',
+				bottom: '15px',
 				left: '20px',
 				right: '20px',
 			},
@@ -61,6 +77,7 @@ namespace $.$$ {
 		},
 
 		Content: {
+			display: 'block',
 			minWidth: '0px',
 		},
 	})

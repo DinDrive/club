@@ -52,4 +52,8 @@ $club_profile $mol_page
 				<= Intro_text $mol_text
 					text <= intro_text \
 		<= Tags_section $mol_view
-			sub <= tag_rows /
+			sub /
+				<= Tags_header $mol_paragraph
+					title \Теги
+				<= Tags_list $mol_view
+					sub <= tag_rows /

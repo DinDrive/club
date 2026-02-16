@@ -1,5 +1,7 @@
 namespace $.$$ {
 	$mol_style_define($club_feed, {
+		display: 'block',
+
 		Ordering: {
 			display: 'flex',
 			justify: {

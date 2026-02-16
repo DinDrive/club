@@ -2,13 +2,7 @@ $club_post $mol_page
 	post_type \
 	post_slug \
 	title <= post_title \
-	head /
-		<= Back $mol_link
-			arg * post null
-			sub /
-				<= Back_icon $mol_icon_arrow_left
-		<= Title $mol_paragraph
-			title <= post_title
+	Head null
 	body /
 		<= Article $mol_view
 			sub /

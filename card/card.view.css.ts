@@ -83,6 +83,7 @@ namespace $.$$ {
 			gridRow: '2',
 			justifySelf: 'start',
 			alignSelf: 'start',
+			zIndex: 1,
 			display: 'flex',
 			flex: {
 				direction: 'row',
@@ -102,12 +103,16 @@ namespace $.$$ {
 		Comments_count: {
 			color: '#999',
 			whiteSpace: 'nowrap',
+			display: 'inline-block',
+			padding: '1em',
+			margin: '-1em',
 		},
 
 		Votes: {
 			gridColumn: '3',
 			gridRow: '1 / 3',
 			justifySelf: 'end',
+			zIndex: 2,
 			display: 'flex',
 			alignItems: 'center',
 			padding: {

@@ -13,23 +13,6 @@ namespace $.$$ {
 			color: 'transparent',
 		},
 
-		Head: {
-			gap: '0.5rem',
-			align: {
-				items: 'center',
-			},
-		},
-
-		Title: {
-			font: {
-				size: '1.2rem',
-				weight: 700,
-			},
-			flex: {
-				grow: 1,
-			},
-		},
-
 		Article: {
 			display: 'block',
 			position: 'relative',
@@ -42,6 +25,7 @@ namespace $.$$ {
 		},
 
 		Article_header: {
+			display: 'block',
 			textAlign: 'center',
 		},
 
@@ -57,6 +41,9 @@ namespace $.$$ {
 				weight: 700,
 			},
 			lineHeight: '1.3em',
+			maxWidth: '100%',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
 		},
 
 		Post_publicity: {
@@ -70,7 +57,6 @@ namespace $.$$ {
 
 		Post_info: {
 			padding: {
-				top: '20px',
 				bottom: '20px',
 			},
 			display: 'inline-flex',
@@ -87,6 +73,13 @@ namespace $.$$ {
 			},
 			gap: '15px',
 			opacity: 0.6,
+			padding: {
+				top: '20px',
+				bottom: '20px',
+			},
+			maxWidth: '100%',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
 		},
 
 		Upvote: {
@@ -216,6 +209,7 @@ namespace $.$$ {
 		},
 
 		Comments_section: {
+			display: 'block',
 			maxWidth: '700px',
 			margin: {
 				left: 'auto',
@@ -226,10 +220,23 @@ namespace $.$$ {
 			},
 		},
 
+		Comments_title: {
+			font: {
+				size: '110%',
+				weight: 500,
+			},
+			display: 'flex',
+			flex: {
+				direction: 'row',
+			},
+			justify: {
+				content: 'space-between',
+			},
+		},
+
 		Comments_count: {
 			font: {
 				size: '160%',
-				weight: 500,
 			},
 			textDecoration: 'none',
 		},

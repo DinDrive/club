@@ -48,6 +48,10 @@ namespace $.$$ {
 		Card_avatar: {
 			display: 'block',
 			width: '100%',
+			padding: {
+				top: '100%',
+			},
+			position: 'relative',
 			border: {
 				radius: '0px',
 			},
@@ -125,6 +129,7 @@ namespace $.$$ {
 			},
 			align: {
 				items: 'stretch',
+				content: 'stretch',
 			},
 			textAlign: 'center',
 			font: {
@@ -191,6 +196,7 @@ namespace $.$$ {
 		},
 
 		Intro_section: {
+			display: 'block',
 			padding: {
 				top: '50px',
 				right: '30px',
@@ -213,6 +219,7 @@ namespace $.$$ {
 			},
 			textAlign: 'center',
 			padding: {
+				top: '0px',
 				bottom: '20px',
 			},
 		},
@@ -223,9 +230,42 @@ namespace $.$$ {
 			},
 			lineHeight: '1.5em',
 			overflow: 'hidden',
+			textOverflow: 'ellipsis',
+			padding: {
+				top: '10px',
+			},
 		},
 
 		Tags_section: {
+			display: 'block',
+			padding: {
+				top: '30px',
+				bottom: '30px',
+				left: '30px',
+				right: '30px',
+			},
+			background: {
+				color: $mol_theme.card,
+			},
+			boxShadow: `10px 15px 40px ${rgba(83, 91, 110, 0.11)}`,
+			border: {
+				radius: '15px',
+			},
+		},
+
+		Tags_header: {
+			font: {
+				size: '150%',
+				weight: 700,
+			},
+			textAlign: 'center',
+			padding: {
+				top: '0px',
+				bottom: '20px',
+			},
+		},
+
+		Tags_list: {
 			display: 'flex',
 			flex: {
 				direction: 'row',
@@ -236,18 +276,6 @@ namespace $.$$ {
 			},
 			align: {
 				items: 'flex-start',
-			},
-			gap: '0.5rem',
-			padding: {
-				top: '30px',
-				bottom: '30px',
-			},
-			background: {
-				color: $mol_theme.card,
-			},
-			boxShadow: `10px 15px 40px ${rgba(83, 91, 110, 0.11)}`,
-			border: {
-				radius: '15px',
 			},
 		},
 	})
