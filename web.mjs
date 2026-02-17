@@ -7857,7 +7857,7 @@ var $;
     var $$;
     (function ($$) {
         $mol_style_define($club_room_card, {
-            display: 'flex',
+            display: 'inline-flex',
             flex: {
                 direction: 'row',
             },
@@ -8221,6 +8221,16 @@ var $;
                 direction: 'column',
             },
             gap: '20px',
+            $mol_link: {
+                display: 'inline',
+                textDecoration: 'none',
+                padding: {
+                    top: '5px',
+                    right: '10px',
+                    bottom: '5px',
+                    left: '10px',
+                },
+            },
             Nav_main: {
                 display: 'flex',
                 flex: {
@@ -8262,6 +8272,9 @@ var $;
                     weight: 500,
                 },
                 textDecoration: 'none',
+            },
+            Room_card: {
+                display: 'inline-flex',
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
@@ -8756,19 +8769,109 @@ var $;
             }
             return Number($mol_state_arg.value('page') ?? '1');
         }
-        static feed() {
+        static feed_key() {
             const type = this.feed_type();
             const ordering = this.feed_ordering();
             const page = this.feed_page();
-            return this.fetch_json_auth(`/${type}/${ordering}/feed.json?page=${page}`);
+            return `${type}/${ordering}/${page}`;
+        }
+        static feed_storage_key(key) {
+            return `club_feed_cache:${key}`;
+        }
+        static post_storage_key(key) {
+            return `club_post_cache:${key}`;
+        }
+        static post_comments_storage_key(key) {
+            return `club_post_comments_cache:${key}`;
+        }
+        static feed_cache(key, next) {
+            const storage_key = this.feed_storage_key(key);
+            if (next === undefined) {
+                return $mol_state_local.value(storage_key) ?? null;
+            }
+            $mol_state_local.value(storage_key, next);
+            return next ?? null;
+        }
+        static feed_post_key(post) {
+            const type = post._club?.type ?? 'post';
+            const slug = post._club?.slug ?? post.id;
+            return `${type}/${slug}`;
+        }
+        static feed_merge_stable(old_feed, fresh_feed) {
+            if (!old_feed || this.feed_page() !== 1)
+                return fresh_feed;
+            const seen = new Set();
+            const merged = [];
+            for (const post of fresh_feed.items ?? []) {
+                seen.add(this.feed_post_key(post));
+                merged.push(post);
+            }
+            for (const post of old_feed.items ?? []) {
+                const key = this.feed_post_key(post);
+                if (seen.has(key))
+                    continue;
+                merged.push(post);
+            }
+            return {
+                ...fresh_feed,
+                items: merged.slice(0, 40),
+            };
+        }
+        static feed_refresh_tick() {
+            return $mol_state_time.now(30_000);
+        }
+        static feed() {
+            this.feed_refresh_tick();
+            const type = this.feed_type();
+            const ordering = this.feed_ordering();
+            const page = this.feed_page();
+            const key = this.feed_key();
+            const old_feed = this.feed_cache(key);
+            try {
+                const fresh = this.fetch_json_auth(`/${type}/${ordering}/feed.json?page=${page}`);
+                if (!fresh)
+                    return old_feed;
+                const merged = this.feed_merge_stable(old_feed, fresh);
+                this.feed_cache(key, merged);
+                return merged;
+            }
+            catch (error) {
+                if (error instanceof Promise && old_feed)
+                    return old_feed;
+                throw error;
+            }
         }
         static post(key) {
             const [type, slug] = key.split('/');
-            return this.fetch_json_auth(`/${type}/${slug}.json`);
+            const storage_key = this.post_storage_key(key);
+            const old_post = $mol_state_local.value(storage_key);
+            try {
+                const fresh = this.fetch_json_auth(`/${type}/${slug}.json`);
+                if (fresh)
+                    $mol_state_local.value(storage_key, fresh);
+                return fresh ?? old_post;
+            }
+            catch (error) {
+                if (error instanceof Promise && old_post)
+                    return old_post;
+                throw error;
+            }
         }
         static post_comments(key) {
             const [type, slug] = key.split('/');
-            return this.fetch_json_auth(`/${type}/${slug}/comments.json`);
+            const storage_key = this.post_comments_storage_key(key);
+            const old_comments = $mol_state_local.value(storage_key);
+            try {
+                const fresh = this.fetch_json_auth(`/${type}/${slug}/comments.json`);
+                if (fresh)
+                    $mol_state_local.value(storage_key, fresh);
+                return fresh ?? old_comments;
+            }
+            catch (error) {
+                if (error instanceof Promise && old_comments)
+                    return old_comments;
+                throw error;
+            }
         }
         static profile(slug) {
             return this.fetch_json_auth(`/user/${slug}.json`);
@@ -8808,6 +8911,12 @@ var $;
         $mol_mem
     ], $club_api, "feed_page", null);
     __decorate([
+        $mol_mem_key
+    ], $club_api, "feed_cache", null);
+    __decorate([
+        $mol_mem
+    ], $club_api, "feed_refresh_tick", null);
+    __decorate([
         $mol_mem
     ], $club_api, "feed", null);
     __decorate([
@@ -8845,6 +8954,9 @@ var $;
 
 ;
 	($.$club_card) = class $club_card extends ($.$mol_link) {
+		card_type(){
+			return "";
+		}
 		post_uri(){
 			return "";
 		}
@@ -8897,6 +9009,9 @@ var $;
 		}
 		post(){
 			return null;
+		}
+		attr(){
+			return {...(super.attr()), "club_card_type": (this.card_type())};
 		}
 		arg(){
 			return {"post": (this.post_uri())};
@@ -9586,8 +9701,31 @@ var $;
     var $$;
     (function ($$) {
         class $club_card extends $.$club_card {
+            avatar_preload(uri) {
+                if (!uri)
+                    return '';
+                const ImageCtor = this.$.$mol_dom_context?.Image;
+                if (!ImageCtor)
+                    return uri;
+                try {
+                    const image = new ImageCtor();
+                    image.src = uri;
+                }
+                catch { }
+                return uri;
+            }
+            avatar_uri_normalized(uri) {
+                if (!uri)
+                    return '';
+                if (uri.startsWith('//'))
+                    return `https:${uri}`;
+                return uri;
+            }
             post_data() {
                 return this.post();
+            }
+            card_type() {
+                return this.post_data()?._club?.type ?? '';
             }
             post_uri() {
                 const p = this.post_data();
@@ -9620,7 +9758,16 @@ var $;
                 return p ? `${p._club.upvotes}` : '';
             }
             author_avatar() {
-                return this.post_data()?.authors?.[0]?.avatar ?? '';
+                const raw = this.post_data()?.authors?.[0]?.avatar ?? '';
+                const uri = this.avatar_uri_normalized(raw);
+                this.avatar_preload(uri);
+                return uri;
+            }
+            Avatar() {
+                const image = super.Avatar();
+                image.loading = () => 'eager';
+                image.decoding = () => 'sync';
+                return image;
             }
             author_name() {
                 return this.post_data()?.authors?.[0]?.name ?? '';
@@ -9672,6 +9819,12 @@ var $;
                 return type ? (map[type] ?? type) : '';
             }
         }
+        __decorate([
+            $mol_mem_key
+        ], $club_card.prototype, "avatar_preload", null);
+        __decorate([
+            $mol_mem
+        ], $club_card.prototype, "Avatar", null);
         $$.$club_card = $club_card;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -9680,7 +9833,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 30px 17px 7px;\n\tfont-size: 140%;\n\tfont-weight: 600;\n\tfont-family: 'Ubuntu', Helvetica, Verdana, sans-serif;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n\n[club_card][mol_view_error] {\n\tbackground: var(--mol_theme_card);\n}\n\n[club_card]:hover {\n\tbox-shadow: 0 0 40px rgba(94, 104, 125, 0.3);\n}\n\n[club_card_votes]:hover {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n}\n\n[club_card_votes]::before {\n\tcontent: '\\25B2';\n\tposition: absolute;\n\tfont-size: 18px;\n\ttop: 5px;\n\tleft: 50%;\n\ttransform: translateX(-50%);\n}\n");
+    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 30px 17px 7px;\n\tfont-size: 140%;\n\tfont-weight: 600;\n\tfont-family: 'Ubuntu', Helvetica, Verdana, sans-serif;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n\n[club_card][mol_view_error] {\n\tbackground: var(--mol_theme_card);\n}\n\n[club_card]:hover {\n\tbox-shadow: 0 0 40px rgba(94, 104, 125, 0.3);\n}\n\n[club_card_votes]:hover {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n}\n\n[club_card_votes]::before {\n\tcontent: '\\25B2';\n\tposition: absolute;\n\tfont-size: 18px;\n\ttop: 5px;\n\tleft: 50%;\n\ttransform: translateX(-50%);\n}\n\n/* Intro cards — compact inline layout like prod */\n[club_card][club_card_type='intro'] {\n\tdisplay: flex;\n\tjustify-content: flex-start;\n\tfont-size: 120%;\n\tpadding: 0 0 20px 0;\n\tmargin-left: 40px;\n\tmin-height: 20px;\n\tbackground: none;\n\tbox-shadow: none;\n\tborder-radius: 0;\n}\n\n[club_card][club_card_type='intro']:hover {\n\tbox-shadow: none;\n}\n\n[club_card][club_card_type='intro'] [club_card_author_col] {\n\tdisplay: flex;\n\talign-items: center;\n}\n\n[club_card][club_card_type='intro'] [club_card_avatar] {\n\tposition: relative;\n\ttop: -2px;\n\tleft: -5px;\n\twidth: 38px;\n\theight: 38px;\n\tborder: none;\n}\n\n[club_card][club_card_type='intro'] [club_card_header] {\n\talign-self: center;\n\tpadding: 0;\n}\n\n[club_card][club_card_type='intro'] [club_card_post_title] {\n\tfont-size: 100%;\n\tfont-weight: 400;\n\tline-height: 1.1em;\n\tpadding-top: 3px;\n}\n\n[club_card][club_card_type='intro'] [club_card_footer] {\n\tdisplay: none;\n}\n\n[club_card][club_card_type='intro'] [club_card_votes] {\n\tmargin-left: 10px;\n\tmargin-right: 10px;\n\tpadding: 7px 10px 6px 25px;\n\tfont-size: 120%;\n\tborder: none;\n}\n\n[club_card][club_card_type='intro'] [club_card_votes]::before {\n\tcontent: '+';\n\ttop: 2px;\n\tleft: 17px;\n\tfont-size: 130%;\n}\n\n/* Weekly digest — also compact */\n[club_card][club_card_type='weekly_digest'] {\n\tdisplay: none;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -9694,6 +9847,7 @@ var $;
             display: 'grid',
             gridTemplateColumns: 'min-content minmax(auto, 1fr) min-content',
             gridTemplateRows: 'auto auto',
+            gap: '0px',
             position: 'relative',
             padding: {
                 top: '30px',
@@ -9706,6 +9860,7 @@ var $;
                 bottom: '30px',
             },
             minHeight: '130px',
+            minWidth: '0px',
             cursor: 'pointer',
             background: {
                 color: $mol_theme.card,
@@ -9837,12 +9992,25 @@ var $;
             posts() {
                 return (this.feed()?.items ?? []).filter((p) => p._club?.type !== 'weekly_digest');
             }
+            post_key(post) {
+                const type = post._club?.type ?? 'post';
+                const slug = post._club?.slug ?? post.id;
+                return `${type}/${slug}`;
+            }
+            posts_index() {
+                const index = new Map();
+                for (const post of this.posts()) {
+                    index.set(this.post_key(post), post);
+                }
+                return index;
+            }
+            post_card(key) {
+                const card = new this.$.$club_card();
+                card.post = () => this.posts_index().get(key) ?? null;
+                return card;
+            }
             post_cards() {
-                return this.posts().map(post => {
-                    const card = new this.$.$club_card();
-                    card.post = () => post;
-                    return card;
-                });
+                return Array.from(this.posts_index().keys()).map(key => this.post_card(key));
             }
         }
         __decorate([
@@ -9863,6 +10031,12 @@ var $;
         __decorate([
             $mol_mem
         ], $club_feed.prototype, "posts", null);
+        __decorate([
+            $mol_mem
+        ], $club_feed.prototype, "posts_index", null);
+        __decorate([
+            $mol_mem_key
+        ], $club_feed.prototype, "post_card", null);
         __decorate([
             $mol_mem
         ], $club_feed.prototype, "post_cards", null);
@@ -13759,13 +13933,23 @@ var $;
                 const count = this.data()?.post?._club?.comment_count ?? 0;
                 return count ? `${count} комментариев 👇` : 'Комментарии';
             }
+            comment_key(comment) {
+                return comment.id;
+            }
+            comments_index() {
+                const index = new Map();
+                for (const comment of this.comments_data()?.comments ?? []) {
+                    index.set(this.comment_key(comment), comment);
+                }
+                return index;
+            }
+            comment_row(key) {
+                const row = new this.$.$club_comment();
+                row.comment = () => this.comments_index().get(key) ?? null;
+                return row;
+            }
             comment_rows() {
-                const comments = this.comments_data()?.comments ?? [];
-                return comments.map(comment => {
-                    const row = new this.$.$club_comment();
-                    row.comment = () => comment;
-                    return row;
-                });
+                return Array.from(this.comments_index().keys()).map(key => this.comment_row(key));
             }
         }
         __decorate([
@@ -13777,6 +13961,12 @@ var $;
         __decorate([
             $mol_mem
         ], $club_post.prototype, "battle_comments_by_side", null);
+        __decorate([
+            $mol_mem
+        ], $club_post.prototype, "comments_index", null);
+        __decorate([
+            $mol_mem_key
+        ], $club_post.prototype, "comment_row", null);
         __decorate([
             $mol_mem
         ], $club_post.prototype, "comment_rows", null);
@@ -14625,7 +14815,7 @@ var $;
                 }
                 return parts;
             }
-            tag_rows() {
+            tags_flat() {
                 const tags_by_group = this.tags_data()?.tags;
                 if (!tags_by_group)
                     return [];
@@ -14633,13 +14823,25 @@ var $;
                 for (const group of Object.values(tags_by_group)) {
                     all_tags.push(...group);
                 }
-                if (!all_tags.length)
-                    return [];
-                return all_tags.map(tag => {
-                    const v = new this.$.$club_tag();
-                    v.tag = () => tag;
-                    return v;
-                });
+                return all_tags;
+            }
+            tag_key(tag) {
+                return `${tag.code}:${tag.name}`;
+            }
+            tags_index() {
+                const index = new Map();
+                for (const tag of this.tags_flat()) {
+                    index.set(this.tag_key(tag), tag);
+                }
+                return index;
+            }
+            tag_row(key) {
+                const v = new this.$.$club_tag();
+                v.tag = () => this.tags_index().get(key) ?? null;
+                return v;
+            }
+            tag_rows() {
+                return Array.from(this.tags_index().keys()).map(key => this.tag_row(key));
             }
         }
         __decorate([
@@ -14648,6 +14850,15 @@ var $;
         __decorate([
             $mol_mem
         ], $club_profile.prototype, "tags_data", null);
+        __decorate([
+            $mol_mem
+        ], $club_profile.prototype, "tags_flat", null);
+        __decorate([
+            $mol_mem
+        ], $club_profile.prototype, "tags_index", null);
+        __decorate([
+            $mol_mem_key
+        ], $club_profile.prototype, "tag_row", null);
         __decorate([
             $mol_mem
         ], $club_profile.prototype, "tag_rows", null);
@@ -15042,12 +15253,25 @@ var $;
             posts() {
                 return this.data()?.posts ?? [];
             }
+            post_key(post) {
+                const type = post._club?.type ?? 'post';
+                const slug = post._club?.slug ?? post.id;
+                return `${type}/${slug}`;
+            }
+            posts_index() {
+                const index = new Map();
+                for (const post of this.posts()) {
+                    index.set(this.post_key(post), post);
+                }
+                return index;
+            }
+            post_card(key) {
+                const card = new this.$.$club_card();
+                card.post = () => this.posts_index().get(key) ?? null;
+                return card;
+            }
             post_cards() {
-                return this.posts().map(post => {
-                    const card = new this.$.$club_card();
-                    card.post = () => post;
-                    return card;
-                });
+                return Array.from(this.posts_index().keys()).map(key => this.post_card(key));
             }
         }
         __decorate([
@@ -15056,6 +15280,12 @@ var $;
         __decorate([
             $mol_mem
         ], $club_bookmarks.prototype, "posts", null);
+        __decorate([
+            $mol_mem
+        ], $club_bookmarks.prototype, "posts_index", null);
+        __decorate([
+            $mol_mem_key
+        ], $club_bookmarks.prototype, "post_card", null);
         __decorate([
             $mol_mem
         ], $club_bookmarks.prototype, "post_cards", null);
@@ -15433,31 +15663,41 @@ var $;
             current_user_avatar() {
                 return this.current_user_data()?.user?.avatar ?? '';
             }
+            post_page(post) {
+                const parts = post.split('/');
+                const page = new this.$.$club_post();
+                page.post_type = () => parts[0] ?? '';
+                page.post_slug = () => parts[1] ?? '';
+                return page;
+            }
+            profile_page(user) {
+                const page = new this.$.$club_profile();
+                page.user_slug = () => user;
+                return page;
+            }
+            bookmarks_page() {
+                return new this.$.$club_bookmarks();
+            }
+            rooms_page() {
+                return new this.$.$club_rooms();
+            }
             spread() {
                 if (!this.authorized()) {
                     return this.Settings();
                 }
                 const post = this.$.$mol_state_arg.value('post');
                 if (post) {
-                    const parts = post.split('/');
-                    if (parts.length >= 2) {
-                        const page = new this.$.$club_post();
-                        page.post_type = () => parts[0];
-                        page.post_slug = () => parts[1];
-                        return page;
-                    }
+                    return this.post_page(post);
                 }
                 const user = this.$.$mol_state_arg.value('user');
                 if (user) {
-                    const page = new this.$.$club_profile();
-                    page.user_slug = () => user;
-                    return page;
+                    return this.profile_page(user);
                 }
                 if (this.$.$mol_state_arg.value('bookmarks')) {
-                    return new this.$.$club_bookmarks();
+                    return this.bookmarks_page();
                 }
                 if (this.$.$mol_state_arg.value('rooms')) {
-                    return new this.$.$club_rooms();
+                    return this.rooms_page();
                 }
                 if (this.$.$mol_state_arg.value('settings')) {
                     return this.Settings();
@@ -15481,6 +15721,18 @@ var $;
         __decorate([
             $mol_mem
         ], $club.prototype, "current_user_data", null);
+        __decorate([
+            $mol_mem_key
+        ], $club.prototype, "post_page", null);
+        __decorate([
+            $mol_mem_key
+        ], $club.prototype, "profile_page", null);
+        __decorate([
+            $mol_mem
+        ], $club.prototype, "bookmarks_page", null);
+        __decorate([
+            $mol_mem
+        ], $club.prototype, "rooms_page", null);
         __decorate([
             $mol_mem
         ], $club.prototype, "spread", null);
@@ -15519,6 +15771,7 @@ var $;
                 justify: {
                     content: 'flex-start',
                 },
+                width: '100%',
                 maxWidth: '1000px',
                 margin: {
                     left: 'auto',
@@ -15527,9 +15780,10 @@ var $;
                 padding: {
                     top: '25px',
                     bottom: '15px',
-                    left: '20px',
-                    right: '20px',
+                    left: '0px',
+                    right: '0px',
                 },
+                boxSizing: 'border-box',
                 font: {
                     size: '120%',
                 },
@@ -15682,6 +15936,9 @@ var $;
             },
             Footer: {
                 display: 'flex',
+                flex: {
+                    direction: 'column',
+                },
                 justify: {
                     content: 'space-between',
                 },

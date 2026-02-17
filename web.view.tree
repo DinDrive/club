@@ -526,6 +526,9 @@ $club_feed $mol_view
 
 $club_card $mol_link
 	post null
+	attr *
+		^
+		club_card_type <= card_type \
 	arg *
 		post <= post_uri \
 	sub /

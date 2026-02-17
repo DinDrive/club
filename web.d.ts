@@ -3108,6 +3108,14 @@ declare namespace $ {
         static feed_ordering(next?: string): string;
         static feed_type(next?: string): string;
         static feed_page(next?: number): number;
+        static feed_key(): string;
+        static feed_storage_key(key: string): string;
+        static post_storage_key(key: string): string;
+        static post_comments_storage_key(key: string): string;
+        static feed_cache(key: string, next?: $club_api_feed | null): $club_api_feed | null;
+        static feed_post_key(post: $club_api_post): string;
+        static feed_merge_stable(old_feed: $club_api_feed | null, fresh_feed: $club_api_feed): $club_api_feed;
+        static feed_refresh_tick(): number;
         static feed(): $club_api_feed;
         static post(key: string): $club_api_post_response;
         static post_comments(key: string): $club_api_comments_response;
@@ -3434,6 +3442,7 @@ declare namespace $ {
 		ReturnType< $mol_view['sub'] >
 	>
 	export class $club_card extends $mol_link {
+		card_type( ): string
 		post_uri( ): string
 		author_avatar( ): string
 		Avatar( ): $mol_image
@@ -3447,6 +3456,9 @@ declare namespace $ {
 		upvotes( ): string
 		Votes( ): $mol_view
 		post( ): any
+		attr( ): ({ 
+			'club_card_type': ReturnType< $club_card['card_type'] >,
+		})  & ReturnType< $mol_link['attr'] >
 		arg( ): ({ 
 			'post': ReturnType< $club_card['post_uri'] >,
 		}) 
@@ -3458,12 +3470,16 @@ declare namespace $ {
 //# sourceMappingURL=card.view.tree.d.ts.map
 declare namespace $.$$ {
     class $club_card extends $.$club_card {
+        avatar_preload(uri: string): string;
+        avatar_uri_normalized(uri: string): string;
         post_data(): $club_api_post | null;
+        card_type(): string;
         post_uri(): string;
         post_title(): string;
         title_prefix(): string;
         upvotes(): string;
         author_avatar(): string;
+        Avatar(): $.$mol_image;
         author_name(): string;
         excerpt(): string;
         date_label(): string;
@@ -3614,6 +3630,9 @@ declare namespace $.$$ {
         Ord_top(): $.$mol_link;
         feed_body(): any[];
         posts(): $club_api_post[];
+        post_key(post: $club_api_post): string;
+        posts_index(): Map<string, $club_api_post>;
+        post_card(key: string): $club_card;
         post_cards(): $club_card[];
     }
 }
@@ -5670,6 +5689,9 @@ declare namespace $.$$ {
         views_label(): string;
         content_text(): string;
         comments_count_label(): string;
+        comment_key(comment: $club_api_comment): string;
+        comments_index(): Map<string, $club_api_comment>;
+        comment_row(key: string): $club_comment;
         comment_rows(): $club_comment[];
     }
 }
@@ -5957,6 +5979,10 @@ declare namespace $.$$ {
         posts_count_label(): string;
         posts_text(): "постов" | "пост" | "поста";
         body(): $mol_view[];
+        tags_flat(): $club_api_tag[];
+        tag_key(tag: $club_api_tag): string;
+        tags_index(): Map<string, $club_api_tag>;
+        tag_row(key: string): $club_tag;
         tag_rows(): $club_tag[];
     }
 }
@@ -6017,6 +6043,9 @@ declare namespace $.$$ {
     class $club_bookmarks extends $.$club_bookmarks {
         data(): $club_api_bookmarks_response;
         posts(): $club_api_post[];
+        post_key(post: $club_api_post): string;
+        posts_index(): Map<string, $club_api_post>;
+        post_card(key: string): $club_card;
         post_cards(): $club_card[];
     }
 }
@@ -6389,6 +6418,10 @@ declare namespace $.$$ {
         current_user_data(): $club_api_profile_response | null;
         current_user_slug(): string;
         current_user_avatar(): string;
+        post_page(post: string): $club_post;
+        profile_page(user: string): $club_profile;
+        bookmarks_page(): $club_bookmarks;
+        rooms_page(): $club_rooms;
         spread(): $.$club_feed | $.$club_settings | $club_post | $club_profile | $club_bookmarks | $club_rooms;
         body(): $mol_view[] | $.$club_settings[];
     }
