@@ -25,22 +25,24 @@ $club $mol_page
 									title \Клуб
 				<= Search $mol_search
 					query? <=> search_query? \
-				<= Menu_compose $mol_link
-					uri \https://vas3k.club/create/
+				<= Menu_right $mol_view
 					sub /
-						<= Compose_icon $mol_icon_pencil
-						<= Compose_text $mol_paragraph
-							title \Пиши
-				<= Menu_bookmarks $mol_link
-					arg *
-						bookmarks \1
-						post null
-						user null
-						rooms null
-						settings null
-						type null
-					sub /
-						<= Bookmarks_icon $mol_icon_bookmark_outline
+						<= Menu_compose $mol_link
+							uri \https://vas3k.club/create/
+							sub /
+								<= Compose_icon $mol_icon_pencil
+								<= Compose_text $mol_paragraph
+									title \Пиши
+						<= Menu_bookmarks $mol_link
+							arg *
+								bookmarks \1
+								post null
+								user null
+								rooms null
+								settings null
+								type null
+							sub /
+								<= Bookmarks_icon $mol_icon_bookmark_outline
 				<= Menu_avatar $mol_link
 					arg *
 						user <= current_user_slug \

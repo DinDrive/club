@@ -62,9 +62,7 @@ namespace $.$$ {
 			},
 			maxWidth: '100%',
 			overflow: 'hidden',
-			flex: {
-				direction: 'column',
-			},
+			textOverflow: 'ellipsis',
 		},
 
 		Post_title: {
@@ -73,18 +71,6 @@ namespace $.$$ {
 				weight: 500,
 			},
 			lineHeight: '1.3em',
-			textAlign: 'left',
-		},
-
-		Excerpt: {
-			font: {
-				size: '0.9rem',
-			},
-			color: $mol_theme.shade,
-			lineHeight: '1.5em',
-			padding: {
-				top: '6px',
-			},
 			textAlign: 'left',
 		},
 
@@ -104,18 +90,6 @@ namespace $.$$ {
 				size: '0.9rem',
 			},
 			color: $mol_theme.shade,
-		},
-
-		Author_name: {
-			font: {
-				weight: 500,
-			},
-			color: $mol_theme.text,
-		},
-
-		Date: {
-			color: '#999',
-			whiteSpace: 'nowrap',
 		},
 
 		Comments_count: {

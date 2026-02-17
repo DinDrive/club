@@ -65,13 +65,34 @@
 	filter: invert(1);
 }
 
-/* Compose button border */
+/* Compose button — solid dark like prod */
 [club_menu_compose] {
+	background-color: var(--mol_theme_text);
+	color: var(--mol_theme_back);
 	border: solid 2px var(--mol_theme_text);
-	border-radius: 10px;
+	border-radius: 15px;
 }
 
 [club_menu_compose]:hover {
-	background-color: var(--mol_theme_text);
-	color: var(--mol_theme_back);
+	opacity: 0.8;
+}
+
+/* Search — transparent like prod */
+[club_search] [mol_string] {
+	background-color: transparent !important;
+	box-shadow: none !important;
+	border: none !important;
+	outline: none !important;
+	font-weight: 500;
+	font-size: 24px;
+	padding: 3px 10px 4px 35px !important;
+}
+
+[club_search] [mol_string]:focus {
+	border: solid 2px var(--mol_theme_line) !important;
+	border-radius: 15px !important;
+}
+
+[club_search] [mol_string]::placeholder {
+	visibility: hidden;
 }

@@ -94,8 +94,8 @@ async function run() {
 
 			done++
 
-			// Skip already captured
-			if (fs.existsSync(filepath)) {
+			// Skip already captured (pass --fresh to recapture all)
+			if (!process.argv.includes('--fresh') && fs.existsSync(filepath)) {
 				console.log(`[${done}/${total}] SKIP ${filename} (exists)`)
 				continue
 			}
@@ -108,13 +108,13 @@ async function run() {
 				await page.evaluate(() => {
 					document.documentElement.setAttribute('theme', 'light')
 				})
-				// Wait for lazy images and animations
-				await page.waitForTimeout(2500)
+				// Wait for page content to fully render
+				await page.waitForTimeout(4000)
 				await page.screenshot({ path: filepath, fullPage: true })
 			} catch (err) {
 				console.error(`  ERROR: ${err.message}`)
-				// Take whatever we can
 				try {
+					await page.waitForTimeout(4000)
 					await page.screenshot({ path: filepath, fullPage: true })
 				} catch {}
 			}

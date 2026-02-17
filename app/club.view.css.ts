@@ -95,6 +95,20 @@ namespace $.$$ {
 			whiteSpace: 'nowrap',
 		},
 
+		Menu_right: {
+			display: 'flex',
+			flex: {
+				grow: 1,
+				direction: 'row',
+			},
+			justify: {
+				content: 'flex-end',
+			},
+			align: {
+				items: 'center',
+			},
+		},
+
 		Menu_compose: {
 			display: 'flex',
 			flex: {
