@@ -31,7 +31,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \✏️ Посты
+					title \Посты
 				<= Nav_events $mol_link
 					arg *
 						type \event
@@ -40,7 +40,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \📅 События
+					title \События
 				<= Nav_projects $mol_link
 					arg *
 						type \project
@@ -49,7 +49,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \📐 Проекты
+					title \Проекты
 				<= Nav_guides $mol_link
 					arg *
 						type \guide
@@ -58,7 +58,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \🌍 Путеводители
+					title \Путеводители
 				<= Nav_questions $mol_link
 					arg *
 						type \question
@@ -67,7 +67,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \❓ Вопросы
+					title \Вопросы
 				<= Nav_threads $mol_link
 					arg *
 						type \thread
@@ -76,46 +76,26 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \💬 Треды
+					title \Треды
 				<= Nav_approved $mol_link
 					uri \https://vas3k.club/label/approved/
-					title \👍 Офигенно
+					title \Офигенно
 				<= Nav_inside $mol_link
 					uri \https://vas3k.club/label/inside/
-					title \💎 Инсайды
+					title \Инсайды
 				<= Nav_best $mol_link
 					uri \https://vas3k.club/label/post_of_month/
-					title \🏆 Посты месяца
-		<= Nav_bottom $mol_view
-			sub /
-				<= Nav_bookmarks $mol_link
-					arg *
-						bookmarks \1
-						post null
-						user null
-						rooms null
-						settings null
-						type null
-					title \📑 Закладки
-				<= Nav_rooms_link $mol_link
-					arg *
-						rooms \1
-						post null
-						user null
-						bookmarks null
-						settings null
-						type null
-					title \🚪 Комнаты
-				<= Nav_settings $mol_link
-					arg *
-						settings \1
-						post null
-						user null
-						bookmarks null
-						rooms null
-						type null
-					title \⚙️ Настройки
+					title \Посты месяца
 		<= Rooms_title $mol_paragraph
 			title \Комнаты
 		<= Rooms_list $mol_list
 			rows <= room_cards /
+		<= Rooms_all $mol_link
+			arg *
+				rooms \1
+				post null
+				user null
+				bookmarks null
+				settings null
+				type null
+			title \Все комнаты →

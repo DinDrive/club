@@ -1,0 +1,22 @@
+[club_post_upvote]::before {
+	content: '\25B2';
+	position: absolute;
+	font-size: 18px;
+	top: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+[club_post_upvote]:hover {
+	background-color: var(--mol_theme_text);
+	color: var(--mol_theme_back);
+	cursor: pointer;
+}
+
+[club_post_text_body] a {
+	font-weight: 600;
+}
+
+[club_post_text_body] a[target="_blank"] {
+	text-decoration: underline;
+}

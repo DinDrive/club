@@ -247,5 +247,148 @@ namespace $.$$ {
 				bottom: '40px',
 			},
 		},
+
+		Battle_title: {
+			display: 'grid',
+			gridTemplateColumns: 'minmax(auto, 1fr) 50px minmax(auto, 1fr)',
+			maxWidth: '100%',
+			overflow: 'hidden',
+			font: {
+				size: '250%',
+				weight: 500,
+			},
+			color: '#FFF',
+			margin: {
+				top: '50px',
+				bottom: '20px',
+			},
+			minHeight: '140px',
+		},
+
+		Battle_side_a: {
+			gridColumn: '1 / 2',
+			gridRow: '1 / 2',
+			display: 'flex',
+			align: {
+				items: 'center',
+			},
+			justify: {
+				content: 'center',
+			},
+			padding: '30px',
+			background: {
+				color: '#4C98D5',
+			},
+			textAlign: 'center',
+		},
+
+		Battle_vs: {
+			gridColumn: '2 / 3',
+			gridRow: '1 / 2',
+			position: 'relative',
+			display: 'flex',
+			align: {
+				items: 'center',
+			},
+			justify: {
+				content: 'center',
+			},
+			background: 'linear-gradient(108deg, #4C98D5 0%, #4C98D5 49%, #53AA68 50%, #53AA68 100%)' as any,
+		},
+
+		Battle_vs_text: {
+			font: {
+				size: '70%',
+			},
+			opacity: 0.7,
+		},
+
+		Battle_side_b: {
+			gridColumn: '3 / 4',
+			gridRow: '1 / 2',
+			display: 'flex',
+			align: {
+				items: 'center',
+			},
+			justify: {
+				content: 'center',
+			},
+			padding: '30px',
+			background: {
+				color: '#53AA68',
+			},
+			textAlign: 'center',
+		},
+
+		Battle_stats: {
+			textAlign: 'center',
+			padding: {
+				top: '10px',
+				bottom: '20px',
+			},
+		},
+
+		Battle_stats_args: {
+			font: {
+				size: '180%',
+			},
+			display: 'flex',
+			justify: {
+				content: 'space-between',
+			},
+			padding: {
+				top: '10px',
+				bottom: '20px',
+			},
+		},
+
+		Battle_args_a: {
+			color: '#4C98D5',
+			font: {
+				weight: 700,
+			},
+		},
+
+		Battle_args_b: {
+			color: '#53AA68',
+			font: {
+				weight: 700,
+			},
+		},
+
+		Battle_stats_graph: {
+			display: 'flex',
+			height: '10px',
+			border: {
+				radius: '15px',
+			},
+			overflow: 'hidden',
+		},
+
+		Battle_graph_a: {
+			flex: {
+				grow: 1,
+			},
+			background: {
+				color: '#4C98D5',
+			},
+		},
+
+		Battle_graph_b: {
+			flex: {
+				grow: 1,
+			},
+			background: {
+				color: '#53AA68',
+			},
+		},
+
+		Room_badge: {
+			display: 'inline-block',
+			font: {
+				size: '90%',
+			},
+			opacity: 0.6,
+		},
 	})
 }

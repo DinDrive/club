@@ -6,7 +6,7 @@ namespace $.$$ {
 		},
 		lineHeight: '1.42',
 
-		Head: {
+		Header: {
 			display: 'flex',
 			flex: {
 				direction: 'row',
@@ -18,16 +18,6 @@ namespace $.$$ {
 			justify: {
 				content: 'flex-start',
 			},
-			background: {
-				color: 'transparent',
-			},
-			boxShadow: 'none',
-			border: {
-				radius: '0px',
-			},
-			position: 'relative',
-			zIndex: 0,
-			minHeight: '0px',
 			maxWidth: '1000px',
 			margin: {
 				left: 'auto',
@@ -63,9 +53,23 @@ namespace $.$$ {
 			width: '1em',
 			height: '1em',
 			verticalAlign: 'middle',
+			margin: {
+				left: '8px',
+				right: '8px',
+			},
+			position: 'relative',
+			top: '-2px',
 		},
 
-		Logo_text: {
+		Logo_left: {
+			font: {
+				size: '26px',
+				weight: 700,
+			},
+			whiteSpace: 'nowrap',
+		},
+
+		Logo_right: {
 			font: {
 				size: '26px',
 				weight: 700,
@@ -127,6 +131,7 @@ namespace $.$$ {
 
 		Body_content: {
 			maxWidth: '100%',
+			padding: '0px',
 		},
 
 		Main: {
@@ -156,6 +161,54 @@ namespace $.$$ {
 		Content: {
 			display: 'block',
 			minWidth: '0px',
+		},
+
+		Footer: {
+			display: 'flex',
+			justify: {
+				content: 'space-between',
+			},
+			maxWidth: '1000px',
+			margin: {
+				top: '200px',
+				left: 'auto',
+				right: 'auto',
+				bottom: '0px',
+			},
+			padding: {
+				top: '50px',
+				left: '20px',
+				right: '20px',
+				bottom: '100px',
+			},
+		},
+
+		Footer_left: {
+			display: 'flex',
+			flex: {
+				wrap: 'wrap',
+			},
+			gap: '5px',
+		},
+
+		Footer_right: {
+			display: 'flex',
+			flex: {
+				direction: 'column',
+			},
+			justify: {
+				content: 'space-between',
+			},
+			align: {
+				items: 'flex-end',
+			},
+		},
+
+		Footer_cc: {
+			width: '100%',
+			padding: {
+				top: '15px',
+			},
 		},
 	})
 }

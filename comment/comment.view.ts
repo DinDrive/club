@@ -34,5 +34,23 @@ namespace $.$$ {
 		comment_text() {
 			return this.comment_data()?.text ?? ''
 		}
+
+		post_arg() {
+			const type = this.post_type()
+			const slug = this.post_slug()
+			if (!type || !slug) return ''
+			return `${type}/${slug}`
+		}
+
+		post_link_content() {
+			if (!this.show_post_link()) return []
+			const title = this.post_title()
+			if (!title) return []
+			return [this.Post_link_prefix(), this.Post_link()]
+		}
+
+		footer_content() {
+			return [] as $mol_view[]
+		}
 	}
 }

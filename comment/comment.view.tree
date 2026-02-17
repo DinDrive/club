@@ -1,24 +1,46 @@
 $club_comment $mol_view
 	comment null
+	show_post_link false
+	post_title \
+	post_type \
+	post_slug \
 	sub /
 		<= Side $mol_view
 			sub /
-				<= Avatar $mol_image
-					uri <= author_avatar \
+				<= Avatar_link $mol_link
+					arg *
+						user <= author_slug \
+					sub /
+						<= Avatar $mol_image
+							uri <= author_avatar \
+				<= Thread_ruler $mol_view
 		<= Header $mol_view
 			sub /
 				<= Author_block $mol_view
 					sub /
 						<= Author_link $mol_link
-							arg * user <= author_slug \
+							arg *
+								user <= author_slug \
 							sub /
 								<= Author_name $mol_paragraph
 									title <= author_name \
 						<= Author_position $mol_paragraph
 							title <= author_position \
+				<= Post_link_block $mol_view
+					sub / <= post_link_content /
 				<= Date $mol_paragraph
 					title <= created_date \
 		<= Rating $mol_view
 			sub / <= upvotes_label \
 		<= Body $mol_text
 			text <= comment_text \
+		<= Footer $mol_view
+			sub / <= footer_content /
+	Post_link_prefix $mol_paragraph
+		title \на пост
+	Post_link $mol_link
+		arg *
+			post <= post_arg \
+		sub /
+			<= Post_link_title $mol_paragraph
+				title <= post_title

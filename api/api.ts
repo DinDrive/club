@@ -66,13 +66,13 @@ namespace $ {
 			const type = this.feed_type()
 			const ordering = this.feed_ordering()
 			const page = this.feed_page()
-			return this.fetch_json<$club_api_feed>(`/${type}/${ordering}/feed.json?page=${page}`)
+			return this.fetch_json_auth<$club_api_feed>(`/${type}/${ordering}/feed.json?page=${page}`)
 		}
 
 		@$mol_mem_key
 		static post(key: string) {
 			const [type, slug] = key.split('/')
-			return this.fetch_json<$club_api_post_response>(`/${type}/${slug}.json`)
+			return this.fetch_json_auth<$club_api_post_response>(`/${type}/${slug}.json`)
 		}
 
 		@$mol_mem_key
@@ -175,6 +175,8 @@ namespace $ {
 		city: string | null
 		country: string | null
 		is_active_member: boolean
+		comments_count?: number
+		posts_count?: number
 	}
 
 	// Comment to_dict() format

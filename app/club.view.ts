@@ -71,10 +71,10 @@ namespace $.$$ {
 
 			const post = this.$.$mol_state_arg.value('post')
 			if (post) {
-				return [this.Content()]
+				return [this.Header(), this.Content(), this.Footer()]
 			}
 
-			return [this.Main()]
+			return [this.Header(), this.Main(), this.Footer()]
 		}
 	}
 }

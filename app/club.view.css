@@ -1,5 +1,8 @@
-/* Override $mol theme to match vas3k.club colors */
-[club] {
+/* vas3k.club theme overrides — must override $mol_theme defaults */
+
+[club][mol_theme='$mol_theme_light'],
+[club] [mol_theme='$mol_theme_light'],
+[club]:where([mol_theme]) {
 	--mol_theme_back: #fcfdff;
 	--mol_theme_card: #fff;
 	--mol_theme_text: #333;
@@ -11,20 +14,64 @@
 	--mol_theme_control: #333;
 	--mol_theme_current: #333;
 	--mol_theme_special: #333;
+	--mol_theme_image: none;
 }
 
-@media (prefers-color-scheme: dark) {
-	[club] {
-		--mol_theme_back: #282c35;
-		--mol_theme_card: #1b1b1c;
-		--mol_theme_text: #ddd;
-		--mol_theme_shade: #737373;
-		--mol_theme_line: #444;
-		--mol_theme_hover: rgba(255, 255, 255, 0.05);
-		--mol_theme_focus: #ddd;
-		--mol_theme_field: #373c48;
-		--mol_theme_control: #fff;
-		--mol_theme_current: #fff;
-		--mol_theme_special: #fff;
-	}
+[club][mol_theme='$mol_theme_dark'],
+[club] [mol_theme='$mol_theme_dark'] {
+	--mol_theme_back: #282c35;
+	--mol_theme_card: #1b1b1c;
+	--mol_theme_text: #ddd;
+	--mol_theme_shade: #737373;
+	--mol_theme_line: #444;
+	--mol_theme_hover: rgba(255, 255, 255, 0.05);
+	--mol_theme_focus: #ddd;
+	--mol_theme_field: #373c48;
+	--mol_theme_control: #fff;
+	--mol_theme_current: #fff;
+	--mol_theme_special: #fff;
+	--mol_theme_image: invert(1) hue-rotate(180deg);
+}
+
+/* Footer links */
+[club_footer_left] [mol_link] {
+	text-decoration: none;
+}
+
+[club_footer_left] [mol_link]:hover {
+	text-decoration: underline;
+}
+
+/* Footer separator dots */
+[club_footer_left] [mol_link]::after {
+	content: ' \00B7 ';
+	padding: 0 3px;
+	text-decoration: none;
+	display: inline;
+}
+
+[club_footer_left] [mol_link]:last-of-type::after {
+	content: none;
+}
+
+[club_footer_cc]::before {
+	content: '';
+	display: block;
+}
+
+/* Dark mode: invert logo */
+[club][mol_theme='$mol_theme_dark'] [club_logo_img],
+[club] [mol_theme='$mol_theme_dark'] [club_logo_img] {
+	filter: invert(1);
+}
+
+/* Compose button border */
+[club_menu_compose] {
+	border: solid 2px var(--mol_theme_text);
+	border-radius: 10px;
+}
+
+[club_menu_compose]:hover {
+	background-color: var(--mol_theme_text);
+	color: var(--mol_theme_back);
 }

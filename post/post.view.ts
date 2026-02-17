@@ -16,8 +16,67 @@ namespace $.$$ {
 			return $club_api.post_comments(`${type}/${slug}`)
 		}
 
+		is_battle() {
+			return this.post_type() === 'battle'
+		}
+
 		post_title() {
 			return this.data()?.post?.title ?? ''
+		}
+
+		article_header_content() {
+			if (this.is_battle()) {
+				return [
+					this.Room_badge(),
+					this.Battle_title(),
+					this.Post_publicity(),
+					this.Post_info(),
+					this.Post_author(),
+					this.Battle_stats(),
+				]
+			}
+			return [
+				this.Room_badge(),
+				this.Post_title_block(),
+				this.Post_publicity(),
+				this.Post_info(),
+				this.Post_author(),
+			]
+		}
+
+		battle_side_a() {
+			const title = this.post_title()
+			const parts = title.split(/\s+или\s+/)
+			return parts[0] ?? ''
+		}
+
+		battle_side_b() {
+			const title = this.post_title()
+			const parts = title.split(/\s+или\s+/)
+			return parts[1] ?? ''
+		}
+
+		@$mol_mem
+		battle_comments_by_side() {
+			const comments = this.comments_data()?.comments ?? []
+			let side_a = 0
+			let side_b = 0
+			for (const c of comments) {
+				const side = (c as any).battle_side
+				if (side === 'a') side_a++
+				else if (side === 'b') side_b++
+			}
+			return { a: side_a, b: side_b }
+		}
+
+		battle_args_a_label() {
+			const sides = this.battle_comments_by_side()
+			return `${this.battle_side_a()}: ${sides.a}`
+		}
+
+		battle_args_b_label() {
+			const sides = this.battle_comments_by_side()
+			return `${this.battle_side_b()}: ${sides.b}`
 		}
 
 		publicity_label() {

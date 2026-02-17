@@ -66,6 +66,36 @@ namespace $.$$ {
 			return (this.data()?.user as any)?.intro ?? ''
 		}
 
+		comments_count_label() {
+			const c = this.data()?.user?.comments_count
+			return c != null ? String(c) : ''
+		}
+
+		comments_text() {
+			const c = this.data()?.user?.comments_count ?? 0
+			const mod = c % 10
+			const mod100 = c % 100
+			if (mod100 >= 11 && mod100 <= 19) return 'комментариев'
+			if (mod === 1) return 'комментарий'
+			if (mod >= 2 && mod <= 4) return 'комментария'
+			return 'комментариев'
+		}
+
+		posts_count_label() {
+			const p = this.data()?.user?.posts_count
+			return p != null ? String(p) : ''
+		}
+
+		posts_text() {
+			const p = this.data()?.user?.posts_count ?? 0
+			const mod = p % 10
+			const mod100 = p % 100
+			if (mod100 >= 11 && mod100 <= 19) return 'постов'
+			if (mod === 1) return 'пост'
+			if (mod >= 2 && mod <= 4) return 'поста'
+			return 'постов'
+		}
+
 		body() {
 			const parts: $mol_view[] = [this.Card(), this.Statuses()]
 			if (this.intro_text()) {

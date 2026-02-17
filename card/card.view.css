@@ -16,6 +16,15 @@
 	white-space: nowrap;
 }
 
+[club_card]:hover {
+	box-shadow: 0 0 40px rgba(94, 104, 125, 0.3);
+}
+
+[club_card_votes]:hover {
+	background-color: var(--mol_theme_text);
+	color: var(--mol_theme_back);
+}
+
 [club_card_votes]::before {
 	content: '\25B2';
 	position: absolute;

@@ -3,7 +3,8 @@ $club_profile $mol_page
 	title <= user_name \
 	head /
 		<= Back $mol_link
-			arg * user null
+			arg *
+				user null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph
@@ -45,6 +46,18 @@ $club_profile $mol_page
 							title <= membership_label \
 						<= Membership_text $mol_paragraph
 							title \в Клубе
+				<= Status_comments $mol_view
+					sub /
+						<= Comments_number $mol_paragraph
+							title <= comments_count_label \
+						<= Comments_text $mol_paragraph
+							title <= comments_text \
+				<= Status_posts $mol_view
+					sub /
+						<= Posts_number $mol_paragraph
+							title <= posts_count_label \
+						<= Posts_text $mol_paragraph
+							title <= posts_text \
 		<= Intro_section $mol_view
 			sub /
 				<= Intro_header $mol_paragraph

@@ -24,6 +24,10 @@ namespace $.$$ {
 			cursor: 'pointer',
 		},
 
+		Avatar_link: {
+			display: 'block',
+		},
+
 		Avatar: {
 			display: 'block',
 			width: '42px',
@@ -32,6 +36,27 @@ namespace $.$$ {
 				radius: '50%',
 			},
 			objectFit: 'cover',
+		},
+
+		Thread_ruler: {
+			display: 'block',
+			height: 'calc(100% - 51px)' as any,
+			width: '15px',
+			position: 'absolute',
+			top: '51px',
+			left: '50%',
+			bottom: '0px',
+			border: {
+				left: {
+					width: '2px',
+					style: 'dotted',
+					color: $mol_theme.line,
+				},
+			},
+			margin: {
+				left: '-1px',
+			},
+			opacity: 0.15,
 		},
 
 		Header: {
@@ -73,6 +98,29 @@ namespace $.$$ {
 			display: 'inline',
 		},
 
+		Post_link_block: {
+			display: 'block',
+			font: {
+				size: '90%',
+			},
+			opacity: 0.7,
+		},
+
+		Post_link_prefix: {
+			display: 'inline',
+			padding: {
+				right: '5px',
+			},
+		},
+
+		Post_link: {
+			display: 'inline',
+			font: {
+				weight: 500,
+			},
+			textDecoration: 'underline',
+		},
+
 		Date: {
 			textDecoration: 'none',
 			opacity: 0.7,
@@ -106,6 +154,16 @@ namespace $.$$ {
 			font: {
 				size: '115%',
 				family: `Georgia, "Times New Roman", serif`,
+			},
+		},
+
+		Footer: {
+			gridColumn: '2 / 4',
+			gridRow: '3 / 4',
+			justifyContent: 'flex-end',
+			display: 'flex',
+			padding: {
+				top: '5px',
 			},
 		},
 	})

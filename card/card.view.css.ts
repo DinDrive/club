@@ -29,10 +29,6 @@ namespace $.$$ {
 		color: $mol_theme.text,
 		transition: '0.1s ease-out',
 
-		':hover': {
-			boxShadow: `0 0 40px ${rgba(94, 104, 125, 0.3)}`,
-		},
-
 		Author_col: {
 			gridColumn: '1',
 			gridRow: '1 / 3',
@@ -96,8 +92,11 @@ namespace $.$$ {
 			color: $mol_theme.shade,
 		},
 
-		Type_label: {
-			opacity: 0.6,
+		Room_label: {
+			display: 'inline-block',
+			padding: {
+				right: '10px',
+			},
 		},
 
 		Comments_count: {

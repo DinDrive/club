@@ -195,6 +195,52 @@ namespace $.$$ {
 			},
 		},
 
+		Status_comments: {
+			display: 'flex',
+			flex: {
+				direction: 'column',
+			},
+			justify: {
+				content: 'center',
+			},
+			align: {
+				items: 'center',
+			},
+			width: '25%',
+			minWidth: '120px',
+			padding: '20px',
+		},
+
+		Comments_number: {
+			font: {
+				size: '180%',
+				weight: 500,
+			},
+		},
+
+		Status_posts: {
+			display: 'flex',
+			flex: {
+				direction: 'column',
+			},
+			justify: {
+				content: 'center',
+			},
+			align: {
+				items: 'center',
+			},
+			width: '25%',
+			minWidth: '120px',
+			padding: '20px',
+		},
+
+		Posts_number: {
+			font: {
+				size: '180%',
+				weight: 500,
+			},
+		},
+
 		Intro_section: {
 			display: 'block',
 			padding: {

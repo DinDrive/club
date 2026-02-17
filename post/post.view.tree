@@ -7,32 +7,7 @@ $club_post $mol_page
 		<= Article $mol_view
 			sub /
 				<= Article_header $mol_view
-					sub /
-						<= Post_title_block $mol_view
-							sub /
-								<= Post_title_text $mol_paragraph
-									title <= post_title
-						<= Post_publicity $mol_paragraph
-							title <= publicity_label \
-						<= Post_info $mol_view
-							sub /
-								<= Post_actions $mol_view
-									sub /
-										<= Post_date $mol_paragraph
-											title <= published_date \
-										<= Post_views $mol_paragraph
-											title <= views_label \
-						<= Post_author $mol_view
-							sub /
-								<= Author_link $mol_link
-									arg * user <= author_slug \
-									sub /
-										<= Author_avatar_small $mol_image
-											uri <= author_avatar \
-										<= Author_name $mol_paragraph
-											title <= author_name \
-						<= Room_badge $mol_view
-							sub / <= room_label \
+					sub <= article_header_content /
 				<= Upvote $mol_view
 					sub / <= upvotes_label \
 				<= Text_body $mol_text
@@ -60,3 +35,54 @@ $club_post $mol_page
 							title <= comments_count_label \
 				<= Comments_list $mol_list
 					rows <= comment_rows /
+	Post_title_block $mol_view
+		sub /
+			<= Post_title_text $mol_paragraph
+				title <= post_title
+	Post_publicity $mol_paragraph
+		title <= publicity_label \
+	Post_info $mol_view
+		sub /
+			<= Post_actions $mol_view
+				sub /
+					<= Post_date $mol_paragraph
+						title <= published_date \
+					<= Post_views $mol_paragraph
+						title <= views_label \
+	Post_author $mol_view
+		sub /
+			<= Author_link $mol_link
+				arg * user <= author_slug \
+				sub /
+					<= Author_avatar_small $mol_image
+						uri <= author_avatar \
+					<= Author_name $mol_paragraph
+						title <= author_name \
+	Room_badge $mol_view
+		sub / <= room_label \
+	Battle_title $mol_view
+		sub /
+			<= Battle_side_a $mol_view
+				sub /
+					<= Battle_side_a_text $mol_paragraph
+						title <= battle_side_a \
+			<= Battle_vs $mol_view
+				sub /
+					<= Battle_vs_text $mol_paragraph
+						title \или
+			<= Battle_side_b $mol_view
+				sub /
+					<= Battle_side_b_text $mol_paragraph
+						title <= battle_side_b \
+	Battle_stats $mol_view
+		sub /
+			<= Battle_stats_args $mol_view
+				sub /
+					<= Battle_args_a $mol_paragraph
+						title <= battle_args_a_label \
+					<= Battle_args_b $mol_paragraph
+						title <= battle_args_b_label \
+			<= Battle_stats_graph $mol_view
+				sub /
+					<= Battle_graph_a $mol_view
+					<= Battle_graph_b $mol_view
