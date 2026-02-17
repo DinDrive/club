@@ -183,6 +183,7 @@ namespace $.$$ {
 				right: '20px',
 				bottom: '50px',
 			},
+			boxSizing: 'content-box',
 		},
 
 		Sidebar: {

@@ -7,7 +7,7 @@ namespace $.$$ {
 		attr() {
 			return {
 				...super.attr(),
-				style: `background-color: ${this.room_color()}`,
+				style: `background-color: ${this.room_color()}; display: inline-flex;`,
 			}
 		}
 	}
