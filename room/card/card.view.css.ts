@@ -1,6 +1,6 @@
 namespace $.$$ {
 	$mol_style_define($club_room_card, {
-		display: 'flex',
+		display: 'inline-flex',
 		flex: {
 			direction: 'row',
 		},

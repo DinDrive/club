@@ -5,6 +5,7 @@ namespace $.$$ {
 		display: 'grid',
 		gridTemplateColumns: 'min-content minmax(auto, 1fr) min-content',
 		gridTemplateRows: 'auto auto',
+		gap: '0px',
 		position: 'relative',
 		padding: {
 			top: '30px',
@@ -17,6 +18,7 @@ namespace $.$$ {
 			bottom: '30px',
 		},
 		minHeight: '130px',
+		minWidth: '0px',
 		cursor: 'pointer',
 		background: {
 			color: $mol_theme.card,

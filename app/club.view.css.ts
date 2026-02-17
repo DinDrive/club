@@ -18,6 +18,7 @@ namespace $.$$ {
 			justify: {
 				content: 'flex-start',
 			},
+			width: '100%',
 			maxWidth: '1000px',
 			margin: {
 				left: 'auto',
@@ -26,9 +27,10 @@ namespace $.$$ {
 			padding: {
 				top: '25px',
 				bottom: '15px',
-				left: '20px',
-				right: '20px',
+				left: '0px',
+				right: '0px',
 			},
+			boxSizing: 'border-box',
 			font: {
 				size: '120%',
 			},
@@ -197,6 +199,9 @@ namespace $.$$ {
 
 		Footer: {
 			display: 'flex',
+			flex: {
+				direction: 'column',
+			},
 			justify: {
 				content: 'space-between',
 			},

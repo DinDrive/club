@@ -13,6 +13,17 @@ namespace $.$$ {
 		},
 		gap: '20px',
 
+		$mol_link: {
+			display: 'inline',
+			textDecoration: 'none',
+			padding: {
+				top: '5px',
+				right: '10px',
+				bottom: '5px',
+				left: '10px',
+			},
+		},
+
 		Nav_main: {
 			display: 'flex',
 			flex: {
@@ -57,6 +68,10 @@ namespace $.$$ {
 				weight: 500,
 			},
 			textDecoration: 'none',
+		},
+
+		Room_card: {
+			display: 'inline-flex',
 		},
 	})
 }

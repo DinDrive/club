@@ -61,24 +61,117 @@ namespace $ {
 			return Number($mol_state_arg.value('page') ?? '1')
 		}
 
-		@$mol_mem
-		static feed() {
+		static feed_key() {
 			const type = this.feed_type()
 			const ordering = this.feed_ordering()
 			const page = this.feed_page()
-			return this.fetch_json_auth<$club_api_feed>(`/${type}/${ordering}/feed.json?page=${page}`)
+			return `${type}/${ordering}/${page}`
+		}
+
+		static feed_storage_key(key: string) {
+			return `club_feed_cache:${key}`
+		}
+
+		static post_storage_key(key: string) {
+			return `club_post_cache:${key}`
+		}
+
+		static post_comments_storage_key(key: string) {
+			return `club_post_comments_cache:${key}`
+		}
+
+		@$mol_mem_key
+		static feed_cache(key: string, next?: $club_api_feed | null) {
+			const storage_key = this.feed_storage_key(key)
+			if (next === undefined) {
+				return $mol_state_local.value<$club_api_feed>(storage_key) ?? null
+			}
+			$mol_state_local.value(storage_key, next)
+			return next ?? null
+		}
+
+		static feed_post_key(post: $club_api_post) {
+			const type = post._club?.type ?? 'post'
+			const slug = post._club?.slug ?? post.id
+			return `${type}/${slug}`
+		}
+
+		static feed_merge_stable(old_feed: $club_api_feed | null, fresh_feed: $club_api_feed) {
+			if (!old_feed || this.feed_page() !== 1) return fresh_feed
+
+			const seen = new Set<string>()
+			const merged: $club_api_post[] = []
+			for (const post of fresh_feed.items ?? []) {
+				seen.add(this.feed_post_key(post))
+				merged.push(post)
+			}
+			for (const post of old_feed.items ?? []) {
+				const key = this.feed_post_key(post)
+				if (seen.has(key)) continue
+				merged.push(post)
+			}
+
+			return {
+				...fresh_feed,
+				items: merged.slice(0, 40),
+			}
+		}
+
+		@$mol_mem
+		static feed_refresh_tick() {
+			return $mol_state_time.now(30_000)
+		}
+
+		@$mol_mem
+		static feed() {
+			this.feed_refresh_tick()
+
+			const type = this.feed_type()
+			const ordering = this.feed_ordering()
+			const page = this.feed_page()
+			const key = this.feed_key()
+			const old_feed = this.feed_cache(key)
+
+			try {
+				const fresh = this.fetch_json_auth<$club_api_feed>(`/${type}/${ordering}/feed.json?page=${page}`)
+				if (!fresh) return old_feed as $club_api_feed
+				const merged = this.feed_merge_stable(old_feed, fresh)
+				this.feed_cache(key, merged)
+				return merged
+			} catch (error: any) {
+				if (error instanceof Promise && old_feed) return old_feed
+				throw error
+			}
 		}
 
 		@$mol_mem_key
 		static post(key: string) {
 			const [type, slug] = key.split('/')
-			return this.fetch_json_auth<$club_api_post_response>(`/${type}/${slug}.json`)
+			const storage_key = this.post_storage_key(key)
+			const old_post = $mol_state_local.value<$club_api_post_response>(storage_key)
+			try {
+				const fresh = this.fetch_json_auth<$club_api_post_response>(`/${type}/${slug}.json`)
+				if (fresh) $mol_state_local.value(storage_key, fresh)
+				return fresh ?? old_post
+			} catch (error: any) {
+				if (error instanceof Promise && old_post) return old_post
+				throw error
+			}
 		}
 
 		@$mol_mem_key
 		static post_comments(key: string) {
 			const [type, slug] = key.split('/')
-			return this.fetch_json_auth<$club_api_comments_response>(`/${type}/${slug}/comments.json`)
+			const storage_key = this.post_comments_storage_key(key)
+			const old_comments = $mol_state_local.value<$club_api_comments_response>(storage_key)
+			try {
+				const fresh = this.fetch_json_auth<$club_api_comments_response>(`/${type}/${slug}/comments.json`)
+				if (fresh) $mol_state_local.value(storage_key, fresh)
+				return fresh ?? old_comments
+			} catch (error: any) {
+				if (error instanceof Promise && old_comments) return old_comments
+				throw error
+			}
 		}
 
 		@$mol_mem_key

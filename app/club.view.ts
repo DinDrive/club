@@ -25,6 +25,32 @@ namespace $.$$ {
 			return this.current_user_data()?.user?.avatar ?? ''
 		}
 
+		@$mol_mem_key
+		post_page(post: string) {
+			const parts = post.split('/')
+			const page = new this.$.$club_post()
+			page.post_type = () => parts[0] ?? ''
+			page.post_slug = () => parts[1] ?? ''
+			return page
+		}
+
+		@$mol_mem_key
+		profile_page(user: string) {
+			const page = new this.$.$club_profile()
+			page.user_slug = () => user
+			return page
+		}
+
+		@$mol_mem
+		bookmarks_page() {
+			return new this.$.$club_bookmarks()
+		}
+
+		@$mol_mem
+		rooms_page() {
+			return new this.$.$club_rooms()
+		}
+
 		@$mol_mem
 		spread() {
 			if (!this.authorized()) {
@@ -33,28 +59,20 @@ namespace $.$$ {
 
 			const post = this.$.$mol_state_arg.value('post')
 			if (post) {
-				const parts = post.split('/')
-				if (parts.length >= 2) {
-					const page = new this.$.$club_post()
-					page.post_type = () => parts[0]
-					page.post_slug = () => parts[1]
-					return page
-				}
+				return this.post_page(post)
 			}
 
 			const user = this.$.$mol_state_arg.value('user')
 			if (user) {
-				const page = new this.$.$club_profile()
-				page.user_slug = () => user
-				return page
+				return this.profile_page(user)
 			}
 
 			if (this.$.$mol_state_arg.value('bookmarks')) {
-				return new this.$.$club_bookmarks()
+				return this.bookmarks_page()
 			}
 
 			if (this.$.$mol_state_arg.value('rooms')) {
-				return new this.$.$club_rooms()
+				return this.rooms_page()
 			}
 
 			if (this.$.$mol_state_arg.value('settings')) {

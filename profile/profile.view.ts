@@ -108,19 +108,39 @@ namespace $.$$ {
 		}
 
 		@$mol_mem
-		tag_rows() {
+		tags_flat() {
 			const tags_by_group = this.tags_data()?.tags
-			if (!tags_by_group) return []
+			if (!tags_by_group) return [] as $club_api_tag[]
 			const all_tags: $club_api_tag[] = []
 			for (const group of Object.values(tags_by_group)) {
 				all_tags.push(...group)
 			}
-			if (!all_tags.length) return []
-			return all_tags.map(tag => {
-				const v = new this.$.$club_tag()
-				v.tag = () => tag
-				return v
-			})
+			return all_tags
+		}
+
+		tag_key(tag: $club_api_tag) {
+			return `${tag.code}:${tag.name}`
+		}
+
+		@$mol_mem
+		tags_index() {
+			const index = new Map<string, $club_api_tag>()
+			for (const tag of this.tags_flat()) {
+				index.set(this.tag_key(tag), tag)
+			}
+			return index
+		}
+
+		@$mol_mem_key
+		tag_row(key: string) {
+			const v = new this.$.$club_tag()
+			v.tag = () => this.tags_index().get(key) ?? null as any
+			return v
+		}
+
+		@$mol_mem
+		tag_rows() {
+			return Array.from(this.tags_index().keys()).map(key => this.tag_row(key))
 		}
 	}
 }

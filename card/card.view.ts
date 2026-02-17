@@ -1,7 +1,29 @@
 namespace $.$$ {
 	export class $club_card extends $.$club_card {
+		@$mol_mem_key
+		avatar_preload(uri: string) {
+			if (!uri) return ''
+			const ImageCtor = (this.$.$mol_dom_context as any)?.Image as (new () => { src: string }) | undefined
+			if (!ImageCtor) return uri
+			try {
+				const image = new ImageCtor()
+				image.src = uri
+			} catch {}
+			return uri
+		}
+
+		avatar_uri_normalized(uri: string) {
+			if (!uri) return ''
+			if (uri.startsWith('//')) return `https:${uri}`
+			return uri
+		}
+
 		post_data() {
 			return this.post() as $club_api_post | null
+		}
+
+		card_type() {
+			return this.post_data()?._club?.type ?? ''
 		}
 
 		post_uri() {
@@ -37,7 +59,18 @@ namespace $.$$ {
 		}
 
 		author_avatar() {
-			return this.post_data()?.authors?.[0]?.avatar ?? ''
+			const raw = this.post_data()?.authors?.[0]?.avatar ?? ''
+			const uri = this.avatar_uri_normalized(raw)
+			this.avatar_preload(uri)
+			return uri
+		}
+
+		@$mol_mem
+		Avatar() {
+			const image = super.Avatar()
+			image.loading = () => 'eager' as any
+			image.decoding = () => 'sync' as any
+			return image
 		}
 
 		author_name() {

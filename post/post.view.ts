@@ -134,14 +134,29 @@ namespace $.$$ {
 			return count ? `${count} комментариев 👇` : 'Комментарии'
 		}
 
+		comment_key(comment: $club_api_comment) {
+			return comment.id
+		}
+
+		@$mol_mem
+		comments_index() {
+			const index = new Map<string, $club_api_comment>()
+			for (const comment of this.comments_data()?.comments ?? []) {
+				index.set(this.comment_key(comment), comment)
+			}
+			return index
+		}
+
+		@$mol_mem_key
+		comment_row(key: string) {
+			const row = new this.$.$club_comment()
+			row.comment = () => this.comments_index().get(key) ?? null as any
+			return row
+		}
+
 		@$mol_mem
 		comment_rows() {
-			const comments = this.comments_data()?.comments ?? []
-			return comments.map(comment => {
-				const row = new this.$.$club_comment()
-				row.comment = () => comment
-				return row
-			})
+			return Array.from(this.comments_index().keys()).map(key => this.comment_row(key))
 		}
 	}
 }
