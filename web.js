@@ -7568,7 +7568,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 30px 17px 7px;\n\tfont-size: 140%;\n\tfont-weight: 600;\n\tfont-family: 'Ubuntu', Helvetica, Verdana, sans-serif;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n\n[club_card]:hover {\n\tbox-shadow: 0 0 40px rgba(94, 104, 125, 0.3);\n}\n\n[club_card_votes]:hover {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n}\n\n[club_card_votes]::before {\n\tcontent: '\\25B2';\n\tposition: absolute;\n\tfont-size: 18px;\n\ttop: 5px;\n\tleft: 50%;\n\ttransform: translateX(-50%);\n}\n");
+    $mol_style_attach("club/card/card.view.css", "[club_card_votes] {\n\tposition: relative;\n\tdisplay: inline-flex;\n\tflex-direction: column;\n\talign-items: center;\n\ttext-decoration: none;\n\tpadding: 30px 17px 7px;\n\tfont-size: 140%;\n\tfont-weight: 600;\n\tfont-family: 'Ubuntu', Helvetica, Verdana, sans-serif;\n\tbackground-color: var(--mol_theme_back);\n\tcolor: var(--mol_theme_text);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n\tline-height: 1;\n\twhite-space: nowrap;\n}\n\n[club_card][mol_view_error] {\n\tbackground: var(--mol_theme_card);\n}\n\n[club_card]:hover {\n\tbox-shadow: 0 0 40px rgba(94, 104, 125, 0.3);\n}\n\n[club_card_votes]:hover {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n}\n\n[club_card_votes]::before {\n\tcontent: '\\25B2';\n\tposition: absolute;\n\tfont-size: 18px;\n\ttop: 5px;\n\tleft: 50%;\n\ttransform: translateX(-50%);\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -7768,7 +7768,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/feed/feed.view.css", "[club_feed_ordering] [mol_link] {\n\tpadding: 10px;\n\ttext-decoration: none;\n\topacity: 0.5;\n}\n\n[club_feed_ordering] [mol_link]:hover {\n\topacity: 0.8;\n}\n\n[club_feed_ordering] [mol_link][mol_link_current] {\n\tfont-weight: 700;\n\topacity: 1;\n}\n\n[club_feed_ordering_extra] [mol_link] {\n\tpadding: 7px 10px;\n\ttext-decoration: none;\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current] {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current]:hover {\n\tcolor: var(--mol_theme_back);\n}\n");
+    $mol_style_attach("club/feed/feed.view.css", "[club_feed][mol_view_error],\n[club_feed_posts][mol_view_error] {\n\tbackground: none;\n}\n\n[club_feed_ordering] [mol_link] {\n\tpadding: 10px;\n\ttext-decoration: none;\n\topacity: 0.5;\n}\n\n[club_feed_ordering] [mol_link]:hover {\n\topacity: 0.8;\n}\n\n[club_feed_ordering] [mol_link][mol_link_current] {\n\tfont-weight: 700;\n\topacity: 1;\n}\n\n[club_feed_ordering_extra] [mol_link] {\n\tpadding: 7px 10px;\n\ttext-decoration: none;\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current] {\n\tcolor: var(--mol_theme_back);\n\tbackground-color: var(--mol_theme_text);\n}\n\n[club_feed_ordering_extra] [mol_link][mol_link_current]:hover {\n\tcolor: var(--mol_theme_back);\n}\n");
 })($ || ($ = {}));
 
 ;
