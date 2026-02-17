@@ -43,6 +43,13 @@ $bog_theme_auto $mol_plugin
 	theme_set? null
 	attr * mol_theme <= theme \
 
+$mol_paragraph $mol_view
+	line_height 24
+	letter_width 7
+	width_limit +Infinity
+	row_width 0
+	sub / <= title
+
 $mol_image $mol_view
 	dom_name \img
 	attr *any
@@ -59,13 +66,6 @@ $mol_image $mol_view
 		load? <=> load? null
 	minimal_width 16
 	minimal_height 16
-
-$mol_paragraph $mol_view
-	line_height 24
-	letter_width 7
-	width_limit +Infinity
-	row_width 0
-	sub / <= title
 
 $mol_link $mol_view
 	uri \
@@ -182,7 +182,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \✏️ Посты
+					title \Посты
 				<= Nav_events $mol_link
 					arg *
 						type \event
@@ -191,7 +191,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \📅 События
+					title \События
 				<= Nav_projects $mol_link
 					arg *
 						type \project
@@ -200,7 +200,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \📐 Проекты
+					title \Проекты
 				<= Nav_guides $mol_link
 					arg *
 						type \guide
@@ -209,7 +209,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \🌍 Путеводители
+					title \Путеводители
 				<= Nav_questions $mol_link
 					arg *
 						type \question
@@ -218,7 +218,7 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \❓ Вопросы
+					title \Вопросы
 				<= Nav_threads $mol_link
 					arg *
 						type \thread
@@ -227,55 +227,29 @@ $club_menu $mol_view
 						bookmarks null
 						rooms null
 						settings null
-					title \💬 Треды
+					title \Треды
 				<= Nav_approved $mol_link
 					uri \https://vas3k.club/label/approved/
-					title \👍 Офигенно
+					title \Офигенно
 				<= Nav_inside $mol_link
 					uri \https://vas3k.club/label/inside/
-					title \💎 Инсайды
+					title \Инсайды
 				<= Nav_best $mol_link
 					uri \https://vas3k.club/label/post_of_month/
-					title \🏆 Посты месяца
-		<= Nav_bottom $mol_view
-			sub /
-				<= Nav_bookmarks $mol_link
-					arg *
-						bookmarks \1
-						post null
-						user null
-						rooms null
-						settings null
-						type null
-					title \📑 Закладки
-				<= Nav_rooms_link $mol_link
-					arg *
-						rooms \1
-						post null
-						user null
-						bookmarks null
-						settings null
-						type null
-					title \🚪 Комнаты
-				<= Nav_settings $mol_link
-					arg *
-						settings \1
-						post null
-						user null
-						bookmarks null
-						rooms null
-						type null
-					title \⚙️ Настройки
+					title \Посты месяца
 		<= Rooms_title $mol_paragraph
 			title \Комнаты
 		<= Rooms_list $mol_list
 			rows <= room_cards /
-
-$mol_bar $mol_view
-
-$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
-
-$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
+		<= Rooms_all $mol_link
+			arg *
+				rooms \1
+				post null
+				user null
+				bookmarks null
+				settings null
+				type null
+			title \Все комнаты →
 
 $mol_speck $mol_view
 	theme \$mol_theme_accent
@@ -308,6 +282,34 @@ $mol_button_typed $mol_button
 	minimal_width 40
 
 $mol_button_minor $mol_button_typed
+
+$mol_check $mol_button_minor
+	attr *
+		^
+		mol_check_checked <= checked? false
+		aria-checked <= aria_checked \false
+		role <= aria_role \checkbox
+	sub /$mol_view_content
+		<= Icon null
+		<= label /
+			<= Title $mol_view
+				sub /
+					<= title \
+
+$mol_check_icon $mol_check
+
+$mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z
+
+$mol_lights_toggle $mol_check_icon
+	Icon <= Lights_icon $mol_icon_brightness_4
+	hint @ \Toggle lights
+	checked? <=> lights? false
+
+$mol_bar $mol_view
+
+$mol_icon_chevron $mol_icon path \M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z
+
+$mol_icon_chevron_left $mol_icon path \M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z
 
 $mol_icon_chevron_right $mol_icon path \M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z
 
@@ -371,36 +373,12 @@ $club_card $mol_link
 					title <= post_title \
 		<= Footer $mol_view
 			sub /
-				<= Author_name $mol_paragraph
-					title <= author_name \
-				<= Type_label $mol_view
-					sub / <= type_label \
+				<= Room_label $mol_view
+					sub / <= room_name \
 				<= Comments_count $mol_paragraph
 					title <= comments_label \
 		<= Votes $mol_view
 			sub / <= upvotes \
-
-$mol_check $mol_button_minor
-	attr *
-		^
-		mol_check_checked <= checked? false
-		aria-checked <= aria_checked \false
-		role <= aria_role \checkbox
-	sub /$mol_view_content
-		<= Icon null
-		<= label /
-			<= Title $mol_view
-				sub /
-					<= title \
-
-$mol_check_icon $mol_check
-
-$mol_icon_brightness_4 $mol_icon path \M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z
-
-$mol_lights_toggle $mol_check_icon
-	Icon <= Lights_icon $mol_icon_brightness_4
-	hint @ \Toggle lights
-	checked? <=> lights? false
 
 $mol_labeler $mol_list
 	rows /
@@ -836,53 +814,90 @@ $club $mol_page
 	plugins /
 		<= Theme $bog_theme_auto
 	title \Вастрик.Клуб
-	head /
-		<= Logo $mol_link
-			arg *
-				post null
-				user null
-				bookmarks null
-				rooms null
-				settings null
-				type null
-			sub /
-				<= Logo_img $mol_image
-					uri \https://vas3k.club/static/images/logo/logo-128.png
-				<= Logo_text $mol_paragraph
-					title \Вастрик.Клуб
-		<= Menu_compose $mol_link
-			uri \https://vas3k.club/create/
-			sub /
-				<= Compose_icon $mol_icon_pencil
-				<= Compose_text $mol_paragraph
-					title \Пиши
-		<= Menu_bookmarks $mol_link
-			arg *
-				bookmarks \1
-				post null
-				user null
-				rooms null
-				settings null
-				type null
-			sub /
-				<= Bookmarks_icon $mol_icon_bookmark_outline
-		<= Menu_avatar $mol_link
-			arg *
-				user <= current_user_slug \
-				post null
-				bookmarks null
-				rooms null
-				settings null
-				type null
-			sub /
-				<= User_avatar $mol_image
-					uri <= current_user_avatar \
+	Head null
 	body /
+		<= Header $mol_view
+			sub /
+				<= Logo $mol_link
+					arg *
+						post null
+						user null
+						bookmarks null
+						rooms null
+						settings null
+						type null
+					sub /
+						<= Logo_left $mol_paragraph
+							title \Вастрик
+						<= Logo_img $mol_image
+							uri \https://vas3k.club/static/images/logo/logo-128.png
+						<= Logo_right $mol_paragraph
+							title \Клуб
+				<= Menu_compose $mol_link
+					uri \https://vas3k.club/create/
+					sub /
+						<= Compose_icon $mol_icon_pencil
+						<= Compose_text $mol_paragraph
+							title \Пиши
+				<= Menu_bookmarks $mol_link
+					arg *
+						bookmarks \1
+						post null
+						user null
+						rooms null
+						settings null
+						type null
+					sub /
+						<= Bookmarks_icon $mol_icon_bookmark_outline
+				<= Menu_avatar $mol_link
+					arg *
+						user <= current_user_slug \
+						post null
+						bookmarks null
+						rooms null
+						settings null
+						type null
+					sub /
+						<= User_avatar $mol_image
+							uri <= current_user_avatar \
 		<= Main $mol_view
 			sub /
 				<= Sidebar $club_menu
 				<= Content $mol_view
 					sub / <= spread $mol_view
+		<= Footer $mol_view
+			sub /
+				<= Footer_left $mol_view
+					sub /
+						<= Footer_about $mol_link
+							uri \https://vas3k.club/docs/about/
+							title \О Клубе
+						<= Footer_values $mol_link
+							uri \https://vas3k.club/docs/values/
+							title \Наши ценности
+						<= Footer_team $mol_link
+							uri \https://vas3k.club/crew/
+							title \Команда
+						<= Footer_privacy $mol_link
+							uri \https://vas3k.club/docs/privacy_policy/
+							title \Политика приватности
+						<= Footer_contact $mol_link
+							uri \https://vas3k.club/docs/contact/
+							title \Связаться с нами
+						<= Footer_invite $mol_link
+							uri \https://vas3k.club/invites/
+							title \Пригласить друга
+						<= Footer_opensource $mol_link
+							uri \https://github.com/vas3k/vas3k.club
+							title \Опенсорс
+						<= Footer_payment $mol_link
+							uri \https://vas3k.club/docs/blocked_dolor/
+							title \Оплата из России
+						<= Footer_cc $mol_paragraph
+							title \CC BY-SA
+				<= Footer_right $mol_view
+					sub /
+						<= Lighter $mol_lights_toggle
 	Feed $club_feed
 	Settings $club_settings
 
@@ -895,32 +910,7 @@ $club_post $mol_page
 		<= Article $mol_view
 			sub /
 				<= Article_header $mol_view
-					sub /
-						<= Post_title_block $mol_view
-							sub /
-								<= Post_title_text $mol_paragraph
-									title <= post_title
-						<= Post_publicity $mol_paragraph
-							title <= publicity_label \
-						<= Post_info $mol_view
-							sub /
-								<= Post_actions $mol_view
-									sub /
-										<= Post_date $mol_paragraph
-											title <= published_date \
-										<= Post_views $mol_paragraph
-											title <= views_label \
-						<= Post_author $mol_view
-							sub /
-								<= Author_link $mol_link
-									arg * user <= author_slug \
-									sub /
-										<= Author_avatar_small $mol_image
-											uri <= author_avatar \
-										<= Author_name $mol_paragraph
-											title <= author_name \
-						<= Room_badge $mol_view
-							sub / <= room_label \
+					sub <= article_header_content /
 				<= Upvote $mol_view
 					sub / <= upvotes_label \
 				<= Text_body $mol_text
@@ -948,31 +938,104 @@ $club_post $mol_page
 							title <= comments_count_label \
 				<= Comments_list $mol_list
 					rows <= comment_rows /
+	Post_title_block $mol_view
+		sub /
+			<= Post_title_text $mol_paragraph
+				title <= post_title
+	Post_publicity $mol_paragraph
+		title <= publicity_label \
+	Post_info $mol_view
+		sub /
+			<= Post_actions $mol_view
+				sub /
+					<= Post_date $mol_paragraph
+						title <= published_date \
+					<= Post_views $mol_paragraph
+						title <= views_label \
+	Post_author $mol_view
+		sub /
+			<= Author_link $mol_link
+				arg * user <= author_slug \
+				sub /
+					<= Author_avatar_small $mol_image
+						uri <= author_avatar \
+					<= Author_name $mol_paragraph
+						title <= author_name \
+	Room_badge $mol_view
+		sub / <= room_label \
+	Battle_title $mol_view
+		sub /
+			<= Battle_side_a $mol_view
+				sub /
+					<= Battle_side_a_text $mol_paragraph
+						title <= battle_side_a \
+			<= Battle_vs $mol_view
+				sub /
+					<= Battle_vs_text $mol_paragraph
+						title \или
+			<= Battle_side_b $mol_view
+				sub /
+					<= Battle_side_b_text $mol_paragraph
+						title <= battle_side_b \
+	Battle_stats $mol_view
+		sub /
+			<= Battle_stats_args $mol_view
+				sub /
+					<= Battle_args_a $mol_paragraph
+						title <= battle_args_a_label \
+					<= Battle_args_b $mol_paragraph
+						title <= battle_args_b_label \
+			<= Battle_stats_graph $mol_view
+				sub /
+					<= Battle_graph_a $mol_view
+					<= Battle_graph_b $mol_view
 
 $club_comment $mol_view
 	comment null
+	show_post_link false
+	post_title \
+	post_type \
+	post_slug \
 	sub /
 		<= Side $mol_view
 			sub /
-				<= Avatar $mol_image
-					uri <= author_avatar \
+				<= Avatar_link $mol_link
+					arg *
+						user <= author_slug \
+					sub /
+						<= Avatar $mol_image
+							uri <= author_avatar \
+				<= Thread_ruler $mol_view
 		<= Header $mol_view
 			sub /
 				<= Author_block $mol_view
 					sub /
 						<= Author_link $mol_link
-							arg * user <= author_slug \
+							arg *
+								user <= author_slug \
 							sub /
 								<= Author_name $mol_paragraph
 									title <= author_name \
 						<= Author_position $mol_paragraph
 							title <= author_position \
+				<= Post_link_block $mol_view
+					sub / <= post_link_content /
 				<= Date $mol_paragraph
 					title <= created_date \
 		<= Rating $mol_view
 			sub / <= upvotes_label \
 		<= Body $mol_text
 			text <= comment_text \
+		<= Footer $mol_view
+			sub / <= footer_content /
+	Post_link_prefix $mol_paragraph
+		title \на пост
+	Post_link $mol_link
+		arg *
+			post <= post_arg \
+		sub /
+			<= Post_link_title $mol_paragraph
+				title <= post_title
 
 $mol_icon_arrow_left $mol_icon path \M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z
 
@@ -981,7 +1044,8 @@ $club_profile $mol_page
 	title <= user_name \
 	head /
 		<= Back $mol_link
-			arg * user null
+			arg *
+				user null
 			sub /
 				<= Back_icon $mol_icon_arrow_left
 		<= Title $mol_paragraph
@@ -1023,6 +1087,18 @@ $club_profile $mol_page
 							title <= membership_label \
 						<= Membership_text $mol_paragraph
 							title \в Клубе
+				<= Status_comments $mol_view
+					sub /
+						<= Comments_number $mol_paragraph
+							title <= comments_count_label \
+						<= Comments_text $mol_paragraph
+							title <= comments_text \
+				<= Status_posts $mol_view
+					sub /
+						<= Posts_number $mol_paragraph
+							title <= posts_count_label \
+						<= Posts_text $mol_paragraph
+							title <= posts_text \
 		<= Intro_section $mol_view
 			sub /
 				<= Intro_header $mol_paragraph
