@@ -16,6 +16,10 @@
 	white-space: nowrap;
 }
 
+[club_card][mol_view_error] {
+	background: var(--mol_theme_card);
+}
+
 [club_card]:hover {
 	box-shadow: 0 0 40px rgba(94, 104, 125, 0.3);
 }

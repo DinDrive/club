@@ -1,3 +1,8 @@
+[club_feed][mol_view_error],
+[club_feed_posts][mol_view_error] {
+	background: none;
+}
+
 [club_feed_ordering] [mol_link] {
 	padding: 10px;
 	text-decoration: none;
