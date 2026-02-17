@@ -1,0 +1,11 @@
+$club_room_card $mol_link
+	room_slug \
+	room_title \
+	room_color \
+	room_icon \
+	uri \https://vas3k.club/room/{slug}/
+	sub /
+		<= Icon $mol_image
+			uri <= room_icon
+		<= Title $mol_paragraph
+			title <= room_title

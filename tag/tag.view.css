@@ -1,0 +1,9 @@
+[club_tag] {
+	border: solid 2px transparent;
+}
+
+[club_tag]:hover {
+	opacity: 1;
+	background-color: var(--mol_theme_hover);
+	border: solid 2px var(--mol_theme_text);
+}

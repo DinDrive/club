@@ -1,14 +1,96 @@
-$club $mol_book2
-	settingsOpened? false
+$club $mol_page
 	plugins /
-		<= Favicon $bog_favicon
-			Icon <= icon $mol_icon_home
 		<= Theme $bog_theme_auto
-	pages /
-		<= Main $club_main
-			settings? <=> settingsOpened?
-			theme_auto <= Theme
-		<= FSettings
-		<= FPost $mol_view
-			title => title
-		<= FComments
+	title \Вастрик.Клуб
+	Head null
+	body /
+		<= Header $mol_view
+			sub /
+				<= Logo_block $mol_view
+					sub /
+						<= Logo $mol_link
+							arg *
+								post null
+								user null
+								bookmarks null
+								rooms null
+								settings null
+								type null
+							sub /
+								<= Logo_left $mol_paragraph
+									title \Вастрик
+								<= Logo_img $mol_image
+									uri \https://vas3k.club/static/images/logo/logo-128.png
+								<= Logo_right $mol_paragraph
+									title \Клуб
+				<= Search $mol_search
+					query? <=> search_query? \
+				<= Menu_right $mol_view
+					sub /
+						<= Menu_compose $mol_link
+							uri \https://vas3k.club/create/
+							sub /
+								<= Compose_icon $mol_icon_pencil
+								<= Compose_text $mol_paragraph
+									title \Пиши
+						<= Menu_bookmarks $mol_link
+							arg *
+								bookmarks \1
+								post null
+								user null
+								rooms null
+								settings null
+								type null
+							sub /
+								<= Bookmarks_icon $mol_icon_bookmark_outline
+				<= Menu_avatar $mol_link
+					arg *
+						user <= current_user_slug \
+						post null
+						bookmarks null
+						rooms null
+						settings null
+						type null
+					sub /
+						<= User_avatar $mol_image
+							uri <= current_user_avatar \
+		<= Main $mol_view
+			sub /
+				<= Sidebar $club_menu
+				<= Content $mol_view
+					sub / <= spread $mol_view
+		<= Footer $mol_view
+			sub /
+				<= Footer_left $mol_view
+					sub /
+						<= Footer_about $mol_link
+							uri \https://vas3k.club/docs/about/
+							title \О Клубе
+						<= Footer_values $mol_link
+							uri \https://vas3k.club/docs/values/
+							title \Наши ценности
+						<= Footer_team $mol_link
+							uri \https://vas3k.club/crew/
+							title \Команда
+						<= Footer_privacy $mol_link
+							uri \https://vas3k.club/docs/privacy_policy/
+							title \Политика приватности
+						<= Footer_contact $mol_link
+							uri \https://vas3k.club/docs/contact/
+							title \Связаться с нами
+						<= Footer_invite $mol_link
+							uri \https://vas3k.club/invites/
+							title \Пригласить друга
+						<= Footer_opensource $mol_link
+							uri \https://github.com/vas3k/vas3k.club
+							title \Опенсорс
+						<= Footer_payment $mol_link
+							uri \https://vas3k.club/docs/blocked_dolor/
+							title \Оплата из России
+						<= Footer_cc $mol_paragraph
+							title \CC BY-SA
+				<= Footer_right $mol_view
+					sub /
+						<= Lighter $mol_lights_toggle
+	Feed $club_feed
+	Settings $club_settings

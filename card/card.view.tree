@@ -1,0 +1,22 @@
+$club_card $mol_link
+	post null
+	attr *
+		^
+		club_card_type <= card_type \
+	arg *
+		post <= post_uri \
+	sub /
+		<= Author_col $mol_view
+			sub /
+				<= Avatar $mol_image
+					uri <= author_avatar \
+		<= Header $mol_view
+			sub /
+				<= Post_title $mol_paragraph
+					title <= post_title \
+		<= Footer $mol_view
+			sub /
+				<= Comments_count $mol_paragraph
+					title <= comments_label \
+		<= Votes $mol_view
+			sub / <= upvotes \

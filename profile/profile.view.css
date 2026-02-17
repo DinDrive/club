@@ -1,0 +1,23 @@
+[club_profile_card] {
+	color: var(--mol_theme_back);
+	background-color: var(--mol_theme_text);
+}
+
+[club_profile_card] [mol_link] {
+	color: var(--mol_theme_back);
+	text-decoration: none;
+}
+
+[club_profile_card_bio] a {
+	color: var(--mol_theme_back);
+}
+
+[club_profile_card_avatar] img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

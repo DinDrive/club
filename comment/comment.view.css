@@ -1,0 +1,11 @@
+[club_comment]:hover [club_comment_thread_ruler] {
+	opacity: 0.3;
+}
+
+[club_comment_side]:hover [club_comment_thread_ruler] {
+	opacity: 1;
+}
+
+[club_comment_thread_ruler] {
+	transition: opacity .3s;
+}

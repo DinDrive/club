@@ -1,0 +1,106 @@
+[club_card_votes] {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none;
+	padding: 30px 17px 7px;
+	font-size: 140%;
+	font-weight: 600;
+	font-family: 'Ubuntu', Helvetica, Verdana, sans-serif;
+	background-color: var(--mol_theme_back);
+	color: var(--mol_theme_text);
+	border: solid 2px var(--mol_theme_text);
+	border-radius: 15px;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+[club_card][mol_view_error] {
+	background: var(--mol_theme_card);
+}
+
+[club_card]:hover {
+	box-shadow: 0 0 40px rgba(94, 104, 125, 0.3);
+}
+
+[club_card_votes]:hover {
+	background-color: var(--mol_theme_text);
+	color: var(--mol_theme_back);
+}
+
+[club_card_votes]::before {
+	content: '\25B2';
+	position: absolute;
+	font-size: 18px;
+	top: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* Intro cards — compact inline layout like prod */
+[club_card][club_card_type='intro'] {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 120%;
+	padding: 0 0 20px 0;
+	margin-left: 40px;
+	min-height: 20px;
+	background: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+[club_card][club_card_type='intro']:hover {
+	box-shadow: none;
+}
+
+[club_card][club_card_type='intro'] [club_card_author_col] {
+	display: flex;
+	align-items: center;
+}
+
+[club_card][club_card_type='intro'] [club_card_avatar] {
+	position: relative;
+	top: -2px;
+	left: -5px;
+	width: 38px;
+	height: 38px;
+	border: none;
+}
+
+[club_card][club_card_type='intro'] [club_card_header] {
+	align-self: center;
+	padding: 0;
+}
+
+[club_card][club_card_type='intro'] [club_card_post_title] {
+	font-size: 100%;
+	font-weight: 400;
+	line-height: 1.1em;
+	padding-top: 3px;
+}
+
+[club_card][club_card_type='intro'] [club_card_footer] {
+	display: none;
+}
+
+[club_card][club_card_type='intro'] [club_card_votes] {
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 7px 10px 6px 25px;
+	font-size: 120%;
+	border: none;
+}
+
+[club_card][club_card_type='intro'] [club_card_votes]::before {
+	content: '+';
+	top: 2px;
+	left: 17px;
+	font-size: 130%;
+}
+
+/* Weekly digest — also compact */
+[club_card][club_card_type='weekly_digest'] {
+	display: none;
+}

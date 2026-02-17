@@ -1,0 +1,23 @@
+$club_rooms $mol_page
+	title \Комнаты
+	room_title*0 \
+	room_subtitle*0 \
+	room_members*0 \
+	head /
+		<= Back $mol_link
+			arg * rooms null
+			sub /
+				<= Back_icon $mol_icon_arrow_left
+		<= Title $mol_paragraph
+			title \Комнаты
+	body /
+		<= Rooms $mol_list
+			rows <= room_rows /
+				<= Room*0 $mol_view
+					sub /
+						<= Room_title*0 $mol_paragraph
+							title <= room_title*
+						<= Room_subtitle*0 $mol_paragraph
+							title <= room_subtitle*
+						<= Room_members*0 $mol_paragraph
+							title <= room_members*
