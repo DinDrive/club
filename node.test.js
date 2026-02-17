@@ -8277,7 +8277,7 @@ var $;
             attr() {
                 return {
                     ...super.attr(),
-                    style: `background-color: ${this.room_color()}`,
+                    style: `background-color: ${this.room_color()}; display: inline-flex;`,
                 };
             }
         }
@@ -16482,6 +16482,7 @@ var $;
                     right: '20px',
                     bottom: '50px',
                 },
+                boxSizing: 'content-box',
             },
             Sidebar: {
                 boxShadow: 'none',
