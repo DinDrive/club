@@ -3587,37 +3587,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_paragraph__title_club_card_4 = $mol_type_enforce<
-		ReturnType< $club_card['excerpt'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_view__sub_club_card_5 = $mol_type_enforce<
+	type $mol_view__sub_club_card_4 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_club_card_6 = $mol_type_enforce<
-		ReturnType< $club_card['author_name'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_paragraph__title_club_card_7 = $mol_type_enforce<
-		ReturnType< $club_card['date_label'] >
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_paragraph__title_club_card_8 = $mol_type_enforce<
+	type $mol_paragraph__title_club_card_5 = $mol_type_enforce<
 		ReturnType< $club_card['comments_label'] >
 		,
 		ReturnType< $mol_paragraph['title'] >
 	>
-	type $mol_view__sub_club_card_9 = $mol_type_enforce<
+	type $mol_view__sub_club_card_6 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_club_card_10 = $mol_type_enforce<
+	type $mol_view__sub_club_card_7 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -3629,13 +3614,7 @@ declare namespace $ {
 		Author_col( ): $mol_view
 		post_title( ): string
 		Post_title( ): $mol_paragraph
-		excerpt( ): string
-		Excerpt( ): $mol_paragraph
 		Header( ): $mol_view
-		author_name( ): string
-		Author_name( ): $mol_paragraph
-		date_label( ): string
-		Date( ): $mol_paragraph
 		comments_label( ): string
 		Comments_count( ): $mol_paragraph
 		Footer( ): $mol_view
@@ -6382,12 +6361,17 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_image__uri_club_13 = $mol_type_enforce<
+	type $mol_view__sub_club_13 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_image__uri_club_14 = $mol_type_enforce<
 		ReturnType< $club['current_user_avatar'] >
 		,
 		ReturnType< $mol_image['uri'] >
 	>
-	type $mol_link__arg_club_14 = $mol_type_enforce<
+	type $mol_link__arg_club_15 = $mol_type_enforce<
 		({ 
 			'user': ReturnType< $club['current_user_slug'] >,
 			'post': any,
@@ -6399,15 +6383,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub_club_15 = $mol_type_enforce<
+	type $mol_link__sub_club_16 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_view__sub_club_16 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_club_17 = $mol_type_enforce<
 		readonly(any)[]
@@ -6419,95 +6398,95 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link__uri_club_19 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_20 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_21 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_22 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_23 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_24 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_25 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_26 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_27 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_28 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_29 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_30 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_31 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_32 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_link__uri_club_33 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__title_club_34 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['title'] >
-	>
-	type $mol_paragraph__title_club_35 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_paragraph['title'] >
-	>
-	type $mol_view__sub_club_36 = $mol_type_enforce<
+	type $mol_view__sub_club_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_link__uri_club_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_21 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_22 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_23 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_24 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_25 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_26 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_27 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_28 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_29 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_30 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_31 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_32 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_33 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_link__uri_club_34 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['uri'] >
+	>
+	type $mol_link__title_club_35 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_link['title'] >
+	>
+	type $mol_paragraph__title_club_36 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_paragraph['title'] >
 	>
 	type $mol_view__sub_club_37 = $mol_type_enforce<
 		readonly(any)[]
@@ -6515,6 +6494,11 @@ declare namespace $ {
 		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_club_38 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__sub_club_39 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -6533,6 +6517,7 @@ declare namespace $ {
 		Menu_compose( ): $mol_link
 		Bookmarks_icon( ): $mol_icon_bookmark_outline
 		Menu_bookmarks( ): $mol_link
+		Menu_right( ): $mol_view
 		current_user_slug( ): string
 		current_user_avatar( ): string
 		User_avatar( ): $mol_image

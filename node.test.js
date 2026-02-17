@@ -9541,33 +9541,9 @@ var $;
 			(obj.title) = () => ((this.post_title()));
 			return obj;
 		}
-		excerpt(){
-			return "";
-		}
-		Excerpt(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.excerpt()));
-			return obj;
-		}
 		Header(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Post_title()), (this.Excerpt())]);
-			return obj;
-		}
-		author_name(){
-			return "";
-		}
-		Author_name(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.author_name()));
-			return obj;
-		}
-		date_label(){
-			return "";
-		}
-		Date(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.date_label()));
+			(obj.sub) = () => ([(this.Post_title())]);
 			return obj;
 		}
 		comments_label(){
@@ -9580,11 +9556,7 @@ var $;
 		}
 		Footer(){
 			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Author_name()), 
-				(this.Date()), 
-				(this.Comments_count())
-			]);
+			(obj.sub) = () => ([(this.Comments_count())]);
 			return obj;
 		}
 		upvotes(){
@@ -9613,10 +9585,7 @@ var $;
 	($mol_mem(($.$club_card.prototype), "Avatar"));
 	($mol_mem(($.$club_card.prototype), "Author_col"));
 	($mol_mem(($.$club_card.prototype), "Post_title"));
-	($mol_mem(($.$club_card.prototype), "Excerpt"));
 	($mol_mem(($.$club_card.prototype), "Header"));
-	($mol_mem(($.$club_card.prototype), "Author_name"));
-	($mol_mem(($.$club_card.prototype), "Date"));
 	($mol_mem(($.$club_card.prototype), "Comments_count"));
 	($mol_mem(($.$club_card.prototype), "Footer"));
 	($mol_mem(($.$club_card.prototype), "Votes"));
@@ -10451,9 +10420,7 @@ var $;
                 },
                 maxWidth: '100%',
                 overflow: 'hidden',
-                flex: {
-                    direction: 'column',
-                },
+                textOverflow: 'ellipsis',
             },
             Post_title: {
                 font: {
@@ -10461,17 +10428,6 @@ var $;
                     weight: 500,
                 },
                 lineHeight: '1.3em',
-                textAlign: 'left',
-            },
-            Excerpt: {
-                font: {
-                    size: '0.9rem',
-                },
-                color: $mol_theme.shade,
-                lineHeight: '1.5em',
-                padding: {
-                    top: '6px',
-                },
                 textAlign: 'left',
             },
             Footer: {
@@ -10490,16 +10446,6 @@ var $;
                     size: '0.9rem',
                 },
                 color: $mol_theme.shade,
-            },
-            Author_name: {
-                font: {
-                    weight: 500,
-                },
-                color: $mol_theme.text,
-            },
-            Date: {
-                color: '#999',
-                whiteSpace: 'nowrap',
             },
             Comments_count: {
                 color: '#999',
@@ -13423,6 +13369,11 @@ var $;
 			(obj.sub) = () => ([(this.Bookmarks_icon())]);
 			return obj;
 		}
+		Menu_right(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Menu_compose()), (this.Menu_bookmarks())]);
+			return obj;
+		}
 		current_user_slug(){
 			return "";
 		}
@@ -13452,8 +13403,7 @@ var $;
 			(obj.sub) = () => ([
 				(this.Logo_block()), 
 				(this.Search()), 
-				(this.Menu_compose()), 
-				(this.Menu_bookmarks()), 
+				(this.Menu_right()), 
 				(this.Menu_avatar())
 			]);
 			return obj;
@@ -13596,6 +13546,7 @@ var $;
 	($mol_mem(($.$club.prototype), "Menu_compose"));
 	($mol_mem(($.$club.prototype), "Bookmarks_icon"));
 	($mol_mem(($.$club.prototype), "Menu_bookmarks"));
+	($mol_mem(($.$club.prototype), "Menu_right"));
 	($mol_mem(($.$club.prototype), "User_avatar"));
 	($mol_mem(($.$club.prototype), "Menu_avatar"));
 	($mol_mem(($.$club.prototype), "Header"));
@@ -16100,7 +16051,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("club/app/club.view.css", "/* vas3k.club theme overrides — must override $mol_theme defaults */\n\n[club][mol_theme='$mol_theme_light'],\n[club] [mol_theme='$mol_theme_light'],\n[club]:where([mol_theme]) {\n\t--mol_theme_back: #fcfdff;\n\t--mol_theme_card: #fff;\n\t--mol_theme_text: #333;\n\t--mol_theme_shade: #999;\n\t--mol_theme_line: #eee;\n\t--mol_theme_hover: rgba(83, 91, 110, 0.05);\n\t--mol_theme_focus: #333;\n\t--mol_theme_field: #fff;\n\t--mol_theme_control: #333;\n\t--mol_theme_current: #333;\n\t--mol_theme_special: #333;\n\t--mol_theme_image: none;\n}\n\n[club][mol_theme='$mol_theme_dark'],\n[club] [mol_theme='$mol_theme_dark'] {\n\t--mol_theme_back: #282c35;\n\t--mol_theme_card: #1b1b1c;\n\t--mol_theme_text: #ddd;\n\t--mol_theme_shade: #737373;\n\t--mol_theme_line: #444;\n\t--mol_theme_hover: rgba(255, 255, 255, 0.05);\n\t--mol_theme_focus: #ddd;\n\t--mol_theme_field: #373c48;\n\t--mol_theme_control: #fff;\n\t--mol_theme_current: #fff;\n\t--mol_theme_special: #fff;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n}\n\n/* Footer links */\n[club_footer_left] [mol_link] {\n\ttext-decoration: none;\n}\n\n[club_footer_left] [mol_link]:hover {\n\ttext-decoration: underline;\n}\n\n/* Footer separator dots */\n[club_footer_left] [mol_link]::after {\n\tcontent: ' \\00B7 ';\n\tpadding: 0 3px;\n\ttext-decoration: none;\n\tdisplay: inline;\n}\n\n[club_footer_left] [mol_link]:last-of-type::after {\n\tcontent: none;\n}\n\n[club_footer_cc]::before {\n\tcontent: '';\n\tdisplay: block;\n}\n\n/* Dark mode: invert logo */\n[club][mol_theme='$mol_theme_dark'] [club_logo_img],\n[club] [mol_theme='$mol_theme_dark'] [club_logo_img] {\n\tfilter: invert(1);\n}\n\n/* Compose button border */\n[club_menu_compose] {\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 10px;\n}\n\n[club_menu_compose]:hover {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n}\n");
+    $mol_style_attach("club/app/club.view.css", "/* vas3k.club theme overrides — must override $mol_theme defaults */\n\n[club][mol_theme='$mol_theme_light'],\n[club] [mol_theme='$mol_theme_light'],\n[club]:where([mol_theme]) {\n\t--mol_theme_back: #fcfdff;\n\t--mol_theme_card: #fff;\n\t--mol_theme_text: #333;\n\t--mol_theme_shade: #999;\n\t--mol_theme_line: #eee;\n\t--mol_theme_hover: rgba(83, 91, 110, 0.05);\n\t--mol_theme_focus: #333;\n\t--mol_theme_field: #fff;\n\t--mol_theme_control: #333;\n\t--mol_theme_current: #333;\n\t--mol_theme_special: #333;\n\t--mol_theme_image: none;\n}\n\n[club][mol_theme='$mol_theme_dark'],\n[club] [mol_theme='$mol_theme_dark'] {\n\t--mol_theme_back: #282c35;\n\t--mol_theme_card: #1b1b1c;\n\t--mol_theme_text: #ddd;\n\t--mol_theme_shade: #737373;\n\t--mol_theme_line: #444;\n\t--mol_theme_hover: rgba(255, 255, 255, 0.05);\n\t--mol_theme_focus: #ddd;\n\t--mol_theme_field: #373c48;\n\t--mol_theme_control: #fff;\n\t--mol_theme_current: #fff;\n\t--mol_theme_special: #fff;\n\t--mol_theme_image: invert(1) hue-rotate(180deg);\n}\n\n/* Footer links */\n[club_footer_left] [mol_link] {\n\ttext-decoration: none;\n}\n\n[club_footer_left] [mol_link]:hover {\n\ttext-decoration: underline;\n}\n\n/* Footer separator dots */\n[club_footer_left] [mol_link]::after {\n\tcontent: ' \\00B7 ';\n\tpadding: 0 3px;\n\ttext-decoration: none;\n\tdisplay: inline;\n}\n\n[club_footer_left] [mol_link]:last-of-type::after {\n\tcontent: none;\n}\n\n[club_footer_cc]::before {\n\tcontent: '';\n\tdisplay: block;\n}\n\n/* Dark mode: invert logo */\n[club][mol_theme='$mol_theme_dark'] [club_logo_img],\n[club] [mol_theme='$mol_theme_dark'] [club_logo_img] {\n\tfilter: invert(1);\n}\n\n/* Compose button — solid dark like prod */\n[club_menu_compose] {\n\tbackground-color: var(--mol_theme_text);\n\tcolor: var(--mol_theme_back);\n\tborder: solid 2px var(--mol_theme_text);\n\tborder-radius: 15px;\n}\n\n[club_menu_compose]:hover {\n\topacity: 0.8;\n}\n\n/* Search — transparent like prod */\n[club_search] [mol_string] {\n\tbackground-color: transparent !important;\n\tbox-shadow: none !important;\n\tborder: none !important;\n\toutline: none !important;\n\tfont-weight: 500;\n\tfont-size: 24px;\n\tpadding: 3px 10px 4px 35px !important;\n}\n\n[club_search] [mol_string]:focus {\n\tborder: solid 2px var(--mol_theme_line) !important;\n\tborder-radius: 15px !important;\n}\n\n[club_search] [mol_string]::placeholder {\n\tvisibility: hidden;\n}\n");
 })($ || ($ = {}));
 
 ;
@@ -16196,6 +16147,19 @@ var $;
                     weight: 700,
                 },
                 whiteSpace: 'nowrap',
+            },
+            Menu_right: {
+                display: 'flex',
+                flex: {
+                    grow: 1,
+                    direction: 'row',
+                },
+                justify: {
+                    content: 'flex-end',
+                },
+                align: {
+                    items: 'center',
+                },
             },
             Menu_compose: {
                 display: 'flex',
