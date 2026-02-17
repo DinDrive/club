@@ -16,7 +16,7 @@ namespace $.$$ {
 		Article: {
 			display: 'block',
 			position: 'relative',
-			maxWidth: '700px',
+			maxWidth: '800px',
 			margin: {
 				top: '70px',
 				left: 'auto',
@@ -210,7 +210,7 @@ namespace $.$$ {
 
 		Comments_section: {
 			display: 'block',
-			maxWidth: '700px',
+			maxWidth: '800px',
 			margin: {
 				left: 'auto',
 				right: 'auto',

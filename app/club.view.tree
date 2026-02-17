@@ -6,21 +6,25 @@ $club $mol_page
 	body /
 		<= Header $mol_view
 			sub /
-				<= Logo $mol_link
-					arg *
-						post null
-						user null
-						bookmarks null
-						rooms null
-						settings null
-						type null
+				<= Logo_block $mol_view
 					sub /
-						<= Logo_left $mol_paragraph
-							title \Вастрик
-						<= Logo_img $mol_image
-							uri \https://vas3k.club/static/images/logo/logo-128.png
-						<= Logo_right $mol_paragraph
-							title \Клуб
+						<= Logo $mol_link
+							arg *
+								post null
+								user null
+								bookmarks null
+								rooms null
+								settings null
+								type null
+							sub /
+								<= Logo_left $mol_paragraph
+									title \Вастрик
+								<= Logo_img $mol_image
+									uri \https://vas3k.club/static/images/logo/logo-128.png
+								<= Logo_right $mol_paragraph
+									title \Клуб
+				<= Search $mol_search
+					query? <=> search_query? \
 				<= Menu_compose $mol_link
 					uri \https://vas3k.club/create/
 					sub /

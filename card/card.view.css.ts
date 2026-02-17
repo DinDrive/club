@@ -62,7 +62,9 @@ namespace $.$$ {
 			},
 			maxWidth: '100%',
 			overflow: 'hidden',
-			textOverflow: 'ellipsis',
+			flex: {
+				direction: 'column',
+			},
 		},
 
 		Post_title: {
@@ -71,6 +73,18 @@ namespace $.$$ {
 				weight: 500,
 			},
 			lineHeight: '1.3em',
+			textAlign: 'left',
+		},
+
+		Excerpt: {
+			font: {
+				size: '0.9rem',
+			},
+			color: $mol_theme.shade,
+			lineHeight: '1.5em',
+			padding: {
+				top: '6px',
+			},
 			textAlign: 'left',
 		},
 
@@ -92,11 +106,16 @@ namespace $.$$ {
 			color: $mol_theme.shade,
 		},
 
-		Room_label: {
-			display: 'inline-block',
-			padding: {
-				right: '10px',
+		Author_name: {
+			font: {
+				weight: 500,
 			},
+			color: $mol_theme.text,
+		},
+
+		Date: {
+			color: '#999',
+			whiteSpace: 'nowrap',
 		},
 
 		Comments_count: {

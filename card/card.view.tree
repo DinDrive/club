@@ -11,10 +11,14 @@ $club_card $mol_link
 			sub /
 				<= Post_title $mol_paragraph
 					title <= post_title \
+				<= Excerpt $mol_paragraph
+					title <= excerpt \
 		<= Footer $mol_view
 			sub /
-				<= Room_label $mol_view
-					sub / <= room_name \
+				<= Author_name $mol_paragraph
+					title <= author_name \
+				<= Date $mol_paragraph
+					title <= date_label \
 				<= Comments_count $mol_paragraph
 					title <= comments_label \
 		<= Votes $mol_view

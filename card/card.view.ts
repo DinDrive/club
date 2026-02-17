@@ -44,6 +44,28 @@ namespace $.$$ {
 			return this.post_data()?.authors?.[0]?.name ?? ''
 		}
 
+		excerpt() {
+			const text = this.post_data()?.content_text ?? ''
+			if (!text) return ''
+			// Strip markdown images and links, take first 200 chars
+			const clean = text
+				.replace(/!\[.*?\]\(.*?\)/g, '')
+				.replace(/\[([^\]]*)\]\(.*?\)/g, '$1')
+				.replace(/^#+\s+/gm, '')
+				.replace(/\r?\n/g, ' ')
+				.replace(/\s+/g, ' ')
+				.trim()
+			if (clean.length <= 200) return clean
+			return clean.substring(0, 200).replace(/\s\S*$/, '') + '…'
+		}
+
+		date_label() {
+			const d = this.post_data()?.date_published
+			if (!d) return ''
+			const m = new $mol_time_moment(d)
+			return m.toString('DD.MM.YYYY')
+		}
+
 		comments_label() {
 			const c = this.post_data()?._club?.comment_count ?? 0
 			if (!c) return ''

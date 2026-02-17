@@ -35,7 +35,7 @@ namespace $.$$ {
 			gap: '10px',
 		},
 
-		Logo: {
+		Logo_block: {
 			display: 'flex',
 			flex: {
 				direction: 'row',
@@ -45,8 +45,26 @@ namespace $.$$ {
 				items: 'center',
 			},
 			gap: '10px',
-			textDecoration: 'none',
 			minWidth: '210px',
+		},
+
+		Logo: {
+			display: 'flex',
+			flex: {
+				direction: 'row',
+			},
+			align: {
+				items: 'center',
+			},
+			gap: '10px',
+			textDecoration: 'none',
+		},
+
+		Search: {
+			flex: {
+				grow: 4,
+			},
+			whiteSpace: 'nowrap',
 		},
 
 		Logo_img: {
